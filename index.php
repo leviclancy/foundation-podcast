@@ -1,4 +1,11 @@
-<? // if RSS
+<? 
+
+// https://developers.google.com/search/docs/guides/podcast-guidelines
+// Podcast must have a homepage
+// Podcast must have an RSS feed
+// Podcast must have at least one episode
+
+// if RSS
 	
 
 ?>
