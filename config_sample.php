@@ -2,7 +2,7 @@
 
 // Podcast info
   // Museum of Ours Podcast
-$title = ""; 
+	$title = ""; 
 
 $author = ""; // Museum of Ours
 $description = ""; // Museum of Ours brings you...
