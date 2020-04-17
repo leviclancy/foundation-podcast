@@ -47,6 +47,20 @@ function amp_footer() {
 	exit;
 	}
 
+function json_output ($json_array) {
+	
+	global $domain;
+	
+	header("Content-type: application/json");
+	header("Access-Control-Allow-Credentials: true");
+	header("Access-Control-Allow-Origin: https://".$domain);
+	header("AMP-Access-Control-Allow-Source-Origin: https://".$domain);
+	header("Access-Control-Expose-Headers: AMP-Access-Control-Allow-Source-Origin");
+
+	echo json_encode($json_array);
+	       
+	exit; }
+
 function json_result($domain, $result, $redirect, $message) {
 	
 	header("Content-type: application/json");
@@ -73,4 +87,21 @@ function json_result($domain, $result, $redirect, $message) {
 
 	echo json_encode(["result"=>"success", "message"=>$message]);
 
-	exit; } ?>
+	exit; }
+
+function random_code($length=16) {
+	$characters = [
+		"2", "3", "4", "5", "6", "7",
+//		"Q", "W", "E", "R". "T", "Y", "U", "I", "O", "P", 
+		"Q", "W", "R". "T", "Y", "P", // remove vowels
+//		"A", "S", "D", "F", "G", "H", "J", "K", "L", 
+		"S", "D", "F", "G", "H", "J", "K", "L", // remove vowels
+//		"Z", "X", "C", "V", "B", "N", "M"
+		"Z", "C", "V", "B", "N", "M" // remove 'x' for vulgar use
+		];
+	if (!(is_int($length))): $length = 16; endif;
+	if ($length < 1): $length = 16; endif;
+	$key_temp = null;
+	while (strlen($key_temp) < $length): $key_temp .= $characters[rand(0,31)]; endwhile;
+	return $key_temp; }
+?>
