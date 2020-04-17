@@ -1,7 +1,4 @@
-<? // podcast.ours.foundation
-$domain = "";
-
-// SQL host
+<? // SQL host
 $sql_host = "";
 
 // SQL port
