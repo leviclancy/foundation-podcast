@@ -31,7 +31,7 @@ $request_access_array = [
 if (!(in_array($request_access, $request_access_array))): $request_access = null; endif;
 
 // No need to even connect to SQL
-if (in_array($request_access, $request_access_array) || empty($request_access)):
+if (($request_access == "admin") || empty($request_access)):
 
 	// Get JSON
 
