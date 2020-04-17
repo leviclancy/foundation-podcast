@@ -73,7 +73,7 @@ if ($request_access == "install"):
 	// Pull up users if empty
 	$sql_temp = "SELECT * FROM users";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): echo "<p>Error building table '".$table_name."' in '".$database."' database.<p>";
+	if (empty($result)): echo "<p>Error accessing users table.<p>";
 
 	while ($row = pg_fetch_row($result)) {
 		echo "Author: $row[0]  E-mail: $row[1]";
