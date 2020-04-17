@@ -4,6 +4,8 @@ $domain = "";
 // SQL host
 $sql_host = "";
 
+$sql_port = "";
+
 // SQL databaes
 $sql_database = "";
 
