@@ -1,2 +1,35 @@
 body {
 	}
+
+*:focus {
+	outline: none;
+	outline-width: 0;
+	}
+
+p {
+	margin: 20px auto;
+	max-width: 500px;
+	padding: 0 20px;
+	box-sizing: border-box;
+	display: block;
+	clear: both;
+	text-align: left; }
+
+input {
+	margin: 20px auto;
+	padding: 5px 10px;
+	max-width: 500px;
+	box-sizing: border-box;
+	display: block;
+	clear: both;
+	text-align: left;
+	border: 1px solid rgba(100,100,100,0.9);
+	border-radius: 200px; }
+
+.form-submit-button {
+	background: rgba(200,200,200,1);
+	color: #fff;
+	display: inline-block;
+	border-radius: 200px;
+	padding: 5px 10px;
+	margin: 0 auto; }
