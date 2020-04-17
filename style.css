@@ -15,7 +15,7 @@ p {
 	clear: both;
 	text-align: left; }
 
-.form-description
+.form-description {
 	margin: 20px auto 0;
 	max-width: 500px;
 	padding: 0 20px;
