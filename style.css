@@ -13,7 +13,8 @@ p {
 	box-sizing: border-box;
 	display: block;
 	clear: both;
-	text-align: left; }
+	text-align: left;
+	}
 
 .form-description {
 	margin: 20px auto 0;
@@ -22,23 +23,28 @@ p {
 	box-sizing: border-box;
 	display: block;
 	clear: both;
-	text-align: left; }
+	text-align: left;
+	}
 
 input {
-	margin: 20px auto;
+	margin: 0 auto;
 	padding: 5px 10px;
+	width: auto;
 	max-width: 500px;
 	box-sizing: border-box;
 	display: block;
 	clear: both;
 	text-align: left;
 	border: 1px solid rgba(100,100,100,0.9);
-	border-radius: 200px; }
+	border-radius: 200px;
+	}
 
 .form-submit-button {
 	background: rgba(200,200,200,1);
 	color: #fff;
 	display: inline-block;
+	clear: both;
 	border-radius: 200px;
 	padding: 5px 10px;
-	margin: 0 auto; }
+	margin: 0 auto;
+	}
