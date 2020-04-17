@@ -15,6 +15,15 @@ p {
 	clear: both;
 	text-align: left; }
 
+.form-description
+	margin: 20px auto 0;
+	max-width: 500px;
+	padding: 0 20px;
+	box-sizing: border-box;
+	display: block;
+	clear: both;
+	text-align: left; }
+
 input {
 	margin: 20px auto;
 	padding: 5px 10px;
