@@ -127,7 +127,7 @@ if ($request_access == "install"):
 	// Pull up users if empty
 	$sql_temp = "SELECT * FROM users WHERE password_salt IS NOT NULL";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): echo "<p>Error accessing 'users' table.<p>"; endif;
+	if (empty($result)): echo "<p>Error accessing 'users' table.</p>"; endif;
 
 	// Check if there are users
 	while ($row = pg_fetch_row($result)) { amp_footer(); }
