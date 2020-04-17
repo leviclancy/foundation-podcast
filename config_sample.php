@@ -1,31 +1,14 @@
-<? // System info
+<? // podcast.ours.foundation
+$domain = "";
 
-	// podcast.ours.foundation
-	$link = "";
+// SQL host
+$sql_host = "";
 
-	// SQL host
-	$sql_host = "";
+// SQL databaes
+$sql_database = "";
 
-	// SQL user
-	$sql_user = "";
+// SQL user
+$sql_user = "";
 
-	// SQL password
-	$sql_password = "";
-
-	// SQL databaes
-	$sql_database = "";
-	
-
-// Podcast info
-
-	// Museum of Ours Podcast
-	$title = ""; 
-
-	// Museum of Ours
-	$author = "";
-
-	// Museum of Ours brings you...
-	$description = ""; 
-
-	 // en-us
-	$language = ""; ?>
+// SQL password
+$sql_password = ""; ?>
