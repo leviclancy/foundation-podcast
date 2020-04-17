@@ -1,4 +1,7 @@
-<? // SQL host
+<? // Domain
+$domain = "";
+
+// SQL host
 $sql_host = "";
 
 // SQL port
