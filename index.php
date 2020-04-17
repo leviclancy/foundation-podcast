@@ -62,18 +62,16 @@ if ($request_access == "install"):
 		$sql_temp = "CREATE TABLE IF NOT EXISTS $table_name (". implode (", ", $columns_schema) .")";
 		$result = pg_query($postgres_connection, $sql_temp);
 		
-		// If it failed...
-		if (empty($result)): echo "<p>Error building table '".$table_name."' in '".$database."' database.<p>";
-		
-		// ... or if it succeeded...
-		else: echo "<p>Success building table '".$table_name."' in '".$database."' database.<p>"; endif;
+		// If it failed or succeeded...
+		$result_temp = (empty($result) ? "Error" : "Success");
+		echo "<p>". $result_temp . "building table '".$table_name."' in '".$database."' database.</p>";
 
 		endforeach;
 
 	// Pull up users if empty
 	$sql_temp = "SELECT * FROM users";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): echo "<p>Error accessing users table.<p>";
+	if (empty($result)): echo "<p>Error accessing users table.<p>"; endif;
 
 	while ($row = pg_fetch_row($result)) {
 		echo "Author: $row[0]  E-mail: $row[1]";
