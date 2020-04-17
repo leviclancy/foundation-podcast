@@ -104,4 +104,25 @@ function random_code($length=16) {
 	$key_temp = null;
 	while (strlen($key_temp) < $length): $key_temp .= $characters[rand(0,31)]; endwhile;
 	return $key_temp; }
-?>
+
+function postgres_statement ($table_name, $values_temp) {
+	
+	$columns_list = $bound_list = $updates_list = $count_temp = null;
+	foreach ($values_temp as $column_temp => $value_temp):
+
+		$count_temp++;
+	
+		$comma_temp = ", ";
+		if ($count_temp == 1):
+			$primary_key = $column_temp;
+			$comma_temp = null;
+			endif;
+
+		$columns_list .= $comma_temp.$column_temp;
+		$bound_list .= $comma_temp."$".$count_temp;
+		$updates_list .= $comma_temp.$column_temp."=excluded.".$column_temp;
+	
+		endforeach;
+
+	return "INSERT INTO $table_name ($columns_list) VALUES ($bound_list) ON CONFLICT ($primary_key) DO UPDATE SET $updates_list";
+	} ?>
