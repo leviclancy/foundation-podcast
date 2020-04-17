@@ -10,14 +10,69 @@ mb_http_output('UTF-8');
 include_once('configuration.php');
 include_once('functions.php');
 
+// These are passed in the URL
 $request_access = ( empty($_REQUEST['access']) ? null : $_REQUEST['access'] );
 $request_episode = ( empty($_REQUEST['episode']) ? null : $_REQUEST['episode'] );
+$request_magic = ( empty($_REQUEST['magic']) ? null : $_REQUEST['magic'] );
 
+$request_access_array = [
+	"admin",
+	"install",
+	"xhr-install",
+	"magic",
+	"xhr-magic",
+	"xhr-login",
+	"xhr-logout",
+	"xhr-account",
+	"xhr-add",
+	"xhr-update",
+	"json",
+	"rss", ];
+if (!(in_array($request_access, $request_access_array))): $request_access = null; endif;
+
+// No need to even connect to SQL
+if (in_array($request_access, $request_access_array) || empty($request_access)):
+
+	// Get JSON
+
+	if ($request_access == "admin"):
+
+		amp_header("Admin");
+
+		if (array_key_exists($_REQUEST['episode'], $episodes_array)):
+
+			// Go ahead and provide the edit for just the podcast
+	
+			endif;
+
+		// Add podcast
+
+		// View podcasts
+
+		// 
+
+		// 
+		// Change password
+
+		amp_footer(); endif;
+
+	amp_header($title);
+	echo "<h1>". $title ."</h1>";
+	echo "<p>". $description . "</p>";
+	echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
+	echo "List of amp-audio for each episode";
+	amp_footer();
+
+	endif;
+
+// Create postgres connection
+$postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
+if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
+
+// Create tables and check if there is a user yet
 if ($request_access == "install"):
 
-	// Create postgres connection
-	$postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
-	if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
+	$result = file_get_contents("/?access=logout");
 
 	amp_header("Install");
 
@@ -25,8 +80,10 @@ if ($request_access == "install"):
 	$tables_array['users'] = [
 		"user_id"		=> "VARCHAR(100)", // Fixed user id
 		"username"		=> "VARCHAR(200)", // User-changeable username
-		"password_key"		=> "VARCHAR(200)", // Unique configuration key
+		"password_salt"		=> "VARCHAR(200)", // Salt for hashing password
 		"password_hash"		=> "VARCHAR(200)", // Hash of password
+		"login_code"		=> "VARCHAR(200)", // Unique cookie code for login
+		"login_expiration"	=> "VARCHAR(200)", // Unique cookie code for login
 		"magic_code"		=> "VARCHAR(200)", // Magic code for ephemeral login
 		"magic_expiration"	=> "VARCHAR(200)", // Magic code expiration time
 		"authenticator_key"	=> "VARCHAR(200)", // Authenticator configuration key key
@@ -68,65 +125,131 @@ if ($request_access == "install"):
 		endforeach;
 
 	// Pull up users if empty
-	$sql_temp = "SELECT * FROM users";
+	$sql_temp = "SELECT * FROM users WHERE password_salt IS NOT NULL";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): echo "<p>Error accessing users table.<p>"; endif;
+	if (empty($result)): echo "<p>Error accessing 'users' table.<p>"; endif;
 
-	while ($row = pg_fetch_row($result)) {
-		echo "Author: $row[0]  E-mail: $row[1]";
-		echo "<br />\n";
-		}
+	// Check if there are users
+	while ($row = pg_fetch_row($result)) { amp_footer(); }
 
-	footer();
+	// Form for making new user if none exist
+	echo "<form src='/?access=xhr-install' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
+	
+	echo "<span class='form-description'>Enter your username (must be six or more characters).</span>";
+	echo "<input type='text' name='username' placeholder='Username' required>";
+
+	echo "<span class='form-submit-button' id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create user</span>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+		
+	echo "</form>";
+
+	amp_footer();
 
 	endif;
 
+// XHR to create initial user
 if ($request_access == "xhr-install"):
 
+	$result = file_get_contents("/?access=logout");
+
 	// if there is a user then give error
+	// Pull up users if empty
+	$sql_temp = "SELECT * FROM users";
+	$result = pg_query($postgres_connection, $sql_temp);
+	if (empty($result)): json_result($domain, "error", null, "Failed accessing 'users' table."); endif;
 
-	// otherwise you can make the user
+	// Check if there are users
+	while ($row = pg_fetch_row($result)) { json_result($domain, "error", null, "Users already exit."); }
+
+	// Sanitize the username
+	$_POST['username'] = trim($_POST['username']);
+	if (strlen($_POST['username']) < 6): json_result($domain, "error", null, "Username too short."); endif;
+	if (strlen($_POST['username']) > 50): json_result($domain, "error", null, "Username too long."); endif;
+
+	// Prepare the values for a new user
+	$magic_code = random_code(30);	
+	$values_temp = [
+		"user_id" 		=> random_code(16),
+		"username"		=> $_POST['username'],
+		"magic_code"		=> $magic_code,
+		"magic_expiration"	=> time() + 300, // Expires in five minutes
+		];
+	
+	// Prepare the statement
+	$postgres_statement = postgres_statement("users", $values_temp);
+	$result = pg_prepare($postgres_connection, "add_user_statement", $postgres_statement);
+	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
+	
+	// Execute the statement, make the user
+	$result = pg_execute($postgres_connection, "add_user_statement", $values_temp);
+	if (!($result)): json_result($domain, "error", null, "Could not add usern."); endif;
+
+	// Redirect to magic area
+	json_result($domain, "success", "/?access=magic&magic=".$magic_code, "Created new user.");
 
 	endif;
 
+// If there is a magic code then check it out
+if ($request_access == "magic"):
 
+	$result = file_get_contents("/?access=logout");
 
-$request_access_array = [
-	"xhr-login", "xhr-logout", "xhr-account", "xhr-add", "xhr-update", "admin", // For administration
-	"json", "rss", // Output the sitemap
-	];
+	// Check if magic code is right by time and match
+	
+	// $request_magic
 
-if (!(empty($request_access)) && in_array($request_access, $request_access_array)):
-	$connection_pdo = new PDO(
-		"mysql:host=$sql_host;dbname=$sql_database;charset=utf8mb4", 
-		$sql_user, 
-		$sql_password,
-		array(PDO::ATTR_TIMEOUT => 3, PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION)  // Number is in seconds
-		);
-	if (empty($connection_pdo)): echo "Could not connect to mySQL."; exit; endif;
+	// Reset password inputs
+
 	endif;
+	
+// If there is a magic code then check it out
+if ($request_access == "xhr-magic"):
 
-$login = null;
+	$result = file_get_contents("/?access=logout");
 
-if (empty($login) && in_array($request_access, ["xhr-login", "xhr-logout", "xhr-account", "xhr-add", "xhr-update", "admin"])):
-	// json of invalid login
-	exit; endif;
+	// Reset password
+	
+	// Redirect to homepage
+
+	endif;
 
 // Give us the login xhr
 if ($request_access == "xhr-login"):
 
-	// Log in
+	$result = file_get_contents("/?access=logout");
+
+	$login = null;
+
+	// If there is a username and pwd sent, then check it
+	
+	// elsef there is a cookie set, then check it
+	
+	// $_COOKIE['loggedin_domains'];
+	
+	// setcookie("loggedin_domains", json_encode($loggedin_domains), (time()+24*60*60), '/');	
+
+	// json_status("success", "Successful login. <a href='/?action=edit&domain=".$_POST['domain']."' >Continue.</a>", "/?action=edit&domain=".$_POST['domain']);
+	
+	// Echo out the login status
 
 	exit; endif;
 
 // Give us the logout xhr
 if ($request_access == "xhr-logout"):
 
-	// Log out
+	setcookie("login_code", null, (time()+24*60*60), '/');
+
+	json_result($domain, "success", null, "Successfully logged out.");
 
 	exit; endif;
-
+	
 // Check the database
+// Check the login status
 
 // Give us the account xhr
 if ($request_access == "xhr-account"):
@@ -149,46 +272,24 @@ if ($request_access == "xhr-update"):
 
 	exit; endif;
 
-// Give us the admin panel
-if ($request_access == "admin"):
-
-	amp_header("Admin");
-
-	if (array_key_exists($_REQUEST['episode'], $episodes_array)):
-
-		// Go ahead and provide the edit for just the podcast
-	
-		endif;
-
-	// Add podcast
-
-	// View podcasts
-
-	// 
-
-	// 
-	// Change password
-
-	footer(); endif;
-
-// Give us the episode
-if (($request_access == "json") && array_key_exists($request_episode, $episode_array)):
-
-	// Return the audio files
-
-	endif;
-
 // Give us the JSON
-if ($request_access == "json"):
+if ($request_access == "api-json"):
 
 	// JSON of all the episodes
+	// Include login status
+
+	endif;
+	
+// Give us the episode
+if (($request_access == "api-json") && array_key_exists($request_episode, $episode_array)):
+
+	// Return the audio files
+	// Include login status
 
 	endif;
 
 // Give us the RSS
-if ($request_access == "rss"):
-
-	// Check database 
+if ($request_access == "api-rss"):
 
 	// 
 
@@ -196,29 +297,22 @@ if ($request_access == "rss"):
 	echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">';
 	echo '<channel>';
 
-		echo '<title>' . $title .'</title>';
-		echo '<googleplay:author>'. $author .'</googleplay:author>';
-		echo '<description>'. $description .'</description>';
-		echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
-		echo '<language>'. $language .'</language>';
-		echo '<link>'. $link .'</link>';
+	echo '<title>' . $title .'</title>';
+	echo '<googleplay:author>'. $author .'</googleplay:author>';
+	echo '<description>'. $description .'</description>';
+	echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
+	echo '<language>'. $language .'</language>';
+	echo '<link>'. $link .'</link>';
 
 		echo '<item>
-			<title>Top 10 myths about caring for a zebra</title>
-			<description>Here are the top 10 misunderstandings about the care, feeding, and breeding of these lovable striped animals.</description>
-			<pubDate>Tue, 14 Mar 2017 12:00:00 GMT</pubDate>
-			<enclosure url="https://www.example.com/podcasts/dafnas-zebras/audio/toptenmyths.mp3" type="audio/mpeg" length="34216300"/>
-			<itunes:duration>30:00</itunes:duration>
-			<guid isPermaLink="false">dzpodtop10</guid>
-   			</item>';
+		<title>Top 10 myths about caring for a zebra</title>
+		<description>Here are the top 10 misunderstandings about the care, feeding, and breeding of these lovable striped animals.</description>
+		<pubDate>Tue, 14 Mar 2017 12:00:00 GMT</pubDate>
+		<enclosure url="https://www.example.com/podcasts/dafnas-zebras/audio/toptenmyths.mp3" type="audio/mpeg" length="34216300"/>
+		<itunes:duration>30:00</itunes:duration>
+		<guid isPermaLink="false">dzpodtop10</guid>
+   		</item>';
 
-		echo '</channel></rss>';
+	echo '</channel></rss>';
 
-	exit; endif;
-
-amp_header($title);
-echo "<h1>". $title ."</h1>";
-echo "<p>". $description . "</p>";
-echo "<p>RSS feed: https://". $link ."/?view=rss</p>";
-echo "List of amp-audio for each episode";
-amp_footer(); ?>
+	exit; endif; ?>
