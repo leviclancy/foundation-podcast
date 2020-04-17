@@ -63,7 +63,7 @@ if ($request_access == "install"):
 		
 		// If it failed or succeeded...
 		$result_temp = (empty($result) ? "Error" : "Success");
-		echo "<p>". $result_temp . "building table '".$table_name."' in '".$database."' database.</p>";
+		echo "<p>". $result_temp . "building table '". $table_name ."' in database '". $sql_database ."'.</p>";
 
 		endforeach;
 
