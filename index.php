@@ -7,7 +7,7 @@ session_start();
 mb_internal_encoding('UTF-8');
 mb_http_output('UTF-8');
 
-include_once('config.php');
+include_once('configuration.php');
 include_once('functions.php');
 
 $request_access = ( empty($_REQUEST['access']) ? null : $_REQUEST['access'] );
@@ -16,7 +16,6 @@ $request_episode = ( empty($_REQUEST['episode']) ? null : $_REQUEST['episode'] )
 if ($request_access == "install"):
 
 	// Create postgres connection
-//	$postgres_connection = pg_connect("sslmode=verify-ca sslrootcert=server-ca.pem sslcert=client-cert.pem sslkey=client-key.pem host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
 	$postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
 	if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
 
