@@ -26,7 +26,7 @@ p {
 	text-align: left;
 	}
 
-input {
+input[type=text] {
 	margin: 0 auto;
 	padding: 5px 10px;
 	width: auto;
