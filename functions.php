@@ -21,6 +21,9 @@
 	echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
 	echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
 
+//	echo '<script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>';
+//	echo '<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>';
+
 	// Material icons
 	echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
 
@@ -39,7 +42,28 @@
 	include_once('style.css');
 	echo "</style>";
 
+	// This sets up the login access states
+//	$json_temp = [
+//		"authorization" => "", // /documentation/examples/api/amp-access/authorization?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM
+//		"pingback" => "", // Used for metering of read count + not necessary here
+//		"noPingback" => "true", // Set to 'true' to disable pingback, 'false' to enable pingback
+//		"login" => [
+//			"sign-in" => "",
+//			"sign-out" => "",
+//			',
+//		"authorizationFallbackResponse" => [
+//			"error" => "true",
+//			"loggedIn" => "false",
+//			"power user" => "false",
+//			],
+//		];
+//	echo '<script id="amp-access" type="application/json">' . json_encode($json_temp) . '</script>';
+
+
 	echo "</head><body>";
+
+	echo '<amp-state id='pageState' src='/?access=login'></script></amp-state>'
+
 	}
 						   
 function amp_footer() {
