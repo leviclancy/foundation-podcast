@@ -12,15 +12,14 @@ if ($request_access == "install"):
 	// Users table
 	$tables_array['users'] = [
 		"user_id"		=> "VARCHAR(100)", // Fixed user id
-		"username"		=> "VARCHAR(200)", // User-changeable username
+		"user_name"		=> "VARCHAR(200)", // User-changeable username
 		"password_salt"		=> "VARCHAR(200)", // Salt for hashing password
 		"password_hash"		=> "VARCHAR(200)", // Hash of password
-		"login_code"		=> "VARCHAR(200)", // Unique cookie code for login
-		"login_expiration"	=> "VARCHAR(200)", // Unique cookie code for login
+		"authenticator_key"	=> "VARCHAR(200)", // Authenticator configuration key
 		"magic_code"		=> "VARCHAR(200)", // Magic code for ephemeral login
 		"magic_expiration"	=> "VARCHAR(200)", // Magic code expiration time
-		"authenticator_key"	=> "VARCHAR(200)", // Authenticator configuration key key
-		"cookie_code"		=> "VARCHAR(200)", // Authenticator configuration key key
+		"cookie_code"		=> "VARCHAR(200)", // Unique cookie code for login
+		"cookie_expiration"	=> "VARCHAR(200)", // Unique cookie code expiration time
 		];
 
 	$tables_array['description'] = [
