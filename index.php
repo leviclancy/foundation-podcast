@@ -251,7 +251,7 @@ if ($request_access == "xhr-login"):
 
 	// We'll remove expired cookies
 	foreach ($cookie_codes_array as $key_temp => $cookie_code_temp):
-		if ($cookie_code_temp['cookie_expiration']) > time()): continue; endif; // If expiration is in future, continue
+		if ($cookie_code_temp['cookie_expiration'] > time()): continue; endif; // If expiration is in future, continue
 		unset($cookie_codes_array[$key_temp]); // Otherwise, unset the cookie code
 		endforeach;
 
