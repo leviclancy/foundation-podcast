@@ -1,11 +1,15 @@
-<? // Create postgres connection
+<? // Make sure the URL is correct
+if (!(in_array($request_access, ["install", "xhr-install"]))): json_result($domain, "error", "/", "Invalid URL."); endif;
+
+// Create postgres connection
 $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
 if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
 
-// Create tables and check if there is an admin yet
+// XHR to create initial admin
 if ($request_access == "install"):
 
-	$result = file_get_contents("/?access=logout");
+	// First log out of any session
+	$result = file_get_contents("/?access=xhr-logout");
 
 	amp_header("Install");
 
