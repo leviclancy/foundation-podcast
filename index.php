@@ -34,7 +34,7 @@ $request_access_array = [
 if (!(in_array($request_access, $request_access_array))): $request_access = "home"; endif;
 
 // No need to connect to SQL for these three options
-if (in_array($request_access, "admin", "rss", "home")):
+if (in_array($request_access, ["admin", "rss", "home"])):
 
 	// Get JSON
   
