@@ -47,11 +47,7 @@ if ($request_access == "install"):
 			],
 		];
 
-	echo "<style amp-custom>";
-		css_output($style_array);
-		endforeach;
-
-	echo "</style>";
+	echo "<style amp-custom>" . css_output($style_array) . "</style>";
 
 	echo "</head><body>";
 
