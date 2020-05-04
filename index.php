@@ -37,31 +37,6 @@ if (!(in_array($request_access, $request_access_array))): $request_access = "hom
 if (in_array($request_access, ["admin", "rss", "home"])):
 
 	// Get JSON
-  
-	if ($request_access == "admin"):
-
-		login_check();
-
-		amp_header("Admin");
-
-		if (array_key_exists($_REQUEST['episode'], $episodes_array)):
-
-			// Go ahead and provide the edit for just the podcast
-	
-			endif;
-
-		// Add podcast
-
-		// View podcasts
-
-		// 
-
-		// 
-		// Change password
-
-		// Add admin
-
-		amp_footer(); endif;
 
 	// Give us the RSS
 	if ($request_access == "rss"):
@@ -90,7 +65,48 @@ if (in_array($request_access, ["admin", "rss", "home"])):
 
 		exit; endif;
 
-	amp_header($title);
+	echo "<!doctype html><html amp lang='en'>";
+	
+	echo "<head><meta charset='utf-8'>";
+
+	if (!(empty($google_analytics_code))):
+		echo '<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>';
+		endif;
+	
+	echo "<script async src='https://cdn.ampproject.org/v0.js'></script>";
+
+	echo "<link rel='canonical' href='https://". $domain ."'>";
+
+	echo "<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>";
+
+	echo '<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>';
+	echo '<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>';
+	echo '<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>';
+	echo '<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>';
+	echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
+	echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
+
+	echo "<title>". $title_temp ."</title>";
+
+	echo "<meta name='theme-color' content='#2878b4'>";
+
+	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
+
+	$style_array = [
+		"body" => [
+			"" => "",
+			],
+		"input" => [
+			"" => "",
+			],
+		];
+
+	echo "<style amp-custom>" . css_output($style_array) . "</style>";
+
+	echo "</head><body>";
+
+	echo "<amp-state id='pageState' src='/?access=json-login'></script></amp-state>";
+
 	echo "<h1>". $title ."</h1>";
 	echo "<p>". $description . "</p>";
 	echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
