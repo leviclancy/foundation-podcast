@@ -2,9 +2,10 @@
 function css_output($style_array=[]) {
 	$css_string = null;
 	foreach ($style_array as $selector_temp => $properties_array_temp):
+		if (empty($properties_array_temp) || !(is_array($properties_array_temp))): continue; endif; // Skip if empty or invalid
 		ksort($properties_array_temp);
 		$css_string .= $selector_temp . " {";
-		foreach ($properties_array_tmep as $property_temp => $value_temp):
+		foreach ($properties_array_temp as $property_temp => $value_temp):
 			if (empty($property_temp) || empty($value_temp)): continue; endif; // Skip if either are empty
 			$css_string .= $property_temp . ": " . $value_temp .";";
 			endforeach;
