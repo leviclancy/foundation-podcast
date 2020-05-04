@@ -39,7 +39,8 @@ if ($request_access == "install"):
 			"width" 	=> "auto",
 			"max-width" 	=> "400px",
 			"padding" 	=> "20px",
-			"margin"	=> "20px",
+			"margin"	=> "20px auto",
+			"display"	=> "block",
 			],
 		"input" => [
 			"border" 	=> "1px solid #333",
