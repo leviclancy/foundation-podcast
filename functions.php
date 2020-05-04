@@ -1,6 +1,7 @@
 <? // Output the CSS
 function css_output($style_array=[]) {
-	foreach ($style_array as $selector_temp => $properties_array_tmep):
+	foreach ($style_array as $selector_temp => $properties_array_temp):
+		ksort($properties_array_temp);
 		echo $selector_temp . " {";
 		foreach ($properties_array_tmep as $property_temp => $value_temp):
 			echo $property_temp . ": " . $value_temp .";";
