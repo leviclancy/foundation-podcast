@@ -62,7 +62,7 @@
 
 	echo "</head><body>";
 
-	echo '<amp-state id='pageState' src='/?access=login'></script></amp-state>'
+	echo '<amp-state id='pageState' src='/?access=json-login'></script></amp-state>'
 
 	}
 						   
@@ -129,7 +129,7 @@ function random_code($length=16) {
 	while (strlen($key_temp) < $length): $key_temp .= $characters[rand(0,31)]; endwhile;
 	return $key_temp; }
 
-function postgres_statement ($table_name, $values_temp) {
+function postgres_update_statement ($table_name, $values_temp) {
 	
 	$columns_list = $bound_list = $updates_list = $count_temp = null;
 	foreach ($values_temp as $column_temp => $value_temp):
@@ -149,4 +149,20 @@ function postgres_statement ($table_name, $values_temp) {
 		endforeach;
 
 	return "INSERT INTO $table_name ($columns_list) VALUES ($bound_list) ON CONFLICT ($primary_key) DO UPDATE SET $updates_list";
-	} ?>
+	}
+
+function login_check() {
+	
+	global $_COOKIE;
+	global $domain;
+	
+	// Now check the login JSON
+	$result = file_get_contents("https://".$domain."/?access=json-login");
+	$json_decoded = json_decode($result, true);
+
+	// If it did not work...
+	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, "Login failure."); endif;
+
+	}
+
+?>
