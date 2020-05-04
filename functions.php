@@ -7,7 +7,7 @@ function css_output($style_array=[]) {
 		$css_string .= $selector_temp . " {";
 		foreach ($properties_array_temp as $property_temp => $value_temp):
 			if (empty($property_temp) || empty($value_temp)): continue; endif; // Skip if either are empty
-			$css_string .= $property_temp . ": " . $value_temp .";";
+			$css_string .= $property_temp . ":" . $value_temp .";";
 			endforeach;
 		$css_string .= "} ";
 		endforeach;
