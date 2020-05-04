@@ -62,7 +62,7 @@
 
 	echo "</head><body>";
 
-	echo '<amp-state id='pageState' src='/?access=json-login'></script></amp-state>'
+	echo "<amp-state id='pageState' src='/?access=json-login'></script></amp-state>";
 
 	}
 						   
