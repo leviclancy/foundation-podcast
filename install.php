@@ -11,7 +11,49 @@ if ($request_access == "install"):
 	// First log out of any session
 	$result = file_get_contents("/?access=xhr-logout");
 
-	amp_header("Install");
+	echo "<!doctype html><html amp lang='en'>";
+	
+	echo "<head><meta charset='utf-8'>";
+	
+	echo "<script async src='https://cdn.ampproject.org/v0.js'></script>";
+
+	echo "<link rel='canonical' href='https://". $domain ."/?access=install'>";
+
+	echo "<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>";
+
+	echo '<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>';
+	echo '<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>';
+	echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
+
+	echo "<title>Install</title>";
+
+	echo "<meta name='theme-color' content='#2878b4'>";
+
+	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
+
+	$style_array = [
+		"body" => [
+			"" 		=> "",
+			],
+		"p, input" => [
+			"width" 	=> "auto",
+			"max-width" 	=> "400px",
+			"padding" 	=> "20px",
+			"margin"	=> "20px",
+			],
+		"input" => [
+			"border" 	=> "1px solid #333",
+			"border-radius" => "100px",
+			],
+		];
+
+	echo "<style amp-custom>";
+		css_output($style_array);
+		endforeach;
+
+	echo "</style>";
+
+	echo "</head><body>";
 
 	// Admins table
 	$tables_array['podcast_admins'] = [
@@ -65,7 +107,7 @@ if ($request_access == "install"):
 	if (empty($result)): echo "<p>Error accessing 'podcast_admins' table.</p>"; endif;
 
 	// Check if there are admins, and if there are any then our work is done
-	while ($row = pg_fetch_row($result)) { amp_footer(); }
+	while ($row = pg_fetch_row($result)): amp_footer(); endwhile
 
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target-'_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
