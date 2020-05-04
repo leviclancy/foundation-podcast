@@ -1,76 +1,20 @@
-<? function amp_header($title_temp) {
-	echo "<!doctype html><html amp lang='en'>";
-	
-	echo "<head><meta charset='utf-8'>";
-
-	if (!(empty($google_analytics_code))):
-		echo '<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>';
-		endif;
-	
-	echo "<script async src='https://cdn.ampproject.org/v0.js'></script>";
-
-	global $domain;
-	echo "<link rel='canonical' href='https://". $domain ."'>";
-
-	echo "<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>";
-
-	echo '<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>';
-	echo '<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>';
-	echo '<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>';
-	echo '<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>';
-	echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
-	echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
-
-//	echo '<script async custom-element="amp-access" src="https://cdn.ampproject.org/v0/amp-access-0.1.js"></script>';
-//	echo '<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>';
-
-	// Material icons
-	echo '<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">';
-
-	// Custom fonts
-	echo '<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans">';
-	echo '<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Marck+Script">';
-	echo '<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Amiri">';
-
-	echo "<title>". $title_temp ."</title>";
-
-	echo "<meta name='theme-color' content='#2878b4'>";
-
-	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
-
-	echo "<style amp-custom>";
-	include_once('style.css');
-	echo "</style>";
-
-	// This sets up the login access states
-//	$json_temp = [
-//		"authorization" => "", // /documentation/examples/api/amp-access/authorization?rid=READER_ID&url=CANONICAL_URL&ref=DOCUMENT_REFERRER&_=RANDOM
-//		"pingback" => "", // Used for metering of read count + not necessary here
-//		"noPingback" => "true", // Set to 'true' to disable pingback, 'false' to enable pingback
-//		"login" => [
-//			"sign-in" => "",
-//			"sign-out" => "",
-//			',
-//		"authorizationFallbackResponse" => [
-//			"error" => "true",
-//			"loggedIn" => "false",
-//			"power user" => "false",
-//			],
-//		];
-//	echo '<script id="amp-access" type="application/json">' . json_encode($json_temp) . '</script>';
-
-
-	echo "</head><body>";
-
-	echo "<amp-state id='pageState' src='/?access=json-login'></script></amp-state>";
-
+<? // Output the CSS
+function css_output($style_array=[]) {
+	foreach ($style_array as $selector_temp => $properties_array_tmep):
+		echo $selector_temp . " {";
+		foreach ($properties_array_tmep as $property_temp => $value_temp):
+			echo $property_temp . ": " . $value_temp .";";
+			endforeach;
+		echo "} ";
 	}
-						   
+
+// Closes the AMP page
 function amp_footer() {
 	echo "</body></html>";
 	exit;
 	}
 
+// Outputs a JSON array directly as JSON
 function json_output ($json_array) {
 	
 	global $domain;
@@ -85,6 +29,7 @@ function json_output ($json_array) {
 	       
 	exit; }
 
+// Outputs a JSON array in a formatted way that communicates error reporting
 function json_result($domain, $result, $redirect, $message) {
 	
 	header("Content-type: application/json");
@@ -113,6 +58,7 @@ function json_result($domain, $result, $redirect, $message) {
 
 	exit; }
 
+// Generates a random code as needed
 function random_code($length=16) {
 	$characters = [
 		"2", "3", "4", "5", "6", "7",
@@ -129,6 +75,7 @@ function random_code($length=16) {
 	while (strlen($key_temp) < $length): $key_temp .= $characters[rand(0,31)]; endwhile;
 	return $key_temp; }
 
+// Prepares an INSERT/UPDATE statement based on an array of values
 function postgres_update_statement ($table_name, $values_temp) {
 	
 	$columns_list = $bound_list = $updates_list = $count_temp = null;
@@ -151,6 +98,7 @@ function postgres_update_statement ($table_name, $values_temp) {
 	return "INSERT INTO $table_name ($columns_list) VALUES ($bound_list) ON CONFLICT ($primary_key) DO UPDATE SET $updates_list";
 	}
 
+// Check if the user is logged in
 function login_check() {
 	
 	global $_COOKIE;
@@ -163,6 +111,4 @@ function login_check() {
 	// If it did not work...
 	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, "Login failure."); endif;
 
-	}
-
-?>
+	} ?>
