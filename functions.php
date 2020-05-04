@@ -1,20 +1,21 @@
 <? // Output the CSS
 function css_output($style_array=[]) {
+	$css_string = null;
 	foreach ($style_array as $selector_temp => $properties_array_temp):
 		ksort($properties_array_temp);
-		echo $selector_temp . " {";
+		$css_string .= $selector_temp . " {";
 		foreach ($properties_array_tmep as $property_temp => $value_temp):
 			if (empty($property_temp) || empty($value_temp)): continue; endif; // Skip if either are empty
-			echo $property_temp . ": " . $value_temp .";";
+			$css_string .= $property_temp . ": " . $value_temp .";";
 			endforeach;
-		echo "} ";
-	}
+		$css_string .= "} ";
+		endforeach;
+	return $css_string; }
 
 // Closes the AMP page
 function amp_footer() {
 	echo "</body></html>";
-	exit;
-	}
+	exit; }
 
 // Outputs a JSON array directly as JSON
 function json_output ($json_array) {
