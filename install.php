@@ -103,7 +103,7 @@ if ($request_access == "install"):
 	if (empty($result)): echo "<p>Error accessing 'podcast_admins' table.</p>"; endif;
 
 	// Check if there are admins, and if there are any then our work is done
-	while ($row = pg_fetch_row($result)): amp_footer(); endwhile
+	while ($row = pg_fetch_row($result)): amp_footer(); endwhile;
 
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target-'_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
