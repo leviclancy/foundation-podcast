@@ -4,6 +4,7 @@ function css_output($style_array=[]) {
 		ksort($properties_array_temp);
 		echo $selector_temp . " {";
 		foreach ($properties_array_tmep as $property_temp => $value_temp):
+			if (empty($property_temp) || empty($value_temp)): continue; endif; // Skip if either are empty
 			echo $property_temp . ": " . $value_temp .";";
 			endforeach;
 		echo "} ";
