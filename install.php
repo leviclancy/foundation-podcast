@@ -10,24 +10,23 @@ if ($request_access == "install"):
 	amp_header("Install");
 
 	// Users table
-	$tables_array['users'] = [
-		"user_id"		=> "VARCHAR(100)", // Fixed user id
-		"user_name"		=> "VARCHAR(200)", // User-changeable username
-		"password_salt"		=> "VARCHAR(200)", // Salt for hashing password
+	$tables_array['podcast_admins'] = [
+		"admin_id"		=> "VARCHAR(100)", // Fixed user id
+		"admin_name"		=> "VARCHAR(200)", // User-changeable username
+		"password_salt"		=> "VARCHAR(200)", // Unique salt for password
 		"password_hash"		=> "VARCHAR(200)", // Hash of password
 		"authenticator_key"	=> "VARCHAR(200)", // Authenticator configuration key
 		"magic_code"		=> "VARCHAR(200)", // Magic code for ephemeral login
 		"magic_expiration"	=> "VARCHAR(200)", // Magic code expiration time
-		"cookie_code"		=> "VARCHAR(200)", // Unique cookie code for login
-		"cookie_expiration"	=> "VARCHAR(200)", // Unique cookie code expiration time
+		"cookie_codes"		=> "TEXT", // JSON with cookie codes and their expiration dates, for login
 		];
 
-	$tables_array['description'] = [
+	$tables_array['podcast_description'] = [
 		"description_key"	=> "VARCHAR(100)", // title, author, description, language
 		"description_info"	=> "VARCHAR(500)",
 		];
 
-	$tables_array['episodes'] = [
+	$tables_array['podcast_episodes'] = [
 		"episode_id"		=> "VARCHAR(100)",
 		"episode_title"		=> "VARCHAR(200)",
 		"episode_description"	=> "VARCHAR(500)",
@@ -61,7 +60,7 @@ if ($request_access == "install"):
 	$result = pg_query($postgres_connection, $sql_temp);
 	if (empty($result)): echo "<p>Error accessing 'users' table.</p>"; endif;
 
-	// Check if there are users
+	// Check if there are users, and if there are any then our work is done
 	while ($row = pg_fetch_row($result)) { amp_footer(); }
 
 	// Form for making new user if none exist
@@ -69,6 +68,9 @@ if ($request_access == "install"):
 	
 	echo "<span class='form-description'>Enter your username (must be six or more characters).</span>";
 	echo "<input type='text' name='username' placeholder='Username' required>";
+
+	echo "<span class='form-description'>Enter your password (must be six or more characters).</span>";
+	echo "<input type='password' name='password' placeholder='Password' required>";
 
 	echo "<span class='form-submit-button' id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create user</span>";
 
@@ -89,39 +91,43 @@ if ($request_access == "xhr-install"):
 
 	$result = file_get_contents("/?access=logout");
 
-	// if there is a user then give error
-	// Pull up users if empty
+	// We will check if any users already exist
 	$sql_temp = "SELECT * FROM users";
 	$result = pg_query($postgres_connection, $sql_temp);
 	if (empty($result)): json_result($domain, "error", null, "Failed accessing 'users' table."); endif;
 
-	// Check if there are users
-	while ($row = pg_fetch_row($result)) { json_result($domain, "error", null, "Users already exit."); }
+	// If any users already exist, then you cannot create a new one this way
+	while ($row = pg_fetch_row($result)) { json_result($domain, "error", null, "Users already exist."); }
 
 	// Sanitize the username
 	$_POST['username'] = trim($_POST['username']);
 	if (strlen($_POST['username']) < 6): json_result($domain, "error", null, "Username too short."); endif;
 	if (strlen($_POST['username']) > 50): json_result($domain, "error", null, "Username too long."); endif;
 
+	// Sanitize the password
+	$_POST['username'] = trim($_POST['username']);
+	if (strlen($_POST['password']) < 12): json_result($domain, "error", null, "Username too short."); endif;
+	if (strlen($_POST['password']) > 50): json_result($domain, "error", null, "Username too long."); endif;
+
 	// Prepare the values for a new user
-	$magic_code = random_code(30);	
+	$password_salt = random_code(30);	
 	$values_temp = [
 		"user_id" 		=> random_code(16),
 		"username"		=> $_POST['username'],
-		"magic_code"		=> $magic_code,
-		"magic_expiration"	=> time() + 300, // Expires in five minutes
+		"password_salt"		=> $password_salt,
+		"password_hash"		=> sha1($password_salt.$_POST['password']),
 		];
 	
 	// Prepare the statement
-	$postgres_statement = postgres_statement("users", $values_temp);
+	$postgres_statement = postgres_update_statement("users", $values_temp);
 	$result = pg_prepare($postgres_connection, "add_user_statement", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
 	
 	// Execute the statement, make the user
 	$result = pg_execute($postgres_connection, "add_user_statement", $values_temp);
-	if (!($result)): json_result($domain, "error", null, "Could not add usern."); endif;
+	if (!($result)): json_result($domain, "error", null, "Could not add user."); endif;
 
 	// Redirect to magic area
-	json_result($domain, "success", "/?access=magic&magic=".$magic_code, "Created new user.");
+	json_result($domain, "success", "/", "Created new user.");
 
 	endif; ?>
