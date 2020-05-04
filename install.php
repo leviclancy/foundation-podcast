@@ -67,10 +67,10 @@ if ($request_access == "install"):
 	echo "<form src='/?access=xhr-install' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
 	echo "<span class='form-description'>Enter your admin name (must be six or more characters).</span>";
-	echo "<input type='text' name='admin_name' placeholder='Admin name' required>";
+	echo "<input type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
 	echo "<span class='form-description'>Enter your password (must be six or more characters).</span>";
-	echo "<input type='password' name='password' placeholder='Password' required>";
+	echo "<input type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<span class='form-submit-button' id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
 
