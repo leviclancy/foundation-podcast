@@ -2,17 +2,17 @@
 $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
 if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
 
-// Create tables and check if there is a user yet
+// Create tables and check if there is an admin yet
 if ($request_access == "install"):
 
 	$result = file_get_contents("/?access=logout");
 
 	amp_header("Install");
 
-	// Users table
+	// Admins table
 	$tables_array['podcast_admins'] = [
-		"admin_id"		=> "VARCHAR(100)", // Fixed user id
-		"admin_name"		=> "VARCHAR(200)", // User-changeable username
+		"admin_id"		=> "VARCHAR(100)", // Fixed admin id
+		"admin_name"		=> "VARCHAR(200)", // Changeable admin name
 		"password_salt"		=> "VARCHAR(200)", // Unique salt for password
 		"password_hash"		=> "VARCHAR(200)", // Hash of password
 		"authenticator_key"	=> "VARCHAR(200)", // Authenticator configuration key
@@ -55,24 +55,24 @@ if ($request_access == "install"):
 
 		endforeach;
 
-	// Pull up users if empty
-	$sql_temp = "SELECT * FROM users WHERE password_salt IS NOT NULL";
+	// Pull up admin if empty
+	$sql_temp = "SELECT * FROM podcast_admins WHERE password_salt IS NOT NULL";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): echo "<p>Error accessing 'users' table.</p>"; endif;
+	if (empty($result)): echo "<p>Error accessing 'podcast_admins' table.</p>"; endif;
 
-	// Check if there are users, and if there are any then our work is done
+	// Check if there are admins, and if there are any then our work is done
 	while ($row = pg_fetch_row($result)) { amp_footer(); }
 
-	// Form for making new user if none exist
+	// Form for making new admin if none exist
 	echo "<form src='/?access=xhr-install' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
-	echo "<span class='form-description'>Enter your username (must be six or more characters).</span>";
-	echo "<input type='text' name='username' placeholder='Username' required>";
+	echo "<span class='form-description'>Enter your admin name (must be six or more characters).</span>";
+	echo "<input type='text' name='admin_name' placeholder='Admin name' required>";
 
 	echo "<span class='form-description'>Enter your password (must be six or more characters).</span>";
 	echo "<input type='password' name='password' placeholder='Password' required>";
 
-	echo "<span class='form-submit-button' id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create user</span>";
+	echo "<span class='form-submit-button' id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -86,48 +86,48 @@ if ($request_access == "install"):
 
 	endif;
 
-// XHR to create initial user
+// XHR to create initial admin
 if ($request_access == "xhr-install"):
 
 	$result = file_get_contents("/?access=logout");
 
-	// We will check if any users already exist
-	$sql_temp = "SELECT * FROM users";
+	// We will check if any admins already exist
+	$sql_temp = "SELECT * FROM podcast_admins";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): json_result($domain, "error", null, "Failed accessing 'users' table."); endif;
+	if (empty($result)): json_result($domain, "error", null, "Failed accessing 'podcast_admins' table."); endif;
 
-	// If any users already exist, then you cannot create a new one this way
-	while ($row = pg_fetch_row($result)) { json_result($domain, "error", null, "Users already exist."); }
+	// If any admins already exist, then you cannot create a new one this way
+	while ($row = pg_fetch_row($result)) { json_result($domain, "error", null, "Admins already exist."); }
 
-	// Sanitize the username
-	$_POST['username'] = trim($_POST['username']);
-	if (strlen($_POST['username']) < 6): json_result($domain, "error", null, "Username too short."); endif;
-	if (strlen($_POST['username']) > 50): json_result($domain, "error", null, "Username too long."); endif;
+	// Sanitize the admin name
+	$_POST['admin_name'] = trim($_POST['admin_name']);
+	if (strlen($_POST['admin_name']) < 6): json_result($domain, "error", null, "Admin name too short."); endif;
+	if (strlen($_POST['admin_name']) > 50): json_result($domain, "error", null, "Admin name too long."); endif;
 
 	// Sanitize the password
-	$_POST['username'] = trim($_POST['username']);
-	if (strlen($_POST['password']) < 12): json_result($domain, "error", null, "Username too short."); endif;
-	if (strlen($_POST['password']) > 50): json_result($domain, "error", null, "Username too long."); endif;
+	$_POST['admin_name'] = trim($_POST['admin_name']);
+	if (strlen($_POST['password']) < 12): json_result($domain, "error", null, "Admin name too short."); endif;
+	if (strlen($_POST['password']) > 50): json_result($domain, "error", null, "Admin nam too long."); endif;
 
-	// Prepare the values for a new user
+	// Prepare the values for a new admin
 	$password_salt = random_code(30);	
 	$values_temp = [
-		"user_id" 		=> random_code(16),
-		"username"		=> $_POST['username'],
+		"admin_id" 		=> random_code(16),
+		"admin_name"		=> $_POST['admin_name'],
 		"password_salt"		=> $password_salt,
 		"password_hash"		=> sha1($password_salt.$_POST['password']),
 		];
 	
 	// Prepare the statement
-	$postgres_statement = postgres_update_statement("users", $values_temp);
-	$result = pg_prepare($postgres_connection, "add_user_statement", $postgres_statement);
+	$postgres_statement = postgres_update_statement("podcast_admins", $values_temp);
+	$result = pg_prepare($postgres_connection, "add_admin_statement", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
 	
-	// Execute the statement, make the user
-	$result = pg_execute($postgres_connection, "add_user_statement", $values_temp);
-	if (!($result)): json_result($domain, "error", null, "Could not add user."); endif;
+	// Execute the statement, make the admin
+	$result = pg_execute($postgres_connection, "add_admin_statement", $values_temp);
+	if (!($result)): json_result($domain, "error", null, "Could not add admin."); endif;
 
 	// Redirect to magic area
-	json_result($domain, "success", "/", "Created new user.");
+	json_result($domain, "success", "/", "Created new admin.");
 
 	endif; ?>
