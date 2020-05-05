@@ -141,19 +141,17 @@ if ($request_access == "install"):
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target='_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
-	echo "<span class='form-description'>Enter your admin name (must be six or more characters).</span>";
+	echo "<div class='form-description'>Enter your admin name (must be six or more characters).</div>";
 	echo "<input class='form-input' type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
-	echo "<span class='form-description'>Enter your password (must be six or more characters).</span>";
+	echo "<div class='form-description'>Enter your password (must be six or more characters).</div>";
 	echo "<input class='form-input' type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 		
 	echo "</form>";
 
