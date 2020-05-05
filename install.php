@@ -40,7 +40,8 @@ if ($request_access == "install"):
 			"max-width" 	=> "400px",
 			"padding" 	=> "20px",
 			"margin"	=> "20px auto",
-			"display"	=> "block",
+			"display"	=> "table",
+			"text-align"	=> "left",
 			],
 		"input" => [
 			"border" 	=> "1px solid #333",
@@ -52,13 +53,17 @@ if ($request_access == "install"):
 		".form-description" => [
 			"font-style"	=> "italic",
 			"font-size"	=> "80%",
+			"padding"	=> "20px 20px 20px",
+			"margin"	=> "20px auto 0",
 			],
 		"#install-form-submit" => [
-			"margin"	=> "20px",
+			"margin"	=> "20px auto",
 			"border-radius"	=> "100px",
 			"background"	=> "#333",
-			"padding"	=> "5px 10px",
+			"padding"	=> "5px 15px",
 			"color"		=> "#fff",
+			"font-size"	=> "90%",
+			"text-align"	=> "center",
 			],
 		];
 
