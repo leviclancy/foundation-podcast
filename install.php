@@ -35,7 +35,7 @@ if ($request_access == "install"):
 		"body" => [
 			"" 		=> "",
 			],
-		"p, input" => [
+		"p, input, div" => [
 			"width" 	=> "auto",
 			"max-width" 	=> "400px",
 			"padding" 	=> "20px",
@@ -45,6 +45,16 @@ if ($request_access == "install"):
 		"input" => [
 			"border" 	=> "1px solid #333",
 			"border-radius" => "100px",
+			],
+		"div" => [
+			"font-style"	=> "italic",
+			],
+		"#install-form-submit" => [
+			"margin"	=> "20px",
+			"border-radius"	=> "100px",
+			"background"	=> "#333",
+			"padding"	=> "5px 10px",
+			"color"		=> "#fff",
 			],
 		];
 
@@ -115,7 +125,7 @@ if ($request_access == "install"):
 	echo "<span class='form-description'>Enter your password (must be six or more characters).</span>";
 	echo "<input type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
-	echo "<span class='form-submit-button' id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
+	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
