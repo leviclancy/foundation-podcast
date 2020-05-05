@@ -45,6 +45,8 @@ if ($request_access == "install"):
 			"margin"	=> "20px auto",
 			"display"	=> "table",
 			"text-align"	=> "left",
+			"font-size"	=> "1em",
+			"line-height"	=> "1.3em",
 			],
 		
 		"input" =>
