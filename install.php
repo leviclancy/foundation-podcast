@@ -32,10 +32,13 @@ if ($request_access == "install"):
 	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
 
 	$style_array = [
-		"body" => [
+		"body" =>
+			[
 			"font-family" 	=> "Verdana",
 			],
-		"p, input, div, .form-description" => [
+		
+		"p, input, div, .form-description" =>
+			[
 			"width" 	=> "auto",
 			"max-width" 	=> "400px",
 			"padding" 	=> "20px",
@@ -43,20 +46,28 @@ if ($request_access == "install"):
 			"display"	=> "table",
 			"text-align"	=> "left",
 			],
-		"input" => [
+		
+		"input" =>
+			[
 			"border" 	=> "1px solid #333",
 			"border-radius" => "100px",
 			],
-		"div" => [
+		
+		"div" =>
+			[
 			"font-style"	=> "italic",
 			],
-		".form-description" => [
+		
+		".form-description" =>
+			[
 			"font-style"	=> "italic",
 			"font-size"	=> "80%",
 			"padding"	=> "20px 20px 20px",
 			"margin"	=> "20px auto 0",
 			],
-		"#install-form-submit" => [
+		
+		"#install-form-submit" =>
+			[
 			"margin"	=> "20px auto",
 			"border-radius"	=> "100px",
 			"background"	=> "#333",
