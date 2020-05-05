@@ -37,7 +37,7 @@ if ($request_access == "install"):
 			"font-family" 	=> "Verdana",
 			],
 		
-		"p, input, div, .form-description" =>
+		"p, .form-input, .form-description" =>
 			[
 			"width" 	=> "auto",
 			"max-width" 	=> "400px",
@@ -49,15 +49,10 @@ if ($request_access == "install"):
 			"line-height"	=> "1.3em",
 			],
 		
-		"input" =>
+		".form-input" =>
 			[
 			"border" 	=> "1px solid #333",
 			"border-radius" => "100px",
-			],
-		
-		"div" =>
-			[
-			"font-style"	=> "italic",
 			],
 		
 		".form-description" =>
@@ -66,6 +61,11 @@ if ($request_access == "install"):
 			"font-size"	=> "80%",
 			"padding"	=> "20px 20px 20px",
 			"margin"	=> "20px auto 0",
+			],
+		
+		".form-warning" =>
+			[
+			"font-style"	=> "italic",
 			],
 		
 		"#install-form-submit" =>
@@ -142,10 +142,10 @@ if ($request_access == "install"):
 	echo "<form action-xhr='/?access=xhr-install' target-'_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
 	echo "<span class='form-description'>Enter your admin name (must be six or more characters).</span>";
-	echo "<input type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<input class='form-input' type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
 	echo "<span class='form-description'>Enter your password (must be six or more characters).</span>";
-	echo "<input type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<input class='form-input' type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
 
