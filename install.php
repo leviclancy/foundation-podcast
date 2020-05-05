@@ -139,7 +139,7 @@ if ($request_access == "install"):
 	while ($row = pg_fetch_row($result)): amp_footer(); endwhile;
 
 	// Form for making new admin if none exist
-	echo "<form action-xhr='/?access=xhr-install' target-'_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
+	echo "<form action-xhr='/?access=xhr-install' target='_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
 	echo "<span class='form-description'>Enter your admin name (must be six or more characters).</span>";
 	echo "<input class='form-input' type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
