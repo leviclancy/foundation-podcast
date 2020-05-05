@@ -33,9 +33,9 @@ if ($request_access == "install"):
 
 	$style_array = [
 		"body" => [
-			"" 		=> "",
+			"font-family" 	=> "Verdana",
 			],
-		"p, input, div" => [
+		"p, input, div, .form-description" => [
 			"width" 	=> "auto",
 			"max-width" 	=> "400px",
 			"padding" 	=> "20px",
@@ -48,6 +48,10 @@ if ($request_access == "install"):
 			],
 		"div" => [
 			"font-style"	=> "italic",
+			],
+		".form-description" => [
+			"font-style"	=> "italic",
+			"font-size"	=> "80%",
 			],
 		"#install-form-submit" => [
 			"margin"	=> "20px",
