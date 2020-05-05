@@ -40,7 +40,7 @@ if ($request_access == "install"):
 		"p, .form-input, .form-description" =>
 			[
 			"width" 	=> "auto",
-			"max-width" 	=> "400px",
+			"max-width" 	=> "600px",
 			"padding" 	=> "20px",
 			"margin"	=> "20px auto",
 			"display"	=> "table",
