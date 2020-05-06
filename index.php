@@ -178,7 +178,7 @@ if ($request_access == "xhr-login"):
 	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
 
 	$result = pg_execute($postgres_connection, "get_admin_password_statement", [ $_POST['admin_name'] ]);
-	if (!($result)): json_result($domain, "error", null, "Could not find admin name."); endif;
+	if (!($result)): json_result($domain, "error", null, "No result for admin name."); endif;
 
 	$admin_id_temp = null;
 	while ($row_temp = pg_fetch_assoc($result)):
@@ -192,6 +192,8 @@ if ($request_access == "xhr-login"):
 		$cookie_codes_array = json_decode($row_temp['cookies_codes'], true);
 
 		endwhile;
+
+	if (empty($admin_id_temp)): json_result($domain, "error", null, "Could not find admin name."); endif;
 
 	// We will start by making the cookie code and its expiration time
 	$cookie_code_temp = random_code(64);
