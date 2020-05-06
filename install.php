@@ -52,7 +52,7 @@ if ($request_access == "install"):
 			"max-width"	=> "600px",
 			"padding" 	=> "20px 0",
 			"margin"	=> "20px",
-			"display"	=> "inline-block",
+			"display"	=> "block",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
