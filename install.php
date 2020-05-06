@@ -38,15 +38,21 @@ if ($request_access == "install"):
 			"font-size"	=> "14px",
 			],
 		
+		"#body-wrapper" =>
+			[
+			"display"	=> "block",
+			"width" 	=> "auto",
+			"max-width"	=> "600px",
+			"margin"	=> "20px auto",
+			"text-align"	=> "left",
+			],
+		
 		"p, .install-form-input, .form-description" =>
 			[
 			"width" 	=> "auto",
-			"max-width" 	=> "600px",
 			"padding" 	=> "20px",
-			"margin"	=> "20px auto",
 			"display"	=> "block",
 			"clear"		=> "both",
-			"text-align"	=> "left",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
 			],
