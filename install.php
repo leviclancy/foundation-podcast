@@ -48,7 +48,7 @@ if ($request_access == "install"):
 			[
 			"text-align"	=> "left",
 			"box-sizing"	=> "border-box",
-			"width" 	=> "100%",
+			"width" 	=> "90%",
 			"max-width"	=> "600px",
 			"padding" 	=> "20px 0",
 			"margin"	=> "20px",
