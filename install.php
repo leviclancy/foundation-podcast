@@ -41,6 +41,7 @@ if ($request_access == "install"):
 		"#body-wrapper" =>
 			[
 			"padding"	=> "20px",
+			"text-align"	=> "center",
 			],
 		
 		"p, .install-form-label, .install-form-input" =>
@@ -50,8 +51,8 @@ if ($request_access == "install"):
 			"width" 	=> "100%",
 			"max-width"	=> "600px",
 			"padding" 	=> "20px 0",
-			"margin"	=> "20px auto",
-			"display"	=> "block",
+			"margin"	=> "20px",
+			"display"	=> "inline-block",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
