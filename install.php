@@ -52,19 +52,19 @@ if ($request_access == "install"):
 			"line-height"	=> "1.3em",
 			],
 		
+		".install-form-label" =>
+			[
+			"font-style"	=> "italic",
+			"font-size"	=> "80%",
+			"padding"	=> "20px 20px 0",
+			"margin"	=> "20px auto 0",
+			],
+		
 		".install-form-input" =>
 			[
 			"border" 	=> "1px solid #333",
 			"border-radius" => "100px",
 			"color"		=> "#333",
-			],
-		
-		".install-form-label" =>
-			[
-			"font-style"	=> "italic",
-			"font-size"	=> "80%",
-			"padding"	=> "20px 20px 20px",
-			"margin"	=> "20px auto 0",
 			],
 		
 		".form-warning" =>
@@ -84,6 +84,7 @@ if ($request_access == "install"):
 			],
 		"::placeholder"	=>
 			[
+			"font-size"	=> "100%",
 			"color"		=> "#888",
 			],
 		":focus" =>
