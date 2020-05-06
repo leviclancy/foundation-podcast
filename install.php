@@ -95,7 +95,9 @@ if ($request_access == "install"):
 			],
 		];
 
-	echo "<style amp-custom>" . css_output($style_array) . "</style>";
+	echo "<style amp-custom>" . css_output($style_array);
+	echo " @media only screen and (max-width: 600px)  { p, input, label { margin: 20px; } }";
+	echo "</style>";
 
 	echo "</head><body>";
 
