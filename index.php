@@ -19,9 +19,8 @@ if (in_array($request_access, ["install", "xhr-install"])): include_once('instal
 
 // These are the possible options
 $request_access_array = [
-	"admin",
 	"rss",
-	"home",
+	"interface",
 	"magic",
 	"json-login",
 	"xhr-login",
@@ -31,10 +30,13 @@ $request_access_array = [
 	"xhr-update",
 	"json-page",
 	];
-if (!(in_array($request_access, $request_access_array))): $request_access = "home"; endif;
+if (!(in_array($request_access, $request_access_array))): $request_access = "interface"; endif;
 
-// No need to connect to SQL for these three options
-if (in_array($request_access, ["admin", "rss", "home"])): include_once('interface.php'); endif;
+// No need to connect to SQL for the interface
+if ($request_access == "interface"): include_once('interface.php'); endif;
+
+// No need to connect to SQL for the RSS, either
+if ($request_access == "interface"): include_once('rss.php'); endif;
 
 // Everything from here on requires a SQL connection
 $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
