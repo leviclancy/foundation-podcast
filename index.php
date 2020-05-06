@@ -34,132 +34,7 @@ $request_access_array = [
 if (!(in_array($request_access, $request_access_array))): $request_access = "home"; endif;
 
 // No need to connect to SQL for these three options
-if (in_array($request_access, ["admin", "rss", "home"])):
-
-	// Get JSON
-
-	// Give us the RSS
-	if ($request_access == "rss"):
-
-		echo '<?xml version="1.0" encoding="UTF-8"?>';
-		echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">';
-		echo '<channel>';
-
-		echo '<title>' . $title .'</title>';
-		echo '<googleplay:author>'. $author .'</googleplay:author>';
-		echo '<description>'. $description .'</description>';
-		echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
-		echo '<language>'. $language .'</language>';
-		echo '<link>'. $link .'</link>';
-
-			echo '<item>
-			<title>Top 10 myths about caring for a zebra</title>
-			<description>Here are the top 10 misunderstandings about the care, feeding, and breeding of these lovable striped animals.</description>
-			<pubDate>Tue, 14 Mar 2017 12:00:00 GMT</pubDate>
-			<enclosure url="https://www.example.com/podcasts/dafnas-zebras/audio/toptenmyths.mp3" type="audio/mpeg" length="34216300"/>
-			<itunes:duration>30:00</itunes:duration>
-			<guid isPermaLink="false">dzpodtop10</guid>
-	   		</item>';
-
-		echo '</channel></rss>';
-
-		exit; endif;
-
-	echo "<!doctype html><html amp lang='en'>";
-	
-	echo "<head><meta charset='utf-8'>";
-
-	if (!(empty($google_analytics_code))):
-		echo '<script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>';
-		endif;
-	
-	echo "<script async src='https://cdn.ampproject.org/v0.js'></script>";
-
-	echo "<link rel='canonical' href='https://". $domain ."'>";
-
-	echo "<style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>";
-
-	echo '<script async custom-element="amp-form" src="https://cdn.ampproject.org/v0/amp-form-0.1.js"></script>';
-	echo '<script async custom-element="amp-bind" src="https://cdn.ampproject.org/v0/amp-bind-0.1.js"></script>';
-	echo '<script async custom-element="amp-lightbox" src="https://cdn.ampproject.org/v0/amp-lightbox-0.1.js"></script>';
-	echo '<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0/amp-list-0.1.js"></script>';
-	echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
-	echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
-
-	echo '<link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">';
-
-	echo "<title>". $title_temp ."</title>";
-
-	echo "<meta name='theme-color' content='#2878b4'>";
-
-	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
-
-	$style_array = [
-		"body" => [
-			"font-family" => "Alegreya, Times",
-			],
-		"input" => [
-			"" => "",
-			],
-		];
-
-	echo "<style amp-custom>" . css_output($style_array) . "</style>";
-
-	echo "</head><body>";
-
-	echo "<amp-state id='loginState' src='/?access=json-login'></script></amp-state>";
-	echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
-
-	// Log in button
-	echo "<span id='log-in'>Log in</span>";
-
-	// Log out button
-	echo "<span id='log-out'>Log out</span>";
-
-	// Edit description
-	echo "<span id='log-out'>Edit description</span>";
-
-	// Edit episodes
-	echo "<span id='log-out'>Edit episodes</span>";
-
-	// Users
-	echo "<span id='log-out'>Users</span>";
-
-	echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
-	echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
-	echo '<p [text]="pageState.about.description">'. $description .'</p>';
-	echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
-
-	echo "List of amp-audio for each episode";
-
-	echo "</amp-list>";
-
-	// Lightbox for editing the site description
-	echo "<amp-lightbox id='lightbox-edit-description'>";
-
-		// 
-
-		echo "</amp-lightbox>";
-
-
-	// Lightbox for editing episodes
-	echo "<amp-lightbox id='lightbox-edit-episodes'>";
-
-		// 
-
-		echo "</amp-lightbox>";
-
-	// Lightbox for user management
-	echo "<amp-lightbox id='lightbox-users'>";
-
-		// 
-
-		echo "</amp-lightbox>";
-
-
-	amp_footer();
-
-	endif;
+if (in_array($request_access, ["admin", "rss", "home"])): include_once('interface.php'); endif;
 
 // Everything from here on requires a SQL connection
 $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
@@ -171,7 +46,7 @@ if ($request_access == "json-page"):
 	$json_array = [
 		"about" => [],
 		"episodes" => [],
-		]
+		];
 	
 	// Pull up podcast description
 	$sql_temp = "SELECT description_key, description_info FROM podcast_description";
