@@ -166,6 +166,8 @@ if ($request_access == "json-login"):
 // Give us the login xhr
 if ($request_access == "xhr-login"):
 
+json_result($domain, "error", null, "Testing.");
+
 	$result = file_get_contents("/?access=xhr-logout");
 
 	$login = null;
