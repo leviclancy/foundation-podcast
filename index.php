@@ -213,6 +213,8 @@ if ($request_access == "xhr-login"):
 	krsort($cookie_codes_array);
 	while (count($cookie_codes_array) > 16): $discard_temp = array_pop($cookie_codes_array); endwhile;
 
+json_result($domain, "error", null, "Test5555555.");
+
 	// We will set up the values we need to update
 	$values_temp = [
 		"admin_id" 		=> $admin_id_temp,
@@ -231,8 +233,6 @@ if ($request_access == "xhr-login"):
 	// Set cookie
 	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp, '/');
 	if (!(empty($_COOKIE['cookie_code']))): json_result($domain, "error", null, "Failed to save cookie in browser."); endif;
-
-json_result($domain, "error", null, "Test5.");
 
 	login_check();
 
