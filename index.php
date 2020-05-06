@@ -187,7 +187,7 @@ if ($request_access == "xhr-login"):
 			json_result($domain, "error", null, "Password incorrect.");
 			endif;
 
-		$admin_id_temp = $row['admin_id'];
+		$admin_id_temp = $row_temp['admin_id'];
 
 		$cookie_codes_array = json_decode($row_temp['cookies_codes'], true);
 
