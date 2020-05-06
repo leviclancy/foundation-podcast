@@ -51,7 +51,7 @@ if ($request_access == "install"):
 			"width" 	=> "90%",
 			"max-width"	=> "600px",
 			"padding" 	=> "20px 0",
-			"margin"	=> "20px",
+			"margin"	=> "20px 0",
 			"display"	=> "block",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
@@ -63,8 +63,8 @@ if ($request_access == "install"):
 			[
 			"font-size"	=> "80%",
 			"font-style"	=> "italic",
-			"margin"	=> "40px auto 0",
-			"padding"	=> "20px 20px 0",
+			"margin"	=> "40px 0 0",
+			"padding"	=> "20px 0 0",
 			],
 		
 		".install-form-input" =>
@@ -94,6 +94,11 @@ if ($request_access == "install"):
 			"color"		=> "#fff",
 			"text-align"	=> "center",
 			"cursor"	=> "pointer",
+			],
+		
+		":-webkit-autofill" =>
+			[
+			"font-size"	=> "100%",
 			],
 		
 		"::placeholder"	=>
