@@ -174,7 +174,7 @@ if ($request_access == "xhr-login"):
 	if (empty($_POST['password'])): json_result($domain, "error", null, "No password."); endif;
 
 	$postgres_statement = "SELECT admin_id, password_salt, password_hash, cookie_codes FROM podcast_admins WHERE admin_name=$1";
-	$result = pf_prepare($postgres_connection, "get_admin_password_statement", $postgres_statement);
+	$result = pg_prepare($postgres_connection, "get_admin_password_statement", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
 
 	$result = pg_execute($postgres_connection, "get_admin_password_statement", [ $_POST['admin_name'] ]);
@@ -212,8 +212,6 @@ if ($request_access == "xhr-login"):
 	// We will sort, count, and prune it to a reasonable use limit
 	krsort($cookie_codes_array);
 	while (count($cookie_codes_array) > 16): $discard_temp = array_pop($cookie_codes_array); endwhile;
-
-json_result($domain, "error", null, "Test5555555.");
 
 	// We will set up the values we need to update
 	$values_temp = [
