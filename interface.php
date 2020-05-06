@@ -97,7 +97,7 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 	echo "</amp-list>";
 
 // Lightbox for logging in
-echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' scrollable>";
+echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show'>";
 	
@@ -119,7 +119,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site description
-echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_close_array."' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	// 
 
@@ -127,14 +127,14 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 
 
 // Lightbox for editing episodes
-echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_close_array."' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 		// 
 
 	echo "</amp-lightbox>";
 
 // Lightbox for user management
-echo "<amp-lightbox id='lightbox-edit-users' on='lightboxOpen:".$lightbox_close_array."' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-users' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	// 
 
