@@ -38,7 +38,7 @@ if ($request_access == "install"):
 			"font-size"	=> "14px",
 			],
 		
-		"p, input, label" =>
+		"p, .install-form-label, .install-form-input" =>
 			[
 			"text-align"	=> "left",
 			"box-sizing"	=> "border-box",
