@@ -56,8 +56,6 @@ if ($request_access == "install"):
 			[
 			"font-style"	=> "italic",
 			"font-size"	=> "80%",
-			"padding"	=> "20px 20px 0",
-			"margin"	=> "20px auto 0",
 			],
 		
 		".install-form-input" =>
