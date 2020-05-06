@@ -49,7 +49,7 @@ if ($request_access == "install"):
 			"box-sizing"	=> "border-box",
 			"width" 	=> "100%",
 			"max-width"	=> "600px",
-			"padding" 	=> "20px",
+			"padding" 	=> "20px 0",
 			"margin"	=> "20px auto",
 			"display"	=> "block",
 			"clear"		=> "both",
@@ -73,6 +73,7 @@ if ($request_access == "install"):
 			"border-color"	=> "#555 #bbb #bbb #555",
 			"border-radius" => "100px",
 			"color"		=> "#333",
+			"padding"	=> "20px",
 			],
 		
 		".form-warning" =>
