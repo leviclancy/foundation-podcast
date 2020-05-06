@@ -36,6 +36,12 @@ echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-
 $style_array = [
 	"body" => [
 		"font-family" 	=> "Alegreya, Times",
+		"background"	=> "#fff",
+		],
+	"#lightbox-login" =>
+		[
+		"color"		=> "#fff",
+		"background"	=> "rgba(230,106,53,1)",
 		],
 	"input" => [
 		"" 		=> "",
