@@ -38,6 +38,11 @@ if ($request_access == "install"):
 			"font-size"	=> "14px",
 			],
 		
+		"#body-wrapper" =>
+			[
+			"padding"	=> "20px",
+			],
+		
 		"p, .install-form-label, .install-form-input" =>
 			[
 			"text-align"	=> "left",
@@ -79,12 +84,13 @@ if ($request_access == "install"):
 			[
 			"display"	=> "table",
 			"clear"		=> "both",
-			"margin"	=> "20px auto",
+			"margin"	=> "50px auto",
 			"border-radius"	=> "100px",
 			"background"	=> "#333",
 			"padding"	=> "20px 30px",
 			"color"		=> "#fff",
 			"text-align"	=> "center",
+			"cursor"	=> "pointer",
 			],
 		
 		"::placeholder"	=>
