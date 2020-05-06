@@ -61,7 +61,7 @@ if ($request_access == "install"):
 		
 		"p" =>
 			[
-			"padding" 	=> "20px",
+			"padding" 	=> "20px 0 20px 20px",
 			"margin"	=> "20px 0",
 			],
 		
@@ -70,7 +70,7 @@ if ($request_access == "install"):
 			"font-size"	=> "80%",
 			"font-style"	=> "italic",
 			"margin"	=> "40px 0 0",
-			"padding"	=> "20px 20px 0",
+			"padding"	=> "20px 0 0 20px",
 			],
 		
 		".install-form-input" =>
