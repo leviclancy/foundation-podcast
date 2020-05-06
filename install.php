@@ -101,6 +101,7 @@ if ($request_access == "install"):
 			"color"		=> "#fff",
 			"text-align"	=> "center",
 			"cursor"	=> "pointer",
+			"float"		=> "right",
 			],
 		
 		":-webkit-autofill" =>
