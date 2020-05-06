@@ -46,7 +46,7 @@ if ($request_access == "install"):
 			"max-width"	=> "600px",
 			"padding" 	=> "20px",
 			"margin"	=> "20px auto",
-			"display"	=> "block",
+			"display"	=> "table",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
@@ -65,7 +65,7 @@ if ($request_access == "install"):
 			[
 			"border-width" 	=> "3px",
 			"border-style"	=> "solid",
-			"border-color"	=> "#333 #aaa #aaa #333",
+			"border-color"	=> "#555 #bbb #bbb #555",
 			"border-radius" => "100px",
 			"color"		=> "#333",
 			],
@@ -77,7 +77,7 @@ if ($request_access == "install"):
 		
 		"#install-form-submit" =>
 			[
-			"display"	=> "block",
+			"display"	=> "table",
 			"clear"		=> "both",
 			"margin"	=> "20px auto",
 			"border-radius"	=> "100px",
@@ -86,11 +86,13 @@ if ($request_access == "install"):
 			"color"		=> "#fff",
 			"text-align"	=> "center",
 			],
+		
 		"::placeholder"	=>
 			[
 			"font-size"	=> "100%",
 			"color"		=> "#777",
 			],
+		
 		":focus" =>
 			[
 			"outline"	=> "none",
