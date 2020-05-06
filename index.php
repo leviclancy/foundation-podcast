@@ -85,7 +85,7 @@ if (($request_access == "json-episodes") && array_key_exists($request_episode, $
 // If there is a magic code then check it out
 if ($request_access == "magic"):
 
-	$result = file_get_contents("/?access=xhr-logout");
+	$result = file_get_contents("https://".$domain."/?access=xhr-logout");
 
 	// Check if magic code is right by time and match
 	
@@ -166,9 +166,7 @@ if ($request_access == "json-login"):
 // Give us the login xhr
 if ($request_access == "xhr-login"):
 
-	$result = file_get_contents("/?access=xhr-logout");
-
-json_result($domain, "error", null, "Testing2.");
+	$result = file_get_contents("https://".$domain."/?access=xhr-logout");
 
 	$login = null;
 
@@ -233,6 +231,8 @@ json_result($domain, "error", null, "Testing2.");
 	// Set cookie
 	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp, '/');
 	if (!(empty($_COOKIE['cookie_code']))): json_result($domain, "error", null, "Failed to save cookie in browser."); endif;
+
+json_result($domain, "error", null, "Test5.");
 
 	login_check();
 
