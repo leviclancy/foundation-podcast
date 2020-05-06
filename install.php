@@ -32,7 +32,7 @@ if ($request_access == "install"):
 	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
 
 	$style_array = [
-		"body" =>
+		"body, input" =>
 			[
 			"font-family" 	=> "Verdana",
 			"font-size"	=> "14px",
@@ -75,12 +75,12 @@ if ($request_access == "install"):
 		
 		"#install-form-submit" =>
 			[
+			"display"	=> "inline-block",
 			"margin"	=> "20px auto",
 			"border-radius"	=> "100px",
 			"background"	=> "#333",
-			"padding"	=> "5px 15px",
+			"padding"	=> "20px 30px",
 			"color"		=> "#fff",
-			"font-size"	=> "90%",
 			"text-align"	=> "center",
 			],
 		"::placeholder"	=>
