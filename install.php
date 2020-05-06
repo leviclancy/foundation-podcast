@@ -46,7 +46,7 @@ if ($request_access == "install"):
 			"max-width"	=> "600px",
 			"padding" 	=> "20px",
 			"margin"	=> "20px auto",
-			"display"	=> "inline-block",
+			"display"	=> "block",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
@@ -63,7 +63,7 @@ if ($request_access == "install"):
 		
 		".install-form-input" =>
 			[
-			"border-width" 	=> "3px",
+			"border-width" 	=> "2px",
 			"border-style"	=> "solid",
 			"border-color"	=> "#555 #bbb #bbb #555",
 			"border-radius" => "100px",
@@ -164,11 +164,11 @@ if ($request_access == "install"):
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target='_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
-	echo "<label class='install-form-label' for='admin_name'>Enter your admin name (must be six or more characters).</label>";
-	echo "<input class='install-form-input' type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<label class='install-form-label' for='admin_name' form='install-form'>Enter your admin name (must be six or more characters).</label>";
+	echo "<input class='install-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
-	echo "<label class='install-form-label' for='password'>Enter your password (must be six or more characters).</label>";
-	echo "<input class='install-form-input' type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<label class='install-form-label' for='password' form='install-form'>Enter your password (must be six or more characters).</label>";
+	echo "<input class='install-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
 
