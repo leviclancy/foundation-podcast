@@ -90,7 +90,7 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 
 		// Include amp-audio
 		echo "<span class='categories-item'>";
-		echo '<amp-audio width="auto" height="50" src="https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3"><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>
+		echo "<amp-audio width='auto' height'50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 		echo "<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>";
 		echo "</span>";
 		echo "</template>";
