@@ -119,10 +119,12 @@ if ($request_access == "install"):
 			"color"		=> "#777",
 			],
 		
-		":focus" =>
+		"*:focus" =>
 			[
 			"outline"	=> "none",
+			"outline-width"	=> "none",
 			],
+
 		];
 
 	echo "<style amp-custom>" . css_output($style_array);
