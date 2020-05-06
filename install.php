@@ -41,6 +41,7 @@ if ($request_access == "install"):
 		"#body-wrapper" =>
 			[
 			"padding"	=> "20px",
+			"margin"	=> "0 auto",
 			"text-align"	=> "left",
 			"width"		=> "100%",
 			"max-width"	=> "600px",
@@ -90,6 +91,8 @@ if ($request_access == "install"):
 			"margin"	=> "30px 0",
 			"padding"	=> "20px 0 0 20px",
 			"font-style"	=> "italic",
+			"font-size"	=> "90%",
+			"text-align"	=> "center",
 			],
 		
 		"#install-form-submit" =>
