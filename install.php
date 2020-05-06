@@ -37,7 +37,7 @@ if ($request_access == "install"):
 			"font-family" 	=> "Verdana",
 			],
 		
-		"p, .form-input, .form-description" =>
+		"p, .install-form-input, .form-description" =>
 			[
 			"width" 	=> "auto",
 			"max-width" 	=> "600px",
