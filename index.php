@@ -29,7 +29,7 @@ $request_access_array = [
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
-	"json-episodes",
+	"json-page",
 	];
 if (!(in_array($request_access, $request_access_array))): $request_access = "home"; endif;
 
@@ -86,6 +86,8 @@ if (in_array($request_access, ["admin", "rss", "home"])):
 	echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
 	echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
 
+	echo '<link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">';
+
 	echo "<title>". $title_temp ."</title>";
 
 	echo "<meta name='theme-color' content='#2878b4'>";
@@ -94,7 +96,7 @@ if (in_array($request_access, ["admin", "rss", "home"])):
 
 	$style_array = [
 		"body" => [
-			"" => "",
+			"font-family" => "Alegreya, Times",
 			],
 		"input" => [
 			"" => "",
@@ -105,12 +107,56 @@ if (in_array($request_access, ["admin", "rss", "home"])):
 
 	echo "</head><body>";
 
-	echo "<amp-state id='pageState' src='/?access=json-login'></script></amp-state>";
+	echo "<amp-state id='loginState' src='/?access=json-login'></script></amp-state>";
+	echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
-	echo "<h1>". $title ."</h1>";
-	echo "<p>". $description . "</p>";
+	// Log in button
+	echo "<span id='log-in'>Log in</span>";
+
+	// Log out button
+	echo "<span id='log-out'>Log out</span>";
+
+	// Edit description
+	echo "<span id='log-out'>Edit description</span>";
+
+	// Edit episodes
+	echo "<span id='log-out'>Edit episodes</span>";
+
+	// Users
+	echo "<span id='log-out'>Users</span>";
+
+	echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
+	echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
+	echo '<p [text]="pageState.about.description">'. $description .'</p>';
 	echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
+
 	echo "List of amp-audio for each episode";
+
+	echo "</amp-list>";
+
+	// Lightbox for editing the site description
+	echo "<amp-lightbox id='lightbox-edit-description'>";
+
+		// 
+
+		echo "</amp-lightbox>";
+
+
+	// Lightbox for editing episodes
+	echo "<amp-lightbox id='lightbox-edit-episodes'>";
+
+		// 
+
+		echo "</amp-lightbox>";
+
+	// Lightbox for user management
+	echo "<amp-lightbox id='lightbox-users'>";
+
+		// 
+
+		echo "</amp-lightbox>";
+
+
 	amp_footer();
 
 	endif;
@@ -120,7 +166,22 @@ $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_dat
 if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
 
 // Give us the JSON
-if ($request_access == "json-episodes"):
+if ($request_access == "json-page"):
+
+	$json_array = [
+		"about" => [],
+		"episodes" => [],
+		]
+	
+	// Pull up podcast description
+	$sql_temp = "SELECT description_key, description_info FROM podcast_description";
+	$result = pg_query($postgres_connection, $sql_temp);
+	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_description' table."); endif;
+
+	// Check if there are episodes
+	while ($row = pg_fetch_row($result)):
+		$json_array['about'][$row['description_key']] = $row['description_info'];	
+		endwhile;
 
 	// Pull up episodes if empty
 	$sql_temp = "SELECT episode_id, episode_title, episode_description, episode_pubdate, episode_duration FROM podcast_episodes";
@@ -130,9 +191,9 @@ if ($request_access == "json-episodes"):
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
 		
-		amp_footer(); endwhile;
+		endwhile;
 
-	// Include login status
+	json_output($json_array);
 
 	endif;
 	
