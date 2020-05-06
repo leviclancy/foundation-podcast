@@ -52,13 +52,17 @@ if ($request_access == "install"):
 			"text-align"	=> "left",
 			"box-sizing"	=> "border-box",
 			"width" 	=> "90%",
-			"padding" 	=> "20px 0",
-			"margin"	=> "20px 0",
 			"display"	=> "block",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
 			"background"	=> "none",
+			],
+		
+		"p" =>
+			[
+			"padding" 	=> "20px",
+			"margin"	=> "20px 0",
 			],
 		
 		".install-form-label" =>
@@ -78,6 +82,7 @@ if ($request_access == "install"):
 			"border-radius" => "100px",
 			"color"		=> "#333",
 			"padding"	=> "20px",
+			"margin"	=> "20px 0",
 			],
 		
 		".form-warning" =>
