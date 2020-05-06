@@ -57,7 +57,7 @@ if ($request_access == "install"):
 			[
 			"font-style"		=> "italic",
 			"font-size"		=> "80%",
-			"margin-bottom"		=> "0",
+			"margin-bottom"		=> "40px auto 0",
 			"padding-bottom"	=> "0",
 			],
 		
