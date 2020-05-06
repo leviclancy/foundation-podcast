@@ -183,7 +183,7 @@ if ($request_access == "xhr-login"):
 	$admin_id_temp = null;
 	while ($row_temp = pg_fetch_assoc($result)):
 
-		if (sha1($row_temp['password_salt '].$_POST['password']) !== $row_temp['password_hash']):
+		if (sha1($row_temp['password_salt'].$_POST['password']) !== $row_temp['password_hash']):
 			json_result($domain, "error", null, "Password incorrect.");
 			endif;
 
