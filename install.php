@@ -62,9 +62,10 @@ if ($request_access == "install"):
 		
 		".install-form-input" =>
 			[
-			"border" 	=> "1px solid #333",
+			"border" 	=> "0 solid #333",
+			"background"	=> "#333",
 			"border-radius" => "100px",
-			"color"		=> "#333",
+			"color"		=> "#ddd",
 			],
 		
 		".form-warning" =>
@@ -85,7 +86,7 @@ if ($request_access == "install"):
 		"::placeholder"	=>
 			[
 			"font-size"	=> "100%",
-			"color"		=> "#888",
+			"color"		=> "#bbb",
 			],
 		":focus" =>
 			[
