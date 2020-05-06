@@ -40,11 +40,11 @@ if ($request_access == "install"):
 		
 		"#body-wrapper" =>
 			[
-			"float"		=> "right",
 			"padding"	=> "20px",
 			"text-align"	=> "left",
 			"width"		=> "100%",
 			"max-width"	=> "600px",
+			"box-sizing"	=> "border-box",
 			],
 		
 		"p, .install-form-label, .install-form-input" =>
