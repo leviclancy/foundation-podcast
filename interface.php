@@ -35,10 +35,15 @@ echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-
 
 $style_array = [
 	"body" => [
-		"font-family" => "Alegreya, Times",
+		"font-family" 	=> "Alegreya, Times",
 		],
 	"input" => [
-		"" => "",
+		"" 		=> "",
+		],
+	"*:focus" =>
+		[
+		"outline"	=> "none",
+		"outline-width"	=> "none",
 		],
 	];
 
@@ -50,17 +55,17 @@ echo "<amp-state id='loginState' src='/?access=json-login'></script></amp-state>
 echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
 $lightbox_close_array = implode(",", [
-	"lightbox-log-in.close",
+	"lightbox-login.close",
 	"lightbox-edit-description.close",
 	"lightbox-edit-episodes.close",
 	"lightbox-edit-users.close",
 	]);
 
 // Log in button
-echo "<span role='button' tabindex='0' id='button-lightbox-log-in' on='tap:". $lightbox_close_array .",lightbox-log-in.open'>Log in</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-login' on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
 
 // Log out button
-echo "<span role='button' tabindex='0' id='button-log-out' on='tap:'>Log in</span>";
+echo "<span role='button' tabindex='0' id='button-log-out' on='tap:'>Log out</span>";
 
 // Edit description
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
@@ -94,7 +99,21 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' scrollable>";
 
-// 
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show'>";
+	
+	echo "<label class='login-form-label' for='admin_name' form='login-form'>Enter your admin name.</label>";
+	echo "<input class='login-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+
+	echo "<label class='login-form-label' for='password' form='install-form'>Enter your password.</label>";
+	echo "<input class='login-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+		
+	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
 
 	echo "</amp-lightbox>";
 
