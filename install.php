@@ -87,6 +87,8 @@ if ($request_access == "install"):
 		
 		".form-warning" =>
 			[
+			"margin"	=> "40px 0 0",
+			"padding"	=> "20px 0 0 20px",
 			"font-style"	=> "italic",
 			],
 		
@@ -155,6 +157,8 @@ if ($request_access == "install"):
 
 	echo "<div id='body-wrapper'>";
 
+	echo "<p>";
+
 	// Start generating the tables...
 	foreach($tables_array as $table_name => $columns_array):
 
@@ -171,9 +175,11 @@ if ($request_access == "install"):
 		
 		// If it failed or succeeded...
 		$result_temp = (empty($result) ? "Error" : "Success");
-		echo "<p>". $result_temp . " building table '". $table_name ."' in database '". $sql_database ."'.</p>";
+		echo $result_temp . " building '". $table_name ."' in '". $sql_database ."'.<br>";
 
 		endforeach;
+
+	echo "</p>";
 
 	// Pull up admin if empty
 	$sql_temp = "SELECT * FROM podcast_admins WHERE password_salt IS NOT NULL";
