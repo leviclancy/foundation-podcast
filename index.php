@@ -231,7 +231,11 @@ if ($request_access == "xhr-login"):
 	if (!($result)): json_result($domain, "error", null, "Could not save cookie in system."); endif;
 
 	// Set cookie
-	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp, '/');
+	ob_start();
+	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp, "/");
+	ob_end_flush();
+
+	// Check the cookie
 	if (empty($_COOKIE['cookie_code'])): json_result($domain, "error", null, "Failed to save cookie in browser."); endif;
 	if ($_COOKIE['cookie_code'] !== $cookie_code_temp): json_result($domain, "error", null, "Cookie not saved correctly in browser."); endif;
 
