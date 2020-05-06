@@ -50,6 +50,7 @@ if ($request_access == "install"):
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
+			"background"	=> "none",
 			],
 		
 		".install-form-label" =>
@@ -62,10 +63,9 @@ if ($request_access == "install"):
 		
 		".install-form-input" =>
 			[
-			"border" 	=> "0 solid #333",
-			"background"	=> "#333",
+			"border" 	=> "1 solid #333",
 			"border-radius" => "100px",
-			"color"		=> "#ddd",
+			"color"		=> "#333",
 			],
 		
 		".form-warning" =>
@@ -75,7 +75,7 @@ if ($request_access == "install"):
 		
 		"#install-form-submit" =>
 			[
-			"display"	=> "inline-block",
+			"display"	=> "block",
 			"clear"		=> "both",
 			"margin"	=> "20px auto",
 			"border-radius"	=> "100px",
@@ -87,7 +87,7 @@ if ($request_access == "install"):
 		"::placeholder"	=>
 			[
 			"font-size"	=> "100%",
-			"color"		=> "#bbb",
+			"color"		=> "#777",
 			],
 		":focus" =>
 			[
