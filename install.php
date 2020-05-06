@@ -40,8 +40,11 @@ if ($request_access == "install"):
 		
 		"#body-wrapper" =>
 			[
+			"float"		=> "right",
 			"padding"	=> "20px",
-			"text-align"	=> "center",
+			"text-align"	=> "left",
+			"width"		=> "100%",
+			"max-width"	=> "600px",
 			],
 		
 		"p, .install-form-label, .install-form-input" =>
@@ -49,7 +52,6 @@ if ($request_access == "install"):
 			"text-align"	=> "left",
 			"box-sizing"	=> "border-box",
 			"width" 	=> "90%",
-			"max-width"	=> "600px",
 			"padding" 	=> "20px 0",
 			"margin"	=> "20px 0",
 			"display"	=> "block",
@@ -64,7 +66,7 @@ if ($request_access == "install"):
 			"font-size"	=> "80%",
 			"font-style"	=> "italic",
 			"margin"	=> "40px 0 0",
-			"padding"	=> "20px 0 0",
+			"padding"	=> "20px 20px 0",
 			],
 		
 		".install-form-input" =>
