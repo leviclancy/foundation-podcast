@@ -76,6 +76,7 @@ if ($request_access == "install"):
 		"#install-form-submit" =>
 			[
 			"display"	=> "inline-block",
+			"clear"		=> "both",
 			"margin"	=> "20px auto",
 			"border-radius"	=> "100px",
 			"background"	=> "#333",
