@@ -96,7 +96,7 @@ if ($request_access == "install"):
 			[
 			"display"	=> "table",
 			"clear"		=> "both",
-			"margin"	=> "30px auto",
+			"margin"	=> "40px auto",
 			"border-radius"	=> "100px",
 			"background"	=> "#333",
 			"padding"	=> "20px 30px",
