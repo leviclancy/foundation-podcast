@@ -54,8 +54,10 @@ if ($request_access == "install"):
 		
 		".install-form-label" =>
 			[
-			"font-style"	=> "italic",
-			"font-size"	=> "80%",
+			"font-style"		=> "italic",
+			"font-size"		=> "80%",
+			"margin-bottom"		=> "0",
+			"padding-bottom"	=> "0",
 			],
 		
 		".install-form-input" =>
