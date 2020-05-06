@@ -59,7 +59,7 @@ if ($request_access == "install"):
 			"color"		=> "#333",
 			],
 		
-		".form-description" =>
+		".install-form-label" =>
 			[
 			"font-style"	=> "italic",
 			"font-size"	=> "80%",
@@ -155,10 +155,10 @@ if ($request_access == "install"):
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target='_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
-	echo "<label for='admin_name'>Enter your admin name (must be six or more characters).</label>";
+	echo "<label class='install-form-label' for='admin_name'>Enter your admin name (must be six or more characters).</label>";
 	echo "<input class='install-form-input' type='text' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
-	echo "<label for='password'>Enter your password (must be six or more characters).</label>";
+	echo "<label class='install-form-label' for='password'>Enter your password (must be six or more characters).</label>";
 	echo "<input class='install-form-input' type='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
