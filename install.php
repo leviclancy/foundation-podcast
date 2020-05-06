@@ -63,7 +63,7 @@ if ($request_access == "install"):
 		
 		".install-form-input" =>
 			[
-			"border" 	=> "1 solid #333",
+			"border" 	=> "1px solid #333",
 			"border-radius" => "100px",
 			"color"		=> "#333",
 			],
