@@ -60,6 +60,7 @@ if ($request_access == "install"):
 		
 		".install-form-label" =>
 			[
+			"font-size"	=> "80%",
 			"font-style"	=> "italic",
 			"margin"	=> "40px auto 0",
 			"padding"	=> "20px 20px 0",
@@ -107,7 +108,7 @@ if ($request_access == "install"):
 		];
 
 	echo "<style amp-custom>" . css_output($style_array);
-	echo " @media only screen and (max-width: 600px)  { p, input, label { margin: 20px; } }";
+//	echo " @media only screen and (max-width: 600px)  { p, input, label { margin: 20px; } }";
 	echo "</style>";
 
 	echo "</head><body>";
