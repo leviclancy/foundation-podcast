@@ -193,12 +193,12 @@ if ($request_access == "install"):
 	echo "<label class='install-form-label' for='password' form='install-form'>Enter your password (must be six or more characters).</label>";
 	echo "<input class='install-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
-	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
-
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
 	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 		
+	echo "<span id='install-form-submit' role='button' tabindex='0' on='tap:install-form.submit'>Create admin</span>";
+
 	echo "</form>";
 
 	echo "</div>"; amp_footer();
