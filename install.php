@@ -40,6 +40,7 @@ if ($request_access == "install"):
 		
 		"#body-wrapper" =>
 			[
+			"box-sizing"	=> "border-box",
 			"display"	=> "block",
 			"width" 	=> "auto",
 			"max-width"	=> "600px",
