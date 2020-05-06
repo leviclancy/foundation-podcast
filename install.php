@@ -35,6 +35,7 @@ if ($request_access == "install"):
 		"body" =>
 			[
 			"font-family" 	=> "Verdana",
+			"font-size"	=> "14px",
 			],
 		
 		"p, .install-form-input, .form-description" =>
@@ -46,7 +47,7 @@ if ($request_access == "install"):
 			"display"	=> "block",
 			"clear"		=> "both",
 			"text-align"	=> "left",
-			"font-size"	=> "1em",
+			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
 			],
 		
