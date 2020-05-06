@@ -207,6 +207,8 @@ if ($request_access == "install"):
 // XHR to create initial admin
 if ($request_access == "xhr-install"):
 
+	json_result($domain, "error", null, "Admin name too short.");
+
 	$result = file_get_contents("/?access=logout");
 
 	// We will check if any admins already exist
