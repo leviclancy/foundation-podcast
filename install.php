@@ -68,6 +68,7 @@ if ($request_access == "install"):
 		
 		".install-form-input" =>
 			[
+			"font-size"	=> "100%",
 			"border-width" 	=> "2px",
 			"border-style"	=> "solid",
 			"border-color"	=> "#555 #bbb #bbb #555",
