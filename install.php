@@ -46,7 +46,7 @@ if ($request_access == "install"):
 			"max-width"	=> "600px",
 			"padding" 	=> "20px",
 			"margin"	=> "20px auto",
-			"display"	=> "table",
+			"display"	=> "inline-block",
 			"clear"		=> "both",
 			"font-size"	=> "100%",
 			"line-height"	=> "1.3em",
