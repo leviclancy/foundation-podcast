@@ -49,6 +49,7 @@ if ($request_access == "install"):
 		
 		"p, .install-form-input, .form-description" =>
 			[
+			"box-sizing"	=> "border-box",
 			"width" 	=> "auto",
 			"padding" 	=> "20px",
 			"display"	=> "block",
