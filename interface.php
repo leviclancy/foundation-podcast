@@ -99,7 +99,7 @@ $style_array = [
 	"amp-lightbox" => [
 		"padding"	=> "100px 20px",
 		"box-sizing"	=> "border-box",
-		"position"	=> "relative",
+//		"position"	=> "relative",
 		],
 	
 	"#lightbox-login" => [
@@ -136,7 +136,8 @@ $style_array = [
 		"position"	=> "fixed",
 		"z-index"	=> "1000",
 		"bottom"	=> "20px",
-		"right"		=> "0",
+		"right"		=> "1px",
+		"margin"	=> "0 -2px 0 0",
 		"border-radius"	=> "100px 0 0 100px",
 		"background"	=> "rgba(255,255,255,1)",
 		"padding"	=> "15px 25px 15px 40px",
