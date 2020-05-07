@@ -35,13 +35,6 @@ $request_access_array = [
 	];
 if (!(in_array($request_access, $request_access_array))): $request_access = "interface"; endif;
 
-$allowed_information = [
-	"author",
-	"title",
-	"description",
-	"language",
-	];
-
 // No need to connect to SQL for the interface
 if ($request_access == "interface"): include_once('interface.php'); endif;
 
@@ -56,7 +49,7 @@ if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_re
 if ($request_access == "json-page"):
 
 	$json_array = [
-		"information" => array_flip($allowed_information),
+		"information" => ["author"=>null, "title"=>null, "description"=>null, "language"=>null, ],
 		"episodes" => [],
 		];
 	
@@ -67,8 +60,13 @@ if ($request_access == "json-page"):
 
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
-		if (!(in_array($row['information_key'], $allowed_information))): continue; endif;
-		$json_array['information'][$row['information_key']] = $row['information_value'];	
+
+		// Only allow existing keys
+		if (!(array_key_exists($row['information_key'], $json_array['information']))): continue; endif;
+
+		// Set up the JSON array
+		$json_array['information'][$row['information_key']] = $row['information_value'];
+
 		endwhile;
 
 	// Pull up episodes if empty
