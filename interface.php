@@ -308,13 +308,13 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-' target='_top' id='login-form' method='post' on='submit:edit-decription-form-submit.hide;submit-error:edit-decription-form-submit.show;submit-success:edit-decription-form-submit.show,edit-decription-form.clear'>";
+	echo "<form action-xhr='/?access=xhr-' target='_top' id='login-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,edit-information-form.clear'>";
 	
 	$attributes_temp = [
-		"id='edit-decription-form-list'",
+		"id='edit-information-form-list'",
 		"layout='responsive'",
 		"width='650'",
-		"height='1500'",
+		"height='1000'",
 		"max-items='1'",
 		"reset-on-refresh='always'",
 		"items='information'",
@@ -351,7 +351,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-decription-form.submit'>Save edits</span>";
+	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save edits</span>";
 
 	echo "</amp-lightbox>";
 
