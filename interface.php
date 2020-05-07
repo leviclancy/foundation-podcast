@@ -60,17 +60,20 @@ $style_array = [
 		"background"	=> "#777",
 		"color"		=> "#fff",
 		"padding"	=> "7px 15px",
+		"border-radius"	=> "100px",
+		"margin"	=> "20px 0 0 20px",
 		],
 
-	"#button-lightbox-edit-description, #button-lightbox-edit-description, #button-lightbox-users" =>
+	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" =>
 		[
 		"display"	=> "inline-block",
 		"border"	=> "2px solid #777",
 		"background"	=> "#fff",
-		"color"		=> "#777",
+		"color"		=> "#666",
 		"padding"	=> "7px 15px",
+		"border-radius"	=> "100px",
+		"margin"	=> "20px 0 0 20px",
 		],
-
 	
 	];
 
@@ -85,7 +88,7 @@ $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
 	"lightbox-edit-description.close",
 	"lightbox-edit-episodes.close",
-	"lightbox-edit-users.close",
+	"lightbox-edit-admins.close",
 	]);
 
 // Log in button
@@ -100,8 +103,8 @@ echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' on=
 // Edit episodes
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
 
-// Edit users
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-users' on='tap:". $lightbox_close_array .",lightbox-edit-users.open'>Edit users</span>";
+// Edit admins
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
 
 echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
 echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
@@ -161,7 +164,7 @@ echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_clo
 	echo "</amp-lightbox>";
 
 // Lightbox for user management
-echo "<amp-lightbox id='lightbox-edit-users' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	// 
 
