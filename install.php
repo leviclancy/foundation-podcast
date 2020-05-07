@@ -32,14 +32,12 @@ if ($request_access == "install"):
 	echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-scale=1'>";
 
 	$style_array = [
-		"body, input" =>
-			[
+		"body, input" => [
 			"font-family" 	=> "Verdana",
 			"font-size"	=> "14px",
 			],
 		
-		"#body-wrapper" =>
-			[
+		"#body-wrapper" => [
 			"padding"	=> "20px",
 			"margin"	=> "0 auto",
 			"text-align"	=> "left",
@@ -48,8 +46,7 @@ if ($request_access == "install"):
 			"box-sizing"	=> "border-box",
 			],
 		
-		"p, .install-form-label, .install-form-input" =>
-			[
+		"p, .install-form-label, .install-form-input" => [
 			"text-align"	=> "left",
 			"box-sizing"	=> "border-box",
 			"width" 	=> "90%",
@@ -60,22 +57,19 @@ if ($request_access == "install"):
 			"background"	=> "none",
 			],
 		
-		"p" =>
-			[
+		"p" => [
 			"padding" 	=> "20px 0 20px 20px",
 			"margin"	=> "20px 0",
 			],
 		
-		".install-form-label" =>
-			[
+		".install-form-label" => [
 			"font-size"	=> "80%",
 			"font-style"	=> "italic",
 			"margin"	=> "40px 0 0",
 			"padding"	=> "20px 0 0 20px",
 			],
 		
-		".install-form-input" =>
-			[
+		".install-form-input" => [
 			"font-size"	=> "14px",
 			"border-width" 	=> "2px",
 			"border-style"	=> "solid",
@@ -86,8 +80,7 @@ if ($request_access == "install"):
 			"margin"	=> "20px 0",
 			],
 		
-		".form-warning" =>
-			[
+		".form-warning" => [
 			"margin"	=> "30px 0",
 			"padding"	=> "20px 0 0 20px",
 			"font-style"	=> "italic",
@@ -95,8 +88,7 @@ if ($request_access == "install"):
 			"text-align"	=> "center",
 			],
 		
-		"#install-form-submit" =>
-			[
+		"#install-form-submit" => [
 			"display"	=> "table",
 			"clear"		=> "both",
 			"margin"	=> "40px auto",
@@ -108,19 +100,16 @@ if ($request_access == "install"):
 			"cursor"	=> "pointer",
 			],
 		
-		":-webkit-autofill" =>
-			[
+		":-webkit-autofill" => [
 			"font-size"	=> "100%",
 			],
 		
-		"::placeholder"	=>
-			[
+		"::placeholder"	=> [
 			"font-size"	=> "100%",
 			"color"		=> "#777",
 			],
 		
-		"*:focus" =>
-			[
+		"*:focus" => [
 			"outline"	=> "none",
 			"outline-width"	=> "none",
 			],
