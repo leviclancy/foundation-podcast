@@ -28,11 +28,19 @@ $request_access_array = [
 	"podcast-file",
 	"xhr-login",
 	"xhr-logout",
+	"xhr-edit-description",
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
 	];
 if (!(in_array($request_access, $request_access_array))): $request_access = "interface"; endif;
+
+$allowed_information = [
+	"author",
+	"title",
+	"description",
+	"language",
+	];
 
 // No need to connect to SQL for the interface
 if ($request_access == "interface"): include_once('interface.php'); endif;
@@ -48,18 +56,19 @@ if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_re
 if ($request_access == "json-page"):
 
 	$json_array = [
-		"about" => [],
+		"information" => [],
 		"episodes" => [],
 		];
 	
 	// Pull up podcast description
-	$sql_temp = "SELECT description_key, description_info FROM podcast_description";
+	$sql_temp = "SELECT information_key, information_value FROM podcast_information";
 	$result = pg_query($postgres_connection, $sql_temp);
 	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_description' table."); endif;
 
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
-		$json_array['about'][$row['description_key']] = $row['description_info'];	
+		if (!(in_array($row['information_key'], $allowed_information))): continue; endif;
+		$json_array['information'][$row['information_key']] = $row['information_value'];	
 		endwhile;
 
 	// Pull up episodes if empty
@@ -260,6 +269,21 @@ if ($request_access == "xhr-logout"):
 	catch (Exception $exception_temp) { json_result($domain, "error", null, "Could not clear cookie: ".$exception_temp->getMessage()); }
 
 	json_result($domain, "success", null, "Successfully logged out.");
+
+	exit; endif;
+
+
+// Give us the podcast description xhr
+if ($request_access == "xhr-edit-description"):
+
+	login_check();
+
+	// Edit the site info
+
+// podcast_description
+
+// description_key
+// Description info
 
 	exit; endif;
 
