@@ -217,6 +217,13 @@ if ($request_access == "xhr-edit-information"):
 
 	login_check(false); // Check login status
 
+	$allowed_information = [
+		"title",
+		"author",
+		"description",
+		"language",
+		]
+
 	// We will set up the values we need to update
 	$values_temp = [
 		"information_key"		=> null,
