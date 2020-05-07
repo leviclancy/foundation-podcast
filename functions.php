@@ -105,9 +105,11 @@ function postgres_update_statement ($table_name, $values_temp) {
 // Check if the user is logged in
 function login_check($return=false) {
 	
-	// If $return == TRUE, then we return on both success and error, rather than outputting and exiting on errors
-	// If $return == FALSE, then we return on success and output and exit on errors
-		
+	// Regardless of whether $return == TRUE or $return == FALSE, we use 'return' on valid login
+	// However sometimes we want a gatekeeper mechanism
+	// If $return == TRUE then we will return an error if it happens
+	// If $return == FALSE then we output and exit and error if it happens
+
 	global $_COOKIE;
 	global $_POST;
 	
