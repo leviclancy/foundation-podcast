@@ -145,10 +145,10 @@ if ($request_access == "install"):
 	// Cookies table
 	$tables_array['podcast_admin_codes'] = [
 		"code_id"		=> "VARCHAR(100)", // Arbitrary and unique code id
-		"code_type"		=> "VARCHAR(100)", // Either 'cookie' or 'magic'
 		"admin_id"		=> "VARCHAR(100)", // The admin it refers to		
-		"code_string"		=> "VARCHAR(100)",
-		"code_expiration"	=> "VARCHAR(100)",
+		"code_type"		=> "VARCHAR(100)", // Either 'cookie' or 'magic'
+		"code_string"		=> "VARCHAR(100)", // The string should be 64 characters
+		"code_expiration"	=> "VARCHAR(100)", // Its expiration as a UNIX timestamp
 		];
 
 	$tables_array['podcast_description'] = [
