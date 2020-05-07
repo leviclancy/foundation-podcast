@@ -140,9 +140,15 @@ if ($request_access == "install"):
 		"password_salt"		=> "VARCHAR(200)", // Unique salt for password
 		"password_hash"		=> "VARCHAR(200)", // Hash of password
 		"authenticator_key"	=> "VARCHAR(200)", // Authenticator configuration key
-		"magic_code"		=> "VARCHAR(200)", // Magic code for ephemeral login
-		"magic_expiration"	=> "VARCHAR(200)", // Magic code expiration time
-		"cookie_codes"		=> "TEXT", // JSON with cookie codes and their expiration dates, for login
+		];
+
+	// Cookies table
+	$tables_array['podcast_admin_codes'] = [
+		"code_id"		=> "VARCHAR(100)", // Arbitrary and unique code id
+		"code_type"		=> "VARCHAR(100)", // Either 'cookie' or 'magic'
+		"admin_id"		=> "VARCHAR(100)", // The admin it refers to		
+		"code_string"		=> "VARCHAR(100)",
+		"code_expiration"	=> "VARCHAR(100)",
 		];
 
 	$tables_array['podcast_description'] = [
