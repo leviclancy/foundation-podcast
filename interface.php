@@ -262,7 +262,7 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 
 		// Include amp-audio
 		echo "<span class='categories-item'>";
-		echo "<amp-audio width='auto' height'50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
+		echo "<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 		echo "<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>";
 		echo "</span>";
 		echo "</template>";
@@ -302,7 +302,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 	echo "<form action-xhr='/?access=xhr-' target='_top' id='login-form' method='post' on='submit:edit-decription-form-submit.hide;submit-error:edit-decription-form-submit.show;submit-success:edit-decription-form-submit.show,edit-decription-form.clear'>";
 	
 	$attributes_temp = [
-		"edit-decription-form-list'",
+		"id='edit-decription-form-list'",
 		"layout='responsive'",
 		"width='800'",
 		"height='800'",
@@ -320,16 +320,16 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		<template type='amp-mustache'>
 		
 		<label class='edit-information-form-label' for='title'>Enter the title.</label>
-		<input class='edit-information-form-input' type='text' id='title' name='title' minlength='3' maxlength='100' placeholder='Title' value='{{title}}' required>
+		<input class='edit-information-form-input' type='text' name='title' minlength='3' maxlength='100' placeholder='Title' value='{{title}}' required>
 
 		<label class='edit-information-form-label' for='author'>Enter the author.</label>
-		<input class='edit-information-form-input' type='text' id='author' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
+		<input class='edit-information-form-input' type='text' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
 
 		<label class='edit-information-form-label' for='description'>Enter the description.</label>
-		<<textarea class='edit-information-form-textarea' type='text' id='description' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
+		<<textarea class='edit-information-form-textarea' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
 
 		<label class='edit-information-form-label' for='title'>Enter the language.</label>
-		<input class='edit-information-form-input' type='text' id='title' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
+		<input class='edit-information-form-input' type='text' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
 
 		</template></amp-list>";
 
