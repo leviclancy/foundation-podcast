@@ -99,8 +99,11 @@ $lightbox_close_array = implode(",", [
 	"lightbox-edit-admins.close",
 	]);
 
-$result_temp = file_get_contents("/?access=json-login");
+$result_temp = file_get_contents("https://".$domain."/?access=json-login");
 echo $result_temp;
+
+$login_hidden = null; $logout_hidden = "hide";
+if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = null; endif;
 
 // Log in button
 echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
