@@ -206,6 +206,8 @@ if ($request_access == "xhr-login"):
 	$result = pg_execute($postgres_connection, "admin_cookie_codes_statement", $values_temp);
 	if (!($result)): json_result($domain, "error", null, "Could not save cookie in system."); endif;
 
+	json_result($domain, "error", null, "Successful login nooo $cookie_code_temp.");
+
 	// Set cookie
 	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp);
 
