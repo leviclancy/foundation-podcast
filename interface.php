@@ -206,7 +206,6 @@ $login_hidden = "button-navigation"; $logout_hidden = "hide";
 
 // But maybe we are logged in?
 $result_temp = login_check();
-$result_temp = json_decode($result_temp, true);
 
 // If we are logged in, update default classes
 if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
