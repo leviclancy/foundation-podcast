@@ -222,7 +222,7 @@ if ($request_access == "xhr-edit-information"):
 		"author",
 		"description",
 		"language",
-		]
+		];
 
 	// We will set up the values we need to update
 	$values_temp = [
