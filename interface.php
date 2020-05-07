@@ -53,7 +53,7 @@ $style_array = [
 		"outline-width"	=> "none",
 		],
 	
-	"#button-lightbox-login, #button-lightbox-log-out" =>
+	"#button-lightbox-login, #button-log-out" =>
 		[
 		"display"	=> "inline-block",
 		"border"	=> "2px solid #777",
@@ -62,6 +62,8 @@ $style_array = [
 		"padding"	=> "7px 15px",
 		"border-radius"	=> "100px",
 		"margin"	=> "20px 0 0 20px",
+		"font-family"	=> "Verdana",
+		"cursor"	=> "pointer",
 		],
 
 	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" =>
@@ -73,6 +75,8 @@ $style_array = [
 		"padding"	=> "7px 15px",
 		"border-radius"	=> "100px",
 		"margin"	=> "20px 0 0 20px",
+		"font-family"	=> "Verdana",
+		"cursor"	=> "pointer",
 		],
 	
 	];
