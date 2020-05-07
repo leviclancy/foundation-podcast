@@ -128,7 +128,7 @@ if ($request_access == "json-login"):
 		json_output ($json_temp); endif;
 
 	// Prepare cookie code lookup statement
-	$postgres_statement = "SELECT code_string, code_admin, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_status!='deactivated' AND code_string=$1";
+	$postgres_statement = "SELECT * FROM podcast_admin_codes WHERE code_string=$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
@@ -137,7 +137,7 @@ if ($request_access == "json-login"):
 	// Search for cookie code
 	$result = pg_execute($postgres_connection, "get_cookie_code_statement", [ $_COOKIE['cookie_code'] ]);
 	if (!($result)):
-		$json_temp['loginMessage'] = "Could not find cookie code.";
+		$json_temp['loginMessage'] = "Failed to find matching code.";
 		json_output ($json_temp); endif;
 
 	while ($row_temp = pg_fetch_assoc($result)):
@@ -162,7 +162,7 @@ if ($request_access == "json-login"):
 
 		endwhile;
 
-	$json_temp['loginMessage'] = "Failed to find admin.";
+	$json_temp['loginMessage'] = "Failed to find active code.";
 	json_output ($json_temp);
 
 	endif;  
