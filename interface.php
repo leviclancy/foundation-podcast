@@ -207,18 +207,7 @@ $login_hidden = "button-navigation"; $logout_hidden = "hide";
 // But maybe we are logged in?
 if (!(empty($_COOKIE['cookie_code']))):
 
-	// Generate header with post data
-	$http_temp = [
-		"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
-		"method"  => 'POST',
-		"content" => http_build_query(["cookie_code" => $_COOKIE['cookie_code']])
-		];
-	
-	// Build context
-	$context = stream_context_create(["http" => $http_temp]);
-
-	// Get the result
-	$result_temp = file_get_contents("https://".$domain."/?access=json-login", false, $context);
+	$result_temp = login_check("return");
 
 	$result_temp = json_decode($result_temp, true);
 
