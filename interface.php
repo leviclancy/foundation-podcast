@@ -286,10 +286,10 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
 		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 		echo "</div>";
-		
-	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
 
 	echo "</form>";
+
+	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
 
 	echo "</amp-lightbox>";
 
