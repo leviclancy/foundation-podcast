@@ -142,7 +142,7 @@ function login_check($return=false) {
 			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
 	
 		// Now decode whatever we received
-		$result_temp = json_decoded($result_temp, true);
+		$result_temp = json_decode($result_temp, true);
 	
 		// If it is gibberish then that is an error
 		if (!(isset($result_temp['login_status']))):
