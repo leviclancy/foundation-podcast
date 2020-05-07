@@ -201,13 +201,11 @@ $lightbox_close_array = implode(",", [
 	"lightbox-my-account.close",
 	]);
 
+// Check if we are logged in
+$result_temp = login_check(true);
+
 // By default, we are logged out
 $login_hidden = "button-navigation"; $logout_hidden = "hide";
-
-// But maybe we are logged in?
-$result_temp = login_check();
-
-// If we are logged in, update default classes
 if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
 
 // Log in button
