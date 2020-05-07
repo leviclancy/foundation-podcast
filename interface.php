@@ -53,32 +53,34 @@ $style_array = [
 		"outline-width"	=> "none",
 		],
 	
-	"#button-lightbox-login, #button-log-out" =>
+	".hide" =>
+		[
+		"display"	=> "none",
+		],
+	
+	".button-navigation" =>
 		[
 		"display"	=> "inline-block",
-		"border"	=> "2px solid #777",
-		"background"	=> "#777",
-		"color"		=> "#fff",
 		"padding"	=> "7px 15px",
 		"border-radius"	=> "100px",
 		"margin"	=> "20px 0 0 20px",
 		"font-family"	=> "Verdana",
 		"cursor"	=> "pointer",
 		"font-size"	=> "80%",
+		"border"	=> "2px solid #777",
+		],
+	
+	"#button-navigation-lightbox-login, #button-log-out" =>
+		[
+		"background"	=> "#777",
+		"color"		=> "#fff",
 		],
 
 	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" =>
 		[
-		"display"	=> "inline-block",
 		"border"	=> "2px solid #777",
 		"background"	=> "#fff",
 		"color"		=> "#666",
-		"padding"	=> "7px 15px",
-		"border-radius"	=> "100px",
-		"margin"	=> "20px 0 0 20px",
-		"font-family"	=> "Verdana",
-		"cursor"	=> "pointer",
-		"font-size"	=> "80%",
 		],
 	
 	];
@@ -97,20 +99,23 @@ $lightbox_close_array = implode(",", [
 	"lightbox-edit-admins.close",
 	]);
 
+$result_temp = file_get_contents("/access=json-login");
+echo $result_temp;
+
 // Log in button
-echo "<span role='button' tabindex='0' id='button-lightbox-login' on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
 
 // Log out button
-echo "<span role='button' tabindex='0' id='button-log-out' on='tap:'>Log out</span>";
+echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"loginState.loginStatus !== 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:'>Log out</span>";
 
 // Edit description
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
 
 // Edit episodes
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
 
 // Edit admins
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
 
 echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
 echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
