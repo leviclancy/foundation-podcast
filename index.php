@@ -274,16 +274,46 @@ if ($request_access == "xhr-logout"):
 
 
 // Give us the podcast description xhr
-if ($request_access == "xhr-edit-description"):
+if ($request_access == "xhr-edit-information"):
 
 	login_check();
 
-	// Edit the site info
+	// We will set up the values we need to update
+	$values_temp = [
+		"information_key"		=> null,
+		"information_value"		=> null,
+		];
 
-// podcast_description
+	// Prepare the statement to add the cookie code to SQL
+	$postgres_statement = postgres_update_statement("podcast_information_update", $values_temp);
+	$result = pg_prepare($postgres_connection, "podcast_information_update", $postgres_statement);
+	if (!($result)): json_result($domain, "error", null, "Could not prepare information statement."); endif;
 
-// description_key
-// Description info
+	$count_temp = 0; $error_temp = 0;
+	foreach ($_POST as $key_temp => $value_temp):
+
+		// Only use allowed information keys
+		if (!(in_array($key_temp, $allowed_information))): continue; endif;
+
+		if (empty($value_temp)): continue; endif;
+
+		$values_temp = [
+			"information_key"		=> $key_temp,
+			"information_value"		=> $value_temp,
+			];
+
+		// Execute the statement, add in the cookie
+		$result = pg_execute($postgres_connection, "podcast_information_update", $values_temp);
+		if (!($result)): $error_temp++; endif;
+
+		$count_temp++;
+
+		endforeach;
+
+	if (empty($count_temp)): json_result($domain, "error", null, "Did not update any information."); endif;
+	if (!(empty($error_temp))): json_result($domain, "error", null, "Could not completely save information."); endif;
+
+	json_result($domain, "success", null, "Saved all information.");
 
 	exit; endif;
 
