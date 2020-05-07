@@ -147,6 +147,7 @@ if ($request_access == "install"):
 		"code_id"		=> "VARCHAR(100)", // Arbitrary and unique code id
 		"admin_id"		=> "VARCHAR(100)", // The admin it refers to		
 		"code_type"		=> "VARCHAR(100)", // Either 'cookie' or 'magic'
+		"code_status"		=> "VARCHAR(100)", // Either 'active' or 'inactive'
 		"code_string"		=> "VARCHAR(100)", // The string should be 64 characters
 		"code_expiration"	=> "VARCHAR(100)", // Its expiration as a UNIX timestamp
 		];
