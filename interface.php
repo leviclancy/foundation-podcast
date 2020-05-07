@@ -313,8 +313,8 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 	$attributes_temp = [
 		"id='edit-decription-form-list'",
 		"layout='responsive'",
-		"width='800'",
-		"height='800'",
+		"width='650'",
+		"height='1500'",
 		"max-items='1'",
 		"reset-on-refresh='always'",
 		"items='information'",
