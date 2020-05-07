@@ -175,7 +175,7 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:loginState.refresh,lightbox-login.close'>";
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:loginState.refresh,lightbox-login.close,login-form.clear'>";
 	
 	echo "<label class='login-form-label' for='admin_name' form='login-form'>Enter your admin name.</label>";
 	echo "<input class='login-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
