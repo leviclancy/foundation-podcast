@@ -56,7 +56,7 @@ if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_re
 if ($request_access == "json-page"):
 
 	$json_array = [
-		"information" => [],
+		"information" => array_flip($allowed_information),
 		"episodes" => [],
 		];
 	
