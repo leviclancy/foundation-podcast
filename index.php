@@ -113,7 +113,7 @@ if ($request_access == "json-login"):
 
 	// Prepare cookie code lookup statement
 	$postgres_statement = "SELECT admin_id, admin_name, cookie_codes FROM podcast_admins WHERE cookie_codes LIKE CONCAT('%', $1 ,'%')";
-	$result = pf_prepare($postgres_connection, "get_cookie_codes_statement", $postgres_statement);
+	$result = pg_prepare($postgres_connection, "get_cookie_codes_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
 		json_output ($json_temp); endif;
