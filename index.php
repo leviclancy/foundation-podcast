@@ -111,6 +111,8 @@ if ($request_access == "json-login"):
 		$json_temp['loginMessage'] = "No cookie code.";
 		json_output ($json_temp); endif;
 
+json_result($domain, "error", null, "Password so far.".$_COOKIE['cookie_code']);
+
 	// Prepare cookie code lookup statement
 	$postgres_statement = "SELECT admin_id, admin_name, cookie_codes FROM podcast_admins WHERE cookie_codes LIKE CONCAT('%', $1 ,'%')";
 	$result = pf_prepare($postgres_connection, "get_cookie_codes_statement", $postgres_statement);
