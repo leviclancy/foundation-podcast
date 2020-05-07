@@ -118,7 +118,7 @@ if ($request_access == "magic"):
 // Return the login details
 if ($request_access == "json-login"):
 
-	json_output(login_check());
+	login_check();
 
 	endif;  
 
