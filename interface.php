@@ -262,7 +262,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 		echo "</div>";
 		
-	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
+	echo "<span class='form-submit' id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
 
 	echo "</form>";
 
