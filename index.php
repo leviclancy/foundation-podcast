@@ -137,7 +137,7 @@ if ($request_access == "json-login"):
 
 		// If the cookie code is expired, move on
 		if ($row_temp['code_expiration'] < time()):
-			setcookie("cookie_code", null, (time()-1000)); // Unset expired cookie
+			setcookie("cookie_code", null, 1); // Unset expired cookie
 			$json_temp['loginMessage'] = "Expired cookie code.";
 			json_output ($json_temp); endif;
 
@@ -206,10 +206,9 @@ if ($request_access == "xhr-login"):
 	$result = pg_execute($postgres_connection, "admin_cookie_codes_statement", $values_temp);
 	if (!($result)): json_result($domain, "error", null, "Could not save cookie in system."); endif;
 
-	json_result($domain, "error", null, "Successful login nooo $cookie_code_temp.");
-
 	// Set cookie
-	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp);
+	try { setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp); }
+	catch (Exception $exception_temp) { json_result($domain, "error", null, "Could not set cookie: ".$exception_temp->getMessage()); }
 
 	// Because we cannot access $_COOKIE until a page reload, we will check it separately
 	login_check();
@@ -224,7 +223,7 @@ if ($request_access == "xhr-logout"):
 
 	if (empty($_COOKIE['code'])): json_result($domain, "success", null, "Already logged out."); endif;
 
-	setcookie("cookie_code", null, (time()+24*60*60), '/');
+	setcookie("cookie_code", null, 1);
 
 	json_result($domain, "success", null, "Successfully logged out.");
 
