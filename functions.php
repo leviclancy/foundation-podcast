@@ -113,6 +113,6 @@ function login_check() {
 	$json_decoded = json_decode($result, true);
 
 	// If it did not work...
-	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, "Login failure."); endif;
+	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, "Login failure. $result"); endif;
 
 	} ?>
