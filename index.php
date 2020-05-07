@@ -150,7 +150,7 @@ if ($request_access == "json-login"):
 
 		endwhile;
 
-	$json_temp['loginMessage'] = "Failed to find admin.".$_COOKIE['cookie_code'];
+	$json_temp['loginMessage'] = "Failed to find admin.";
 	json_output ($json_temp);
 
 	endif;  
