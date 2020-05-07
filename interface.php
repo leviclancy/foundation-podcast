@@ -39,11 +39,6 @@ $style_array = [
 		"background"	=> "#fff",
 		"font-size"	=> "17px",
 		],
-	"#lightbox-login" =>
-		[
-		"color"		=> "#fff",
-		"background"	=> "rgba(230,106,53,1)",
-		],
 	"input" => [
 		"" 		=> "",
 		],
@@ -88,12 +83,25 @@ $style_array = [
 		"position"	=> "absolute",
 		"top"		=> "20px",
 		"left"		=> "20px",
-		"background"	=> "rgba(255,255,255,0.5)",
+		"background"	=> "rgba(255,255,255,0.4)",
 		"color"		=> "rgba(255,255,255,1)",
 		"padding"	=> "5px 10px",
 		"font-size"	=> "90%",
+		"border-radius"	=> "100px",
 		"font-family"	=> "Verdana",
 		],
+	
+	"amp-lightbox" =>
+		[
+		"padding"	=> "100px 20px",
+		],
+	
+	"#lightbox-login" =>
+		[
+		"color"		=> "#fff",
+		"background"	=> "rgba(230,106,53,1)",
+		],
+
 	
 	];
 
