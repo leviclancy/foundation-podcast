@@ -28,7 +28,7 @@ $request_access_array = [
 	"podcast-file",
 	"xhr-login",
 	"xhr-logout",
-	"xhr-edit-description",
+	"xhr-edit-information",
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
