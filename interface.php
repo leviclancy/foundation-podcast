@@ -37,6 +37,7 @@ $style_array = [
 	"body" => [
 		"font-family" 	=> "Alegreya, Times",
 		"background"	=> "#fff",
+		"font-size"	=> "17px",
 		],
 	"#lightbox-login" =>
 		[
@@ -51,6 +52,26 @@ $style_array = [
 		"outline"	=> "none",
 		"outline-width"	=> "none",
 		],
+	
+	"#button-lightbox-login, #button-lightbox-log-out" =>
+		[
+		"display"	=> "inline-block",
+		"border"	=> "2px solid #777",
+		"background"	=> "#777",
+		"color"		=> "#fff",
+		"padding"	=> "7px 15px",
+		],
+
+	"#button-lightbox-edit-description, #button-lightbox-edit-description, #button-lightbox-users" =>
+		[
+		"display"	=> "inline-block",
+		"border"	=> "2px solid #777",
+		"background"	=> "#fff",
+		"color"		=> "#777",
+		"padding"	=> "7px 15px",
+		],
+
+	
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
