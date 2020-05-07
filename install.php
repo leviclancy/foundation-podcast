@@ -188,11 +188,11 @@ if ($request_access == "install"):
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target='_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
-	echo "<label class='install-form-label' for='admin_name' form='install-form'>Enter your admin name (must be six or more characters).</label>";
-	echo "<input class='install-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<label class='install-form-label' for='install-form-admin-name'>Enter your admin name (must be six or more characters).</label>";
+	echo "<input class='install-form-input' type='text' id='admin_name' name='install-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
-	echo "<label class='install-form-label' for='password' form='install-form'>Enter your password (must be six or more characters).</label>";
-	echo "<input class='install-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<label class='install-form-label' for='install-form-password'>Enter your password (must be six or more characters).</label>";
+	echo "<input class='install-form-input' type='password' id='password' name='install-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -222,22 +222,22 @@ if ($request_access == "xhr-install"):
 	while ($row = pg_fetch_row($result)) { json_result($domain, "error", null, "Admins already exist."); }
 
 	// Sanitize the admin name
-	$_POST['admin_name'] = trim($_POST['admin_name']);
-	if (strlen($_POST['admin_name']) < 6): json_result($domain, "error", null, "Admin name too short."); endif;
-	if (strlen($_POST['admin_name']) > 50): json_result($domain, "error", null, "Admin name too long."); endif;
+	$_POST['install-form-admin-name'] = trim($_POST['install-form-admin-name']);
+	if (strlen($_POST['install-form-admin-name']) < 6): json_result($domain, "error", null, "Admin name too short."); endif;
+	if (strlen($_POST['install-form-admin-name']) > 50): json_result($domain, "error", null, "Admin name too long."); endif;
 
 	// Sanitize the password
-	$_POST['admin_name'] = trim($_POST['admin_name']);
-	if (strlen($_POST['password']) < 12): json_result($domain, "error", null, "Admin name too short."); endif;
-	if (strlen($_POST['password']) > 50): json_result($domain, "error", null, "Admin nam too long."); endif;
+	$_POST['install-form-password'] = trim($_POST['install-form-password']);
+	if (strlen($_POST['install-form-password']) < 12): json_result($domain, "error", null, "Admin name too short."); endif;
+	if (strlen($_POST['install-form-password']) > 50): json_result($domain, "error", null, "Admin nam too long."); endif;
 
 	// Prepare the values for a new admin
 	$password_salt = random_code(30);	
 	$values_temp = [
 		"admin_id" 		=> random_code(16),
-		"admin_name"		=> $_POST['admin_name'],
+		"admin_name"		=> $_POST['install-form-admin-name'],
 		"password_salt"		=> $password_salt,
-		"password_hash"		=> sha1($password_salt.$_POST['password']),
+		"password_hash"		=> sha1($password_salt.$_POST['install-form-password']),
 		];
 	
 	// Prepare the statement
