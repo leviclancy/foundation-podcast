@@ -64,6 +64,7 @@ $style_array = [
 		"margin"	=> "20px 0 0 20px",
 		"font-family"	=> "Verdana",
 		"cursor"	=> "pointer",
+		"font-size"	=> "80%",
 		],
 
 	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" =>
@@ -77,6 +78,7 @@ $style_array = [
 		"margin"	=> "20px 0 0 20px",
 		"font-family"	=> "Verdana",
 		"cursor"	=> "pointer",
+		"font-size"	=> "80%",
 		],
 	
 	];
