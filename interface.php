@@ -205,16 +205,11 @@ $lightbox_close_array = implode(",", [
 $login_hidden = "button-navigation"; $logout_hidden = "hide";
 
 // But maybe we are logged in?
-if (!(empty($_COOKIE['cookie_code']))):
+$result_temp = login_check("return");
+$result_temp = json_decode($result_temp, true);
 
-	$result_temp = login_check("return");
-
-	$result_temp = json_decode($result_temp, true);
-
-	// If we are logged in, update default classes
-	if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
-	
-	endif;
+// If we are logged in, update default classes
+if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
 
 // Log in button
 echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
