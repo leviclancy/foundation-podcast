@@ -76,7 +76,7 @@ $style_array = [
 		"color"		=> "#fff",
 		],
 
-	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" => [
+	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-manage-admins, #button-lightbox-my-account" => [
 		"border"	=> "2px solid #777",
 		"background"	=> "#fff",
 		"color"		=> "#666",
@@ -128,10 +128,10 @@ $style_array = [
 		"color"		=> "#333",
 		],
 
-	"#login-form-submit" => [
+	".form-submit" => [
 		"font-weight"	=> "400",
 		"font-family"	=> "Verdana",
-		"display"	=> "table",
+		"display"	=> "inline-block",
 		"position"	=> "fixed",
 		"z-index"	=> "1000",
 		"bottom"	=> "20px",
@@ -163,7 +163,8 @@ $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
 	"lightbox-edit-description.close",
 	"lightbox-edit-episodes.close",
-	"lightbox-edit-admins.close",
+	"lightbox-manage-admins.close",
+	"lightbox-my-account.close",
 	]);
 
 // By default, we are logged out
@@ -204,8 +205,11 @@ echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' cla
 // Edit episodes
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
 
-// Edit admins
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
+// Manage admins
+echo "<span role='button' tabindex='0' id='button-lightbox-manage-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-manage-admins.open'>Manage admins</span>";
+
+// My account
+echo "<span role='button' tabindex='0' id='button-lightbox-my-account' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-my-account.open'>My account</span>";
 
 // Logout form
 
@@ -300,12 +304,23 @@ echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_clo
 
 	echo "</amp-lightbox>";
 
-// Lightbox for user management
-echo "<amp-lightbox id='lightbox-edit-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+// Lightbox for admin management
+echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
 
 	// 
+
+	echo "</amp-lightbox>";
+
+// Lightbox for the user's own account
+echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+
+	// Password?
+
+	// Admin name
 
 	echo "</amp-lightbox>";
 
