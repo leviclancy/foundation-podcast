@@ -224,7 +224,7 @@ if ($request_access == "xhr-edit-information"):
 		];
 
 	// Prepare the statement to add the cookie code to SQL
-	$postgres_statement = postgres_update_statement("podcast_information_update", $values_temp);
+	$postgres_statement = postgres_update_statement("podcast_information", $values_temp);
 	$result = pg_prepare($postgres_connection, "podcast_information_update", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare information statement."); endif;
 
