@@ -103,7 +103,7 @@ function postgres_update_statement ($table_name, $values_temp) {
 	}
 
 // Check if the user is logged in
-function login_check($return=true) {
+function login_check($return=false) {
 		
 	global $_COOKIE;
 	global $_POST;
