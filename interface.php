@@ -311,6 +311,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		"items='information'",
 		"binding='refresh'",
 		"src='amp-state:pageState'",
+		"single-item",
 		];
 	echo "<amp-list ". implode(" ", $attributes_temp) .">
 		<span class='amp-list-fallback' fallback>Failed to load information.</span>
