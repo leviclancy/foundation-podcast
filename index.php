@@ -165,9 +165,9 @@ if ($request_access == "xhr-login"):
 	if (empty($_POST['admin_name'])): json_result($domain, "error", null, "No admin name."); endif;
 	if (empty($_POST['password'])): json_result($domain, "error", null, "No password."); endif;
 
-	$postgres_statement = "SELECT admin_id, password_salt, password_hash, cookie_codes FROM podcast_admins WHERE admin_name=$1";
+	$postgres_statement = "SELECT admin_id, password_salt, password_hash FROM podcast_admins WHERE admin_name=$1";
 	$result = pg_prepare($postgres_connection, "get_admin_password_statement", $postgres_statement);
-	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
+	if (!($result)): json_result($domain, "error", null, "Could not prepare password search statement."); endif;
 
 	$result = pg_execute($postgres_connection, "get_admin_password_statement", [ $_POST['admin_name'] ]);
 	if (!($result)): json_result($domain, "error", null, "No result for admin name."); endif;
@@ -181,8 +181,6 @@ if ($request_access == "xhr-login"):
 
 		$admin_id_temp = $row_temp['admin_id'];
 
-		$cookie_codes_array = json_decode($row_temp['cookies_codes'], true);
-
 		endwhile;
 
 	if (empty($admin_id_temp)): json_result($domain, "error", null, "Could not find admin name."); endif;
@@ -191,32 +189,18 @@ if ($request_access == "xhr-login"):
 	$cookie_code_temp = random_code(64);
 	$cookie_expiration_temp = (time()+24*60*60);
 
-	// Then we will update the cookie codes array
-	$cookie_codes_array[$cookie_expiration_temp.random_code(8)] = [
-		"cookie_code" 		=> $cookie_code_temp,
-		"cookie_expiration"	=> $cookie_expiration_temp,
-		];
-
-	// We'll remove expired cookies
-	foreach ($cookie_codes_array as $key_temp => $cookie_info_temp):
-		if ($cookie_info_temp['cookie_expiration'] > time()): continue; endif; // If expiration is in future, continue
-		unset($cookie_codes_array[$key_temp]); // Otherwise, unset the cookie code
-		endforeach;
-
-	// We will sort, count, and prune it to a reasonable use limit
-	krsort($cookie_codes_array);
-	while (count($cookie_codes_array) > 16): $discard_temp = array_pop($cookie_codes_array); endwhile;
-
 	// We will set up the values we need to update
 	$values_temp = [
+		"code_id"		=> time().random_code(64),
 		"admin_id" 		=> $admin_id_temp,
-		"cookie_codes"		=> json_encode($cookie_codes_array),
+		"code_string"		=> $cookie_code_temp,
+		"code_expiration"	=> $cookie_expiration_temp,
 		];
 
 	// Prepare the statement to add the cookie code to SQL
-	$postgres_statement = postgres_update_statement("podcast_admins", $values_temp);
+	$postgres_statement = postgres_update_statement("podcast_admin_codes", $values_temp);
 	$result = pg_prepare($postgres_connection, "admin_cookie_codes_statement", $postgres_statement);
-	if (!($result)): json_result($domain, "error", null, "Could not prepare statement."); endif;
+	if (!($result)): json_result($domain, "error", null, "Could not prepare code statement."); endif;
 	
 	// Execute the statement, add in the cookie
 	$result = pg_execute($postgres_connection, "admin_cookie_codes_statement", $values_temp);
