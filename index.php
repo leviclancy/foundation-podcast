@@ -150,7 +150,7 @@ if ($request_access == "json-login"):
 
 		endwhile;
 
-	$json_temp['loginMessage'] = "Failed to find admin.";
+	$json_temp['loginMessage'] = "Failed to find admin.".$_COOKIE['cookie_code'];
 	json_output ($json_temp);
 
 	endif;  
@@ -193,6 +193,7 @@ if ($request_access == "xhr-login"):
 	$values_temp = [
 		"code_id"		=> time().random_code(64),
 		"admin_id" 		=> $admin_id_temp,
+		"code_type"		=> "cookie",
 		"code_string"		=> $cookie_code_temp,
 		"code_expiration"	=> $cookie_expiration_temp,
 		];
