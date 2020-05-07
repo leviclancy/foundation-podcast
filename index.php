@@ -128,7 +128,7 @@ if ($request_access == "json-login"):
 		json_output ($json_temp); endif;
 
 	// Prepare cookie code lookup statement
-	$postgres_statement = "SELECT code_id, admin_id, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_statu<>'deactivated' AND code_id~~$1";
+	$postgres_statement = "SELECT code_string, code_admin, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_statu<>'deactivated' AND code_string~~$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
@@ -143,7 +143,7 @@ if ($request_access == "json-login"):
 	while ($row_temp = pg_fetch_assoc($result)):
 
 		// If the cookie codes do not match, move on
-		if ($_COOKIE['cookie_code'] !== $row_temp['code_id']):
+		if ($_COOKIE['cookie_code'] !== $row_temp['code_string']):
 			$json_temp['loginMessage'] = "Mismatched cookie code.";
 			json_output ($json_temp); endif;
 
@@ -155,7 +155,7 @@ if ($request_access == "json-login"):
 
 		$json_temp['loginStatus']	= 'loggedin';
 		$json_temp['loginMessage']	= 'Logged in.';
-		$json_temp['loginAdminID']	= $row_temp['admin_id'];
+		$json_temp['loginAdminID']	= $row_temp['code_admin'];
 		$json_temp['loginExpiration']	= $row_temp['code_expiration'];
 
 		json_output ($json_temp);
@@ -203,8 +203,8 @@ if ($request_access == "xhr-login"):
 
 	// We will set up the values we need to update
 	$values_temp = [
-		"code_id"		=> $cookie_code_temp,
-		"admin_id" 		=> $admin_id_temp,
+		"code_string"		=> $cookie_code_temp,
+		"code_admin" 		=> $admin_id_temp,
 		"code_type"		=> "cookie",
 		"code_creation"		=> time(),
 		"code_expiration"	=> $cookie_expiration_temp,
