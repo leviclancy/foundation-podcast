@@ -112,7 +112,10 @@ function login_check() {
 	$result = file_get_contents("https://".$domain."/?access=json-login");
 	$json_decoded = json_decode($result, true);
 
+	// Set up the result
+	$result_temp = $result['message'] ? "Login failure.";
+	
 	// If it did not work...
-	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, "Login failure. $result"); endif;
+	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, ); endif;
 
 	} ?>
