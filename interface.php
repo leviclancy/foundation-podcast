@@ -83,22 +83,23 @@ $style_array = [
 		],
 	
 	".lightbox-back" => [
+		"font-weight"		=> "700",
 		"position"		=> "absolute",
 		"top"			=> "20px",
 		"box-sizing"		=> "border-box",
-		"right"			=> "-15px",
+		"right"			=> "-25px",
 		"margin"		=> "0 -1px 0 0",
 		"background"		=> "rgba(255,255,255,0.2)",
 		"color"			=> "rgba(255,255,255,1)",
 		"font-size"		=> "80%",
 		"font-family"		=> "Verdana",			
-		"padding"		=> "7px 40px 7px 15px",
+		"padding"		=> "7px 50px 7px 25px",
 		"border-radius"		=> "100px",
 		"cursor"		=> "pointer",
 		],
 	
 	".lightbox-back:hover" => [
-		"right"			=> "1px",
+		"right"			=> "-5px",
 		"background"		=> "rgba(255,255,255,0.3)",
 		"-webkit-transition"	=> "background .5s linear, right .3s ease", // Safari
 		"transition"		=> "background .5s linear, right .3s ease",
@@ -138,7 +139,7 @@ $style_array = [
 		],
 
 	".form-submit" => [
-		"font-weight"		=> "400",
+		"font-weight"		=> "700",
 		"font-family"		=> "Verdana",
 		"display"		=> "inline-block",
 		"position"		=> "fixed",
@@ -150,7 +151,7 @@ $style_array = [
 		"border-radius"		=> "100px 0 0 100px",
 		"background"		=> "rgba(255,255,255,0.1)",
 		"padding"		=> "15px 65px 15px 40px",
-		"box-shadow"		=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
+		"box-shadow"		=> "-10px 10px 25px -8px rgba(20,20,20,0.4)",
 		"color"			=> "#fff",
 		"text-align"		=> "center",
 		"cursor"		=> "pointer",
@@ -159,8 +160,8 @@ $style_array = [
 	
 	".form-submit:hover" => [
 		"right"			=> "1px",
-		"background"		=> "linear-gradient(45deg,rgba(255,255,255,0.15),rgba(255,255,255,0),40%)",
-		"box-shadow"		=> "-5px 5px 25px -5px rgba(40,40,40,0.4)",
+		"background"		=> "linear-gradient(45deg,rgba(255,255,255,0.3),rgba(255,255,255,0),40%)",
+		"box-shadow"		=> "-10px 10px 33px -8px rgba(20,20,20,0.3)",
 		"border"		=> "2px solid rgba(255,255,255,1)",
 		"-webkit-transition"	=> "background .5s linear, right .3s ease, box-shadow 0.6s linear, border 0.3s linear", // Safari
 		"transition"		=> "background .5s linear, right .3s ease, box-shadow 0.6s linear, obrder 0.3s linear",
