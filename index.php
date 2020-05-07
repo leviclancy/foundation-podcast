@@ -111,48 +111,40 @@ if ($request_access == "json-login"):
 		$json_temp['loginMessage'] = "No cookie code.";
 		json_output ($json_temp); endif;
 
+	if (strlen($_COOKIE['cookie_code']) < 64):
+		$json_temp['loginMessage'] = "Invalid cookie code.";
+		json_output ($json_temp); endif;
+
 	// Prepare cookie code lookup statement
-	$postgres_statement = "SELECT admin_id, admin_name, cookie_codes FROM podcast_admins WHERE cookie_codes LIKE CONCAT('%', $1 ,'%')";
-	$result = pg_prepare($postgres_connection, "get_cookie_codes_statement", $postgres_statement);
+	$postgres_statement = "SELECT admin_id, code_string, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_string LIKE $1";
+	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
 		json_output ($json_temp); endif;
 
 	// Search for cookie code
-	$result = pg_execute($postgres_connection, "get_cookie_codes_statement", [ $_COOKIE['cookie_code'] ]);
+	$result = pg_execute($postgres_connection, "get_cookie_code_statement", [ $_COOKIE['cookie_code'] ]);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not find cookie code.";
 		json_output ($json_temp); endif;
 
 	while ($row_temp = pg_fetch_assoc($result)):
 
-		// Let's get the cookie codes array
-		$cookie_codes_array = json_decode($row_temp['cookie_codes'], true);
+		// If the cookie codes do not match, move on
+		if ($_COOKIE['cookie_code'] !== $row_temp['code_string']):
+			$json_temp['loginMessage'] = "Mismatched cookie code.";
+			json_output ($json_temp); endif;
 
-		// Let's get the cookie code and expiration
-		foreach ($cookie_codes_array as $key_temp => $cookie_code_temp):
-
-			// If the cookie codes do not match, move on
-			if ($_COOKIE['cookie_code'] !== $cookie_code_temp['cookie_code']): continue; endif;
-
-			// We'll break, keeping the last $cookie_code_temp
-			break;
-
-			endforeach;
-
-		// In case there were no matches, we have to double check
-		if ($_COOKIE['cookie_code'] !== $cookie_code_temp['cookie_code']): continue; endif;
-
-		// If expired cookie code
-		if ($cookie_code_temp['cookie_expiration'] < time()):
+		// If the cookie code is expired, move on
+		if ($row_temp['code_expiration'] < time()):
+			setcookie("cookie_code", null, (time()-1000)); // Unset expired cookie
 			$json_temp['loginMessage'] = "Expired cookie code.";
 			json_output ($json_temp); endif;
 
 		$json_temp['loginStatus']	= 'loggedin';
 		$json_temp['loginMessage']	= 'Logged in.';
 		$json_temp['loginAdminID']	= $row_temp['admin_id'];
-		$json_temp['loginAdminName']	= $row_temp['admin_name'];
-		$json_temp['loginExpiration']	= $cookie_code_temp['cookie_expiration'];
+		$json_temp['loginExpiration']	= $row_temp['code_expiration'];
 
 		json_output ($json_temp);
 
