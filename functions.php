@@ -141,4 +141,33 @@ function login_check($return=false) {
 	if (!($result)):
 		$json_temp['loginMessage'] = "Failed to find matching code.";
 		if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
- ?>
+	
+	while ($row_temp = pg_fetch_assoc($result)):
+
+		// If the cookie codes do not match, move on
+		if ($cookie_code_temp !== $row_temp['code_string']):
+			$json_temp['loginMessage'] = "Mismatched cookie code.";
+			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
+
+		// If the cookie code is expired, move on
+		if ($row_temp['code_expiration'] < time()):
+			setcookie("cookie_code", null, 1); // Unset expired cookie
+			$json_temp['loginMessage'] = "Expired cookie code.";
+			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
+
+		// If the cookie code is deactivated, move on
+		if ($row_temp['code_status'] == "deactivated"):
+			$json_temp['loginMessage'] = "Deactivated cookie code.";
+			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
+
+		$json_temp['loginStatus']	= 'loggedin';
+		$json_temp['loginMessage']	= 'Logged in.';
+		$json_temp['loginAdminID']	= $row_temp['code_admin'];
+		$json_temp['loginExpiration']	= $row_temp['code_expiration'];
+
+		if ($return == true): return $json_temp; else: json_output($json_temp); endif;
+
+		endwhile;
+	
+	$json_temp['loginMessage'] = "Failed to find active code.";
+	return $json_temp; } ?>
