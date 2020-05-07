@@ -236,7 +236,7 @@ if ($request_access == "xhr-login"):
 // Give us the logout xhr
 if ($request_access == "xhr-logout"):
 
-	if (empty($_COOKIE['code'])): json_result($domain, "success", null, "Already logged out."); endif;
+	if (empty($_COOKIE['cookie_code'])): json_result($domain, "success", null, "Already logged out."); endif;
 
 	// We will set up the values we need to update
 	$values_temp = [
