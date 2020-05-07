@@ -63,7 +63,7 @@ if ($request_access == "json-page"):
 	// Pull up podcast description
 	$sql_temp = "SELECT information_key, information_value FROM podcast_information";
 	$result = pg_query($postgres_connection, $sql_temp);
-	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_description' table."); endif;
+	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_information' table."); endif;
 
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
