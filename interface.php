@@ -108,7 +108,7 @@ $style_array = [
 			
 	".login-form-label, .login-form-input" =>
 		[
-		"width"		=> "100%",
+		"width"		=> "80%",
 		"max-width"	=> "600px",
 		"padding"	=> "20px",
 		"display"	=> "block",
@@ -126,7 +126,8 @@ $style_array = [
 		"margin"	=> "10px auto 0",
 		"border"	=> "2px solid rgba(255,255,255,1)",
 		"border-radius"	=> "100px",
-		"background"	=> "rgba(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0.3))",
+		"background"	=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
+		"color"		=> "#333",
 		],
 
 	
