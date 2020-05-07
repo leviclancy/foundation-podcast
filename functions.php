@@ -117,6 +117,13 @@ function login_check($return=false) {
 	
 	global $postgres_connection;
 	
+	$json_temp = [
+		"loginStatus" 		=> "loggedout",
+		"loginMessage" 		=> null,
+		"loginAdminID"		=> null,
+		"loginExpiration"	=> null,
+		];
+	
 	// Set cookie code
 	$cookie_code_temp = $_COOKIE['cookie_code'] ?? $_POST['cookie_code'] ?? null;
 
