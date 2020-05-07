@@ -46,7 +46,7 @@ $style_array = [
 	
 	".form-warning" => [
 		"display"	=> "block",
-		"margin"	=> "30px auto",
+		"margin"	=> "40px auto 30px",
 		"font-style"	=> "italic",
 		"text-align"	=> "center",
 		],
@@ -129,17 +129,26 @@ $style_array = [
 		],
 
 	"#login-form-submit" => [
-		"font-weight"	=> "700",
+		"font-weight"	=> "400",
 		"font-family"	=> "Verdana",
 		"display"	=> "table",
+		"position"	=> "fixed",
+		"z-index"	=> "1000",
+		"bottom"	=> "20px",
+		"right"		=> "0",
 		"clear"		=> "both",
-		"margin"	=> "40px auto",
-		"border-radius"	=> "100px",
-		"background"	=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(180deg, rgba(230,105,50,1), rgba(230,105,50,0.3))",
-		"padding"	=> "15px 40px",
-		"color"		=> "#fff",
+		"border-radius"	=> "100px 0 0 100px",
+		"background"	=> "rgba(255,255,255,1)",
+		"padding"	=> "15px 25px 15px 40px",
+		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.2)",
+		"color"		=> "#333",
 		"text-align"	=> "center",
 		"cursor"	=> "pointer",
+		],
+	
+	"#lightbox-edit-description" => [
+		"color"		=> "#fff",
+		"background"	=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4))",
 		],
 	];
 
@@ -251,6 +260,8 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 		
 	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
 
+	echo "</form>";
+
 	echo "</amp-lightbox>";
 
 
@@ -259,7 +270,23 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
 
-	// 
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,loginState.refresh'>";
+	
+	echo "<label class='login-form-label' for='admin_name' form='login-form'>Enter your admin name.</label>";
+	echo "<input class='login-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+
+	echo "<label class='login-form-label' for='password' form='install-form'>Enter your password.</label>";
+	echo "<input class='login-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+		
+	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
+
+	echo "</form>";
 
 	echo "</amp-lightbox>";
 
