@@ -107,28 +107,53 @@ function login_check($return=false) {
 		
 	global $_COOKIE;
 	global $_POST;
+	
 	global $domain;
+	
+	global $postgres_connection;
 	
 	// Set cookie code
 	$cookie_code_temp = $_COOKIE['cookie_code'] ?? $_POST['cookie_code'] ?? null;
-
-	$json_temp = [
-		"loginStatus"		=> "loggedout",
-		"loginMessage"		=> null,
-		"loginAdminID"		=> null,
-		"loginAdminName"	=> null,
-		"loginExpiration"	=> null,
-		];
 
 	// If no cookie code, just ignore it
 	if (empty($cookie_code_temp)):
 		$json_temp['loginMessage'] = "No cookie code.";
 		if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
 
+	// If invalid cookie code
 	if (strlen($cookie_code_temp) < 64):
 		$json_temp['loginMessage'] = "Invalid cookie code.";
 		if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
 
+	// This means we are accessing it at a point in the script without a Postgres connection
+	if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK):
+		
+		// Create the HTTP array
+		$http_array = [
+			"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
+			"method"  => "POST",
+        		"content" => http_build_query(["cookie_code"=>$cookie_code_temp]),
+			];
+		$result_temp = file_get_contents("https://".$domain."/?access=json-login", false, stream_context_create(["http" => $http_array]));
+
+		// If we did not connect
+		if ($result_temp === FALSE):
+			$json_temp['loginMessage'] = "Could not access domain.";
+			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
+	
+		// Now decode whatever we received
+		$result_temp = json_decoded($result_temp, true);
+	
+		// If it is gibberish then that is an error
+		if (!(isset($result_temp['login_status']))):
+			$json_temp['loginMessage'] = "Invalid json-login response.";
+			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
+
+		// The HTTP response, decoded
+		if ($return == true): return $result_temp; else: json_output($result_temp); endif;
+		
+		endif;
+	
 	// Prepare cookie code lookup statement
 	$postgres_statement = "SELECT * FROM podcast_admin_codes WHERE code_type='cookie' AND code_string=$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
@@ -170,4 +195,4 @@ function login_check($return=false) {
 		endwhile;
 	
 	$json_temp['loginMessage'] = "Failed to find active code.";
-	return $json_temp; } ?>
+	if ($return == true): return $json_temp; else: json_output($json_temp); endif; } ?>
