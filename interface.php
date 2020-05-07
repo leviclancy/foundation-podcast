@@ -204,8 +204,6 @@ $lightbox_close_array = implode(",", [
 // Check if we are logged in
 $result_temp = login_check(true);
 
-print_r($result_temp);
-
 // By default, we are logged out
 $login_hidden = "button-navigation"; $logout_hidden = "hide";
 if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
