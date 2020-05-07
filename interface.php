@@ -85,16 +85,25 @@ $style_array = [
 	".lightbox-back" => [
 		"position"	=> "absolute",
 		"top"		=> "20px",
-		"left"		=> "20px",
+		"left"		=> "-15px",
+		"margin"	=> "0 0 0 -1px",
 		"background"	=> "rgba(255,255,255,0.2)",
 //		"border"	=> "2px solid rgba(255,255,255,0.2)",
 		"color"		=> "rgba(255,255,255,1)",
 		"font-size"	=> "80%",
 		"font-family"	=> "Verdana",			
-		"padding"	=> "7px 20px",
+		"padding"	=> "7px 25px 7px 55px",
 		"border-radius"	=> "100px",
 		"cursor"	=> "pointer",
 		],
+	
+	".lightbox-back:hover" => [
+		"left"		=> "1px",
+		"background"	=> "rgba(255,255,255,1)",
+		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
+		"-webkit-transition"	=> "background .5s linear, right .3s ease, box-shadow 0.5s linear", // Safari
+		"transition"	=> 	"background .5s linear, right .3s ease, box-shadow 0.5s linear",
+
 	
 	"amp-lightbox" => [
 		"padding"	=> "100px 20px",
@@ -136,15 +145,23 @@ $style_array = [
 		"position"	=> "fixed",
 		"z-index"	=> "1000",
 		"bottom"	=> "20px",
-		"right"		=> "1px",
-		"margin"	=> "0 -2px 0 0",
+		"right"		=> "-15px",
+		"margin"	=> "0 -1px 0 0",
 		"border-radius"	=> "100px 0 0 100px",
-		"background"	=> "rgba(255,255,255,1)",
-		"padding"	=> "15px 25px 15px 40px",
+		"background"	=> "rgba(255,255,255,0.7)",
+		"padding"	=> "15px 65px 15px 40px",
 		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
 		"color"		=> "#333",
 		"text-align"	=> "center",
 		"cursor"	=> "pointer",
+		],
+	
+	".form-submit:hover" => [
+		"right"		=> "1px",
+		"background"	=> "rgba(255,255,255,1)",
+		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
+		"-webkit-transition"	=> "background .5s linear, right .3s ease, box-shadow 0.5s linear", // Safari
+		"transition"	=> 	"background .5s linear, right .3s ease, box-shadow 0.5s linear",
 		],
 	
 	"#lightbox-edit-description" => [
