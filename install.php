@@ -141,9 +141,9 @@ if ($request_access == "install"):
 		"code_expiration"	=> "VARCHAR(100)", // Its expiration as a UNIX timestamp
 		];
 
-	$tables_array['podcast_description'] = [
-		"description_key"	=> "VARCHAR(100)", // title, author, description, language
-		"description_info"	=> "VARCHAR(500)",
+	$tables_array['podcast_information'] = [
+		"information_key"	=> "VARCHAR(100)", // title, author, description, language
+		"information_value"	=> "VARCHAR(500)",
 		];
 
 	$tables_array['podcast_episodes'] = [
