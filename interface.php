@@ -116,6 +116,7 @@ $style_array = [
 
 	".login-form-label" =>
 		[
+		"font-family"	=> "Verdana",
 		"margin"	=> "30px auto 0",
 		"font-size"	=> "80%",
 		"font-style"	=> "italic",
@@ -130,7 +131,18 @@ $style_array = [
 		"color"		=> "#333",
 		],
 
-	
+	"#login-form-submit" =>
+		[
+		"display"	=> "table",
+		"clear"		=> "both",
+		"margin"	=> "40px auto",
+		"border-radius"	=> "100px",
+		"background"	=> "rgba(230,106,53,0.7)",
+		"padding"	=> "20px 30px",
+		"color"		=> "#fff",
+		"text-align"	=> "center",
+		"cursor"	=> "pointer",
+		],
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
