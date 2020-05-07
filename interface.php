@@ -99,7 +99,7 @@ $lightbox_close_array = implode(",", [
 	"lightbox-edit-admins.close",
 	]);
 
-$result_temp = file_get_contents("/access=json-login");
+$result_temp = file_get_contents("/?access=json-login");
 echo $result_temp;
 
 // Log in button
