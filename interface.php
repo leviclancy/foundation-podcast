@@ -35,138 +35,136 @@ echo "<meta name='viewport' content='width=device-width,minimum-scale=1,initial-
 
 $style_array = [
 	"body" => [
-		"font-family" 	=> "Alegreya, Times",
-		"background"	=> "#fff",
-		"font-size"	=> "17px",
+		"font-family" 		=> "Alegreya, Times",
+		"background"		=> "#fff",
+		"font-size"		=> "17px",
 		],
 	"input" => [
-		"font-size" 	=> "15px",
-		"font-family" 	=> "Verdana",
+		"font-size" 		=> "15px",
+		"font-family" 		=> "Verdana",
 		],
 	
 	".form-warning" => [
-		"display"	=> "block",
-		"margin"	=> "40px auto 30px",
-		"font-style"	=> "italic",
-		"text-align"	=> "center",
+		"display"		=> "block",
+		"margin"		=> "40px auto 30px",
+		"font-style"		=> "italic",
+		"text-align"		=> "center",
 		],
 	
 	"*:focus" => [
-		"outline"	=> "none",
-		"outline-width"	=> "none",
+		"outline"		=> "none",
+		"outline-width"		=> "none",
 		],
 	
 	".hide" => [
-		"display"	=> "none",
+		"display"		=> "none",
 		],
 	
 	".button-navigation" => [
-		"display"	=> "inline-block",
-		"padding"	=> "7px 15px",
-		"border-radius"	=> "100px",
-		"margin"	=> "20px 0 0 20px",
-		"font-family"	=> "Verdana",
-		"cursor"	=> "pointer",
-		"font-size"	=> "80%",
-		"border"	=> "2px solid #777",
+		"display"		=> "inline-block",
+		"padding"		=> "7px 15px",
+		"border-radius"		=> "100px",
+		"margin"		=> "20px 0 0 20px",
+		"font-family"		=> "Verdana",
+		"cursor"		=> "pointer",
+		"font-size"		=> "80%",
+		"border"		=> "2px solid #777",
 		],
 	
 	"#button-navigation-lightbox-login, #button-log-out" => [
-		"background"	=> "#777",
-		"color"		=> "#fff",
+		"background"		=> "#777",
+		"color"			=> "#fff",
 		],
 
 	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-manage-admins, #button-lightbox-my-account" => [
-		"border"	=> "2px solid #777",
-		"background"	=> "#fff",
-		"color"		=> "#666",
+		"border"		=> "2px solid #777",
+		"background"		=> "#fff",
+		"color"			=> "#666",
 		],
 	
 	".lightbox-back" => [
-		"position"	=> "absolute",
-		"top"		=> "20px",
-		"left"		=> "-15px",
-		"margin"	=> "0 0 0 -1px",
-		"background"	=> "rgba(255,255,255,0.2)",
-//		"border"	=> "2px solid rgba(255,255,255,0.2)",
-		"color"		=> "rgba(255,255,255,1)",
-		"font-size"	=> "80%",
-		"font-family"	=> "Verdana",			
-		"padding"	=> "7px 25px 7px 55px",
-		"border-radius"	=> "100px",
-		"cursor"	=> "pointer",
+		"position"		=> "absolute",
+		"top"			=> "20px",
+		"left"			=> "-15px",
+		"margin"		=> "0 0 0 -1px",
+		"background"		=> "rgba(255,255,255,0.2)",
+		"color"			=> "rgba(255,255,255,1)",
+		"font-size"		=> "80%",
+		"font-family"		=> "Verdana",			
+		"padding"		=> "7px 25px 7px 55px",
+		"border-radius"		=> "100px",
+		"cursor"		=> "pointer",
 		],
 	
 	".lightbox-back:hover" => [
-		"left"		=> "1px",
-		"background"	=> "rgba(255,255,255,1)",
-		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
-		"-webkit-transition"	=> "background .5s linear, right .3s ease, box-shadow 0.5s linear", // Safari
-		"transition"	=> 	"background .5s linear, right .3s ease, box-shadow 0.5s linear",
+		"left"			=> "1px",
+		"background"		=> "rgba(255,255,255,0.3)",
+		"-webkit-transition"	=> "background .5s linear, right .3s ease", // Safari
+		"transition"		=> "background .5s linear, right .3s ease",
 
 	
 	"amp-lightbox" => [
-		"padding"	=> "100px 20px",
-		"box-sizing"	=> "border-box",
-//		"position"	=> "relative",
+		"padding"		=> "100px 20px",
+		"box-sizing"		=> "border-box",
+//		"position"		=> "relative",
 		],
 	
 	"#lightbox-login" => [
-		"color"		=> "#fff",
-		"background"	=> "linear-gradient(160deg, rgba(0,65,140,0.2), rgba(255,255,255,0) 40%), linear-gradient(240deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%), linear-gradient(15deg, rgba(230,106,53,1), rgba(35,105,190,1))",
+		"color"			=> "#fff",
+		"background"		=> "linear-gradient(160deg, rgba(0,65,140,0.2), rgba(255,255,255,0) 40%), linear-gradient(240deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%), linear-gradient(15deg, rgba(230,106,53,1), rgba(35,105,190,1))",
 		],
 			
 	".login-form-label, .login-form-input" => [
-		"width"		=> "80%",
-		"max-width"	=> "600px",
-		"padding"	=> "20px",
-		"display"	=> "block",
+		"width"			=> "80%",
+		"max-width"		=> "600px",
+		"padding"		=> "20px",
+		"display"		=> "block",
 		],
 
 	".login-form-label" => [
-		"font-family"	=> "Verdana",
-		"margin"	=> "30px auto 0",
-		"font-size"	=> "80%",
-		"font-style"	=> "italic",
+		"font-family"		=> "Verdana",
+		"margin"		=> "30px auto 0",
+		"font-size"		=> "80%",
+		"font-style"		=> "italic",
 		],
 
 	".login-form-input" => [
-		"margin"	=> "10px auto 0",
-		"border"	=> "2px solid rgba(255,255,255,1)",
-		"border-radius"	=> "100px",
-		"background"	=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
-		"color"		=> "#333",
+		"margin"		=> "10px auto 0",
+		"border"		=> "2px solid rgba(255,255,255,1)",
+		"border-radius"		=> "100px",
+		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
+		"color"			=> "#333",
 		],
 
 	".form-submit" => [
-		"font-weight"	=> "400",
-		"font-family"	=> "Verdana",
-		"display"	=> "inline-block",
-		"position"	=> "fixed",
-		"z-index"	=> "1000",
-		"bottom"	=> "20px",
-		"right"		=> "-15px",
-		"margin"	=> "0 -1px 0 0",
-		"border-radius"	=> "100px 0 0 100px",
-		"background"	=> "rgba(255,255,255,0.7)",
-		"padding"	=> "15px 65px 15px 40px",
-		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
-		"color"		=> "#333",
-		"text-align"	=> "center",
-		"cursor"	=> "pointer",
+		"font-weight"		=> "400",
+		"font-family"		=> "Verdana",
+		"display"		=> "inline-block",
+		"position"		=> "fixed",
+		"z-index"		=> "1000",
+		"bottom"		=> "20px",
+		"right"			=> "-15px",
+		"margin"		=> "0 -1px 0 0",
+		"border-radius"		=> "100px 0 0 100px",
+		"background"		=> "rgba(255,255,255,0.7)",
+		"padding"		=> "15px 65px 15px 40px",
+		"box-shadow"		=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
+		"color"			=> "#333",
+		"text-align"		=> "center",
+		"cursor"		=> "pointer",
 		],
 	
 	".form-submit:hover" => [
-		"right"		=> "1px",
-		"background"	=> "rgba(255,255,255,1)",
-		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
+		"right"			=> "1px",
+		"background"		=> "rgba(255,255,255,1)",
+		"box-shadow"		=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
 		"-webkit-transition"	=> "background .5s linear, right .3s ease, box-shadow 0.5s linear", // Safari
-		"transition"	=> 	"background .5s linear, right .3s ease, box-shadow 0.5s linear",
+		"transition"		=> "background .5s linear, right .3s ease, box-shadow 0.5s linear",
 		],
 	
 	"#lightbox-edit-description" => [
-		"color"		=> "#fff",
-		"background"	=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
+		"color"			=> "#fff",
+		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
 	];
 
