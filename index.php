@@ -210,9 +210,6 @@ if ($request_access == "xhr-login"):
 	try { setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp); }
 	catch (Exception $exception_temp) { json_result($domain, "error", null, "Could not set cookie: ".$exception_temp->getMessage()); }
 
-	// Because we cannot access $_COOKIE until a page reload, we will check it separately
-	login_check();
-
 	// At this point, we are sure we are logged in
 	json_result($domain, "success", null, "Successful login.");
 
