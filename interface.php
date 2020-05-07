@@ -40,7 +40,8 @@ $style_array = [
 		"font-size"	=> "17px",
 		],
 	"input" => [
-		"" 		=> "",
+		"font-size" 	=> "15px",
+		"font-family" 	=> "Verdana",
 		],
 	"*:focus" =>
 		[
@@ -115,9 +116,11 @@ $style_array = [
 	".login-form-label" =>
 		[
 		"margin"	=> "30px auto 0",
+		"font-size"	=> "80%",
+		"font-style"	=> "italic",
 		],
 
-	".login-form-label" =>
+	".login-form-input" =>
 		[
 		"margin"	=> "10px auto 0",
 		"border"	=> "2px solid rgba(255,255,255,1)",
