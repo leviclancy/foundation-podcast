@@ -118,21 +118,21 @@ $style_array = [
 		"background"		=> "linear-gradient(160deg, rgba(0,65,140,0.2), rgba(255,255,255,0) 40%), linear-gradient(240deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%), linear-gradient(15deg, rgba(230,106,53,1), rgba(35,105,190,1))",
 		],
 			
-	".login-form-label, .login-form-input" => [
+	".form-label, .form-input" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
 		"padding"		=> "20px",
 		"display"		=> "block",
 		],
 
-	".login-form-label" => [
+	".form-label" => [
 		"font-family"		=> "Verdana",
 		"margin"		=> "30px auto 0",
 		"font-size"		=> "80%",
 		"font-style"		=> "italic",
 		],
 
-	".login-form-input" => [
+	".form-input" => [
 		"margin"		=> "10px auto 0",
 		"border"		=> "2px solid rgba(255,255,255,1)",
 		"border-radius"		=> "100px",
@@ -275,11 +275,11 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,loginState.refresh'>";
 	
-	echo "<label class='login-form-label' for='login-form-admin-name'>Enter your admin name.</label>";
-	echo "<input class='login-form-input' type='text' id='admin_name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
+	echo "<input class='form-input' type='text' id='admin_name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
-	echo "<label class='login-form-label' for='login-form-password'>Enter your password.</label>";
-	echo "<input class='login-form-input' type='password' id='password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<label class='form-label' for='login-form-password'>Enter your password.</label>";
+	echo "<input class='form-input' type='password' id='password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -320,17 +320,17 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 		<template type='amp-mustache'>
 		
-		<label class='edit-information-form-label' for='title'>Enter the title.</label>
-		<input class='edit-information-form-input' type='text' name='title' minlength='3' maxlength='100' placeholder='Title' value='{{title}}' required>
+		<label class='form-label' for='title'>Enter the title.</label>
+		<input class='form-input' type='text' name='title' minlength='3' maxlength='100' placeholder='Title' value='{{title}}' required>
 
-		<label class='edit-information-form-label' for='author'>Enter the author.</label>
-		<input class='edit-information-form-input' type='text' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
+		<label class='form-label' for='author'>Enter the author.</label>
+		<input class='form-input' type='text' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
 
-		<label class='edit-information-form-label' for='description'>Enter the description.</label>
-		<<textarea class='edit-information-form-textarea' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
+		<label class='form-label' for='description'>Enter the description.</label>
+		<<textarea class='form-textarea' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
 
-		<label class='edit-information-form-label' for='title'>Enter the language.</label>
-		<input class='edit-information-form-input' type='text' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
+		<label class='form-label' for='title'>Enter the language.</label>
+		<input class='form-input' type='text' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
 
 		</template></amp-list>";
 
