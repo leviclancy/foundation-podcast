@@ -205,7 +205,7 @@ $lightbox_close_array = implode(",", [
 $login_hidden = "button-navigation"; $logout_hidden = "hide";
 
 // But maybe we are logged in?
-$result_temp = login_check("return");
+$result_temp = login_check();
 $result_temp = json_decode($result_temp, true);
 
 // If we are logged in, update default classes
