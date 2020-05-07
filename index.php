@@ -209,8 +209,8 @@ if ($request_access == "xhr-login"):
 		];
 
 	// We'll remove expired cookies
-	foreach ($cookie_codes_array as $key_temp => $cookie_code_temp):
-		if ($cookie_code_temp['cookie_expiration'] > time()): continue; endif; // If expiration is in future, continue
+	foreach ($cookie_codes_array as $key_temp => $cookie_info_temp):
+		if ($cookie_info_temp['cookie_expiration'] > time()): continue; endif; // If expiration is in future, continue
 		unset($cookie_codes_array[$key_temp]); // Otherwise, unset the cookie code
 		endforeach;
 
@@ -236,10 +236,8 @@ if ($request_access == "xhr-login"):
 	// Set cookie
 	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp);
 
-	// We cannnot check $_COOKIE['cookie_code'] right away, as the script must finish running
-	// However, we can run login_check();
-
-	json_result($domain, "error", null, "Checking login maybe.".$cookie_code_temp." ".$cookie_expiration_temp);
+	if (empty($_COOKIE['cookie_code'])): json_result($domain, "success", null, "Did not set cookie."); endif;
+	if ($_COOKIE['cookie_code'] !== $cookie_code_temp): json_result($domain, "success", null, "Incorrec cookie set."); endif;
 
 	login_check();
 
