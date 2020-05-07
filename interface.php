@@ -132,13 +132,13 @@ echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$logi
 echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
 
 // Edit description
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
 
 // Edit episodes
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
 
 // Edit admins
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
 
 // Logout form
 
