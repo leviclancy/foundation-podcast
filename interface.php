@@ -99,7 +99,7 @@ $lightbox_close_array = implode(",", [
 	"lightbox-edit-admins.close",
 	]);
 
-$result_temp = file_get_contents("https://".$domain."/?access=json-login");
+$result_temp = file_get_contents("https://".$domain."/?access=json-login&cookie_code=".$_COOKIE['cookie_code']);
 echo $result_temp;
 
 $login_hidden = null; $logout_hidden = "hide";
