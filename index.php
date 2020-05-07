@@ -22,13 +22,15 @@ $request_access_array = [
 	"rss",
 	"interface",
 	"magic",
+	"json-page",
 	"json-login",
+	"json-users",
+	"podcast-file",
 	"xhr-login",
 	"xhr-logout",
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
-	"json-page",
 	];
 if (!(in_array($request_access, $request_access_array))): $request_access = "interface"; endif;
 
@@ -42,7 +44,7 @@ if ($request_access == "interface"): include_once('rss.php'); endif;
 $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
 if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_result($domain, "error", null, "Failed database connection."); endif;
 
-// Give us the JSON
+// Give us the JSON of entire site info
 if ($request_access == "json-page"):
 
 	$json_array = [
@@ -75,10 +77,20 @@ if ($request_access == "json-page"):
 	endif;
 	
 // Give us the episode
-if (($request_access == "json-episodes") && array_key_exists($request_episode, $episode_array)):
+if ($request_access == "podcast-file"):
 
-	// Return the audio files
-	// Include login status
+	// if there is a podcast file specified
+
+	// Return the audio file
+
+	endif;
+
+// JSON just of users
+if ($request_access == "json-users"):
+
+	login_check();
+
+	// JSON of only users' admin_id, admin_name
 
 	endif;
 
@@ -116,7 +128,7 @@ if ($request_access == "json-login"):
 		json_output ($json_temp); endif;
 
 	// Prepare cookie code lookup statement
-	$postgres_statement = "SELECT admin_id, code_string, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_string LIKE $1";
+	$postgres_statement = "SELECT code_id, admin_id, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_statu<>'deactivated' AND code_id~~$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
@@ -131,7 +143,7 @@ if ($request_access == "json-login"):
 	while ($row_temp = pg_fetch_assoc($result)):
 
 		// If the cookie codes do not match, move on
-		if ($_COOKIE['cookie_code'] !== $row_temp['code_string']):
+		if ($_COOKIE['cookie_code'] !== $row_temp['code_id']):
 			$json_temp['loginMessage'] = "Mismatched cookie code.";
 			json_output ($json_temp); endif;
 
@@ -191,10 +203,10 @@ if ($request_access == "xhr-login"):
 
 	// We will set up the values we need to update
 	$values_temp = [
-		"code_id"		=> time().random_code(64),
+		"code_id"		=> $cookie_code_temp,
 		"admin_id" 		=> $admin_id_temp,
 		"code_type"		=> "cookie",
-		"code_string"		=> $cookie_code_temp,
+		"code_creation"		=> time(),
 		"code_expiration"	=> $cookie_expiration_temp,
 		];
 
