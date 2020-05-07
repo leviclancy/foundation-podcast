@@ -108,7 +108,7 @@ function login_check($return="null") {
 	global $_COOKIE;
 	global $_POST;
 	
-	global $domain // For json_output
+	global $domain; // For json_output
 	global $postgres_connection;
 	
 	$json_temp = [
