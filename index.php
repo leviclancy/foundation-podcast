@@ -249,7 +249,7 @@ if ($request_access == "xhr-edit-information"):
 
 		endforeach;
 
-	if (empty($count_temp)): json_result($domain, "error", null, "Did not update any information."); endif;
+	if (empty($count_temp)): json_result($domain, "error", null, "No information sent to update."); endif;
 	if (!(empty($error_temp))): json_result($domain, "error", null, "Could not completely save information."); endif;
 
 	json_result($domain, "success", null, "Saved all information.");
