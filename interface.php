@@ -99,11 +99,31 @@ $lightbox_close_array = implode(",", [
 	"lightbox-edit-admins.close",
 	]);
 
-$result_temp = file_get_contents("https://".$domain."/?access=json-login&cookie_code=".$_COOKIE['cookie_code']);
-echo $result_temp;
-
+// By default, we are logged out
 $login_hidden = null; $logout_hidden = "hide";
-if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = null; endif;
+
+// But maybe we are logged in?
+if (!(empty($_COOKIE['cookie_code']))):
+
+	// Generate header with post data
+	$http_temp = [
+		"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
+		"method"  => 'POST',
+		"content" => http_build_query(["cookie_code" => $_COOKIE['cookie_code']])
+		];
+	
+	// Build context
+	$context = stream_context_create(["http" => $http_temp]);
+
+	// Get the result
+	$result_temp = file_get_contents("https://".$domain."/?access=json-login", false, $context);
+
+	echo $result_temp;
+
+	// If we are logged in, update default classes
+	if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = null; endif;
+	
+	endif;
 
 // Log in button
 echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
