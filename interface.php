@@ -142,7 +142,7 @@ echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' class='"
 
 // Logout form
 
-echo "<form action-xhr='/?access=xhr-logout' target='_top' id='login-form' method='post' on='submit-success:loginState.refresh'>";
+echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-success:loginState.refresh'>";
 
 //	echo "<div class='form-warning'>";
 //		echo "<div submitting>Submitting...</div>";
