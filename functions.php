@@ -149,7 +149,7 @@ function login_check() {
 		// If the cookie codes do not match, move on
 		if ($cookie_code_temp !== $row_temp['code_string']):
 			$json_temp['loginMessage'] = "Mismatched cookie code.";
-			($return == "return") ? return $json_temp : json_output ($json_temp);
+			return $json_temp;
 			endif;
 
 		// If the cookie code is expired, move on
