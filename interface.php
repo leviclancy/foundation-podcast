@@ -83,12 +83,14 @@ $style_array = [
 		"position"	=> "absolute",
 		"top"		=> "20px",
 		"left"		=> "20px",
-		"background"	=> "rgba(255,255,255,0.4)",
+		"background"	=> "rgba(255,255,255,0.2)",
+		"border"	=> "2px solid rgba(255,255,255,0.2)",
 		"color"		=> "rgba(255,255,255,1)",
-		"padding"	=> "5px 10px",
-		"font-size"	=> "90%",
+		"font-size"	=> "80%",
+		"font-family"	=> "Verdana",			
+		"padding"	=> "7px 15px",
 		"border-radius"	=> "100px",
-		"font-family"	=> "Verdana",
+		"cursor"	=> "pointer",
 		],
 	
 	"amp-lightbox" =>
@@ -99,7 +101,9 @@ $style_array = [
 	"#lightbox-login" =>
 		[
 		"color"		=> "#fff",
-		"background"	=> "rgba(230,106,53,1)",
+		"background"	=> "linear-gradient(45deg, rgba(230,106,53,1), rgba(180,70,20,1), 100%), linear-gradient(225deg, rgba(2550,255,255,0), rgba(255,255,255,0.2), 15%)",
+			
+			
 		],
 
 	
