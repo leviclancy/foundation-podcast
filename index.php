@@ -95,8 +95,7 @@ if ($request_access == "podcast-file"):
 // JSON just of users
 if ($request_access == "json-users"):
 
-	$result_temp = login_check(); // Check login status
-	if ($result_temp['loginStatus'] !== "loggedin"): json_output($json_temp); endif; // This will cancel it if not logged in
+	login_check(false); // Check login status
 
 	// JSON of only users' admin_id, admin_name
 
@@ -118,7 +117,9 @@ if ($request_access == "magic"):
 // Return the login details
 if ($request_access == "json-login"):
 
-	login_check();
+	$result_temp = login_check(true);
+
+	json_output($result_temp);
 
 	endif;  
 
@@ -214,8 +215,7 @@ if ($request_access == "xhr-logout"):
 // Give us the podcast description xhr
 if ($request_access == "xhr-edit-information"):
 
-	$result_temp = login_check(); // Check login status
-	if ($result_temp['loginStatus'] !== "loggedin"): json_output($json_temp); endif; // This will cancel it if not logged in
+	login_check(false); // Check login status
 
 	// We will set up the values we need to update
 	$values_temp = [
@@ -259,8 +259,7 @@ if ($request_access == "xhr-edit-information"):
 // Give us the account xhr
 if ($request_access == "xhr-account"):
 
-	$result_temp = login_check(); // Check login status
-	if ($result_temp['loginStatus'] !== "loggedin"): json_output($json_temp); endif; // This will cancel it if not logged in
+	login_check(false); // Check login status
 
 	// View podcasts
 
@@ -269,8 +268,7 @@ if ($request_access == "xhr-account"):
 // Give us the add xhr
 if ($request_access == "xhr-add"):
 
-	$result_temp = login_check(); // Check login status
-	if ($result_temp['loginStatus'] !== "loggedin"): json_output($json_temp); endif; // This will cancel it if not logged in
+	login_check(false); // Check login status
 
 	// View podcasts
 
@@ -279,8 +277,7 @@ if ($request_access == "xhr-add"):
 // Give us the update xhr
 if ($request_access == "xhr-update"):
 
-	$result_temp = login_check(); // Check login status
-	if ($result_temp['loginStatus'] !== "loggedin"): json_output($json_temp); endif; // This will cancel it if not logged in
+	login_check(false); // Check login status
 
 	// View podcasts
 
