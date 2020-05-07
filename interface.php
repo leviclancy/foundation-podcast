@@ -83,6 +83,18 @@ $style_array = [
 		"color"		=> "#666",
 		],
 	
+	".lightbox-back" =>
+		[
+		"position"	=> "absolute",
+		"top"		=> "20px",
+		"left"		=> "20px",
+		"background"	=> "rgba(255,255,255,0.5)",
+		"color"		=> "rgba(255,255,255,1)",
+		"padding"	=> "5px 10px",
+		"font-size"	=> "90%",
+		"font-family"	=> "Verdana",
+		],
+	
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
@@ -175,7 +187,9 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:loginState.refresh,lightbox-login.close,login-form.clear'>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,loginState.refresh'>";
 	
 	echo "<label class='login-form-label' for='admin_name' form='login-form'>Enter your admin name.</label>";
 	echo "<input class='login-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
@@ -197,6 +211,8 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 // Lightbox for editing the site description
 echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+
 	// 
 
 	echo "</amp-lightbox>";
@@ -205,16 +221,19 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 // Lightbox for editing episodes
 echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-		// 
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+
+	// 
 
 	echo "</amp-lightbox>";
 
 // Lightbox for user management
 echo "<amp-lightbox id='lightbox-edit-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+
 	// 
 
 	echo "</amp-lightbox>";
-
 
 amp_footer(); ?>
