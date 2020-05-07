@@ -129,12 +129,13 @@ $style_array = [
 		],
 
 	"#login-form-submit" => [
+		"font-weight"	=> "700",
 		"font-family"	=> "Verdana",
 		"display"	=> "table",
 		"clear"		=> "both",
 		"margin"	=> "40px auto",
 		"border-radius"	=> "100px",
-		"background"	=> "rgba(230,106,53,0.7)",
+		"background"	=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), rgba(230,106,53,0.7)",
 		"padding"	=> "15px 40px",
 		"color"		=> "#fff",
 		"text-align"	=> "center",
@@ -242,7 +243,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 	echo "<label class='login-form-label' for='password' form='install-form'>Enter your password.</label>";
 	echo "<input class='login-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
 
-	echo "<div class='form-warning'>&nbsp;";
+	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
 		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
 		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
