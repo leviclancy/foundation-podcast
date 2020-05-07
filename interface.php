@@ -76,14 +76,14 @@ $style_array = [
 		"color"			=> "#fff",
 		],
 
-	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-manage-admins, #button-lightbox-my-account" => [
+	"#button-lightbox-edit-information, #button-lightbox-edit-episodes, #button-lightbox-manage-admins, #button-lightbox-my-account" => [
 		"border"		=> "2px solid #777",
 		"background"		=> "#fff",
 		"color"			=> "#666",
 		],
 	
 	".lightbox-back" => [
-		"font-weight"		=> "400",
+		"font-weight"		=> "700",
 		"position"		=> "absolute",
 		"top"			=> "20px",
 		"box-sizing"		=> "border-box",
@@ -93,7 +93,7 @@ $style_array = [
 		"color"			=> "rgba(255,255,255,1)",
 		"font-size"		=> "80%",
 		"font-family"		=> "Verdana",			
-		"padding"		=> "8px 55px 8px 25px",
+		"padding"		=> "9px 55px 9px 25px",
 		"border-radius"		=> "100px",
 		"cursor"		=> "pointer",
 		"-webkit-transition"	=> "background .25s linear, right .15s ease", // Safari
@@ -153,7 +153,7 @@ $style_array = [
 		"border-radius"		=> "100px 0 0 100px",
 		"background"		=> "rgba(255,255,255,0.1)",
 		"padding"		=> "15px 65px 15px 40px",
-		"box-shadow"		=> "-10px 10px 25px -8px rgba(20,20,20,0.4)",
+		"box-shadow"		=> "0 0 25px -8px rgba(20,20,20,0.4)",
 		"color"			=> "#fff",
 		"text-align"		=> "center",
 		"cursor"		=> "pointer",
@@ -165,13 +165,13 @@ $style_array = [
 	".form-submit:hover" => [
 		"right"			=> "1px",
 		"background"		=> "linear-gradient(45deg,rgba(255,255,255,0.5),rgba(255,255,255,0),40%)",
-		"box-shadow"		=> "-5px 10px 35px -8px rgba(20,20,20,0.3)",
+		"box-shadow"		=> "0 0 35px -8px rgba(20,20,20,0.3)",
 		"border"		=> "2px solid rgba(255,255,255,0)",
 		"-webkit-transition"	=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, border 0.15s linear", // Safari
 		"transition"		=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, obrder 0.15s linear",
 		],
 	
-	"#lightbox-edit-description" => [
+	"#lightbox-edit-information" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
@@ -186,7 +186,7 @@ echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
 $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
-	"lightbox-edit-description.close",
+	"lightbox-edit-information.close",
 	"lightbox-edit-episodes.close",
 	"lightbox-manage-admins.close",
 	"lightbox-my-account.close",
@@ -224,8 +224,8 @@ echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$logi
 // Log out button
 echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
 
-// Edit description
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
+// Edit information
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
 
 // Edit episodes
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
@@ -250,7 +250,7 @@ echo "</form>";
 
 echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
 echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
-echo '<p [text]="pageState.about.description">'. $description .'</p>';
+echo '<p [text]="pageState.about.information">'. $description .'</p>';
 echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
 
 echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive' width='800' height='800' items='.' max-items='100' binding='refresh' reset-on-refresh='always' [src]=\"'/api/search/?search=' + pageState.searchTerm\">";
@@ -294,15 +294,44 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 	echo "</amp-lightbox>";
 
 
-// Lightbox for editing the site description
-echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh' layout='nodisplay' scrollable>";
+// Lightbox for editing the site information
+echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:edit-decription-form-submit.hide;submit-error:edit-decription-form-submit.show;submit-success:edit-decription-form-submit.show,edit-decription-form.clear'>";
+	echo "<form action-xhr='/?access=xhr-' target='_top' id='login-form' method='post' on='submit:edit-decription-form-submit.hide;submit-error:edit-decription-form-submit.show;submit-success:edit-decription-form-submit.show,edit-decription-form.clear'>";
 	
-	echo "<label class='edit-description-form-label' for='title' form='login-form'>Enter your admin name.</label>";
-	echo "<input class='edit-description-form-input' type='text' id='title' name='admin_name' minlength='3' maxlength='50' placeholder='Title' required>";
+	$attributes_temp = [
+		"edit-decription-form-list'",
+		"layout='responsive'",
+		"width='800'",
+		"height='800'",
+		"max-items='1'",
+		"reset-on-refresh='always'",
+		"items='information'",
+		"binding='refresh'",
+		"src='amp-state:pageState'",
+		];
+	echo "<amp-list ". implode(" ", $attributes_temp) .">
+		<span class='amp-list-fallback' fallback>Failed to load information.</span>
+		<span class='amp-list-fallback' placeholder>Loading information...</span>
+		<span class='amp-list-fallback' overflow>Show more.</span>
+
+		<template type='amp-mustache'>
+		
+		<label class='edit-information-form-label' for='title' form='login-form'>Enter the title.</label>
+		<input class='edit-information-form-input' type='text' id='title' name='title' minlength='3' maxlength='100' placeholder='Title' value='{{title}}' required>
+
+		<label class='edit-information-form-label' for='author' form='login-form'>Enter the author.</label>
+		<input class='edit-information-form-input' type='text' id='author' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
+
+		<label class='edit-information-form-label' for='description' form='login-form'>Enter the description.</label>
+		<<textarea class='edit-information-form-textarea' type='text' id='description' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
+
+		<label class='edit-information-form-label' for='title' form='login-form'>Enter the language.</label>
+		<input class='edit-information-form-input' type='text' id='title' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
+
+		</template></amp-list>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -312,7 +341,7 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='edit-decription-form-submit' role='button' tabindex='0' on='tap:edit-decription-form.submit'>Save edits</span>";
+	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-decription-form.submit'>Save edits</span>";
 
 	echo "</amp-lightbox>";
 
