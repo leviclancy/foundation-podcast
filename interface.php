@@ -271,15 +271,15 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,loginState.refresh'>";
 	
-	echo "<label class='login-form-label' for='admin_name' form='login-form'>Enter your admin name.</label>";
-	echo "<input class='login-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<label class='login-form-label' for='login-form-admin-name'>Enter your admin name.</label>";
+	echo "<input class='login-form-input' type='text' id='admin_name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
-	echo "<label class='login-form-label' for='password' form='install-form'>Enter your password.</label>";
-	echo "<input class='login-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<label class='login-form-label' for='login-form-password'>Enter your password.</label>";
+	echo "<input class='login-form-input' type='password' id='password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -297,7 +297,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 // Lightbox for editing the site information
 echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	echo "<form action-xhr='/?access=xhr-' target='_top' id='login-form' method='post' on='submit:edit-decription-form-submit.hide;submit-error:edit-decription-form-submit.show;submit-success:edit-decription-form-submit.show,edit-decription-form.clear'>";
 	
@@ -319,16 +319,16 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 		<template type='amp-mustache'>
 		
-		<label class='edit-information-form-label' for='title' form='login-form'>Enter the title.</label>
+		<label class='edit-information-form-label' for='title'>Enter the title.</label>
 		<input class='edit-information-form-input' type='text' id='title' name='title' minlength='3' maxlength='100' placeholder='Title' value='{{title}}' required>
 
-		<label class='edit-information-form-label' for='author' form='login-form'>Enter the author.</label>
+		<label class='edit-information-form-label' for='author'>Enter the author.</label>
 		<input class='edit-information-form-input' type='text' id='author' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
 
-		<label class='edit-information-form-label' for='description' form='login-form'>Enter the description.</label>
+		<label class='edit-information-form-label' for='description'>Enter the description.</label>
 		<<textarea class='edit-information-form-textarea' type='text' id='description' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
 
-		<label class='edit-information-form-label' for='title' form='login-form'>Enter the language.</label>
+		<label class='edit-information-form-label' for='title'>Enter the language.</label>
 		<input class='edit-information-form-input' type='text' id='title' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
 
 		</template></amp-list>";
@@ -349,7 +349,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 // Lightbox for editing episodes
 echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	// 
 
@@ -358,7 +358,7 @@ echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_clo
 // Lightbox for admin management
 echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	// 
 
@@ -367,7 +367,7 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 // Lightbox for the user's own account
 echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	// Password?
 
