@@ -39,7 +39,7 @@ $style_array = [
 		"background"		=> "#fff",
 		"font-size"		=> "17px",
 		],
-	"input" => [
+	"input, textarea" => [
 		"font-size" 		=> "15px",
 		"font-family" 		=> "Verdana",
 		],
@@ -139,6 +139,14 @@ $style_array = [
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
 		"color"			=> "#333",
 		],
+	
+	".form-textarea" => [
+		"margin"		=> "10px auto 0",
+		"border"		=> "2px solid rgba(255,255,255,1)",
+		"border-radius"		=> "100px",
+		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55))",
+		"color"			=> "#111",
+		],
 
 	".form-submit" => [
 		"font-weight"		=> "700",
@@ -164,7 +172,7 @@ $style_array = [
 	
 	".form-submit:hover" => [
 		"right"			=> "1px",
-		"background"		=> "linear-gradient(45deg,rgba(255,255,255,0.5),rgba(255,255,255,0)), rgba(255,255,255,0)",
+		"background"		=> "rgba(255,255,255,0.25)",
 		"box-shadow"		=> "0 0 35px -8px rgba(20,20,20,0.3)",
 		"border"		=> "2px solid rgba(255,255,255,0)",
 		"-webkit-transition"	=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, border 0.15s linear", // Safari
@@ -327,7 +335,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		<input class='form-input' type='text' name='author' minlength='3' maxlength='100' placeholder='Author' value='{{author}}' required>
 
 		<label class='form-label' for='description'>Enter the description.</label>
-		<<textarea class='form-textarea' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
+		<textarea class='form-textarea' name='description' minlength='3' maxlength='450' placeholder='Description' required>{{description}}</textarea>
 
 		<label class='form-label' for='title'>Enter the language.</label>
 		<input class='form-input' type='text' name='language' minlength='3' maxlength='10' placeholder='Language' value='{{language}}' required>
