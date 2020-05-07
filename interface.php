@@ -100,7 +100,7 @@ $lightbox_close_array = implode(",", [
 	]);
 
 // By default, we are logged out
-$login_hidden = null; $logout_hidden = "hide";
+$login_hidden = "button-navigation"; $logout_hidden = "hide";
 
 // But maybe we are logged in?
 if (!(empty($_COOKIE['cookie_code']))):
@@ -118,10 +118,10 @@ if (!(empty($_COOKIE['cookie_code']))):
 	// Get the result
 	$result_temp = file_get_contents("https://".$domain."/?access=json-login", false, $context);
 
-	echo $result_temp;
+	$result_temp = json_decode($result_temp, true);
 
 	// If we are logged in, update default classes
-	if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = null; endif;
+	if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
 	
 	endif;
 
