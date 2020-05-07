@@ -147,7 +147,7 @@ $style_array = [
 	
 	"#lightbox-edit-description" => [
 		"color"		=> "#fff",
-		"background"	=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4))",
+		"background"	=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
 	];
 
@@ -269,17 +269,14 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site description
-echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,loginState.refresh'>";
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:edit-decription-form-submit.hide;submit-error:edit-decription-form-submit.show;submit-success:edit-decription-form-submit.show,edit-decription-form.clear'>";
 	
-	echo "<label class='login-form-label' for='admin_name' form='login-form'>Enter your admin name.</label>";
-	echo "<input class='login-form-input' type='text' id='admin_name' name='admin_name' minlength='6' maxlength='50' placeholder='Admin name' required>";
-
-	echo "<label class='login-form-label' for='password' form='install-form'>Enter your password.</label>";
-	echo "<input class='login-form-input' type='password' id='password' name='password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<label class='edit-description-form-label' for='title' form='login-form'>Enter your admin name.</label>";
+	echo "<input class='edit-description-form-input' type='text' id='title' name='admin_name' minlength='3' maxlength='50' placeholder='Title' required>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -289,7 +286,7 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 
 	echo "</form>";
 
-	echo "<span id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
+	echo "<span class='form-submit' id='edit-decription-form-submit' role='button' tabindex='0' on='tap:edit-decription-form.submit'>Log in</span>";
 
 	echo "</amp-lightbox>";
 
