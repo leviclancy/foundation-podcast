@@ -168,7 +168,6 @@ function login_check($return=false) {
 		if ($return == true): return $json_temp; else: json_output($json_temp); endif;
 
 		endwhile;
-
+	
 	$json_temp['loginMessage'] = "Failed to find active code.";
-
-	if ($return == true): return $json_temp; else: json_output($json_temp); endif; ?>
+	return $json_temp; ?>
