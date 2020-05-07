@@ -128,7 +128,7 @@ if ($request_access == "json-login"):
 		json_output ($json_temp); endif;
 
 	// Prepare cookie code lookup statement
-	$postgres_statement = "SELECT code_string, code_admin, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_statu<>'deactivated' AND code_string~~$1";
+	$postgres_statement = "SELECT code_string, code_admin, code_expiration FROM podcast_admin_codes WHERE code_type='cookie' AND code_status<>'deactivated' AND code_string~~$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
