@@ -157,13 +157,17 @@ function login_check($return=false) {
 		$result_temp = json_decode($result_temp, true);
 	
 		// If it is gibberish then that is an error
-		if (!(isset($result_temp['login_status']))):
+		if (!(isset($result_temp['loginStatus'])) || !(in_array($result_temp['loginStatus'], ["loggedin", "loggedout"]))):
 			$json_temp['loginMessage'] = "Invalid json-login response.";
 			if ($return == true): return $json_temp; else: json_output($json_temp); endif; endif;
 
-		// The HTTP response, decoded
-		if ($return == true): return $result_temp; else: json_output($result_temp); endif;
+		// If not logged in then we rely on $result to decide what to do
+		if ($result_temp['loginStatus'] !== "loggedin"):
+			if ($return == true): return $result_temp; else: json_output($result_temp); endif; endif;
 		
+		// If we are logged in then we just return
+		return $result_temp;
+	
 		endif;
 	
 	// Prepare cookie code lookup statement
