@@ -118,7 +118,7 @@ $style_array = [
 		"background"		=> "linear-gradient(160deg, rgba(0,65,140,0.2), rgba(255,255,255,0) 40%), linear-gradient(240deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%), linear-gradient(15deg, rgba(230,106,53,1), rgba(35,105,190,1))",
 		],
 			
-	".form-label, .form-input" => [
+	".form-label, .form-input, .form-textarea" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
 		"padding"		=> "20px",
@@ -141,6 +141,7 @@ $style_array = [
 		],
 	
 	".form-textarea" => [
+		"height"		=> "250px",
 		"margin"		=> "10px auto 0",
 		"border"		=> "2px solid rgba(255,255,255,1)",
 		"border-radius"		=> "20px",
