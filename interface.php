@@ -129,7 +129,7 @@ if (!(empty($_COOKIE['cookie_code']))):
 echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
 
 // Log out button
-echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"loginState.loginStatus !== 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:'>Log out</span>";
+echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
 
 // Edit description
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-description' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-description.open'>Edit description</span>";
@@ -139,6 +139,18 @@ echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class=
 
 // Edit admins
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-admins.open'>Edit admins</span>";
+
+// Logout form
+
+echo "<form action-xhr='/?access=xhr-logout' target='_top' id='login-form' method='post' on='submit-success:loginState.refresh'>";
+
+//	echo "<div class='form-warning'>";
+//		echo "<div submitting>Submitting...</div>";
+//		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+//		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+//		echo "</div>";
+
+echo "</form>";
 
 echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
 echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
