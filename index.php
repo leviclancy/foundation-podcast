@@ -118,12 +118,15 @@ if ($request_access == "json-login"):
 		"loginExpiration"	=> null,
 		];
 
+	// Set cookie code
+	$cookie_code_temp = $_COOKIE['cookie_code'] ?: $_POST['cookie_code'];
+
 	// If no cookie code, just ignore it
-	if (empty($_COOKIE['cookie_code'])):
+	if (empty($cookie_code_temp):
 		$json_temp['loginMessage'] = "No cookie code.";
 		json_output ($json_temp); endif;
 
-	if (strlen($_COOKIE['cookie_code']) < 64):
+	if (strlen($cookie_code_temp) < 64):
 		$json_temp['loginMessage'] = "Invalid cookie code.";
 		json_output ($json_temp); endif;
 
@@ -135,7 +138,7 @@ if ($request_access == "json-login"):
 		json_output ($json_temp); endif;
 
 	// Search for cookie code
-	$result = pg_execute($postgres_connection, "get_cookie_code_statement", [ $_COOKIE['cookie_code'] ]);
+	$result = pg_execute($postgres_connection, "get_cookie_code_statement", [ $cookie_code_temp ]);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Failed to find matching code.";
 		json_output ($json_temp); endif;
@@ -143,7 +146,7 @@ if ($request_access == "json-login"):
 	while ($row_temp = pg_fetch_assoc($result)):
 
 		// If the cookie codes do not match, move on
-		if ($_COOKIE['cookie_code'] !== $row_temp['code_string']):
+		if ($cookie_code_temp !== $row_temp['code_string']):
 			$json_temp['loginMessage'] = "Mismatched cookie code.";
 			json_output ($json_temp); endif;
 
