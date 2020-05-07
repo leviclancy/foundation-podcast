@@ -128,7 +128,7 @@ if ($request_access == "json-login"):
 		json_output ($json_temp); endif;
 
 	// Prepare cookie code lookup statement
-	$postgres_statement = "SELECT * FROM podcast_admin_codes WHERE code_string=$1";
+	$postgres_statement = "SELECT * FROM podcast_admin_codes WHERE code_type='cookie' AND code_string=$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
@@ -151,6 +151,11 @@ if ($request_access == "json-login"):
 		if ($row_temp['code_expiration'] < time()):
 			setcookie("cookie_code", null, 1); // Unset expired cookie
 			$json_temp['loginMessage'] = "Expired cookie code.";
+			json_output ($json_temp); endif;
+
+		// If the cookie code is deactivated, move on
+		if ($row_temp['code_status'] == "deactivated"):
+			$json_temp['loginMessage'] = "Deactivated cookie code.";
 			json_output ($json_temp); endif;
 
 		$json_temp['loginStatus']	= 'loggedin';
@@ -233,7 +238,23 @@ if ($request_access == "xhr-logout"):
 
 	if (empty($_COOKIE['code'])): json_result($domain, "success", null, "Already logged out."); endif;
 
-	setcookie("cookie_code", null, 1);
+	// We will set up the values we need to update
+	$values_temp = [
+		"code_string"		=> $_COOKIE['cookie_code'],
+		"code_status"		=> "deactivated",
+		];
+
+	// Prepare the statement to add the cookie code to SQL
+	$postgres_statement = postgres_update_statement("podcast_admin_codes", $values_temp);
+	$result = pg_prepare($postgres_connection, "admin_cookie_codes_statement", $postgres_statement);
+	if (!($result)): json_result($domain, "error", null, "Could not prepare code statement."); endif;
+	
+	// Execute the statement, add in the cookie
+	$result = pg_execute($postgres_connection, "admin_cookie_codes_statement", $values_temp);
+	if (!($result)): json_result($domain, "error", null, "Could not deactivate cookie in system."); endif;
+
+	try { setcookie("cookie_code", null, 1); }
+	catch (Exception $exception_temp) { json_result($domain, "error", null, "Could not clear cookie: ".$exception_temp->getMessage()); }
 
 	json_result($domain, "success", null, "Successfully logged out.");
 
