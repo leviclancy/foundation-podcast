@@ -122,7 +122,7 @@ if ($request_access == "json-login"):
 	$cookie_code_temp = $_COOKIE['cookie_code'] ?: $_POST['cookie_code'];
 
 	// If no cookie code, just ignore it
-	if (empty($cookie_code_temp):
+	if (empty($cookie_code_temp)):
 		$json_temp['loginMessage'] = "No cookie code.";
 		json_output ($json_temp); endif;
 
