@@ -236,9 +236,7 @@ if ($request_access == "xhr-login"):
 	// Set cookie
 	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp);
 
-	if (empty($_COOKIE['cookie_code'])): json_result($domain, "success", null, "Did not set cookie."); endif;
-	if ($_COOKIE['cookie_code'] !== $cookie_code_temp): json_result($domain, "success", null, "Incorrec cookie set."); endif;
-
+	// Because we cannot access $_COOKIE until a page reload, we will check it separately
 	login_check();
 
 	// At this point, we are sure we are logged in
