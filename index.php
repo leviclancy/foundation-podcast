@@ -213,7 +213,7 @@ if ($request_access == "xhr-login"):
 	// Prepare the statement to add the cookie code to SQL
 	$postgres_statement = postgres_update_statement("podcast_admin_codes", $values_temp);
 	$result = pg_prepare($postgres_connection, "admin_cookie_codes_statement", $postgres_statement);
-	if (!($result)): json_result($domain, "error", null, "Could not prepare code statement."); endif;
+	if (!($result)): json_result($domain, "error", null, "Could not prepare code statement.".pg_last_error()); endif;
 	
 	// Execute the statement, add in the cookie
 	$result = pg_execute($postgres_connection, "admin_cookie_codes_statement", $values_temp);
