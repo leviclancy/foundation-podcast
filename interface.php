@@ -111,6 +111,7 @@ $style_array = [
 		"width"		=> "100%",
 		"max-width"	=> "600px",
 		"padding"	=> "20px",
+		"display"	=> "block",
 		],
 
 	".login-form-label" =>
