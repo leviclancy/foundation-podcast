@@ -191,20 +191,20 @@ if ($request_access == "xhr-login"):
 
 	$login = null;
 
-	if (empty($_POST['admin_name'])): json_result($domain, "error", null, "No admin name."); endif;
-	if (empty($_POST['password'])): json_result($domain, "error", null, "No password."); endif;
+	if (empty($_POST['login-form-admin-name'])): json_result($domain, "error", null, "No admin name."); endif;
+	if (empty($_POST['login-form-password'])): json_result($domain, "error", null, "No password."); endif;
 
 	$postgres_statement = "SELECT admin_id, password_salt, password_hash FROM podcast_admins WHERE admin_name=$1";
 	$result = pg_prepare($postgres_connection, "get_admin_password_statement", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare password search statement."); endif;
 
-	$result = pg_execute($postgres_connection, "get_admin_password_statement", [ $_POST['admin_name'] ]);
+	$result = pg_execute($postgres_connection, "get_admin_password_statement", [ $_POST['login-form-admin-name'] ]);
 	if (!($result)): json_result($domain, "error", null, "No result for admin name."); endif;
 
 	$admin_id_temp = null;
 	while ($row_temp = pg_fetch_assoc($result)):
 
-		if (sha1($row_temp['password_salt'].$_POST['password']) !== $row_temp['password_hash']):
+		if (sha1($row_temp['password_salt'].$_POST['login-form-password']) !== $row_temp['password_hash']):
 			json_result($domain, "error", null, "Password incorrect.");
 			endif;
 
