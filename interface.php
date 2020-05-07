@@ -101,7 +101,7 @@ $style_array = [
 	"#lightbox-login" =>
 		[
 		"color"		=> "#fff",
-		"background"	=> "linear-gradient(45deg, rgba(230,106,53,1), rgba(35,105,190,1) 60%), linear-gradient(225deg, rgba(35,105,190,0.7), rgba(255,255,255,0.2) 50%)",
+		"background"	=> "linear-gradient(225deg, rgba(255,255,255,0.4), rgba(255,255,255,0) 80%), linear-gradient(45deg, rgba(230,106,53,1), rgba(35,105,190,1))",
 			
 			
 		],
