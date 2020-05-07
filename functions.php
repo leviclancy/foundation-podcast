@@ -107,10 +107,23 @@ function login_check() {
 	
 	global $_COOKIE;
 	global $_POST;
+	global $domain;
 	
-	global $domain; // For json_output
-	global $postgres_connection;
+	$cookie_code_temp = $_COOKIE['cookie_code'] ?: $_POST['cookie_code'];
 	
+	// Generate header with post data
+	$http_temp = [
+		"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
+		"method"  => 'POST',
+		"content" => http_build_query(["cookie_code" => $cookie_code_temp])
+		];
+	
+	// Build context
+	$context = stream_context_create(["http" => $http_temp]);
+
+	// Get the result
+	$result_temp = file_get_contents("https://".$domain."/?access=json-login", false, $context);
+		
 	$json_temp = [
 		"loginStatus"		=> "loggedout",
 		"loginMessage"		=> null,
@@ -125,68 +138,55 @@ function login_check() {
 	// If no cookie code, just ignore it
 	if (empty($cookie_code_temp)):
 		$json_temp['loginMessage'] = "No cookie code.";
-		return $json_temp; endif;
+		json_output($json_temp); endif;
 
 	if (strlen($cookie_code_temp) < 64):
 		$json_temp['loginMessage'] = "Invalid cookie code.";
-		return $json_temp; endif;
+		json_output($json_temp); endif;
 
 	// Prepare cookie code lookup statement
 	$postgres_statement = "SELECT * FROM podcast_admin_codes WHERE code_type='cookie' AND code_string=$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
-		return $json_temp; endif;
+		json_output($json_temp); endif;
 
 	// Search for cookie code
 	$result = pg_execute($postgres_connection, "get_cookie_code_statement", [ $cookie_code_temp ]);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Failed to find matching code.";
-		return $json_temp; endif;
+		json_output($json_temp); endif;
 
 	while ($row_temp = pg_fetch_assoc($result)):
 
 		// If the cookie codes do not match, move on
 		if ($cookie_code_temp !== $row_temp['code_string']):
 			$json_temp['loginMessage'] = "Mismatched cookie code.";
-			return $json_temp;
+			json_output($json_temp);
 			endif;
 
 		// If the cookie code is expired, move on
 		if ($row_temp['code_expiration'] < time()):
 			setcookie("cookie_code", null, 1); // Unset expired cookie
 			$json_temp['loginMessage'] = "Expired cookie code.";
-			return $json_temp; endif;
+			json_output($json_temp); endif;
 
 		// If the cookie code is deactivated, move on
 		if ($row_temp['code_status'] == "deactivated"):
 			$json_temp['loginMessage'] = "Deactivated cookie code.";
-			return $json_temp; endif;
+			json_output($json_temp); endif;
 
 		$json_temp['loginStatus']	= 'loggedin';
 		$json_temp['loginMessage']	= 'Logged in.';
 		$json_temp['loginAdminID']	= $row_temp['code_admin'];
 		$json_temp['loginExpiration']	= $row_temp['code_expiration'];
 
-		return $json_temp;
+		json_output($json_temp);
 
 		endwhile;
 
 	$json_temp['loginMessage'] = "Failed to find active code.";
 
-	return $json_temp;
-	
-//	// Generate header with post data
-//	$http_temp = [
-//		"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
-//		"method"  => 'POST',
-//		"content" => http_build_query(["cookie_code" => $_COOKIE['cookie_code']])
-//		];
-//	
-//	// Build context
-//	$context = stream_context_create(["http" => $http_temp]);
-//
-//	// Get the result
-//	$result_temp = file_get_contents("https://".$domain."/?access=json-login", false, $context);
+	json_output($json_temp);
 	
 	} ?>
