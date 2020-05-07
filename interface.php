@@ -99,6 +99,7 @@ $style_array = [
 	"amp-lightbox" => [
 		"padding"	=> "100px 20px",
 		"box-sizing"	=> "border-box",
+		"position"	=> "relative",
 		],
 	
 	"#lightbox-login" => [
@@ -139,7 +140,7 @@ $style_array = [
 		"border-radius"	=> "100px 0 0 100px",
 		"background"	=> "rgba(255,255,255,1)",
 		"padding"	=> "15px 25px 15px 40px",
-		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.2)",
+		"box-shadow"	=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
 		"color"		=> "#333",
 		"text-align"	=> "center",
 		"cursor"	=> "pointer",
@@ -286,7 +287,7 @@ echo "<amp-lightbox id='lightbox-edit-description' on='lightboxOpen:".$lightbox_
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='edit-decription-form-submit' role='button' tabindex='0' on='tap:edit-decription-form.submit'>Log in</span>";
+	echo "<span class='form-submit' id='edit-decription-form-submit' role='button' tabindex='0' on='tap:edit-decription-form.submit'>Save edits</span>";
 
 	echo "</amp-lightbox>";
 
