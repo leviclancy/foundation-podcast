@@ -103,7 +103,7 @@ function postgres_update_statement ($table_name, $values_temp) {
 	}
 
 // Check if the user is logged in
-function login_check($return="null") {
+function login_check() {
 	
 	global $_COOKIE;
 	global $_POST;
@@ -125,28 +125,24 @@ function login_check($return="null") {
 	// If no cookie code, just ignore it
 	if (empty($cookie_code_temp)):
 		$json_temp['loginMessage'] = "No cookie code.";
-		($return == "return") ? return $json_temp : json_output ($json_temp);
-		endif;
+		return $json_temp; endif;
 
 	if (strlen($cookie_code_temp) < 64):
 		$json_temp['loginMessage'] = "Invalid cookie code.";
-		($return == "return") ? return $json_temp : json_output ($json_temp);
-		endif;
+		return $json_temp; endif;
 
 	// Prepare cookie code lookup statement
 	$postgres_statement = "SELECT * FROM podcast_admin_codes WHERE code_type='cookie' AND code_string=$1";
 	$result = pg_prepare($postgres_connection, "get_cookie_code_statement", $postgres_statement);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Could not prepare statement.";
-		($return == "return") ? return $json_temp : json_output ($json_temp);
-		endif;
+		return $json_temp; endif;
 
 	// Search for cookie code
 	$result = pg_execute($postgres_connection, "get_cookie_code_statement", [ $cookie_code_temp ]);
 	if (!($result)):
 		$json_temp['loginMessage'] = "Failed to find matching code.";
-		($return == "return") ? return $json_temp : json_output ($json_temp);
-		endif;
+		return $json_temp; endif;
 
 	while ($row_temp = pg_fetch_assoc($result)):
 
@@ -160,28 +156,25 @@ function login_check($return="null") {
 		if ($row_temp['code_expiration'] < time()):
 			setcookie("cookie_code", null, 1); // Unset expired cookie
 			$json_temp['loginMessage'] = "Expired cookie code.";
-			($return == "return") ? return $json_temp : json_output ($json_temp);
-			endif;
+			return $json_temp; endif;
 
 		// If the cookie code is deactivated, move on
 		if ($row_temp['code_status'] == "deactivated"):
 			$json_temp['loginMessage'] = "Deactivated cookie code.";
-			($return == "return") ? return $json_temp : json_output ($json_temp);
-			endif;
-
+			return $json_temp; endif;
 
 		$json_temp['loginStatus']	= 'loggedin';
 		$json_temp['loginMessage']	= 'Logged in.';
 		$json_temp['loginAdminID']	= $row_temp['code_admin'];
 		$json_temp['loginExpiration']	= $row_temp['code_expiration'];
 
-		($return == "return") ? return $json_temp : json_output ($json_temp);
+		return $json_temp;
 
 		endwhile;
 
 	$json_temp['loginMessage'] = "Failed to find active code.";
 
-	($return == "return") ? return $json_temp : json_output ($json_temp);
+	return $json_temp;
 	
 //	// Generate header with post data
 //	$http_temp = [
