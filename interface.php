@@ -43,19 +43,23 @@ $style_array = [
 		"font-size" 	=> "15px",
 		"font-family" 	=> "Verdana",
 		],
-	"*:focus" =>
-		[
+	
+	".form-warning" => [
+		"display"	=> "block",
+		"margin"	=> "30px auto",
+		"font-style"	=> "italic",
+		]
+	
+	"*:focus" => [
 		"outline"	=> "none",
 		"outline-width"	=> "none",
 		],
 	
-	".hide" =>
-		[
+	".hide" => [
 		"display"	=> "none",
 		],
 	
-	".button-navigation" =>
-		[
+	".button-navigation" => [
 		"display"	=> "inline-block",
 		"padding"	=> "7px 15px",
 		"border-radius"	=> "100px",
@@ -66,21 +70,18 @@ $style_array = [
 		"border"	=> "2px solid #777",
 		],
 	
-	"#button-navigation-lightbox-login, #button-log-out" =>
-		[
+	"#button-navigation-lightbox-login, #button-log-out" => [
 		"background"	=> "#777",
 		"color"		=> "#fff",
 		],
 
-	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" =>
-		[
+	"#button-lightbox-edit-description, #button-lightbox-edit-episodes, #button-lightbox-edit-admins" => [
 		"border"	=> "2px solid #777",
 		"background"	=> "#fff",
 		"color"		=> "#666",
 		],
 	
-	".lightbox-back" =>
-		[
+	".lightbox-back" => [
 		"position"	=> "absolute",
 		"top"		=> "20px",
 		"left"		=> "20px",
@@ -94,36 +95,31 @@ $style_array = [
 		"cursor"	=> "pointer",
 		],
 	
-	"amp-lightbox" =>
-		[
+	"amp-lightbox" => [
 		"padding"	=> "100px 20px",
 		"box-sizing"	=> "border-box",
 		],
 	
-	"#lightbox-login" =>
-		[
+	"#lightbox-login" => [
 		"color"		=> "#fff",
 		"background"	=> "linear-gradient(160deg, rgba(0,65,140,0.2), rgba(255,255,255,0) 40%), linear-gradient(240deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%), linear-gradient(15deg, rgba(230,106,53,1), rgba(35,105,190,1))",
 		],
 			
-	".login-form-label, .login-form-input" =>
-		[
+	".login-form-label, .login-form-input" => [
 		"width"		=> "80%",
 		"max-width"	=> "600px",
 		"padding"	=> "20px",
 		"display"	=> "block",
 		],
 
-	".login-form-label" =>
-		[
+	".login-form-label" => [
 		"font-family"	=> "Verdana",
 		"margin"	=> "30px auto 0",
 		"font-size"	=> "80%",
 		"font-style"	=> "italic",
 		],
 
-	".login-form-input" =>
-		[
+	".login-form-input" => [
 		"margin"	=> "10px auto 0",
 		"border"	=> "2px solid rgba(255,255,255,1)",
 		"border-radius"	=> "100px",
@@ -131,8 +127,8 @@ $style_array = [
 		"color"		=> "#333",
 		],
 
-	"#login-form-submit" =>
-		[
+	"#login-form-submit" => [
+		"font-family"	=> "Verdana",
 		"display"	=> "table",
 		"clear"		=> "both",
 		"margin"	=> "40px auto",
