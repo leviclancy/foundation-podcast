@@ -104,6 +104,9 @@ function postgres_update_statement ($table_name, $values_temp) {
 
 // Check if the user is logged in
 function login_check($return=false) {
+	
+	// If $return == TRUE, then we return on both success and error, rather than outputting and exiting on errors
+	// If $return == FALSE, then we return on success and output and exit on errors
 		
 	global $_COOKIE;
 	global $_POST;
@@ -190,7 +193,7 @@ function login_check($return=false) {
 		$json_temp['loginAdminID']	= $row_temp['code_admin'];
 		$json_temp['loginExpiration']	= $row_temp['code_expiration'];
 
-		if ($return == true): return $json_temp; else: json_output($json_temp); endif;
+		return $json_temp;
 
 		endwhile;
 	
