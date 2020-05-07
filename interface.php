@@ -164,8 +164,8 @@ $style_array = [
 	
 	".form-submit:hover" => [
 		"right"			=> "1px",
-		"background"		=> "linear-gradient(45deg,rgba(255,255,255,0.3),rgba(255,255,255,0),40%)",
-		"box-shadow"		=> "-10px 10px 33px -8px rgba(20,20,20,0.3)",
+		"background"		=> "linear-gradient(45deg,rgba(255,255,255,0.5),rgba(255,255,255,0),40%)",
+		"box-shadow"		=> "-5px 10px 35px -8px rgba(20,20,20,0.3)",
 		"border"		=> "2px solid rgba(255,255,255,0)",
 		"-webkit-transition"	=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, border 0.15s linear", // Safari
 		"transition"		=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, obrder 0.15s linear",
