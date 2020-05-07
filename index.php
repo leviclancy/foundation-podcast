@@ -106,12 +106,13 @@ if ($request_access == "json-login"):
 		"loginExpiration"	=> null,
 		];
 
+json_result($domain, "error", null, "Password so far.".$_COOKIE['cookie_code']);
+
+
 	// If no cookie code, just ignore it
 	if (empty($_COOKIE['cookie_code'])):
 		$json_temp['loginMessage'] = "No cookie code.";
 		json_output ($json_temp); endif;
-
-json_result($domain, "error", null, "Password so far.".$_COOKIE['cookie_code']);
 
 	// Prepare cookie code lookup statement
 	$postgres_statement = "SELECT admin_id, admin_name, cookie_codes FROM podcast_admins WHERE cookie_codes LIKE CONCAT('%', $1 ,'%')";
@@ -233,14 +234,14 @@ if ($request_access == "xhr-login"):
 	if (!($result)): json_result($domain, "error", null, "Could not save cookie in system."); endif;
 
 	// Set cookie
-	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp, "/");
+	setcookie("cookie_code", $cookie_code_temp, $cookie_expiration_temp);
 
 	// We cannnot check $_COOKIE['cookie_code'] right away, as the script must finish running
 	// However, we can run login_check();
 
-	login_check();
+	json_result($domain, "error", null, "Checking login maybe.".$cookie_code_temp." ".$cookie_expiration_temp);
 
-	json_result($domain, "error", null, "Successful login maybe.");
+	login_check();
 
 	// At this point, we are sure we are logged in
 	json_result($domain, "success", null, "Successful login.");
