@@ -106,9 +106,6 @@ if ($request_access == "json-login"):
 		"loginExpiration"	=> null,
 		];
 
-json_result($domain, "error", null, "Password so far.".$_COOKIE['cookie_code']);
-
-
 	// If no cookie code, just ignore it
 	if (empty($_COOKIE['cookie_code'])):
 		$json_temp['loginMessage'] = "No cookie code.";
