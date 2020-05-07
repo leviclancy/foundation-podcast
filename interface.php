@@ -154,13 +154,7 @@ $style_array = [
 		"cursor"		=> "pointer",
 		],
 	
-	".form-submit:hover" => [
-		"right"			=> "1px",
-		"background"		=> "rgba(255,255,255,1)",
-		"box-shadow"		=> "-5px 5px 25px -5px rgba(40,40,40,0.5)",
-		"-webkit-transition"	=> "background .5s linear, right .3s ease, box-shadow 0.5s linear", // Safari
-		"transition"		=> "background .5s linear, right .3s ease, box-shadow 0.5s linear",
-		],
+
 	
 	"#lightbox-edit-description" => [
 		"color"			=> "#fff",
