@@ -143,7 +143,7 @@ $style_array = [
 	".form-textarea" => [
 		"margin"		=> "10px auto 0",
 		"border"		=> "2px solid rgba(255,255,255,1)",
-		"border-radius"		=> "100px",
+		"border-radius"		=> "20px",
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.75), rgba(255,255,255,0.55))",
 		"color"			=> "#111",
 		],
