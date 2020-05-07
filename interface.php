@@ -48,7 +48,7 @@ $style_array = [
 		"display"	=> "block",
 		"margin"	=> "30px auto",
 		"font-style"	=> "italic",
-		]
+		],
 	
 	"*:focus" => [
 		"outline"	=> "none",
