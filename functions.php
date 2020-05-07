@@ -113,7 +113,7 @@ function login_check() {
 	$json_decoded = json_decode($result, true);
 
 	// Set up the result
-	$message_temp = $result['loginMessage'] ?: "Login failure.";
+	$message_temp = $json_decoded['loginMessage'] ?: "Login failure.";
 	
 	// If it did not work...
 	if ($json_decoded['loginStatus'] !== "loggedin"): json_result($domain, "error", null, $message_temp); endif;
