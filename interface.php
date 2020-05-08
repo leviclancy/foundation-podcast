@@ -310,17 +310,17 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 		<template type='amp-mustache'>
 		
-		<label class='form-label' for='title'>Enter the title.</label>
-		<input class='form-input' type='text' name='title' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>
+		<label class='form-label' for='edit-information-title'>Enter the title.</label>
+		<input class='form-input' type='text' name='edit-information-title' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>
 
-		<label class='form-label' for='author'>Enter the author.</label>
-		<input class='form-input' type='text' name='author' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" value='{{author}}' required>
+		<label class='form-label' for='edit-information-author'>Enter the author.</label>
+		<input class='form-input' type='text' name='edit-information-author' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" value='{{author}}' required>
 
-		<label class='form-label' for='description'>Enter the description.</label>
-		<textarea class='form-textarea' name='description' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>
+		<label class='form-label' for='edit-information-description'>Enter the description.</label>
+		<textarea class='form-textarea' name='edit-information-description' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>
 
-		<label class='form-label' for='title'>Enter the language.</label>
-		<input class='form-input' type='text' name='language' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
+		<label class='form-label' for='edit-information-language'>Enter the language.</label>
+		<input class='form-input' type='text' name='edit-information-language' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
 
 		</template></amp-list>";
 
