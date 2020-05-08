@@ -95,7 +95,7 @@ $style_array = [
 		"color"			=> "rgba(255,255,255,1)",
 		"font-size"		=> "80%",
 		"font-family"		=> "Verdana",			
-		"padding"		=> "9px 25px 9px 55px",
+		"padding"		=> "9px 25px 9px 47px",
 		"border-radius"		=> "100px",
 		"cursor"		=> "pointer",
 		"-webkit-transition"	=> "background .25s linear, right .15s ease", // Safari
@@ -227,6 +227,9 @@ echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidd
 
 // Edit information
 echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
+
+// Add episode
+echo "<span role='button' tabindex='0' id='button-lightbox-add-episode' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-add-episode.open'>Edit information</span>";
 
 // Manage admins
 echo "<span role='button' tabindex='0' id='button-lightbox-manage-admins' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-manage-admins.open'>Manage admins</span>";
@@ -396,21 +399,22 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
 	
-	echo "<div [text]='editEpisode'>Nothing chosen yet</div>";
+	echo "<div [text]='editEpisode'>Nothing chosen yet</div><br>";
+	echo "<div [text]='pageState.editEpisode.episode_title'>Nothing chosen yet22</div>";
 
 	echo "DELETE BUTTON";
 		
 	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
-	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>";
+	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.editEpisode.episode_title\" value='{{title}}' required>";
 
 	echo "<label class='form-label' for='edit-episode[description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>";
+	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.editEpisode.description\" required>{{description}}</textarea>";
 
 	echo "<label class='form-label' for='edit-episode[language]'>Enter the date.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='' required>";
+	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.editEpisode.language\" value='' required>";
 
 	echo "<label class='form-label' for='edit-episode[language]'>Enter the duration.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='' required>";
+	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.editEpisode.language\" value='' required>";
 
 	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
