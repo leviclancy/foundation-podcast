@@ -242,9 +242,9 @@ echo "</form>";
 
 $attributes_temp = [
 	"id='home-list'",
-	"layout='flex-item'",
-	"width='500'",
-	"height='500'",
+	"layout='fixed'",
+	"width='600'",
+	"height='400'",
 	"items='information'",
 	"binding='refresh'",
 	"src='amp-state:pageState'",
