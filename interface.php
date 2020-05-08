@@ -196,7 +196,7 @@ $style_array = [
 		"margin"		=> "100px 20px 50px",		
 		],
 	
-	".episodes-list-edit-episode" => [
+	".episodes-list-button-edit-episode" => [
 		"font-family"		=> "Verdana",
 		"display"		=> "inline-block",
 		"background"		=> "#fff",
@@ -325,11 +325,10 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 				
 		// Set up edit button
 		$attributes_temp = implode(" ", [
-			"class='episodes-list-edit-episode'",
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
-			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
+			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\"",
 			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-edit-episode.open"])."\"",
 //			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
