@@ -303,7 +303,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		<!-- Podcast audio -->
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 
-		 / We have to remove " from around {{ }}
+		// We have to remove " from around {{ }}
 		$set_state_array_temp = str_replace(['"{{', '}}"'], null, "AMP.setState(".json_encode([
 			"editEpisode" => [
 				"editEpisodeID" => "{{episode_id}}",
