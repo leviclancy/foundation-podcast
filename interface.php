@@ -410,6 +410,8 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 	
 	echo "<div [text]='editEpisodeID'>Nothing chosen yet</div><br>";
 
+	echo "<div [text]='editEpisode.editEpisodeID'>Nothing chosen yet</div><br>";
+
 	echo "DELETE BUTTON";
 
 	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
