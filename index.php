@@ -29,6 +29,7 @@ $request_access_array = [
 	"xhr-login",
 	"xhr-logout",
 	"xhr-edit-information",
+	"xhr-edit-episode",
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
@@ -290,7 +291,7 @@ if ($request_access == "xhr-logout"):
 	exit; endif;
 
 
-// Give us the podcast description xhr
+// Give us the xhr to edit the overall podcast information
 if ($request_access == "xhr-edit-information"):
 
 	login_check(false); // Check login status
@@ -342,6 +343,42 @@ if ($request_access == "xhr-edit-information"):
 	json_result($domain, "success", null, "Saved all information.");
 
 	exit; endif;
+
+// Give us the xhr to edit a single podcast episode
+if ($request_access == "xhr-edit-episode"):
+
+	login_check(false); // Check login status
+
+	// If no valid post data is received
+	if (empty($_POST['edit_episode'])): json_result($domain, "error", null, "No information array received."); endif;
+
+	// If incomplete post data is received
+	if (empty($_POST['edit_episode']['episode_id'])): json_result($domain, "error", null, "No episode ID received."); endif;
+	if (empty($_POST['edit_episode']['title'])): json_result($domain, "error", null, "No episode title received."); endif;
+	if (empty($_POST['edit_episode']['description'])): json_result($domain, "error", null, "No episode description received."); endif;
+	if (empty($_POST['edit_episode']['pubdate'])): json_result($domain, "error", null, "No episode publication date received."); endif;
+	if (empty($_POST['edit_episode']['duration'])): json_result($domain, "error", null, "No episode duration received."); endif;
+
+	// Set up values
+	$values_temp = [];
+	$values_temp['episode_id'] = $_POST['edit_episode']['episode_id'] ?? null;
+	$values_temp['episode_title'] = $_POST['edit_episode']['episode_title'] ?? null;
+	$values_temp['episode_description'] = $_POST['edit_episode']['episode_description'] ?? null;
+	$values_temp['episode_pubdate'] = $_POST['edit_episode']['episode_pubdate'] ?? null;
+	$values_temp['episode_duration'] = $_POST['edit_episode']['episode_duration'] ?? null;
+
+	// Prepare the statement to update the podcast episode SQL
+	$postgres_statement = postgres_update_statement("podcast_episodes", $values_temp);
+	$result = pg_prepare($postgres_connection, "podcast_episodes_update", $postgres_statement);
+	if (!($result)): json_result($domain, "error", null, "Could not prepare episodes statement."); endif;
+
+	// Execute the statement, update the episode
+	$result = pg_execute($postgres_connection, "podcast_episodes_update", $values_temp);
+	if (!($result)): json_result($domain, "error", null, "Could not update episode."); endif;
+
+	json_result($domain, "success", null, "Updated episode."); 
+
+	endif;
 
 // Give us the account xhr
 if ($request_access == "xhr-account"):
