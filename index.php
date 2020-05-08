@@ -82,12 +82,12 @@ if ($request_access == "json-page"):
 	// This is used to count pagination
 	$count_temp = 0;
 
-	$json_array['episodes']['SJNKLDF'] = [
+	$json_array['episodes'][] = [
 			"episode_id"		=> "SJNKLDF",
 			"episode_title"		=> "New episode",
 			"episode_description"	=> "Description",
-			"episode_pubdate"	=> "",
-			"episode_duration"	=> "",
+			"episode_pubdate"	=> "sdg",
+			"episode_duration"	=> "dsg",
 			"episode_completion"	=> "incomplete",
 			];
 
@@ -112,7 +112,7 @@ if ($request_access == "json-page"):
 		if ($count_temp < $page_temp*50): continue; endif;
 		if ($count_temp > ($page_temp+1)*50): continue; endif;
 
-		$json_array['episodes'][$row['episode_id']] = [
+		$json_array['episodes'][] = [
 			"episode_id"		=> $row['episode_id'],
 			"episode_title"		=> $row['episode_title'],
 			"episode_description"	=> $row['episode_description'],
