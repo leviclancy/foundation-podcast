@@ -90,6 +90,14 @@ if ($request_access == "json-page"):
 			"episode_duration"	=> "dsg",
 			"episode_completion"	=> "incomplete",
 			];
+	$json_array['episodes'][] = [
+			"episode_id"		=> "JKNSDFR",
+			"episode_title"		=> "Newer episode",
+			"episode_description"	=> "Description2",
+			"episode_pubdate"	=> "222",
+			"episode_duration"	=> "222",
+			"episode_completion"	=> "incomplete",
+			];
 
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
