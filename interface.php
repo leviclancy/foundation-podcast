@@ -295,7 +295,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		$attributes_temp = implode(" ", [
 			"role='button'",
 			"tabindex='0'",
-			"class='".$logout_hidden."',
+			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
 			"on=\"tap:".$lightbox_close_array.",AMP.setState({editEpisode: '{{episode_id}}'}),lightbox-edit-episode.open\"",
 			]);
