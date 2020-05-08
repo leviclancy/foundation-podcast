@@ -61,6 +61,7 @@ $style_array = [
 		],
 	
 	".button-navigation" => [
+		"float"			=> "right",
 		"display"		=> "inline-block",
 		"padding"		=> "7px 15px",
 		"border-radius"		=> "100px",
@@ -190,6 +191,11 @@ $style_array = [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(0,156,10,1)",
 		],
+	
+	"h1" => [
+		"margin"		=> "100px 20px 50px",		
+		],
+
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
