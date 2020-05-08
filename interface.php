@@ -88,13 +88,13 @@ $style_array = [
 		"z-index"		=> "1000",
 		"top"			=> "20px",
 		"box-sizing"		=> "border-box",
-		"right"			=> "-25px",
-		"margin"		=> "0 -1px 0 0",
+		"left"			=> "-25px",
+		"margin"		=> "0 0 0 -1px",
 		"background"		=> "rgba(255,255,255,0.2)",
 		"color"			=> "rgba(255,255,255,1)",
 		"font-size"		=> "80%",
 		"font-family"		=> "Verdana",			
-		"padding"		=> "9px 55px 9px 25px",
+		"padding"		=> "9px 25px 9px 55px",
 		"border-radius"		=> "100px",
 		"cursor"		=> "pointer",
 		"-webkit-transition"	=> "background .25s linear, right .15s ease", // Safari
@@ -102,10 +102,10 @@ $style_array = [
 		],
 	
 	".lightbox-back:hover" => [
-		"right"			=> "-15px",
+		"left"			=> "-15px",
 		"background"		=> "rgba(255,255,255,0.3)",
-		"-webkit-transition"	=> "background .5s linear, right .3s ease", // Safari
-		"transition"		=> "background .5s linear, right .3s ease",
+		"-webkit-transition"	=> "background .5s linear, left .3s ease", // Safari
+		"transition"		=> "background .5s linear, left .3s ease",
 		],
 	
 	"amp-lightbox" => [
