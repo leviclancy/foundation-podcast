@@ -461,6 +461,12 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
 //	echo "</amp-audio>";
 
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
 	echo "</form>";
 
 	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save episode</span>";
