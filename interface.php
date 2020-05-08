@@ -238,9 +238,28 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 
 echo "</form>";
 
-echo '<h1 [text]="pageState.about.title">'. $title .'</h1>';
-echo '<p [text]="\'by \' + pageState.about.author">by '. $author .'</p>';
-echo '<p [text]="pageState.about.information">'. $description .'</p>';
+$attributes_temp = [
+		"id='home-list'",
+		"layout='responsive'",
+		"width='650'",
+		"height='1000'",
+		"items='information'",
+		"binding='refresh'",
+		"src='amp-state:pageState'",
+		"single-item",
+		];
+echo "<amp-list ". implode(" ", $attributes_temp) .">
+		<span class='amp-list-fallback' fallback>Failed to load information.</span>
+		<span class='amp-list-fallback' placeholder>Loading information...</span>
+		<span class='amp-list-fallback' overflow>Show more.</span>
+
+		<template type='amp-mustache'>
+			<h1>{{title}}</h1>
+			<p>by {{author}}</p>
+			<p>{{description}}</p>
+			</template>
+		</amp-list>";
+		
 echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
 
 echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive' width='800' height='800' items='.' max-items='100' binding='refresh' reset-on-refresh='always' [src]=\"'/api/search/?search=' + pageState.searchTerm\">";
@@ -289,14 +308,13 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show'>";
+	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,edit-information-form-list.refresh'>";
 	
 	$attributes_temp = [
 		"id='edit-information-form-list'",
 		"layout='responsive'",
 		"width='650'",
 		"height='1000'",
-		"max-items='1'",
 		"reset-on-refresh='always'",
 		"items='information'",
 		"binding='refresh'",
