@@ -195,7 +195,17 @@ $style_array = [
 	"h1" => [
 		"margin"		=> "100px 20px 50px",		
 		],
-
+	
+	".episodes-list-edit-episode" => [
+		"font-family"		=> "Verdana",
+		"display"		=> "inline-block",
+		"background"		=> "#fff",
+		"border"		=> "2px solid #333",
+		"color"			=> "#333",
+		"padding"		=> "8px 20px",
+		"cursor"		=> "pointer",
+		],
+	
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
@@ -315,6 +325,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 				
 		// Set up edit button
 		$attributes_temp = implode(" ", [
+			"class='episodes-list-edit-episode'",
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
