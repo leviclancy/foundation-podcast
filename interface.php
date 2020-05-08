@@ -76,7 +76,7 @@ $style_array = [
 		"color"			=> "#fff",
 		],
 
-	"#button-lightbox-edit-information, #button-lightbox-edit-episodes, #button-lightbox-manage-admins, #button-lightbox-my-account" => [
+	"#button-lightbox-edit-information, #button-lightbox-edit-episode, #button-lightbox-manage-admins, #button-lightbox-my-account" => [
 		"border"		=> "2px solid #777",
 		"background"		=> "#fff",
 		"color"			=> "#666",
@@ -186,7 +186,7 @@ $style_array = [
 		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
 
-	"#lightbox-edit-episodes" => [
+	"#lightbox-edit-episode" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(0,156,10,1)",
 		],
@@ -196,13 +196,12 @@ echo "<style amp-custom>" . css_output($style_array) . "</style>";
 
 echo "</head><body>";
 
-echo "<amp-state id='loginState' src='/?access=json-login'></script></amp-state>";
 echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
 $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
 	"lightbox-edit-information.close",
-	"lightbox-edit-episodes.close",
+	"lightbox-edit-episode.close",
 	"lightbox-manage-admins.close",
 	"lightbox-my-account.close",
 	]);
@@ -215,26 +214,23 @@ $login_hidden = "button-navigation"; $logout_hidden = "hide";
 if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
 
 // Log in button
-echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"loginState.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"pageState.login.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
 
 // Log out button
-echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
+echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
 
 // Edit information
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
-
-// Edit episodes
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-episodes' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-episodes.open'>Edit episodes</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
 
 // Manage admins
-echo "<span role='button' tabindex='0' id='button-lightbox-manage-admins' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-manage-admins.open'>Manage admins</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-manage-admins' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-manage-admins.open'>Manage admins</span>";
 
 // My account
-echo "<span role='button' tabindex='0' id='button-lightbox-my-account' class='".$logout_hidden."' [class]=\"loginState.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-my-account.open'>My account</span>";
+echo "<span role='button' tabindex='0' id='button-lightbox-my-account' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-my-account.open'>My account</span>";
 
 // Logout form
 
-echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-success:loginState.refresh'>";
+echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-success:pageState.refresh'>";
 
 //	echo "<div class='form-warning'>";
 //		echo "<div submitting>Submitting...</div>";
@@ -268,13 +264,26 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		
 echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
 
-echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive' width='800' height='800' items='.' max-items='100' binding='refresh' reset-on-refresh='always' [src]=\"'/api/search/?search=' + pageState.searchTerm\">";
-	echo "<p class='amp-list-fallback' fallback>No search results.</p>";
-	echo "<p class='amp-list-fallback' placeholder>Loading search results...</p>";
+// Handle if more than 50 episodes
+	
+$attributes_temp = [
+		"id='episode-list'",
+		"layout='responsive'",
+		"width='650'",
+		"height='1000'",
+		"max-items='50'",
+		"binding='refresh'",
+		"items='episodes'",
+		"binding='refresh'",
+		"src='amp-state:pageState'",
+		"single-item",
+		];
+echo "<amp-list ". implode(" ", $attributes_temp) .">
+	echo "<p class='amp-list-fallback' fallback>No episodes.</p>";
+	echo "<p class='amp-list-fallback' placeholder>Loading episode results...</p>";
 //	echo "<p class='amp-list-fallback' overflow>Show more.</p>";
 
 	echo "<template type='amp-mustache'>";
-
 		// Include amp-audio
 		echo "<span class='categories-item'>";
 		echo "<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
@@ -282,13 +291,15 @@ echo "<amp-list id='sidebar-navigation-lightbox-search-list' layout='responsive'
 		echo "</span>";
 		echo "</template>";
 	echo "</amp-list>";
+	
+echo "Upload episode";
 
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,loginState.refresh'>";
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh'>";
 	
 	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
 	echo "<input class='form-input' type='text' id='admin_name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
@@ -310,7 +321,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site information
-echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh,home-list.refresh' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:pageState.refresh,home-list.refresh' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
@@ -362,59 +373,32 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 
 // Lightbox for editing episodes
-echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
 	
-	$attributes_temp = [
-		"id='edit-information-form-list'",
-		"layout='responsive'",
-		"width='650'",
-		"height='1000'",
-		"reset-on-refresh='always'",
-		"items='episodes'",
-		"binding='refresh'",
-		"src='amp-state:pageState'",
-		];
-	echo "<amp-list ". implode(" ", $attributes_temp) .">
-		<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
-		<span class='amp-list-fallback' placeholder>Loading episodes...</span>
-		<span class='amp-list-fallback' overflow>Show more.</span>
+	echo "<div id=''>
 
-		<template type='amp-mustache'>
+	echo "DELETE BUTTON";
 		
-		DELETE BUTTON
+	echo "<label class='form-label' for='edit-information[title]'>Enter the episode title.</label>";
+	echo "<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>";
+
+	echo "<label class='form-label' for='edit-information[description]'>Enter the episode description.</label>";
+	echo "<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>";
+
+	echo "<label class='form-label' for='edit-information[language]'>Enter the date.</label>";
+	echo "<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>";
+
+	echo "<label class='form-label' for='edit-information[language]'>Enter the length.</label>";
+	echo "<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>";
+
+	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
+	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
+	echo "</amp-audio>";
 		
-		<div>
-		
-		<label class='form-label' for='edit-information[title]'>Enter the episode title.</label>
-		<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>
-
-		<label class='form-label' for='edit-information[description]'>Enter the episode description.</label>
-		<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>
-
-		<label class='form-label' for='edit-information[language]'>Enter the date.</label>
-		<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
-
-		<label class='form-label' for='edit-information[language]'>Enter the length.</label>
-		<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
-
-		<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>
-		<div fallback>Your browser doesn’t support HTML5 audio.</div>
-		</amp-audio>
-		
-		</div>
-			
-		</template></amp-list>";
-
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
-
 	echo "</form>";
 
 	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save edits</span>";
