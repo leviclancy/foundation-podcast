@@ -293,16 +293,18 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
 	<template type='amp-mustache'>
-		<br><br>{{title}}
+		<br><br>{{#episode_title}}<b>{{episode_title}}</b><br>{{/episode_title}}
+		{{#episode_description}}<i>{{episode_description}}</i><br>{{/episode_description}}
+		
+		<!-- SOMETHING IF NOT COMPETE, or NOT ACTIVE
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 		$attributes_temp = implode(" ", [
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
-			"on=\"tap:AMP.setState({editEpisode: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
+			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}', editEpisodeTitle: '{{episode_title}}', editEpisodeDescription: '{{episode_description}}', editEpisodePubDate: '{{episode_pubdate}}', editEpisodeDuration: '{{episode_duration}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
-//
 		echo "<br><span ". $attributes_temp .">Edit episode</span>";
 		echo "</template>";
 		
@@ -400,10 +402,9 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
 	
 	echo "<div [text]='editEpisode'>Nothing chosen yet</div><br>";
-	echo "<div [text]='pageState.editEpisode.episode_title'>Nothing chosen yet22</div>";
 
 	echo "DELETE BUTTON";
-		
+
 	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
 	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.editEpisode.episode_title\" value='{{title}}' required>";
 
@@ -419,7 +420,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
 	echo "</amp-audio>";
-		
+
 	echo "</form>";
 
 	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save edits</span>";
