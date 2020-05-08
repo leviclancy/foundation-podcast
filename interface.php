@@ -303,22 +303,23 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		<!-- Podcast audio -->
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 
-		// Set up edit button
-		$set_state_array_temp = json_encode([
+		 // (float) casts as float, so it does not get a quotation mark
+		$set_state_array_temp = "AMP.setState(".json_encode([
 			"editEpisode" => [
-				"editEpisodeID" => "{{episode_id}}",
-				"editEpisodeTitle" => "{{episode_title}}",
-				"editEpisodeDescription" => "{{episode_description}}",
-				"editEpisodePubDate" => "{{episode_pubdate}}",
-				"editEpisodeDuration" => "{{episode_duration}}",
-				], ]);
+				"editEpisodeID" => (float)"{{episode_id}}",
+				"editEpisodeTitle" => (float)"{{episode_title}}",
+				"editEpisodeDescription" => (float)"{{episode_description}}",
+				"editEpisodePubDate" => (float)"{{episode_pubdate}}",
+				"editEpisodeDuration" => (float)"{{episode_duration}}",
+				], ]).")";
 				
+		// Set up edit button
 		$attributes_temp = implode(" ", [
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
-			"on=\"tap:AMP.setState(". $set_state_array_temp ."),". $lightbox_close_array .",lightbox-edit-episode.open\"",
+			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-edit-episode.open"])."\"",
 //			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
 		echo "<br><span ". $attributes_temp .">Edit episode</span>";
