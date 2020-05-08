@@ -241,54 +241,53 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 echo "</form>";
 
 $attributes_temp = [
-		"id='home-list'",
-		"layout='responsive'",
-		"width='650'",
-		"height='1000'",
-		"items='information'",
-		"binding='refresh'",
-		"src='amp-state:pageState'",
-		"single-item",
-		];
+	"id='home-list'",
+	"layout='responsive'",
+	"width='500'",
+	"height='500'",
+	"items='information'",
+	"binding='refresh'",
+	"src='amp-state:pageState'",
+	"single-item",
+	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
-		<span class='amp-list-fallback' fallback>Failed to load information.</span>
-		<span class='amp-list-fallback' placeholder>Loading information...</span>
-		<span class='amp-list-fallback' overflow>Show more.</span>
+	<span class='amp-list-fallback' fallback>Failed to load information.</span>
+	<span class='amp-list-fallback' placeholder>Loading information...</span>
+	<span class='amp-list-fallback' overflow>Show more.</span>
 
-		<template type='amp-mustache'>
-			<h1>{{title}}</h1>
-			<p>by {{author}}</p>
-			<p>{{description}}</p>
-			</template>
-		</amp-list>";
+	<template type='amp-mustache'>
+		<h1>{{title}}</h1>
+		<p>by {{author}}</p>
+		<p>{{description}}</p>
+		</template>
 		
-echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
+	</amp-list>";
+		
+echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 
 // Handle if more than 50 episodes
 	
 $attributes_temp = [
-		"id='episodes-list'",
-		"layout='responsive'",
-		"width='650'",
-		"height='1000'",
-		"max-items='50'",
-		"binding='refresh'",
-		"items='episodes'",
-		"src='amp-state:pageState'",
-		];
-echo "<amp-list ". implode(" ", $attributes_temp) .">";
-	echo "<p class='amp-list-fallback' fallback>No episodes.</p>";
-	echo "<p class='amp-list-fallback' placeholder>Loading episode results...</p>";
-//	echo "<p class='amp-list-fallback' overflow>Show more.</p>";
+	"id='home-list'",
+	"layout='responsive'",
+	"width='500'",
+	"height='500'",
+	"items='episodes'",
+	"binding='refresh'",
+	"src='amp-state:pageState'",
+	"max-items='50'",
+	];
+echo "<amp-list ". implode(" ", $attributes_temp) .">
+	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
+	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
+	<span class='amp-list-fallback' overflow>Show more.</span>
 
-	echo "<template type='amp-mustache'>";
-		// Include amp-audio
-		echo "<span class='categories-item'>";
-		echo "<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
-		echo "<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>";
-		echo "</span>";
-		echo "</template>";
-	echo "</amp-list>";
+	<template type='amp-mustache'>
+		<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
+		<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>";
+		</template>
+		
+	</amp-list>";
 	
 echo "Upload episode";
 
