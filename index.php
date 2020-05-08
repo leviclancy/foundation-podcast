@@ -113,6 +113,11 @@ if ($request_access == "json-page"):
 			if ($completion_temp == "incomplete"): continue; endif;
 			endif;
 
+		// If we are not logged in, do not feed inactive episodes
+		if ($login_temp['loginState'] !== "loggedin"):
+			if ($row['episode_status'] !== "active"): continue; endif;
+			endif;
+
 		// We will use this for pagination
 		$count_temp++;
 
