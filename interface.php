@@ -274,6 +274,26 @@ echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?ac
 // Handle if more than 50 episodes
 	
 $result_temp = file_get_contents("https://podcast.ours.foundation/?access=json-page");
+$result_temp = '{
+ "items": [
+   {
+     "title": "amp-carousel",
+     "url": "/components/amp-carousel/"
+   },
+   {
+     "title": "amp-img",
+     "url": "/components/amp-img/"
+   },
+   {
+     "title": "amp-ad",
+     "url": "/components/amp-ad/"
+   },
+   {
+     "title": "amp-accordion",
+     "url": "/components/amp-accordion/"
+   }
+ ]
+}';
 $result_temp = json_decode($result_temp, true);
 print_r($result_temp);
 
