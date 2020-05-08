@@ -413,7 +413,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 
 // Lightbox for editing episodes
-echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_close_array.",edit-episode-form.clear' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:pageState.refresh,edit-episode-form.clear' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
