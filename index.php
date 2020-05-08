@@ -49,10 +49,13 @@ if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_re
 if ($request_access == "json-page"):
 
 	$json_array = [
-		"information" => ["author"=>null, "title"=>null, "description"=>null, "language"=>null, ],
-		"episodes" => [],
+		"information" 	=> ["author"=>null, "title"=>null, "description"=>null, "language"=>null, ],
+		"episodes" 	=> [],
+		"login"		=> [],
 		];
 	
+	$login_temp = login_check(true);
+
 	// Pull up podcast description
 	$sql_temp = "SELECT information_key, information_value FROM podcast_information";
 	$result = pg_query($postgres_connection, $sql_temp);
@@ -76,8 +79,26 @@ if ($request_access == "json-page"):
 
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
+
+		// If we are not logged in, do not feed incomplete episodes
+		if ($login_temp['loginState'] !== "loggedin"):
+			if (empty($row['episode_title'])): continue; endif;
+			if (empty($row['episode_description'])): continue; endif;
+			if (empty($row['episode_pubdate'])): continue; endif;
+			if (empty($row['episode_duration'])): continue; endif;
+			endif;
+
+		$json_array['episodes'][] = [
+			"episode_id"		=> $row['episode_id'],
+			"episode_title"		=> $row['episode_title'],
+			"episode_description"	=> $row['episode_description'],
+			"episode_pubdate"	=> $row['episode_pubdate'],
+			"episode_duration"	=> $row['episode_duration'],
+			];
 		
 		endwhile;
+
+	$json_array['login'] = $login_temp;
 
 	json_output($json_array);
 
