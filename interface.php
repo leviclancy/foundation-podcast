@@ -292,7 +292,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<template type='amp-mustache'>
 		{{title}}
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>
-		<span class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\">Edit episode</span>	
+		<span role='button' tabindex='0' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\" on='tap:".$lightbox_close_array.",AMP.setState({editEpisode: '{{episode_id}}'}),lightbox-edit-episode.open'>Edit episode</span>	
 		</template>
 		
 	</amp-list>";
@@ -388,7 +388,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
 	
-	echo "<div id=''>";
+	echo "<div [text]='editEpisode'>Nothing chosen yet</div>";
 
 	echo "DELETE BUTTON";
 		
