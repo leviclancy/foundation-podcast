@@ -268,34 +268,16 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		</template>
 		
 	</amp-list>";
-
-$attributes_temp = [
-	"id='home-list-two'",
-	"layout='fixed'",
-	"width='600'",
-	"height='400'",
-	"items='information'",
-//	"binding='refresh'",
-	"src='amp-state:pageState'",
-	"single-item",
-	];
-echo "<amp-list ". implode(" ", $attributes_temp) .">
-	<span class='amp-list-fallback' fallback>Failed to load information.</span>
-	<span class='amp-list-fallback' placeholder>Loading information...</span>
-	<span class='amp-list-fallback' overflow>Show more.</span>
-
-	<template type='amp-mustache'>
-		<h1>{{title}}</h1>
-		<p>by {{author}}</p>
-		<p>{{description}}</p>
-		</template>
-		
-	</amp-list>";
 		
 echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 
 // Handle if more than 50 episodes
 	
+$result_temp = file_get_contents("https://podcast.ours.foundation/?access=json-page");
+$result_temp = json_decode($result_temp, true);
+print_r($result_temp);
+
+
 $attributes_temp = [
 	"id='episodes-list'",
 	"layout='responsive'",
