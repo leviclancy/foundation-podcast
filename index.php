@@ -350,22 +350,22 @@ if ($request_access == "xhr-edit-episode"):
 	login_check(false); // Check login status
 
 	// If no valid post data is received
-	if (empty($_POST['edit_episode'])): json_result($domain, "error", null, "No information array received."); endif;
+	if (empty($_POST['edit-episode'])): json_result($domain, "error", null, "No information array received."); endif;
 
 	// If incomplete post data is received
-	if (empty($_POST['edit_episode']['episode_id'])): json_result($domain, "error", null, "No episode ID received."); endif;
-	if (empty($_POST['edit_episode']['title'])): json_result($domain, "error", null, "No episode title received."); endif;
-	if (empty($_POST['edit_episode']['description'])): json_result($domain, "error", null, "No episode description received."); endif;
-	if (empty($_POST['edit_episode']['pubdate'])): json_result($domain, "error", null, "No episode publication date received."); endif;
-	if (empty($_POST['edit_episode']['duration'])): json_result($domain, "error", null, "No episode duration received."); endif;
+	if (empty($_POST['edit-episode']['episode_id'])): json_result($domain, "error", null, "No episode ID received."); endif;
+	if (empty($_POST['edit-episode']['title'])): json_result($domain, "error", null, "No episode title received."); endif;
+	if (empty($_POST['edit-episode']['description'])): json_result($domain, "error", null, "No episode description received."); endif;
+	if (empty($_POST['edit-episode']['pubdate'])): json_result($domain, "error", null, "No episode publication date received."); endif;
+	if (empty($_POST['edit-episode']['duration'])): json_result($domain, "error", null, "No episode duration received."); endif;
 
 	// Set up values
 	$values_temp = [];
-	$values_temp['episode_id'] = $_POST['edit_episode']['episode_id'] ?? null;
-	$values_temp['episode_title'] = $_POST['edit_episode']['episode_title'] ?? null;
-	$values_temp['episode_description'] = $_POST['edit_episode']['episode_description'] ?? null;
-	$values_temp['episode_pubdate'] = $_POST['edit_episode']['episode_pubdate'] ?? null;
-	$values_temp['episode_duration'] = $_POST['edit_episode']['episode_duration'] ?? null;
+	$values_temp['episode_id'] = $_POST['edit-episode']['episode_id'] ?? null;
+	$values_temp['episode_title'] = $_POST['edit-episode']['episode_title'] ?? null;
+	$values_temp['episode_description'] = $_POST['edit-episode']['episode_description'] ?? null;
+	$values_temp['episode_pubdate'] = $_POST['edit-episode']['episode_pubdate'] ?? null;
+	$values_temp['episode_duration'] = $_POST['edit-episode']['episode_duration'] ?? null;
 
 	// Prepare the statement to update the podcast episode SQL
 	$postgres_statement = postgres_update_statement("podcast_episodes", $values_temp);
