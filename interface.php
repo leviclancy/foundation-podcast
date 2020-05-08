@@ -306,11 +306,11 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		// We have to remove " from around keys and values
 		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
 			"editEpisode" => [
-				"editEpisodeID" => "{{episode_id}}",
-				"editEpisodeTitle" => "{{episode_title}}",
-				"editEpisodeDescription" => "{{episode_description}}",
-				"editEpisodePubDate" => "{{episode_pubdate}}",
-				"editEpisodeDuration" => "{{episode_duration}}",
+				"editEpisodeID" => "'{{episode_id}}'",
+				"editEpisodeTitle" => "'{{episode_title}}'",
+				"editEpisodeDescription" => "'{{episode_description}}'",
+				"editEpisodePubDate" => "'{{episode_pubdate}}'",
+				"editEpisodeDuration" => "'{{episode_duration}}'",
 				], ]).")");
 				
 		// Set up edit button
