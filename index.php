@@ -48,12 +48,13 @@ if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_re
 // Give us the JSON of entire site info
 if ($request_access == "json-page"):
 
-	$page_temp = $_REQUEST['page'] ?? null;
+	$page_temp = $_REQUEST['page'] ?? 0;
 
 	$json_array = [
 		"information" 	=> ["author"=>null, "title"=>null, "description"=>null, "language"=>null, ],
 		"episodes" 	=> [],
 		"login"		=> [],
+		"next"		=> null,
 		];
 	
 	$login_temp = login_check(true);
@@ -100,6 +101,7 @@ if ($request_access == "json-page"):
 			];
 
 	// Check if there are episodes
+	$next_temp = 0; // This means there is no next
 	while ($row = pg_fetch_row($result)):
 
 		$completion_temp = "complete";
@@ -123,7 +125,7 @@ if ($request_access == "json-page"):
 
 		// This is for pagination
 		if ($count_temp < $page_temp*50): continue; endif;
-		if ($count_temp > ($page_temp+1)*50): continue; endif;
+		if ($count_temp > ($page_temp+1)*50): $next_temp = 1; continue; endif;
 
 		$json_array['episodes'][] = [
 			"episode_id"		=> $row['episode_id'],
@@ -136,6 +138,9 @@ if ($request_access == "json-page"):
 			];
 
 		endwhile;
+
+	// If we have pages to go to next, then add this in
+	if ($next_temp !== 0):	Json_array['next'] = "/?access=json-page&page=".($page_temp+1); endif;
 
 	$json_array['login'] = $login_temp;
 
