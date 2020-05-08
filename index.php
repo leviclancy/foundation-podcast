@@ -140,8 +140,7 @@ if ($request_access == "json-page"):
 		endwhile;
 
 	// If we have pages to go to next... 
-	$page_temp++; // Then incremenent the page up one
-	if ($next_temp !== 0): Json_array['next'] = "/?access=json-page&page=".$page_temp; endif; // And make the link
+	if ($next_temp !== 0): $son_array['next'] = "/?access=json-page&page=".($page_temp+1); endif;
 
 	$json_array['login'] = $login_temp;
 
