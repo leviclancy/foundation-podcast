@@ -286,7 +286,7 @@ $attributes_temp = [
 //	"src='amp-state:pageState'",
 	"src='/?access=json-page'",
 //	"max-items='50'",
-	"load-more-bookmark='next'".
+	"load-more-bookmark='next'",
 	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
