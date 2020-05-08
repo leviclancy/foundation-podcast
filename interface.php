@@ -418,24 +418,22 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
-	
-	echo "<div [text]='editEpisodeID'>Nothing chosen yet</div><br>";
 
 	echo "<div [text]='editEpisode.editEpisodeID'>Nothing chosen yet</div><br>";
 
 	echo "DELETE BUTTON";
 
 	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
-	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.editEpisode.episode_title\" value='{{title}}' required>";
+	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"editEpisode.editEpisodeTitle\" required>";
 
 	echo "<label class='form-label' for='edit-episode[description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.editEpisode.description\" required>{{description}}</textarea>";
+	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"editEpisode.editDescription\" required></textarea>";
 
-	echo "<label class='form-label' for='edit-episode[language]'>Enter the date.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.editEpisode.language\" value='' required>";
+	echo "<label class='form-label' for='edit-episode[date]'>Enter the date.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[date]' minlength='3' maxlength='10' placeholder='today' [value]=\"editEpisode.editEpisodeDate\" required>";
 
-	echo "<label class='form-label' for='edit-episode[language]'>Enter the duration.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.editEpisode.language\" value='' required>";
+	echo "<label class='form-label' for='edit-episode[duration]'>Enter the duration.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]=\"editEpisode.editEpisodeDuration\" required>";
 
 	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
