@@ -419,7 +419,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save edits</span>";
+	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save information</span>";
 
 	echo "</amp-lightbox>";
 
@@ -449,13 +449,13 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<label class='form-label' for='edit-episode[duration]'>Enter the duration.</label>";
 	echo "<input class='form-input' type='date' name='edit-episode[duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"change:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
-	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
-	echo "</amp-audio>";
+//	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
+//	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
+//	echo "</amp-audio>";
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save edits</span>";
+	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save episode</span>";
 
 	echo "</amp-lightbox>";
 
