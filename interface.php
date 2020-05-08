@@ -308,8 +308,8 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
-//			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}', editEpisodeTitle: '{{episode_title}}', editEpisodeDescription: '{{episode_description}}', editEpisodePubDate: '{{episode_pubdate}}', editEpisodeDuration: '{{episode_duration}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
-			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
+			"on=\"tap:AMP.setState({editEpisode: {editEpisodeID: '{{episode_id}}'), {editEpisodeTitle: '{{episode_title}}'}, {editEpisodeDescription: '{{episode_description}}}', editEpisodePubDate: '{{episode_pubdate}}', editEpisodeDuration: '{{episode_duration}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
+//			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
 		echo "<br><span ". $attributes_temp .">Edit episode</span>";
 
