@@ -413,27 +413,29 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 
 // Lightbox for editing episodes
-echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_close_array.",edit-episode-form.clear' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
+	echo "<form action-xhr='/?access=xhr-edit-episode' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
 
 	echo "<div [text]='editEpisode.editEpisodeID'>Nothing chosen yet</div><br>";
 
-	echo "DELETE BUTTON";
+	echo "<input type='hidden' name='edit-episode[episode_id]' [value]='editEpisode.editEpisodeID' required>";
+
+	echo "Small DELETE BUTTON";
 
 	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
-	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"editEpisode.editEpisodeTitle\" required>";
+	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]='editEpisode.editEpisodeTitle' required>";
 
 	echo "<label class='form-label' for='edit-episode[description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"editEpisode.editEpisodeDescription\" required></textarea>";
+	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]='editEpisode.editEpisodeDescription' required></textarea>";
 
-	echo "<label class='form-label' for='edit-episode[date]'>Enter the date.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[date]' minlength='3' maxlength='10' placeholder='today' [value]=\"editEpisode.editEpisodeDate\" required>";
+	echo "<label class='form-label' for='edit-episode[pubdate]'>Enter the publication date.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' required>";
 
 	echo "<label class='form-label' for='edit-episode[duration]'>Enter the duration.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]=\"editEpisode.editEpisodeDuration\" required>";
+	echo "<input class='form-input' type='date' name='edit-episode[duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' required>";
 
 	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
