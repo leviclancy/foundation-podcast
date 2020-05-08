@@ -286,6 +286,7 @@ $attributes_temp = [
 //	"src='amp-state:pageState'",
 	"src='/?access=json-page'",
 //	"max-items='50'",
+	"load-more-bookmark='next'".
 	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
@@ -307,7 +308,8 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
-			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}', editEpisodeTitle: '{{episode_title}}', editEpisodeDescription: '{{episode_description}}', editEpisodePubDate: '{{episode_pubdate}}', editEpisodeDuration: '{{episode_duration}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
+//			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}', editEpisodeTitle: '{{episode_title}}', editEpisodeDescription: '{{episode_description}}', editEpisodePubDate: '{{episode_pubdate}}', editEpisodeDuration: '{{episode_duration}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
+			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
 		echo "<br><span ". $attributes_temp .">Edit episode</span>";
 
@@ -406,7 +408,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
 	
-	echo "<div [text]='editEpisode'>Nothing chosen yet</div><br>";
+	echo "<div [text]='editEpisodeID'>Nothing chosen yet</div><br>";
 
 	echo "DELETE BUTTON";
 
