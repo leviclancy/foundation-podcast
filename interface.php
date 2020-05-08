@@ -293,11 +293,15 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
 	<template type='amp-mustache'>
+	
+		<!-- Podcast title and description -->
 		<br><br>{{#episode_title}}<b>{{episode_title}}</b><br>{{/episode_title}}
 		{{#episode_description}}<i>{{episode_description}}</i><br>{{/episode_description}}
 		
-		<!-- SOMETHING IF NOT COMPETE, or NOT ACTIVE
+		<!-- Podcast audio -->
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
+
+		// Set up edit button
 		$attributes_temp = implode(" ", [
 			"role='button'",
 			"tabindex='0'",
@@ -306,6 +310,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}', editEpisodeTitle: '{{episode_title}}', editEpisodeDescription: '{{episode_description}}', editEpisodePubDate: '{{episode_pubdate}}', editEpisodeDuration: '{{episode_duration}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
 		echo "<br><span ". $attributes_temp .">Edit episode</span>";
+
 		echo "</template>";
 		
 	echo "</amp-list>";
