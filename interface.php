@@ -273,27 +273,8 @@ echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?ac
 
 // Handle if more than 50 episodes
 	
-$result_temp = file_get_contents("https://podcast.ours.foundation/?access=json-page");
-$result_temp = '{
- "items": [
-   {
-     "title": "amp-carousel",
-     "url": "/components/amp-carousel/"
-   },
-   {
-     "title": "amp-img",
-     "url": "/components/amp-img/"
-   },
-   {
-     "title": "amp-ad",
-     "url": "/components/amp-ad/"
-   },
-   {
-     "title": "amp-accordion",
-     "url": "/components/amp-accordion/"
-   }
- ]
-}';
+$result_temp = file_get_contents("https://amp.dev/static/samples/json/examples.json");
+
 $result_temp = json_decode($result_temp, true);
 print_r($result_temp);
 
@@ -305,7 +286,8 @@ $attributes_temp = [
 	"height='400'",
 	"items='episodes'",
 //	"binding='refresh'",
-	"src='amp-state:pageState'",
+//	"src='amp-state:pageState'",
+	"src='https://amp.dev/static/samples/json/examples.json'",
 //	"src='/?access=json-page'",
 //	"max-items='50'",
 	];
@@ -314,9 +296,9 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
-	<template type='amp-mustache'>
+	<template type='amp-mustache'>{{title}}
 		<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>
-		<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>
+		{{episode_id}}
 		</template>
 		
 	</amp-list>";
