@@ -246,7 +246,7 @@ $attributes_temp = [
 	"width='600'",
 	"height='400'",
 	"items='information'",
-	"binding='refresh'",
+//	"binding='refresh'",
 	"src='amp-state:pageState'",
 	"single-item",
 	];
@@ -274,8 +274,8 @@ $attributes_temp = [
 	"height='400'",
 	"items='episodes'",
 //	"binding='refresh'",
-//	"src='amp-state:pageState'",
-	"src='/?access=json-page'",
+	"src='amp-state:pageState'",
+//	"src='/?access=json-page'",
 //	"max-items='50'",
 	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
@@ -375,23 +375,23 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
+	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:edit-episode-form-submit.show,pageState.refresh'>";
 	
 	echo "<div id=''>";
 
 	echo "DELETE BUTTON";
 		
-	echo "<label class='form-label' for='edit-information[title]'>Enter the episode title.</label>";
-	echo "<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>";
+	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
+	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>";
 
-	echo "<label class='form-label' for='edit-information[description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>";
+	echo "<label class='form-label' for='edit-episode[description]'>Enter the episode description.</label>";
+	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>";
 
-	echo "<label class='form-label' for='edit-information[language]'>Enter the date.</label>";
-	echo "<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>";
+	echo "<label class='form-label' for='edit-episode[language]'>Enter the date.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='' required>";
 
-	echo "<label class='form-label' for='edit-information[language]'>Enter the length.</label>";
-	echo "<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>";
+	echo "<label class='form-label' for='edit-episode[language]'>Enter the duration.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='' required>";
 
 	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
@@ -399,7 +399,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 		
 	echo "</form>";
 
-	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save edits</span>";
+	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save edits</span>";
 
 	echo "</amp-lightbox>";
 
