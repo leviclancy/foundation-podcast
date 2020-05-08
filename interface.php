@@ -289,14 +289,19 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
-	<template type='amp-mustache'>{{title}}
-		<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>
-		{{episode_id}} {{dnjgsdngdf}}
+	<template type='amp-mustache'>
+		{{title}}
+		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>
+		<span class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\">Edit episode</span>	
 		</template>
 		
 	</amp-list>";
 	
-echo "Upload episode";
+<hr>
+
+echo "<span class='form-description'>Add episode. Save to add more.<br>Minimum 2000 x 500 pixels. Maximum 5 megabytes.</span>";
+echo "<input type='file' id='add-image-input' name='images_new' placeholder='Add image' accept='image/jpg,image/jpeg' on="change:AMP.setState({addimagevalue: event.value.split('\')})" hidden>";
+echo "<label for='add-image-input' [text]="addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)">Choose MP3 file</label>";
 
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
