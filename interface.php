@@ -427,7 +427,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"editEpisode.editEpisodeTitle\" required>";
 
 	echo "<label class='form-label' for='edit-episode[description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"editEpisode.editDescription\" required></textarea>";
+	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"editEpisode.editEpisodeDescription\" required></textarea>";
 
 	echo "<label class='form-label' for='edit-episode[date]'>Enter the date.</label>";
 	echo "<input class='form-input' type='date' name='edit-episode[date]' minlength='3' maxlength='10' placeholder='today' [value]=\"editEpisode.editEpisodeDate\" required>";
