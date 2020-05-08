@@ -242,9 +242,9 @@ echo "</form>";
 
 $attributes_temp = [
 	"id='home-list'",
-	"layout='responsive'",
+	"layout='flex-item'",
 	"width='500'",
-	"height='500'",
+	"height='300'",
 	"items='information'",
 	"binding='refresh'",
 	"src='amp-state:pageState'",
@@ -268,15 +268,15 @@ echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?ac
 // Handle if more than 50 episodes
 	
 $attributes_temp = [
-	"id='home-list'",
+	"id='episodes-list'",
 	"layout='responsive'",
-	"width='500'",
-	"height='500'",
+	"width='400'",
+	"height='400'",
 	"items='episodes'",
-	"binding='refresh'",
+//	"binding='refresh'",
 //	"src='amp-state:pageState'",
 	"src='/?access=json-page'",
-	"max-items='50'",
+//	"max-items='50'",
 	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
