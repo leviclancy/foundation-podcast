@@ -290,16 +290,17 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
 	<template type='amp-mustache'>
-		{{title}}
+		<br><br>{{title}}
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 		$attributes_temp = implode(" ", [
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
-			"on=\"tap:".$lightbox_close_array.",lightbox-edit-episode.open\"",
+			"on=\"tap:AMP.setState({editEpisode: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
-		echo "<span ". $atributes_temp .">Edit episode</span>";
+//
+		echo "<br><span ". $attributes_temp .">Edit episode</span>";
 		echo "</template>";
 		
 	echo "</amp-list>";
