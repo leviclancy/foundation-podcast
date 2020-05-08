@@ -184,6 +184,11 @@ $style_array = [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
+
+	"#lightbox-edit-episodes" => [
+		"color"			=> "#fff",
+		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(110,7,0,1)",
+		],
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
