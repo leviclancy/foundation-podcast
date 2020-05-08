@@ -278,7 +278,7 @@ $attributes_temp = [
 		"src='amp-state:pageState'",
 		"single-item",
 		];
-echo "<amp-list ". implode(" ", $attributes_temp) .">
+echo "<amp-list ". implode(" ", $attributes_temp) .">";
 	echo "<p class='amp-list-fallback' fallback>No episodes.</p>";
 	echo "<p class='amp-list-fallback' placeholder>Loading episode results...</p>";
 //	echo "<p class='amp-list-fallback' overflow>Show more.</p>";
