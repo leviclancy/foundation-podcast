@@ -82,7 +82,7 @@ if ($request_access == "json-page"):
 	// This is used to count pagination
 	$count_temp = 0;
 
-	$json_array['episodes'][] = [
+	$json_array['episodes'] = [
 			"episode_id"		=> "SJNKLDF",
 			"episode_title"		=> "New episode",
 			"episode_description"	=> "Description",
