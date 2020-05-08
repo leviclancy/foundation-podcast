@@ -301,7 +301,7 @@ echo "<hr>";
 
 echo "<span class='form-description'>Add episode. Save to add more.<br>Minimum 2000 x 500 pixels. Maximum 5 megabytes.</span>";
 echo "<input type='file' id='add-image-input' name='images_new' placeholder='Add image' accept='image/jpg,image/jpeg' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\" hidden>";
-echo "<label for='add-image-input' [text]="addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)">Choose MP3 file</label>";
+echo "<label for='add-image-input' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
 
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
