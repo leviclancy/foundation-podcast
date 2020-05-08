@@ -259,7 +259,7 @@ if ($request_access == "xhr-edit-information"):
 	if (empty($count_temp)): json_result($domain, "error", null, "No information sent to update."); endif;
 	if (!(empty($error_temp))): json_result($domain, "error", null, "Could not completely save information."); endif;
 
-	json_result($domain, "success", null, "Saved all information.");
+	json_result($domain, "success", null, "Saved all information.".implode($_POST));
 
 	exit; endif;
 
