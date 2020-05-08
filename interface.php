@@ -272,12 +272,6 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 
 // Handle if more than 50 episodes
-	
-$result_temp = file_get_contents("https://amp.dev/static/samples/json/examples.json");
-
-$result_temp = json_decode($result_temp, true);
-print_r($result_temp);
-
 
 $attributes_temp = [
 	"id='episodes-list'",
@@ -287,8 +281,7 @@ $attributes_temp = [
 	"items='episodes'",
 //	"binding='refresh'",
 //	"src='amp-state:pageState'",
-	"src='https://amp.dev/static/samples/json/examples.json'",
-//	"src='/?access=json-page'",
+	"src='/?access=json-page'",
 //	"max-items='50'",
 	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
