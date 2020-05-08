@@ -239,7 +239,7 @@ if ($request_access == "xhr-edit-information"):
 	foreach ($_POST as $key_temp => $value_temp):
 
 		// Only use allowed information keys
-		if (!(in_array($key_temp, $allowed_information))): continue; endif;
+		if (!(in_array(str_replace("edit-information-", null, $key_temp), $allowed_information))): continue; endif;
 
 		if (empty($value_temp)): continue; endif;
 
