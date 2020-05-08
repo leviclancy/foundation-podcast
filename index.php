@@ -61,6 +61,8 @@ if ($request_access == "json-page"):
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
 
+print_r($row);
+
 		// Only allow existing keys
 		if (!(array_key_exists($row['information_key'], $json_array['information']))): continue; endif;
 
