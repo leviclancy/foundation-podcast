@@ -297,7 +297,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 		
 	</amp-list>";
 	
-<hr>
+echo "<hr>";
 
 echo "<span class='form-description'>Add episode. Save to add more.<br>Minimum 2000 x 500 pixels. Maximum 5 megabytes.</span>";
 echo "<input type='file' id='add-image-input' name='images_new' placeholder='Add image' accept='image/jpg,image/jpeg' on="change:AMP.setState({addimagevalue: event.value.split('\')})" hidden>";
