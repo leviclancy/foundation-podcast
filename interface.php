@@ -427,7 +427,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 	echo "</amp-lightbox>";
 
 // Lightbox for admin management
-echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
