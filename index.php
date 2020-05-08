@@ -59,9 +59,7 @@ if ($request_access == "json-page"):
 	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_information' table."); endif;
 
 	// Check if there are episodes
-	while ($row = pg_fetch_row($result)):
-
-print_r($row);
+	while ($row = pg_fetch_assoc($result)):
 
 		// Only allow existing keys
 		if (!(array_key_exists($row['information_key'], $json_array['information']))): continue; endif;
@@ -232,16 +230,20 @@ if ($request_access == "xhr-edit-information"):
 		"information_value"		=> null,
 		];
 
+
+	
+	if (empty($_POST['edit-information'])): json_result($domain, "error", null, "No information array received."); endif;
+
 	// Prepare the statement to add the cookie code to SQL
 	$postgres_statement = postgres_update_statement("podcast_information", $values_temp);
 	$result = pg_prepare($postgres_connection, "podcast_information_update", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare information statement."); endif;
 
 	$count_temp = 0; $error_temp = 0;
-	foreach ($_POST as $key_temp => $value_temp):
+	foreach ($_POST['edit-information'] as $key_temp => $value_temp):
 
 		// Only use allowed information keys
-		if (!(in_array(str_replace("edit-information-", null, $key_temp), $allowed_information))): continue; endif;
+		if (!(in_array($key_temp, $allowed_information))): continue; endif;
 
 		if (empty($value_temp)): continue; endif;
 
