@@ -80,20 +80,24 @@ if ($request_access == "json-page"):
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
 
+		$completion_temp = "complete";
+		if (empty($row['episode_title'])): $completion_temp = "incomplete"; endif;
+		if (empty($row['episode_description'])): $completion_temp = "incomplete"; endif;
+		if (empty($row['episode_pubdate'])): $completion_temp = "incomplete"; endif;
+		if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
+
 		// If we are not logged in, do not feed incomplete episodes
 		if ($login_temp['loginState'] !== "loggedin"):
-			if (empty($row['episode_title'])): continue; endif;
-			if (empty($row['episode_description'])): continue; endif;
-			if (empty($row['episode_pubdate'])): continue; endif;
-			if (empty($row['episode_duration'])): continue; endif;
+			if ($completion_temp == "incomplete"): continue; endif;
 			endif;
-
+	
 		$json_array['episodes'][] = [
 			"episode_id"		=> $row['episode_id'],
 			"episode_title"		=> $row['episode_title'],
 			"episode_description"	=> $row['episode_description'],
 			"episode_pubdate"	=> $row['episode_pubdate'],
 			"episode_duration"	=> $row['episode_duration'],
+			"episode_completion"	=> $completion_temp,
 			];
 		
 		endwhile;
