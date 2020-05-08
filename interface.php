@@ -304,11 +304,11 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site information
-echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:loginState.refresh,pageState.refresh' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,edit-information-form-list.refresh'>";
+	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
 	
 	$attributes_temp = [
 		"id='edit-information-form-list'",
