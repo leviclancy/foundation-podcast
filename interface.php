@@ -274,7 +274,6 @@ $attributes_temp = [
 		"max-items='50'",
 		"binding='refresh'",
 		"items='episodes'",
-		"binding='refresh'",
 		"src='amp-state:pageState'",
 		];
 echo "<amp-list ". implode(" ", $attributes_temp) .">";
