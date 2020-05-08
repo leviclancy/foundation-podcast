@@ -18,14 +18,19 @@ echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/
 echo '<language>'. $language .'</language>';
 echo '<link>'. $domain .'</link>';
 
-echo '<item>
-	<title>Top 10 myths about caring for a zebra</title>
-	<description>Here are the top 10 misunderstandings about the care, feeding, and breeding of these lovable striped animals.</description>
-	<pubDate>Tue, 14 Mar 2017 12:00:00 GMT</pubDate>
-	<enclosure url="https://www.example.com/podcasts/dafnas-zebras/audio/toptenmyths.mp3" type="audio/mpeg" length="34216300"/>
-	<itunes:duration>30:00</itunes:duration>
-	<guid isPermaLink="false">dzpodtop10</guid>
-	</item>';
+foreach ($ as ):
+	
+	if ($episode_info['episode_completion'] !== "complete"): continue; endif;
+	
+	echo '<item>
+		<title>Top 10 myths about caring for a zebra</title>
+		<description>Here are the top 10 misunderstandings about the care, feeding, and breeding of these lovable striped animals.</description>
+		<pubDate>Tue, 14 Mar 2017 12:00:00 GMT</pubDate>
+		<enclosure url="https://www.example.com/podcasts/dafnas-zebras/audio/toptenmyths.mp3" type="audio/mpeg" length="34216300"/>
+		<itunes:duration>30:00</itunes:duration>
+		<guid isPermaLink="false">dzpodtop10</guid>
+		</item>';
+	endforeach;
 
 echo '</channel></rss>';
 
