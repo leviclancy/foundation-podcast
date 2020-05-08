@@ -379,7 +379,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on='lightboxOpen:".$lightbox_clos
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
 	
-	echo "<div id=''>
+	echo "<div id=''>";
 
 	echo "DELETE BUTTON";
 		
