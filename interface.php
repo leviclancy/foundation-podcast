@@ -283,8 +283,8 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
 	<template type='amp-mustache'>
-		<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
-		<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>";
+		<amp-audio width='auto' height='50' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>
+		<a href='/{{entry_id}}/' target='_blank'><span class='categories-item-title'>{{header}}</span></a>
 		</template>
 		
 	</amp-list>";
