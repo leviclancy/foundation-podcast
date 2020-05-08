@@ -202,8 +202,10 @@ $style_array = [
 		"background"		=> "#fff",
 		"border"		=> "2px solid #333",
 		"color"			=> "#333",
-		"padding"		=> "8px 20px",
+		"padding"		=> "6px 17px",
 		"cursor"		=> "pointer",
+		"font-size"		=> "80%",
+		"border-radius"		=> "100px",
 		],
 	
 	];
