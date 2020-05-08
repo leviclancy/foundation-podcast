@@ -48,6 +48,8 @@ if (pg_connection_status($postgres_connection) !== PGSQL_CONNECTION_OK): json_re
 // Give us the JSON of entire site info
 if ($request_access == "json-page"):
 
+	$page_temp = $_REQUEST['page'] ?? null;
+
 	$json_array = [
 		"information" 	=> ["author"=>null, "title"=>null, "description"=>null, "language"=>null, ],
 		"episodes" 	=> [],
@@ -77,6 +79,18 @@ if ($request_access == "json-page"):
 	$result = pg_query($postgres_connection, $sql_temp);
 	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_episodes' table."); endif;
 
+	// This is used to count pagination
+	$count_temp = 0;
+
+	$json_array['episodes'][] = [
+			"episode_id"		=> "SJNKLDF",
+			"episode_title"		=> "New episode",
+			"episode_description"	=> "Description",
+			"episode_pubdate"	=> "",
+			"episode_duration"	=> "",
+			"episode_completion"	=> "incomplete",
+			];
+
 	// Check if there are episodes
 	while ($row = pg_fetch_row($result)):
 
@@ -90,7 +104,14 @@ if ($request_access == "json-page"):
 		if ($login_temp['loginState'] !== "loggedin"):
 			if ($completion_temp == "incomplete"): continue; endif;
 			endif;
-	
+
+		// We will use this for pagination
+		$count_temp++;
+
+		// This is for pagination
+		if ($count_temp < $page_temp*50): continue; endif;
+		if ($count_temp > ($page_temp+1)*50): continue; endif;
+
 		$json_array['episodes'][] = [
 			"episode_id"		=> $row['episode_id'],
 			"episode_title"		=> $row['episode_title'],
@@ -99,7 +120,7 @@ if ($request_access == "json-page"):
 			"episode_duration"	=> $row['episode_duration'],
 			"episode_completion"	=> $completion_temp,
 			];
-		
+
 		endwhile;
 
 	$json_array['login'] = $login_temp;
