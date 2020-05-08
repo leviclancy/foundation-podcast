@@ -434,7 +434,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 		"target='_top'",
 		"id='edit-episode-form'",
 		"method='post'",
-		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: 'Back'}),edit-episode-form-submit.show,pageState.refresh"',
+		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,pageState.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
