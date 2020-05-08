@@ -424,12 +424,20 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 	echo "</amp-lightbox>";
 
 
-// Lightbox for editing episodes
+// Lightbox for editing an episode
 echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editEpisodeBack: 'Back'});lightboxClose:pageState.refresh,edit-episode-form.clear\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editEpisodeBack'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-edit-episode' target='_top' id='edit-episode-form' method='post' on='submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: 'Back'}),edit-episode-form-submit.show,pageState.refresh'>";
+	$attributes_temp = implode(" ", [
+		"action-xhr='/?access=xhr-edit-episode'",
+		"target='_top'",
+		"id='edit-episode-form'",
+		"method='post'",
+		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: 'Back'}),edit-episode-form-submit.show,pageState.refresh"',
+		]);
+
+	echo "<form ".$attributes_temp.">";
 
 	echo "<div [text]='editEpisode.editEpisodeID'>Nothing chosen yet</div><br>";
 
