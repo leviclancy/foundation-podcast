@@ -84,7 +84,7 @@ $style_array = [
 	
 	".lightbox-back" => [
 		"font-weight"		=> "700",
-		"position"		=> "absolute",
+		"position"		=> "fixed",
 		"top"			=> "20px",
 		"box-sizing"		=> "border-box",
 		"right"			=> "-25px",
@@ -365,7 +365,58 @@ echo "<amp-lightbox id='lightbox-edit-episodes' on='lightboxOpen:".$lightbox_clo
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	// 
+	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
+	
+	$attributes_temp = [
+		"id='edit-information-form-list'",
+		"layout='responsive'",
+		"width='650'",
+		"height='1000'",
+		"reset-on-refresh='always'",
+		"items='episodes'",
+		"binding='refresh'",
+		"src='amp-state:pageState'",
+		];
+	echo "<amp-list ". implode(" ", $attributes_temp) .">
+		<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
+		<span class='amp-list-fallback' placeholder>Loading episodes...</span>
+		<span class='amp-list-fallback' overflow>Show more.</span>
+
+		<template type='amp-mustache'>
+		
+		DELETE BUTTON
+		
+		<div>
+		
+		<label class='form-label' for='edit-information[title]'>Enter the episode title.</label>
+		<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>
+
+		<label class='form-label' for='edit-information[description]'>Enter the episode description.</label>
+		<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>
+
+		<label class='form-label' for='edit-information[language]'>Enter the date.</label>
+		<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
+
+		<label class='form-label' for='edit-information[language]'>Enter the length.</label>
+		<input class='form-input' type='date' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
+
+		<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>
+		<div fallback>Your browser doesn’t support HTML5 audio.</div>
+		</amp-audio>
+		
+		</div>
+			
+		</template></amp-list>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
+	echo "</form>";
+
+	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save edits</span>";
 
 	echo "</amp-lightbox>";
 
