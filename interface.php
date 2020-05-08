@@ -297,9 +297,9 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
 			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-episode-edit'\"",
-			"on=\"tap:".$lightbox_close_array.",AMP.setState({editEpisode: '{{episode_id}}'}),lightbox-edit-episode.open\"",
+			"on=\"tap:".$lightbox_close_array.",AMP.setState({editEpisode: episode_id}),lightbox-edit-episode.open\"",
 			]);
-		echo "<span ". $atributes_temp .">>Edit episode</span>";
+		echo "<span ". $atributes_temp .">Edit episode</span>";
 		echo "</template>";
 		
 	echo "</amp-list>";
