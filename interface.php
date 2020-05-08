@@ -85,6 +85,7 @@ $style_array = [
 	".lightbox-back" => [
 		"font-weight"		=> "700",
 		"position"		=> "fixed",
+		"z-index"		=> "1000",
 		"top"			=> "20px",
 		"box-sizing"		=> "border-box",
 		"right"			=> "-25px",
