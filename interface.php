@@ -274,9 +274,9 @@ $attributes_temp = [
 	"height='500'",
 	"items='episodes'",
 	"binding='refresh'",
-	"src='amp-state:pageState'",
-//	"max-items='50'",
-	"single-item",
+//	"src='amp-state:pageState'",
+	"src='/?access=json-page'",
+	"max-items='50'",
 	];
 echo "<amp-list ". implode(" ", $attributes_temp) .">
 	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
