@@ -152,6 +152,7 @@ if ($request_access == "install"):
 		"episode_description"	=> "VARCHAR(500)",
 		"episode_pubdate"	=> "VARCHAR(100)",
 		"episode_duration"	=> "VARCHAR(100)",
+		"episode_status"	=> "VARCHAR(100)",
 		"episode_file"		=> "TEXT",
 		];
 
