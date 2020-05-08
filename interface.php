@@ -267,7 +267,7 @@ echo "<p>RSS feed: https://". $domain ."/?access=rss</p>";
 // Handle if more than 50 episodes
 	
 $attributes_temp = [
-		"id='episode-list'",
+		"id='episodes-list'",
 		"layout='responsive'",
 		"width='650'",
 		"height='1000'",
@@ -276,7 +276,6 @@ $attributes_temp = [
 		"items='episodes'",
 		"binding='refresh'",
 		"src='amp-state:pageState'",
-		"single-item",
 		];
 echo "<amp-list ". implode(" ", $attributes_temp) .">";
 	echo "<p class='amp-list-fallback' fallback>No episodes.</p>";
