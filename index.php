@@ -352,6 +352,8 @@ if ($request_access == "xhr-edit-episode"):
 	// If no valid post data is received
 	if (empty($_POST['edit-episode'])): json_result($domain, "error", null, "No information array received."); endif;
 
+json_result($domain, "error", null, "Value for '".$key_temp."' not received.".implode($_POST['edit-episode']));
+
 	// Set up which values to use and look for
 	$values_temp = [
 		"episode_id" 		=> null,
