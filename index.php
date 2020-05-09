@@ -349,8 +349,6 @@ if ($request_access == "xhr-edit-episode"):
 
 	login_check(false); // Check login status
 
-json_result($domain, "error", null, "No information array received.".implode(" ", array_keys($_POST['edit-episode'])));
-
 	// If no valid post data is received
 	if (empty($_POST['edit-episode'])): json_result($domain, "error", null, "No information array received."); endif;
 
