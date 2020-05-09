@@ -352,7 +352,7 @@ if ($request_access == "xhr-edit-episode"):
 	// If no valid post data is received
 	if (empty($_POST['edit-episode'])): json_result($domain, "error", null, "No information array received."); endif;
 
-	// Set up values
+	// Set up which values to use and look for
 	$values_temp = [
 		"episode_id" 		=> null,
 		"episode_title" 	=> null,
@@ -360,12 +360,12 @@ if ($request_access == "xhr-edit-episode"):
 		"episode_pubdate" 	=> null,
 		"episode_duration" 	=> null,
 		];
+
+	// Return an error if anything is null
 	foreach ($values_temp as $key_temp => $value_temp):
 		if (empty($_POST['edit-episode'][$key_temp])): json_result($domain, "error", null, "Value for '".$key_temp."' not received."); endif;
 		$values_temp[$key_temp] = $_POST['edit-episode'][$key_temp] ?? null;
 		endforeach;
-
-json_result($domain, "error", null, "Could not prepare episodes statement.".implode($values_temp));
 
 	// Prepare the statement to update the podcast episode SQL
 	$postgres_statement = postgres_update_statement("podcast_episodes", $values_temp);
