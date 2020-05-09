@@ -445,17 +445,17 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "Small DELETE BUTTON";
 
-	echo "<label class='form-label' for='edit-episode[title]'>Enter the episode title.</label>";
-	echo "<input class='form-input' type='text' name='edit-episode[title]' minlength='3' maxlength='100' placeholder='Title' [value]='editEpisode.editEpisodeTitle' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+	echo "<label class='form-label' for='edit-episode[episode_title]'>Enter the episode title.</label>";
+	echo "<input class='form-input' type='text' name='edit-episode[episode_title]' minlength='3' maxlength='100' placeholder='Title' [value]='editEpisode.editEpisodeTitle' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<label class='form-label' for='edit-episode[description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-episode[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]='editEpisode.editEpisodeDescription' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required></textarea>";
+	echo "<label class='form-label' for='edit-episode[episode_description]'>Enter the episode description.</label>";
+	echo "<textarea class='form-textarea' name='edit-episode[episode_description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]='editEpisode.editEpisodeDescription' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required></textarea>";
 
-	echo "<label class='form-label' for='edit-episode[pubdate]'>Enter the publication date.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+	echo "<label class='form-label' for='edit-episode[episode_pubdate]'>Enter the publication date.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<label class='form-label' for='edit-episode[duration]'>Enter the duration.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+	echo "<label class='form-label' for='edit-episode[episode_duration]'>Enter the duration.</label>";
+	echo "<input class='form-input' type='date' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
