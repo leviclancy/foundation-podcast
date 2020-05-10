@@ -197,6 +197,11 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.3), rgba(140, 0, 0,0.9)), rgba(255, 55, 33,1)",
 		],
 	
+	"#lightbox-add-episode" => [
+		"color"			=> "#fff",
+		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(171, 89, 179,0.3), rgba(235, 0, 192,0.9)), rgba(153, 41, 93,1)",
+		],
+
 	"h1" => [
 		"margin"		=> "100px 20px 50px",		
 		],
@@ -373,12 +378,6 @@ echo "<amp-list ". $attributes_temp .">
 		
 	echo "</amp-list>";
 	
-echo "<hr>";
-
-echo "<span class='form-description'>Add episode. Save to add more.<br>Minimum 2000 x 500 pixels. Maximum 5 megabytes.</span>";
-echo "<input type='file' id='add-image-input' name='images_new' placeholder='Add image' accept='image/jpg,image/jpeg' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\" hidden>";
-echo "<label for='add-image-input' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
-
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
@@ -543,7 +542,9 @@ echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	// 
+	echo "<span class='form-description'>Add episode. Save to add more.<br>Minimum 2000 x 500 pixels. Maximum 5 megabytes.</span>";
+	echo "<input type='file' id='add-image-input' name='images_new' placeholder='Add image' accept='image/jpg,image/jpeg' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\" hidden>";
+	echo "<label for='add-image-input' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
 
 	echo "</amp-lightbox>";
 
