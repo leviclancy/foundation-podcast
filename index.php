@@ -91,6 +91,7 @@ if ($request_access == "json-page"):
 			"episode_pubdate"	=> "2020-06-01",
 			"episode_duration"	=> "2020-07-01",
 			"episode_completion"	=> "incomplete",
+			"episode_status"	=> "active",
 			];
 	$json_array['episodes'][] = [
 			"episode_id"		=> "JKNSDFRE",
@@ -99,6 +100,7 @@ if ($request_access == "json-page"):
 			"episode_pubdate"	=> "2022-01-01",
 			"episode_duration"	=> "2022-04-01",
 			"episode_completion"	=> "incomplete",
+			"episode_status"	=> "active",
 			];
 
 	// Check if there are episodes
@@ -111,14 +113,15 @@ if ($request_access == "json-page"):
 		if (empty($row['episode_pubdate'])): $completion_temp = "incomplete"; endif;
 		if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
 
-		// If we are not logged in, do not feed incomplete episodes
-//		if ($login_temp['loginState'] !== "loggedin"):
-//			if ($completion_temp == "incomplete"): continue; endif;
-//			endif;
+		// Standardize active status
+		if ($row['episode_status'] !== "active"):
+			$row['episode_status'] = "inactive";
+			endif;
 
-		// If we are not logged in, do not feed inactive episodes
+		// If we are not logged in, we will skip incomplete and inactive episodes
 //		if ($login_temp['loginState'] !== "loggedin"):
-//			if ($row['episode_status'] !== "active"): continue; endif;
+//			if ($row['episode_status'] !== "active"): continue; endif; // Skip inactive episodes
+//			if ($completion_temp == "incomplete"): continue; endif; // Skip incomplete episodes
 //			endif;
 
 		// We will use this for pagination
