@@ -405,7 +405,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site information
-echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'});lightboxClose:pageState.refresh,home-list.refresh\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'}),edit-information-form-list.refresh;lightboxClose:pageState.refresh,home-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editInformationBack'>Back</div>";
 
@@ -424,7 +424,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 		"layout='responsive'",
 		"width='650'",
 		"height='1000'",
-		"reset-on-refresh='always'",
+//		"reset-on-refresh='always'",
 		"items='information'",
 		"binding='refresh'",
 		"src='amp-state:pageState'",
