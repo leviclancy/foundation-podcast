@@ -359,7 +359,6 @@ if ($request_access == "xhr-edit-episode"):
 		"episode_description" 	=> null,
 		"episode_pubdate" 	=> null,
 		"episode_duration" 	=> null,
-		"episode_status" 	=> null,
 		];
 
 	// Return an error if anything is null
@@ -367,6 +366,9 @@ if ($request_access == "xhr-edit-episode"):
 		if (empty($_POST['edit-episode'][$key_temp])): json_result($domain, "error", null, "Value for '".$key_temp."' not received."); endif;
 		$values_temp[$key_temp] = $_POST['edit-episode'][$key_temp] ?? null;
 		endforeach;
+
+	// Not essential
+	$values_temp['episode_status'] = $_POST['edit-episode']['episode_status'] ?? null;
 
 	// Prepare the statement to update the podcast episode SQL
 	$postgres_statement = postgres_update_statement("podcast_episodes", $values_temp);
