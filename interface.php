@@ -392,7 +392,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		"binding='refresh'",
 		"src='amp-state:pageState'",
 		"single-item",
-		];
+		]);
 	echo "<amp-list ". $attributes_temp .">
 		<span class='amp-list-fallback' fallback>Failed to load information.</span>
 		<span class='amp-list-fallback' placeholder>Loading information...</span>
