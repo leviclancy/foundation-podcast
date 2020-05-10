@@ -225,6 +225,7 @@ $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
 	"lightbox-edit-information.close",
 	"lightbox-edit-episode.close",
+	"lightbox-delete-episode.close",
 	"lightbox-manage-admins.close",
 	"lightbox-my-account.close",
 	]);
