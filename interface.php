@@ -332,7 +332,6 @@ echo "<amp-list ". $attributes_temp .">
 		// Just shows 'active' or 'inactive' state
 		echo "{{#episode_status}}<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>{{/episode_status}}";
 
-
 		// We have to remove " from around keys and values
 		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
 			"editEpisode" => [
@@ -406,9 +405,9 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site information
-echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.";lightboxClose:pageState.refresh,home-list.refresh' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'});lightboxClose:pageState.refresh,home-list.refresh' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editInformationBack'>Back</div>";
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
 	
@@ -431,16 +430,16 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		<template type='amp-mustache'>
 		
 		<label class='form-label' for='edit-information[title]'>Enter the title.</label>
-		<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" value='{{title}}' required>
+		<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{title}}' required>
 
 		<label class='form-label' for='edit-information[author]'>Enter the author.</label>
-		<input class='form-input' type='text' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" value='{{author}}' required>
+		<input class='form-input' type='text' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{author}}' required>
 
 		<label class='form-label' for='edit-information[description]'>Enter the description.</label>
-		<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" required>{{description}}</textarea>
+		<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
 
 		<label class='form-label' for='edit-information[language]'>Enter the language.</label>
-		<input class='form-input' type='text' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" value='{{language}}' required>
+		<input class='form-input' type='text' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
 
 		</template></amp-list>";
 
