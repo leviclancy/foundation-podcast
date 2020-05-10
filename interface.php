@@ -414,7 +414,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		"target='_top'",
 		"id='edit-information-form'",
 		"method='post'",
-		"on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:AMP.setState({editInformationBack: 'Back'}),edit-information-form-submit.show,pageState.refresh'",
+		'on="submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:AMP.setState({editInformationBack: \'Back\'}),edit-information-form-submit.show,pageState.refresh"',
 		]);
 
 	echo "<form ". $attributes_temp .">";
