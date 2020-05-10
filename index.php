@@ -30,6 +30,7 @@ $request_access_array = [
 	"xhr-logout",
 	"xhr-edit-information",
 	"xhr-edit-episode",
+	"xhr-delete-episode",
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
@@ -363,6 +364,30 @@ if ($request_access == "xhr-edit-episode"):
 	if (!($result)): json_result($domain, "error", null, "Could not update episode."); endif;
 
 	json_result($domain, "success", null, "Updated episode."); 
+
+	endif;
+
+// Give us the xhr to edit a single podcast episode
+if ($request_access == "xhr-delete-episode"):
+
+	login_check(false); // Check login status
+
+	// If no valid post data is received
+	if (empty($_POST['delete-episode'])): json_result($domain, "error", null, "No information array received."); endif;
+
+	// Return an error if anything is null
+	if (empty($_POST['delete-episode']['episode_id'])): json_result($domain, "error", null, "Episode ID not received."); endif;
+
+	// Prepare the statement to update the podcast episode SQL
+	$postgres_statement = "DELETE FROM podcast_episodes WHERE episode_id=$1);
+	$result = pg_prepare($postgres_connection, "podcast_episodes_delete", $postgres_statement);
+	if (!($result)): json_result($domain, "error", null, "Could not prepare episodes statement."); endif;
+
+	// Execute the statement, update the episode
+	$result = pg_execute($postgres_connection, "podcast_episodes_delete", [ $_POST['delete-episode']['episode_id'] ]);
+	if (!($result)): json_result($domain, "error", null, "Could not delete episode."); endif;
+
+	json_result($domain, "success", null, "Deleted episode."); 
 
 	endif;
 
