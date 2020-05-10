@@ -194,7 +194,7 @@ $style_array = [
 	
 	"#lightbox-delete-episode" => [
 		"color"			=> "#fff",
-		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.7), rgba(140, 0, 0,0.4)), rgba(255, 55, 33,1)",
+		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.3), rgba(140, 0, 0,0.9)), rgba(255, 55, 33,1)",
 		],
 	
 	"h1" => [
