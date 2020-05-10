@@ -457,6 +457,9 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<label class='form-label' for='edit-episode[episode_duration]'>Enter the duration.</label>";
 	echo "<input class='form-input' type='date' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
+	echo "<label class='form-radio-label' for='edit-episode[episode_status]'>Active</label>";
+	echo "<input type='radio' name='edit-episode[episode_status]' value='active'>";
+
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
 //	echo "</amp-audio>";
