@@ -379,7 +379,7 @@ if ($request_access == "xhr-delete-episode"):
 	if (empty($_POST['delete-episode']['episode_id'])): json_result($domain, "error", null, "Episode ID not received."); endif;
 
 	// Prepare the statement to update the podcast episode SQL
-	$postgres_statement = "DELETE FROM podcast_episodes WHERE episode_id=$1");
+	$postgres_statement = "DELETE FROM podcast_episodes WHERE episode_id=$1";
 	$result = pg_prepare($postgres_connection, "podcast_episodes_delete", $postgres_statement);
 	if (!($result)): json_result($domain, "error", null, "Could not prepare episodes statement."); endif;
 
