@@ -428,7 +428,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 
 // Lightbox for editing an episode
-echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editEpisodeBack: 'Back'});lightboxClose:pageState.refresh,episodes-list.refresh,edit-episode-form.clear\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editEpisodeBack: 'Back'});lightboxClose:episodes-list.refresh,edit-episode-form.clear\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editEpisodeBack'>Back</div>";
 
@@ -437,7 +437,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 		"target='_top'",
 		"id='edit-episode-form'",
 		"method='post'",
-		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,pageState.refresh,episodes-list.refresh"',
+		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
