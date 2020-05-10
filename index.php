@@ -77,36 +77,18 @@ if ($request_access == "json-page"):
 		endwhile;
 
 	// Pull up episodes if empty
-	$sql_temp = "SELECT episode_id, episode_title, episode_description, episode_pubdate, episode_duration FROM podcast_episodes";
+	$sql_temp = "SELECT episode_id, episode_title, episode_description, episode_pubdate, episode_duration, episode_status FROM podcast_episodes";
 	$result = pg_query($postgres_connection, $sql_temp);
 	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_episodes' table."); endif;
 
 	// This is used to count pagination
 	$count_temp = 0;
 
-	$json_array['episodes'][] = [
-			"episode_id"		=> "SJNKLDFM",
-			"episode_title"		=> "New episode",
-			"episode_description"	=> "Description",
-			"episode_pubdate"	=> "2020-06-01",
-			"episode_duration"	=> "2020-07-01",
-			"episode_completion"	=> "incomplete",
-			"episode_status"	=> "active",
-			];
-	$json_array['episodes'][] = [
-			"episode_id"		=> "JKNSDFRE",
-			"episode_title"		=> "Newer episode",
-			"episode_description"	=> "Description2",
-			"episode_pubdate"	=> "2022-01-01",
-			"episode_duration"	=> "2022-04-01",
-			"episode_completion"	=> "incomplete",
-			"episode_status"	=> "active",
-			];
-
 	// Check if there are episodes
 	$next_temp = 0; // This means there is no next
 	while ($row = pg_fetch_assoc($result)):
 
+		// Assign complete or incomplete status
 		$completion_temp = "complete";
 		if (empty($row['episode_title'])): $completion_temp = "incomplete"; endif;
 		if (empty($row['episode_description'])): $completion_temp = "incomplete"; endif;
@@ -114,9 +96,7 @@ if ($request_access == "json-page"):
 		if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
 
 		// Standardize active status
-		if ($row['episode_status'] !== "active"):
-			$row['episode_status'] = "inactive";
-			endif;
+		if ($row['episode_status'] !== "active"): $row['episode_status'] = "inactive"; endif;
 
 		// If we are not logged in, we will skip incomplete and inactive episodes
 //		if ($login_temp['loginState'] !== "loggedin"):
@@ -382,7 +362,7 @@ if ($request_access == "xhr-edit-episode"):
 	$result = pg_execute($postgres_connection, "podcast_episodes_update", $values_temp);
 	if (!($result)): json_result($domain, "error", null, "Could not update episode."); endif;
 
-	json_result($domain, "success", null, "Updated episode.".implode($values_temp)); 
+	json_result($domain, "success", null, "Updated episode."); 
 
 	endif;
 
