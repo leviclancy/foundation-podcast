@@ -192,6 +192,11 @@ $style_array = [
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(0,156,10,1)",
 		],
 	
+	"#lightbox-edit-episode" => [
+		"color"			=> "#fff",
+		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.7), rgba(140, 0, 0,0.4)), rgba(255, 55, 33,1)",
+		],
+	
 	"h1" => [
 		"margin"		=> "100px 20px 50px",		
 		],
@@ -463,7 +468,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
 	echo "<label class='form-radio-label' for='edit-episode[episode_status]'>Active</label>";
-	echo "<input type='checkbox' name='edit-episode[episode_status]' value='active' [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \" checked=>";
+	echo "<input type='checkbox' name='edit-episode[episode_status]' value='active' [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \">";
 
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
@@ -478,6 +483,37 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "</form>";
 
 	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save episode</span>";
+
+	echo "</amp-lightbox>";
+
+
+echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_close_array.";lightboxClose:episodes-list.refresh\" layout='nodisplay' scrollable>";
+
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editEpisodeBack'>Back</div>";
+
+	$attributes_temp = implode(" ", [
+		"action-xhr='/?access=xhr-delete-episode'",
+		"target='_top'",
+		"id='delete-episode-form'",
+		"method='post'",
+		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:lightbox-delete-episode.close,episodes-list.refresh"',
+		]);
+
+	echo "<form ".$attributes_temp.">";
+
+	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.editEpisodeID' required>";
+
+	echo "<p>Are you sure you want to delete this episode?</p>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
+	echo "</form>";
+
+	echo "<span class='form-submit' id='delete-episode-form-submit' role='button' tabindex='0' on='tap:delete-episode-form.submit'>Delete episode</span>";
 
 	echo "</amp-lightbox>";
 
