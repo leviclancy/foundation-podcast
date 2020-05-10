@@ -428,7 +428,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 
 // Lightbox for editing an episode
-echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editEpisodeBack: 'Back'});lightboxClose:episodes-list.refresh,edit-episode-form.clear\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editEpisodeBack: 'Back'});lightboxClose:edit-episode-form.clear,episodes-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editEpisodeBack'>Back</div>";
 
