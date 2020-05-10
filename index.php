@@ -359,6 +359,7 @@ if ($request_access == "xhr-edit-episode"):
 		"episode_description" 	=> null,
 		"episode_pubdate" 	=> null,
 		"episode_duration" 	=> null,
+		"episode_status" 	=> null,
 		];
 
 	// Return an error if anything is null
@@ -376,7 +377,7 @@ if ($request_access == "xhr-edit-episode"):
 	$result = pg_execute($postgres_connection, "podcast_episodes_update", $values_temp);
 	if (!($result)): json_result($domain, "error", null, "Could not update episode."); endif;
 
-	json_result($domain, "success", null, "Updated episode."); 
+	json_result($domain, "success", null, "Updated episode.".implode($values_temp)); 
 
 	endif;
 
