@@ -460,6 +460,8 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<label class='form-label' for='edit-episode[episode_duration]'>Enter the duration.</label>";
 	echo "<input class='form-input' type='date' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
+	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
+
 	echo "<label class='form-radio-label' for='edit-episode[episode_status]'>Active</label>";
 	echo "<input type='checked' name='edit-episode[episode_status]' value='active' [checked]=\"editEpisode.editEpisodeStatus == 'active' ? 'checked' : ''\">";
 
