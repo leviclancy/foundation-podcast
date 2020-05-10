@@ -103,7 +103,7 @@ if ($request_access == "json-page"):
 
 	// Check if there are episodes
 	$next_temp = 0; // This means there is no next
-	while ($row = pg_fetch_row($result)):
+	while ($row = pg_fetch_assoc($result)):
 
 		$completion_temp = "complete";
 		if (empty($row['episode_title'])): $completion_temp = "incomplete"; endif;
