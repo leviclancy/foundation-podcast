@@ -97,13 +97,14 @@ if ($request_access == "json-page"):
 		if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
 
 		// Standardize active status
-		if ($row['episode_status'] !== "active"): $row['episode_status'] = "inactive"; endif;
+		$status_temp = "inactive";
+		if ($row['episode_status'] == "active"): $status_temp = "active"; endif;
 
 		// If we are not logged in, we will skip incomplete and inactive episodes
-//		if ($login_temp['loginState'] !== "loggedin"):
-//			if ($row['episode_status'] !== "active"): continue; endif; // Skip inactive episodes
-//			if ($completion_temp == "incomplete"): continue; endif; // Skip incomplete episodes
-//			endif;
+		if ($login_temp['loginStatus'] !== "loggedin"):
+			if ($status_temp !== "active"): continue; endif; // Skip inactive episodes
+			if ($completion_temp !== "complete"): continue; endif; // Skip incomplete episodes
+			endif;
 
 		// We will use this for pagination
 		$count_temp++;
