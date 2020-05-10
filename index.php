@@ -85,7 +85,7 @@ if ($request_access == "json-page"):
 	$count_temp = 0;
 
 	$json_array['episodes'][] = [
-			"episode_id"		=> "SJNKLDF",
+			"episode_id"		=> "SJNKLDFM",
 			"episode_title"		=> "New episode",
 			"episode_description"	=> "Description",
 			"episode_pubdate"	=> "2020-06-01",
@@ -93,7 +93,7 @@ if ($request_access == "json-page"):
 			"episode_completion"	=> "incomplete",
 			];
 	$json_array['episodes'][] = [
-			"episode_id"		=> "JKNSDFR",
+			"episode_id"		=> "JKNSDFRE",
 			"episode_title"		=> "Newer episode",
 			"episode_description"	=> "Description2",
 			"episode_pubdate"	=> "2022-01-01",
@@ -112,14 +112,14 @@ if ($request_access == "json-page"):
 		if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
 
 		// If we are not logged in, do not feed incomplete episodes
-		if ($login_temp['loginState'] !== "loggedin"):
-			if ($completion_temp == "incomplete"): continue; endif;
-			endif;
+//		if ($login_temp['loginState'] !== "loggedin"):
+//			if ($completion_temp == "incomplete"): continue; endif;
+//			endif;
 
 		// If we are not logged in, do not feed inactive episodes
-		if ($login_temp['loginState'] !== "loggedin"):
-			if ($row['episode_status'] !== "active"): continue; endif;
-			endif;
+//		if ($login_temp['loginState'] !== "loggedin"):
+//			if ($row['episode_status'] !== "active"): continue; endif;
+//			endif;
 
 		// We will use this for pagination
 		$count_temp++;
