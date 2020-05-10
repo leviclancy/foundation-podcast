@@ -192,7 +192,7 @@ $style_array = [
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(0,156,10,1)",
 		],
 	
-	"#lightbox-edit-episode" => [
+	"#lightbox-delete-episode" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.7), rgba(140, 0, 0,0.4)), rgba(255, 55, 33,1)",
 		],
