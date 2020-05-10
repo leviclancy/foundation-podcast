@@ -261,7 +261,7 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 
 echo "</form>";
 
-$attributes_temp = [
+$attributes_temp = implode(" ", [
 	"id='home-list'",
 	"layout='fixed'",
 	"width='600'",
@@ -270,8 +270,8 @@ $attributes_temp = [
 //	"binding='refresh'",
 	"src='amp-state:pageState'",
 	"single-item",
-	];
-echo "<amp-list ". implode(" ", $attributes_temp) .">
+	]);
+echo "<amp-list ". $attributes_temp .">
 	<span class='amp-list-fallback' fallback>Failed to load information.</span>
 	<span class='amp-list-fallback' placeholder>Loading information...</span>
 	<span class='amp-list-fallback' overflow>Show more.</span>
@@ -288,7 +288,7 @@ echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?ac
 
 // Handle if more than 50 episodes
 
-$attributes_temp = [
+$attributes_temp = implode(" ", [
 	"id='episodes-list'",
 	"layout='responsive'",
 	"width='400'",
@@ -300,8 +300,8 @@ $attributes_temp = [
 //	"max-items='50'",
 	"load-more-bookmark='next'",
 	"load-more='manual'",
-	];
-echo "<amp-list ". implode(" ", $attributes_temp) .">
+	]);
+echo "<amp-list ". $attributes_temp .">
 	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
 	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
 	<span class='amp-list-fallback' overflow>Show more.</span>
@@ -382,7 +382,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 
 	echo "<form action-xhr='/?access=xhr-edit-information' target='_top' id='edit-information-form' method='post' on='submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:edit-information-form-submit.show,pageState.refresh'>";
 	
-	$attributes_temp = [
+	$attributes_temp = implode(" ", [
 		"id='edit-information-form-list'",
 		"layout='responsive'",
 		"width='650'",
@@ -393,7 +393,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on='lightboxOpen:".$lightbox_
 		"src='amp-state:pageState'",
 		"single-item",
 		];
-	echo "<amp-list ". implode(" ", $attributes_temp) .">
+	echo "<amp-list ". $attributes_temp .">
 		<span class='amp-list-fallback' fallback>Failed to load information.</span>
 		<span class='amp-list-fallback' placeholder>Loading information...</span>
 		<span class='amp-list-fallback' overflow>Show more.</span>
