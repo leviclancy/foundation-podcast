@@ -88,16 +88,16 @@ if ($request_access == "json-page"):
 			"episode_id"		=> "SJNKLDF",
 			"episode_title"		=> "New episode",
 			"episode_description"	=> "Description",
-			"episode_pubdate"	=> "2020/06/01",
-			"episode_duration"	=> "2020/07/01",
+			"episode_pubdate"	=> "2020-06-01",
+			"episode_duration"	=> "2020-07-01",
 			"episode_completion"	=> "incomplete",
 			];
 	$json_array['episodes'][] = [
 			"episode_id"		=> "JKNSDFR",
 			"episode_title"		=> "Newer episode",
 			"episode_description"	=> "Description2",
-			"episode_pubdate"	=> "2022/01/01",
-			"episode_duration"	=> "2022/04/01",
+			"episode_pubdate"	=> "2022-01-01",
+			"episode_duration"	=> "2022-04-01",
 			"episode_completion"	=> "incomplete",
 			];
 
