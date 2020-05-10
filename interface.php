@@ -336,7 +336,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 //			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
 		echo "<br>";
-		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>";
+		echo "{{#episode_status}}<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>{{/episode_status}}";
 		echo "<span ". $attributes_temp .">Edit episode</span>";
 
 		echo "</template>";
