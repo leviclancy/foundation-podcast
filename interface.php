@@ -320,6 +320,12 @@ echo "<amp-list ". $attributes_temp .">
 		<!-- Podcast audio -->
 		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 
+		echo "<br>";
+
+		// Just shows 'active' or 'inactive' state
+		echo "{{#episode_status}}<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>{{/episode_status}}";
+
+
 		// We have to remove " from around keys and values
 		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
 			"editEpisode" => [
@@ -330,7 +336,7 @@ echo "<amp-list ". $attributes_temp .">
 				"editEpisodeDuration" => "'{{episode_duration}}'",
 				"editEpisodeStatus" => "'{{episode_status}}'",
 				], ]).")");
-				
+
 		// Set up edit button
 		$attributes_temp = implode(" ", [
 			"role='button'",
@@ -340,9 +346,27 @@ echo "<amp-list ". $attributes_temp .">
 			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-edit-episode.open"])."\"",
 //			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
-		echo "<br>";
-		echo "{{#episode_status}}<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>{{/episode_status}}";
+
+		// Edit episode button
 		echo "<span ". $attributes_temp .">Edit episode</span>";
+
+		// We have to remove " from around keys and values
+		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
+			"deleteEpisode" => [
+				"deleteEpisodeID" => "'{{episode_id}}'",
+				], ]).")");
+
+		// Set up delete button
+		$attributes_temp = implode(" ", [
+			"role='button'",
+			"tabindex='0'",
+			"class='".$logout_hidden."'",
+			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\"",
+			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-delete-episode.open"])."\"",
+			]);
+
+		// Delete episode button
+		echo "<span ". $attributes_temp .">Delete episode</span>";
 
 		echo "</template>";
 		
