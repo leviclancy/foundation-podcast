@@ -522,7 +522,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.editEpisodeID' required>";
+	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.deleteEpisodeID' required>";
 
 	echo "<p>Are you sure you want to delete this episode?</p>";
 
