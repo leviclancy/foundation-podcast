@@ -472,11 +472,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<div [text]='editEpisode.editEpisodeID'>Nothing chosen yet</div><br>";
-
 	echo "<input type='hidden' name='edit-episode[episode_id]' [value]='editEpisode.editEpisodeID' required>";
-
-	echo "Small DELETE BUTTON";
 
 	echo "<label class='form-label' for='edit-episode[episode_title]'>Enter the episode title.</label>";
 	echo "<input class='form-input' type='text' name='edit-episode[episode_title]' minlength='3' maxlength='100' placeholder='Title' [value]='editEpisode.editEpisodeTitle' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
@@ -493,7 +489,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
 	echo "<label class='form-radio-label' for='edit-episode[episode_status]'>Active</label>";
-	echo "<input type='checkbox' name='edit-episode[episode_status]' value='active' [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \">";
+	echo "<input type='checkbox' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \">";
 
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
