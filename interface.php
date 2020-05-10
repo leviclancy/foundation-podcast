@@ -323,6 +323,7 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 				"editEpisodeDescription" => "'{{episode_description}}'",
 				"editEpisodePubDate" => "'{{episode_pubdate}}'",
 				"editEpisodeDuration" => "'{{episode_duration}}'",
+				"editEpisodeStatus" => "'{{episode_status}}'",
 				], ]).")");
 				
 		// Set up edit button
@@ -334,7 +335,9 @@ echo "<amp-list ". implode(" ", $attributes_temp) .">
 			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-edit-episode.open"])."\"",
 //			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
-		echo "<br><span ". $attributes_temp .">Edit episode</span>";
+		echo "<br>";
+		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>";
+		echo "<span ". $attributes_temp .">Edit episode</span>";
 
 		echo "</template>";
 		
@@ -458,7 +461,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<input class='form-input' type='date' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
 	echo "<label class='form-radio-label' for='edit-episode[episode_status]'>Active</label>";
-	echo "<input type='radio' name='edit-episode[episode_status]' value='active'>";
+	echo "<input type='radio' name='edit-episode[episode_status]' value='active' [checked]=\"editEpisode.editEpisodeStatus == 'active' ? checked : ''\">";
 
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
