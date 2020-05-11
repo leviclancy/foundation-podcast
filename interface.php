@@ -219,13 +219,13 @@ $style_array = [
 	"#add-episode-label" => [
 		"cursor"		=> "pointer",
 		"text-align"		=> "center",
-		"padding"		=> "20px 30px",
+		"padding"		=> "20px 40px",
 		"background"		=> "rgba(255,255,255,0.2)",
 		"font-style"		=> "normal",
 		"display"		=> "inline-block",
 		"width"			=> "auto",
 		"font-size"		=> "110%",
-		"font-weight"		=> "700",
+		"font-weight"		=> "400",
 		"border-radius"		=> "100px",
 		],
 	
