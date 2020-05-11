@@ -67,6 +67,7 @@ $style_array = [
 		"text-align"		=> "right",
 		"display"		=> "block",
 		"clear"			=> "both",
+		"z-index"		=> "100",
 		],
 	
 	".button-navigation" => [
