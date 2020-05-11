@@ -21,7 +21,7 @@ echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:a
 echo '<description>'. $json_page['information']['description'] .'</description>';
 //echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
 echo '<itunes:email>'. $json_page['information']['email'] .'</itunes:email>';
-echo '<language>'. $json_page['information']['lanuguage'] .'</language>';
+echo '<language>'. $json_page['information']['language'] .'</language>';
 echo '<link>'. $domain .'</link>';
 
 foreach (json_page['episodes'] as $episode_info):
