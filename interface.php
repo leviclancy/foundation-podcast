@@ -209,6 +209,10 @@ $style_array = [
 	".episodes-list-item" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
+		"margin"		=> "20px auto",
+		"padding"		=> "20px 0",
+		"display"		=> "block",
+		"border-bottom"		=> "3px solid rgba(100,100,100,0.4)",
 		],
 
 	".episodes-list-item-title" => [
@@ -224,16 +228,18 @@ $style_array = [
 	
 	".episodes-list-item-audio" => [
 		"display"		=> "block",
+		"margin"		=> "10px 0",
 		],
 
 	".episodes-list-item-notes, .episodes-list-item-button" => [
 		"font-family"		=> "Verdana",
 		"display"		=> "inline-block",
-		"font-size"		=> "80%",
+		"font-size"		=> "70%",
 		"border-radius"		=> "100px",
 		"box-sizing"		=> "border-box",
-		"margin"		=> "0 0 20px 20px",
+		"margin"		=> "0 20px 15px 0",
 		"padding"		=> "8px 20px",
+		"text-transform"	=> "capitalize",
 		],
 	
 	".episodes-list-item-notes" => [
