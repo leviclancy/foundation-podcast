@@ -241,7 +241,7 @@ $style_array = [
 		"padding"		=> "20px 0",
 		"width"			=> "80%",
 		"max-width"		=> "600px",
-		"font-size"		=> "60%",
+		"font-size"		=> "70%",
 		],
 	
 	".home-rss-link, .home-rss-link a" => [
