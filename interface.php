@@ -45,10 +45,7 @@ $style_array = [
 		"font-family" 		=> "Verdana",
 		],
 	
-	"amp-list, amp-list template" => [
-		"display"		=> "contents",
-		],
-	
+
 	".form-warning" => [
 		"display"		=> "block",
 		"margin"		=> "40px auto 30px",
@@ -384,19 +381,19 @@ $attributes_temp = implode(" ", [
 	"src='amp-state:pageState'",
 	"single-item",
 	]);
-echo "<amp-list ". $attributes_temp .">";
-	echo "<span class='amp-list-fallback' fallback>Failed to load information.</span>";
-	echo "<span class='amp-list-fallback' placeholder>Loading information...</span>";
+//echo "<amp-list ". $attributes_temp .">";
+//	echo "<span class='amp-list-fallback' fallback>Failed to load information.</span>";
+//	echo "<span class='amp-list-fallback' placeholder>Loading information...</span>";
 //	echo "<span class='amp-list-fallback' overflow>Show more.</span>";
 
-	echo "<template type='amp-mustache'>
-		<div class='home-list-item'>
-		<h1 class='home-list-item-title'>{{title}}</h1>
+//	echo "<template type='amp-mustache'>";
+		echo "<div class='home-list-item'>
+		<h1 class='home-list-item-title' [text]='pageState.information.title'></h1>
 		<p  class='home-list-item-author'>by {{author}}</p>
 		<p class='home-list-item-description'>{{description}}</p></div>
-		</template>";
+//		</template>";
 		
-	echo "</amp-list>";
+//	echo "</amp-list>";
 		
 // Handle if more than 50 episodes
 $attributes_temp = implode(" ", [
