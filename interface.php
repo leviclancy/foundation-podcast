@@ -229,6 +229,7 @@ $style_array = [
 	".episodes-list-item-audio" => [
 		"display"		=> "block",
 		"margin"		=> "10px 0",
+		"width"			=> "90%",
 		],
 
 	".episodes-list-item-notes, .episodes-list-item-button" => [
