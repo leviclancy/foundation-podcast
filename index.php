@@ -116,7 +116,7 @@ if ($request_access == "json-page"):
 			"episode_description"	=> $row['episode_description'],
 			"episode_pubdate"	=> $row['episode_pubdate'],
 			"episode_duration"	=> $row['episode_duration'],
-			"episode_status"	=> $row['episode_status'],
+			"episode_status"	=> $status_temp,
 			"episode_completion"	=> $completion_temp,
 			];
 
