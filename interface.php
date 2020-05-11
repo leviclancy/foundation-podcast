@@ -246,12 +246,9 @@ $style_array = [
 	".home-rss-link" => [
 		"display"		=> "block",
 		"text-align"		=> "left",
-		"background"		=> "#fff",
 		"margin"		=> "30px auto 30px",
 		"padding"		=> "20px 0",
-		"width"			=> "80%",
-		"max-width"		=> "600px",
-		"font-size"		=> "80%",
+		"font-size"		=> "90%",
 		],
 	
 	".home-rss-link, .home-rss-link a" => [
