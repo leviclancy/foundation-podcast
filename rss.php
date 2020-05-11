@@ -5,7 +5,7 @@ if ($request_access !== "rss"): json_result($domain, "error", "/", "Invalid URL.
 $json_page = file_get_contents("https://".$domain."/?access=json-page");
 $json_page = json_decode($json_page, true);
 
-header('Content-Type: application/rss+xml; charset=utf-8');
+header('Content-Type: application/text+xml; charset=utf-8');
 
 // This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
@@ -28,7 +28,8 @@ function simple_tag($tag_temp, $value_temp) {
 	// Close the tag
 	echo "</".$tag_temp.">\n"; }
 
-echo "<" . "?" . "xml version=\"1.0\" encoding=\"UTF-8\"" . "?" . ">\n";
+echo '<?xml version="1.0" encoding="UTF-8"?>';
+echo "\n";
 
 $attributes_temp = implode(" ", [
 	'version="2.0"',
