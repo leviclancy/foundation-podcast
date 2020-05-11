@@ -396,7 +396,7 @@ echo "<amp-list ". $attributes_temp .">";
 			]);
 
 		// Edit episode button
-		echo "<span ". $attributes_temp .">Edit episode</span>";
+		echo "<span ". $attributes_temp .">Edit</span>";
 
 		// We have to remove " from around keys and values
 		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
@@ -414,7 +414,7 @@ echo "<amp-list ". $attributes_temp .">";
 			]);
 
 		// Delete episode button
-		echo "<span ". $attributes_temp .">Delete episode</span>";
+		echo "<span ". $attributes_temp .">Delete</span>";
 
 		echo "</template>";
 		
