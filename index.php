@@ -25,7 +25,7 @@ $request_access_array = [
 	"json-page",
 	"json-login",
 	"json-users",
-	"podcast-file",
+	"episode-file",
 	"xhr-login",
 	"xhr-logout",
 	"xhr-edit-information",
@@ -132,9 +132,9 @@ if ($request_access == "json-page"):
 	endif;
 	
 // Give us the episode
-if ($request_access == "podcast-file"):
+if ($request_access == "episode-file"):
 
-	$episode_id_request = $_REQUEST['episode_id'] ?? null;
+	$episode_id_request = $_REQUEST['episode-file'] ?? null;
 
 	if (empty($episode_id_request)): header("HTTP/1.0 404 Not Found"); exit; endif;
 
