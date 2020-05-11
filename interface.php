@@ -324,6 +324,7 @@ $style_array = [
 	
 	".home-list-item-description" => [
 		"display"		=> "block",
+		"white-space"		=> "pre-line",
 		],
 	
 	".home-rss-link" => [
@@ -491,7 +492,7 @@ echo "</form>";
 echo "<div class='home-list-item'>";
 	echo "<h1 class='home-list-item-title' [text]='pageState.information.title'>". $json_page['information']['title'] ."</h1>";
 	echo "<p class='home-list-item-author' [text]='pageState.information.author'>". $json_page['information']['author'] ."</p>";
-	echo "<p class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</p>";
+	echo "<div class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</div>";
 	echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 	echo "</div>";
 		
@@ -646,7 +647,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 		<input class='form-input' type='text' id='edit-information-author' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{author}}' required>
 
 		<label class='form-label' for='edit-information-description'>Enter the description.</label>
-		<textarea class='form-textarea' id='edit-information-description' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
+		<textarea class='form-textarea' id='edit-information-description' name='edit-information[description]' minlength='3' maxlength='1000' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
 
 		<label class='form-label' for='edit-information-email'>Enter the email.</label>
 		<input class='form-input' type='email' id='edit-information-email' name='edit-information[email]' minlength='3' maxlength='50' placeholder='Email'  [value]=\"pageState.information.email\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
