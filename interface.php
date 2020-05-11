@@ -216,6 +216,13 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(171, 89, 179,0.3), rgba(235, 0, 192,0.9)), rgba(153, 41, 93,1)",
 		],
 
+	".#add-episode-label" => [
+		"cursor"		=> "pointer",
+		"text-align"		=> "center",
+		"padding"		=> "10px 30px",
+		"background"		=> "rgba(255,255,255,0.3)",
+		],
+	
 	"#lightbox-manage-admins" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(100, 100, 100,0.3), rgba(200, 200, 200,0.8)), rgba(60, 60, 60,1)",
@@ -689,8 +696,9 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<label class='form-label' for='add-episode'>Choose MP3 file</label>";
-	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
+	echo "<label class='form-label' id='add-episode-label' for='add-episode' [text]=\"addEpisodeFile.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Click to add MP3 file.</label>";
+	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'});change:AMP.setState({addEpisodeFile: event.value.split('\')})\" hidden>";
+
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
