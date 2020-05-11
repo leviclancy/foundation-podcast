@@ -238,7 +238,7 @@ $style_array = [
 		"font-size"		=> "70%",
 		"border-radius"		=> "100px",
 		"box-sizing"		=> "border-box",
-		"margin"		=> "0 20px 15px 0",
+		"margin"		=> "0 10px 10px 0",
 		"padding"		=> "8px 20px",
 		"text-transform"	=> "capitalize",
 		],
