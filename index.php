@@ -42,7 +42,7 @@ if (!(in_array($request_access, $request_access_array))): $request_access = "int
 if ($request_access == "interface"): include_once('interface.php'); endif;
 
 // No need to connect to SQL for the RSS, either
-if ($request_access == "interface"): include_once('rss.php'); endif;
+if ($request_access == "rss"): include_once('rss.php'); endif;
 
 // Everything from here on requires a SQL connection
 $postgres_connection = pg_connect("host=$sql_host port=$sql_port dbname=$sql_database user=$sql_user password=$sql_password options='--client_encoding=UTF8'");
