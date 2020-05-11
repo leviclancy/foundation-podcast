@@ -365,7 +365,7 @@ echo "</form>";
 
 $attributes_temp = implode(" ", [
 	"id='home-list'",
-	"layout='responsive'",
+	"layout='flex-item'",
 	"width='600'",
 	"height='300'",
 	"items='information'",
@@ -373,10 +373,11 @@ $attributes_temp = implode(" ", [
 	"src='amp-state:pageState'",
 	"single-item",
 	]);
-echo "<amp-list ". $attributes_temp .">
-	<span class='amp-list-fallback' fallback>Failed to load information.</span>
-	<span class='amp-list-fallback' placeholder>Loading information...</span>
-	<span class='amp-list-fallback' overflow>Show more.</span>
+echo "<amp-list ". $attributes_temp .">";
+	echo "<span class='amp-list-fallback' fallback>Failed to load information.</span>";
+	echo "<span class='amp-list-fallback' placeholder>Loading information...</span>";
+//	echo "<span class='amp-list-fallback' overflow>Show more.</span>";
+	?>
 
 	<template type='amp-mustache'>
 		<div class='home-list-item'>
