@@ -563,6 +563,14 @@ echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close
 	echo "<label class='form-radio-label' for='add-episode' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
 	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\">";
 
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
+	echo "</form>";
+
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
 	echo "</amp-lightbox>";
