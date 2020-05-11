@@ -519,7 +519,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "</amp-lightbox>";
 
-
+// Lightbox for deleting an episode
 echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_close_array.";lightboxClose:episodes-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>No, go back</div>";
@@ -550,8 +550,8 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "</amp-lightbox>";
 
-// Lightbox for admin management
-echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close_array.",add-episode-form.clear;lightboxClose:add-episode-form.clear' layout='nodisplay' scrollable>";
+// Lightbox for adding episodes
+echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close_array.",add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='addEpisodeBack'>Back</div>";
 
