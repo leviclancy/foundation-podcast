@@ -312,7 +312,8 @@ if ($request_access == "xhr-edit-information"):
 		// Only use allowed information keys
 		if (!(array_key_exists($key_temp, $_POST['edit-information']))): continue; endif;
 
-		if (empty($value_temp)): continue; endif;
+		// Skip empty information
+		if (empty($_POST['edit-information'][$key_temp])): continue; endif;
 
 		$values_temp = [
 			"information_key"		=> $key_temp,
