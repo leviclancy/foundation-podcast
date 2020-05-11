@@ -526,7 +526,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "</amp-lightbox>";
 
 // Lightbox for deleting an episode
-echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_close_array.";lightboxClose:delete-episode-form.clear,episodes-list.refresh\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_close_array.";lightboxClose:delete-episode-form.clear,delete-episode-form-submit.show,episodes-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>No, go back</div>";
 
@@ -535,7 +535,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 		"target='_top'",
 		"id='delete-episode-form'",
 		"method='post'",
-		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
+		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
