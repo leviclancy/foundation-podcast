@@ -402,7 +402,7 @@ if ($request_access == "xhr-add-episode"):
 	login_check(false); // Check login status
 
 	// If no valid post data is received
-	if (empty($_POST['add-episode'])): json_result($domain, "error", null, "No file received."); endif;
+	if (empty($_FILES['add-episode'])): json_result($domain, "error", null, "No file received."); endif;
 
 	$values_temp = [
 		"episode_id" => random_code(12),
