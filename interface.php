@@ -531,7 +531,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.deleteEpisodeID' required>";
 
-	echo "<label class='form-label'>Are you sure you want to delete this episode?</label>";
+	echo "<p>Are you sure you want to delete this episode?</p>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -541,7 +541,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='delete-episode-form-submit' role='button' tabindex='0' on='tap:delete-episode-form.submit'>Delete episode</span>";
+	echo "<span class='form-submit' id='delete-episode-form-submit' role='button' tabindex='0' on='tap:delete-episode-form.submit'>Yes, delete episode</span>";
 
 	echo "</amp-lightbox>";
 
