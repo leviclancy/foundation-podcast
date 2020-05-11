@@ -404,9 +404,11 @@ if ($request_access == "xhr-add-episode"):
 	// If no valid post data is received
 	if (empty($_FILES['add-episode'])): json_result($domain, "error", null, "No file received."); endif;
 
+json_result($domain, "error", null, "No file received.".$_FILES['add-episode']['size']);
+
 	$values_temp = [
 		"episode_id" => random_code(12),
-		"episode_file" => base64_encode(file_get_contents($_FILES['add-episode'])), // Original image content
+		"episode_file" => base64_encode(file_get_contents($_FILES['add-episode']['tmp_name'])), // Original image content
 		"episode_pubdate" => date("Y-m-d"),
 		];
 
