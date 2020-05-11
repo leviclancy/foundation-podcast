@@ -16,15 +16,21 @@ echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-po
 
 echo '<channel>';
 
-	echo '<title>'. $json_page['information']['title'] .'</title>';
-echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:author>';
+
+echo '<title>'. $json_page['information']['title'] .'</title>';
 echo '<description>'. $json_page['information']['description'] .'</description>';
-//echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
-echo '<itunes:email>'. $json_page['information']['email'] .'</itunes:email>';
 echo '<language>'. $json_page['information']['language'] .'</language>';
 echo '<link>'. $domain .'</link>';
 
-foreach (json_page['episodes'] as $episode_info):
+echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:author>';
+echo '<itunes:author>'. $json_page['information']['author'] .'</itunes:author>';
+
+echo '<googleplay:email>'. $json_page['information']['email'] .'</googleplay:email>';
+echo '<itunes:email>'. $json_page['information']['email'] .'</itunes:email>';
+
+//echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
+
+foreach ($json_page['episodes'] as $episode_info):
 	
 	if ($episode_info['episode_completion'] !== "complete"): continue; endif;
 	if ($episode_info['episode_status'] !== "active"): continue; endif;
