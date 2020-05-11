@@ -140,7 +140,7 @@ $style_array = [
 		"margin"		=> "0 auto 0",
 		"display"		=> "block",
 		"text-align"		=> "left",
-		"left"			=> "-20px",
+		"left"			=> "-18px",
 		"position"		=> "relative",
 		],
 	
