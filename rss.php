@@ -10,17 +10,14 @@ header('Content-Type: application/rss+xml; charset=utf-8');
 // This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
 
-echo "<" . "?" . "xml version=\"1.0\" encoding=\"UTF-8\"" . "?" . ">\n\r";
+echo "<" . "?" . "xml version=\"1.0\" encoding=\"UTF-8\"" . "?" . ">\n";
+echo "<rss version=\"2.0\" xmlns:googleplay=\"http://www.google.com/schemas/play-podcasts/1.0]" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\">\n";
+echo "<channel>\n";
 
-echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">';
-
-echo '<channel>\n';
-
-
-echo '<title>'. $json_page['information']['title'] .'</title>\r';
-echo '<description>'. $json_page['information']['description'] .'</description>\n';
-echo '<language>'. $json_page['information']['language'] .'</language>\n';
-echo '<link>'. $domain .'</link>\n';
+echo "<title>". $json_page['information']['title'] ."</title>\n";
+echo "<description>". $json_page['information']['description'] ."</description>\n";
+echo "<language>". $json_page['information']['language'] ."</language>\n";
+echo "<link>". $domain ."</link>\n";
 
 echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:author>\n';
 echo '<itunes:author>'. $json_page['information']['author'] .'</itunes:author>\n';
