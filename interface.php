@@ -176,7 +176,7 @@ $style_array = [
 		"background"		=> "rgba(255,255,255,0)",
 		],
 
-	"input + .form-checkbox-label:before" => [
+	".form-checkbox-label:before" => [
 		"content"		=> "Inactive.",
 		"display"		=> "inline-block",
 		],
