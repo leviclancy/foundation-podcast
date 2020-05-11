@@ -61,9 +61,9 @@ $style_array = [
 		],
 	
 	"#button-navigation-wrapper" => [
-		"position"		=> "absolute",
-		"right"			=> "1px",
-		"top"			=> "1px",
+//		"position"		=> "absolute",
+//		"right"			=> "1px",
+//		"top"			=> "1px",
 		"text-align"		=> "right",
 		"display"		=> "block",
 		"clear"			=> "both",
