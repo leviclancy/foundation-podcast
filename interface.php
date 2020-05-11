@@ -46,7 +46,7 @@ $style_array = [
 		],
 	
 	"amp-list" => [
-		"display"		=> "container",
+		"display"		=> "contents",
 		],
 	
 	".form-warning" => [
