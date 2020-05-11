@@ -135,11 +135,12 @@ $style_array = [
 			
 	".form-wrapper" => [
 		"width"			=> "80%",
-		"max-width"		=> "600px",
+		"max-width"		=> "640px",
 		"display"		=> "block",
 		"text-align"		=> "left",
 		"box-sizing"		=> "border-box",
 		"margin"		=> "0 auto",
+		"position"		=> "relative",
 		],
 	
 	".form-label, .form-input, .form-textarea, .form-file-input" => [
