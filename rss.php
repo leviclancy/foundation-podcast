@@ -16,7 +16,12 @@ function simple_tag($tag_temp, $value_temp) {
 
 echo "<" . "?" . "xml version=\"1.0\" encoding=\"UTF-8\"" . "?" . ">\n";
 
-echo "<rss version=\"2.0\" xmlns:googleplay=\"http://www.google.com/schemas/play-podcasts/1.0\" xmlns:itunes=\"http://www.itunes.com/dtds/podcast-1.0.dtd\">\n";
+$attributes_temp = impode(" ", [
+	'version="2.0"',
+	'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"',
+	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
+	]);
+echo "<rss ". $attributes_temp .">\n";
 
 echo "<channel>\n";
 
