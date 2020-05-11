@@ -30,7 +30,7 @@ $array_temp = [
 	"googleplay:email"	=> $json_page['information']['email'],
 	"itunes:email"		=> $json_page['information']['email'],
 	];
-foreach ($array_temp as $key_temp => $value_temp):
+foreach ($array_temp as $tag_temp => $value_temp):
 	simple_tag($tag_temp, $value_temp);
 	endforeach;
 
@@ -47,7 +47,7 @@ foreach ($json_page['episodes'] as $episode_info):
 			"description"	=> $episode_info['episde_description'],
 			"pubDate"	=> $episode_info['episde_pubdate'] ." Tue, 14 Mar 2017 12:00:00 GMT",
 			];
-		foreach ($array_temp as $key_temp => $value_temp):
+		foreach ($array_temp as $tag_temp => $value_temp):
 			simple_tag($tag_temp, $value_temp);
 			endforeach;
 
