@@ -208,6 +208,7 @@ $style_array = [
 		"margin"		=> "100px auto 50px",
 		"padding"		=> "20px 0",
 		"display"		=> "block",
+		"clear"			=> "both",
 		],
 	
 	".home-list-item-title" => [
@@ -227,6 +228,10 @@ $style_array = [
 		"text-align"		=> "center",
 		"background"		=> "#fff",
 		"box-shadow"		=> "8px 8px 30px -5px rgba(20,20,20,0.4)",
+		"display"		=> "table",
+		"margin"		=> "0 auto",
+		"padding"		=> "10px 25px",
+		"border-radius"		=> "100px",
 		],
 	
 	".episodes-list-item" => [
@@ -236,6 +241,7 @@ $style_array = [
 		"padding"		=> "20px 0",
 		"display"		=> "block",
 		"border-bottom"		=> "3px solid rgba(100,100,100,0.4)",
+		"clear"			=> "both",
 		],
 
 	".episodes-list-item-title" => [
