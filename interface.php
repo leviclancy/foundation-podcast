@@ -63,7 +63,8 @@ $style_array = [
 	".button-navigation-wrapper" => [
 		"position"		=> "absolute",
 		"right"			=> "1px",
-		"top"			=> "1px",		
+		"top"			=> "1px",
+		"text-align"		=> "right",
 		],
 	
 	".button-navigation" => [
@@ -74,6 +75,7 @@ $style_array = [
 		"font-family"		=> "Verdana",
 		"cursor"		=> "pointer",
 		"font-size"		=> "80%",
+		"text-align"		=> "center",
 		"border"		=> "2px solid #777",
 		],
 	
