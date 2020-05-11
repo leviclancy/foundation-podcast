@@ -322,6 +322,9 @@ echo "</head><body>";
 
 echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
+// We need to initialize the login state=
+$json_page = json_decode(file_get_contents("/?access=json-page"), true);
+
 $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
 	"lightbox-edit-information.close",
@@ -335,12 +338,10 @@ $lightbox_close_array = implode(",", [
 	"edit-information-form-list.changeToLayoutContainer()",
 	]);
 
-// Check if we are logged in
-$result_temp = login_check(true);
 
 // By default, we are logged out
 $login_hidden = "button-navigation"; $logout_hidden = "hide";
-if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
+if ($json_page['login']['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
 
 echo "<div id='button-navigation-wrapper'>";
 
@@ -376,29 +377,11 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 
 echo "</form>";
 
-$attributes_temp = implode(" ", [
-	"id='home-list'",
-	"layout='responsive'",
-	"width='600'",
-	"height='300'",
-	"items='information'",
-//	"binding='refresh'",
-	"src='amp-state:pageState'",
-	"single-item",
-	]);
-echo "<amp-list ". $attributes_temp .">";
-	echo "<span class='amp-list-fallback' fallback>Failed to load information.</span>";
-	echo "<span class='amp-list-fallback' placeholder>Loading information...</span>";
-	echo "<span class='amp-list-fallback' overflow>Show more.</span>";
-
-	echo "<template type='amp-mustache'>
-		<div class='home-list-item'>
-		<h1 class='home-list-item-title'>{{title}}</h1>
-		<p  class='home-list-item-author'>by {{author}}</p>
-		<p class='home-list-item-description'>{{description}}</p></div>
-		</template>";
-		
-	echo "</amp-list>";
+echo "<div class='home-list-item'>";
+	echo "<h1 class='home-list-item-title' [text]='pageState.information.title'>". $json_page['information']['title'] ."</h1>";
+	echo "<p class='home-list-item-author' [text]=\"'by' + pageState.information.author\">by ". $json_page['information']['author'] ."</p>";
+	echo "<p class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</p>";
+	echo "</div>";
 		
 // Handle if more than 50 episodes
 $attributes_temp = implode(" ", [
