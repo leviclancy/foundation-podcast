@@ -512,10 +512,10 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
 	
 	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
-	echo "<input class='form-input' type='text' id='admin_name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<input class='form-input' type='text' id='login-form-admin-name'' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
 	echo "<label class='form-label' for='login-form-password'>Enter your password.</label>";
-	echo "<input class='form-input' type='password' id='password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
+	echo "<input class='form-input' type='password' id='login-form-password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -563,20 +563,20 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 
 		<template type='amp-mustache'>
 		
-		<label class='form-label' for='edit-information[title]'>Enter the title.</label>
-		<input class='form-input' type='text' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{title}}' required>
+		<label class='form-label' for='edit-information-title'>Enter the title.</label>
+		<input class='form-input' type='text' id='edit-information-title' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{title}}' required>
 
-		<label class='form-label' for='edit-information[author]'>Enter the author.</label>
-		<input class='form-input' type='text' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{author}}' required>
+		<label class='form-label' for='edit-information-author'>Enter the author.</label>
+		<input class='form-input' type='text' id='edit-information-author' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{author}}' required>
 
-		<label class='form-label' for='edit-information[description]'>Enter the description.</label>
-		<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
+		<label class='form-label' for='edit-information-description'>Enter the description.</label>
+		<textarea class='form-textarea' id='edit-information-description' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
 
-		<label class='form-label' for='edit-information[email]'>Enter the email.</label>
-		<input class='form-input' type='email' name='edit-information[email]' minlength='3' maxlength='50' placeholder='Email'  [value]=\"pageState.information.email\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
+		<label class='form-label' for='edit-information-email'>Enter the email.</label>
+		<input class='form-input' type='email' id='edit-information-email' name='edit-information[email]' minlength='3' maxlength='50' placeholder='Email'  [value]=\"pageState.information.email\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
 
-		<label class='form-label' for='edit-information[language]'>Enter the language.</label>
-		<input class='form-input' type='text' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
+		<label class='form-label' for='edit-informationlanguage'>Enter the language.</label>
+		<input class='form-input' type='text' id='edit-information-language' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
 
 		</template></amp-list>";
 
@@ -610,22 +610,22 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<input type='hidden' name='edit-episode[episode_id]' [value]='editEpisode.editEpisodeID' required>";
 
-	echo "<label class='form-label' for='edit-episode[episode_title]'>Enter the episode title.</label>";
-	echo "<input class='form-input' type='text' name='edit-episode[episode_title]' minlength='3' maxlength='100' placeholder='Title' [value]='editEpisode.editEpisodeTitle' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+	echo "<label class='form-label' for='edit-episode-title'>Enter the episode title.</label>";
+	echo "<input class='form-input' type='text' id='edit-episode-title' name='edit-episode[episode_title]' minlength='3' maxlength='100' placeholder='Title' [value]='editEpisode.editEpisodeTitle' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<label class='form-label' for='edit-episode[episode_description]'>Enter the episode description.</label>";
-	echo "<textarea class='form-textarea' name='edit-episode[episode_description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]='editEpisode.editEpisodeDescription' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required></textarea>";
+	echo "<label class='form-label' for='edit-episode-description'>Enter the episode description.</label>";
+	echo "<textarea class='form-textarea' id='edit-episode-description' name='edit-episode[episode_description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]='editEpisode.editEpisodeDescription' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required></textarea>";
 
-	echo "<label class='form-label' for='edit-episode[episode_pubdate]'>Enter the publication date.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+	echo "<label class='form-label' for='edit-episode-pubdate'>Enter the publication date.</label>";
+	echo "<input class='form-input' type='date' id='edit-episode-pubdate' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<label class='form-label' for='edit-episode[episode_duration]'>Enter the duration.</label>";
-	echo "<input class='form-input' type='date' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+	echo "<label class='form-label' for='edit-episode-duration'>Enter the duration.</label>";
+	echo "<input class='form-input' type='date' id='edit-episode-duration' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
-	echo "<label class='form-radio-label' for='edit-episode[episode_status]'>Active</label>";
-	echo "<input type='checkbox' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \">";
+	echo "<label class='form-radio-label' for='edit-episode-status'>Active</label>";
+	echo "<input type='checkbox' id='edit-episode-status' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \">";
 
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
@@ -690,7 +690,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 	echo "<form ".$attributes_temp.">";
 
 	echo "<label class='form-label' for='add-episode'>Choose MP3 file</label>";
-	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
+	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
