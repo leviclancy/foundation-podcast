@@ -60,6 +60,12 @@ $style_array = [
 		"display"		=> "none",
 		],
 	
+	".button-navigation-wrapper" => [
+		"position"		=> "absolute",
+		"right"			=> "1px",
+		"top"			=> "1px",		
+		],
+	
 	".button-navigation" => [
 		"float"			=> "right",
 		"display"		=> "inline-block",
@@ -319,26 +325,30 @@ $result_temp = login_check(true);
 $login_hidden = "button-navigation"; $logout_hidden = "hide";
 if ($result_temp['loginStatus'] == "loggedin"): $login_hidden = "hide"; $logout_hidden = "button-navigation"; endif;
 
-// Log in button
-echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"pageState.login.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
+echo "<div id='button-navigation-wrapper'>";
 
-// Log out button
-echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
+	// Log in button
+	echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"pageState.login.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
 
-// Edit information
-echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
+	// Log out button
+	echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
 
-// Add episode
-echo "<span role='button' tabindex='0' id='button-lightbox-add-episode' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-add-episode.open'>Add episode</span>";
+	// Edit information
+	echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
 
-// Manage admins
-echo "<span role='button' tabindex='0' id='button-lightbox-manage-admins' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-manage-admins.open'>Manage admins</span>";
+	// Add episode
+	echo "<span role='button' tabindex='0' id='button-lightbox-add-episode' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-add-episode.open'>Add episode</span>";
 
-// My account
-echo "<span role='button' tabindex='0' id='button-lightbox-my-account' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-my-account.open'>My account</span>";
+	// Manage admins
+	echo "<span role='button' tabindex='0' id='button-lightbox-manage-admins' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-manage-admins.open'>Manage admins</span>";
+
+	// My account
+	echo "<span role='button' tabindex='0' id='button-lightbox-my-account' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-my-account.open'>My account</span>";
+
+	echo "</div>";
+
 
 // Logout form
-
 echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-success:pageState.refresh'>";
 
 //	echo "<div class='form-warning'>";
@@ -348,8 +358,6 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 //		echo "</div>";
 
 echo "</form>";
-
-echo "<br><br>";
 
 $attributes_temp = implode(" ", [
 	"id='home-list'",
