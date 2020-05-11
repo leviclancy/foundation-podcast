@@ -325,6 +325,7 @@ $lightbox_close_array = implode(",", [
 	"lightbox-my-account.close",
 	"home-list.changeToLayoutContainer()",
 	"episodes-list.changeToLayoutContainer()",
+	"edit-information-form-list.changeToLayoutContainer()",
 	]);
 
 // Check if we are logged in
