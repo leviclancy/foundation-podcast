@@ -216,7 +216,7 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(171, 89, 179,0.3), rgba(235, 0, 192,0.9)), rgba(153, 41, 93,1)",
 		],
 
-	".#add-episode-label" => [
+	"#add-episode-label" => [
 		"cursor"		=> "pointer",
 		"text-align"		=> "center",
 		"padding"		=> "10px 30px",
@@ -682,7 +682,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 	echo "</amp-lightbox>";
 
 // Lightbox for adding episodes
-echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({addEpisodeBack: 'Back'}),add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({addEpisodeBack: 'Back'}),AMP.setState({addEpisodeFile: 'Click to add MP3 file'}),add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='addEpisodeBack'>Back</div>";
 
@@ -696,8 +696,8 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<label class='form-label' id='add-episode-label' for='add-episode' [text]=\"addEpisodeFile.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Click to add MP3 file.</label>";
-	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'});change:AMP.setState({addEpisodeFile: event.value.split('\')})\" hidden>";
+	echo "<label class='form-label' id='add-episode-label' for='add-episode' [text]=\"addEpisodeFile.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\"></label>";
+	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'});change:AMP.setState({addEpisodeFile: event.value.split('\')})\" required hidden>";
 
 
 	echo "<div class='form-warning'>";
