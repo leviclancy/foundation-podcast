@@ -206,16 +206,46 @@ $style_array = [
 		"margin"		=> "100px 20px 50px",		
 		],
 	
-	".episodes-list-button-edit-episode" => [
+	".episodes-list-item" => [
+		"width"			=> "80%",
+		"max-width"		=> "600px",
+		],
+
+	".episodes-list-item-title" => [
+		"font-size"		=> "110%",
+		"font-weight"		=> "700",
+		"display"		=> "block",
+		],
+	
+	".episodes-list-item-description" => [
+		"font-style"		=> "italic",
+		"display"		=> "block",
+		],
+	
+	".episodes-list-item-audio" => [
+		"display"		=> "block",
+		],
+
+	".episodes-list-item-notes, .episodes-list-item-button" => [
 		"font-family"		=> "Verdana",
 		"display"		=> "inline-block",
+		"font-size"		=> "80%",
+		"border-radius"		=> "100px",
+		"box-sizing"		=> "border-box",
+		"margin"		=> "0 0 20px 20px",
+		],
+	
+	".episodes-list-item-notes" => [
+		"background"		=> "rgba(40,40,40,0.3)",
+		"border"		=> "2px solid #333",
+		"color"			=> "#fff",
+		],
+
+	".episodes-list-item-button" => [
 		"background"		=> "#fff",
 		"border"		=> "2px solid #333",
 		"color"			=> "#333",
-		"padding"		=> "6px 17px",
 		"cursor"		=> "pointer",
-		"font-size"		=> "80%",
-		"border-radius"		=> "100px",
 		],
 	
 	"#delete-episode-form-warning" => [
@@ -323,25 +353,25 @@ echo "<amp-list ". $attributes_temp .">
 	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
-	<template type='amp-mustache'>
+	echo "<template type='amp-mustache'>";
 	
-		<!-- Podcast title and description -->
-		<br><br>{{#episode_title}}<b>{{episode_title}}</b><br>{{/episode_title}}
-		{{#episode_description}}<i>{{episode_description}}</i><br>{{/episode_description}}
+		echo "<div class='episodes-list-item'>";
+	
+		// Podcast title and description
+		echo "{{#episode_title}}<div class='episodes-list-item-title'>{{episode_title}}</div>{{/episode_title}}";
+		echo "{{#episode_description}}<div class='episodes-list-item-description'>{{episode_description}}</div>{{/episode_description}}";
 		
-		<!-- Podcast audio -->
-		<amp-audio width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
-
-		echo "<br>";
+		// Podcast audio
+		echo "<amp-audio class='episodes-list-item-audio' width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 
 		// Just show the episode id
-		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_id}}</span>";
+		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_id}}</span>";
 
 		// Just shows 'active' or 'inactive' status
-		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>";
+		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_status}}</span>";
 
 		// Just shows 'complete' or 'incomplete' status
-		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_completion}}</span>";
+		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_completion}}</span>";
 
 		// We have to remove " from around keys and values
 		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
@@ -359,7 +389,7 @@ echo "<amp-list ". $attributes_temp .">
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
-			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\"",
+			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-button'\"",
 			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-edit-episode.open"])."\"",
 //			"on=\"tap:AMP.setState({editEpisodeID: '{{episode_id}}'}),".$lightbox_close_array.",lightbox-edit-episode.open\"",
 			]);
@@ -378,7 +408,7 @@ echo "<amp-list ". $attributes_temp .">
 			"role='button'",
 			"tabindex='0'",
 			"class='".$logout_hidden."'",
-			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\"",
+			"[class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-button'\"",
 			"on=\"tap:". implode(",", [$set_state_array_temp, $lightbox_close_array, "lightbox-delete-episode.open"])."\"",
 			]);
 
