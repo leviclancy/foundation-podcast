@@ -154,6 +154,7 @@ if ($request_access == "install"):
 		"episode_duration"	=> "VARCHAR(100)",
 		"episode_status"	=> "VARCHAR(100)",
 		"episode_file"		=> "TEXT",
+		"episode_bytes_length"	=> "VARCHAR(100)",
 		];
 
 	echo "<div id='body-wrapper'>";
