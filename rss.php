@@ -24,7 +24,7 @@ $array_temp = [
 	"title" 		=> $json_page['information']['title'],
 	"description" 		=> $json_page['information']['description'],
 	"language"		=> $json_page['information']['language'],
-	"link"			=> $domain,
+	"link"			=> "https://".$domain,
 	"googleplay:author"	=> $json_page['information']['author'],
 	"itunes:author"		=> $json_page['information']['author'],
 	"googleplay:email"	=> $json_page['information']['email'],
@@ -45,7 +45,7 @@ foreach ($json_page['episodes'] as $episode_info):
 		$array_temp = [
 			"title"		=> $episode_info['episode_title'],
 			"description"	=> $episode_info['episode_description'],
-			"pubDate"	=> $episode_info['episode_pubdate'] ." Tue, 14 Mar 2017 12:00:00 GMT",
+			"pubDate"	=> date("D, d M Y", strtotime($episode_info['episode_pubdate'])) ." 12:00:00 GMT", // Tue, 14 Mar 2017 12:00:00 GMT
 			];
 		foreach ($array_temp as $tag_temp => $value_temp):
 			simple_tag($tag_temp, $value_temp);
