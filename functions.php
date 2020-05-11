@@ -211,4 +211,12 @@ function login_check($return=false) {
 		endwhile;
 	
 	$json_temp['loginMessage'] = "Failed to find active code.";
-	if ($return == true): return $json_temp; else: json_output($json_temp); endif; } ?>
+	if ($return == true): return $json_temp; else: json_output($json_temp); endif; }
+
+function episode_completion_check($row) {
+	$completion_temp = "complete";
+	if (empty($row['episode_title'])): $completion_temp = "incomplete"; endif;
+	if (empty($row['episode_description'])): $completion_temp = "incomplete"; endif;
+	if (empty($row['episode_pubdate'])): $completion_temp = "incomplete"; endif;
+	if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
+	return $completion_temp; } ?>
