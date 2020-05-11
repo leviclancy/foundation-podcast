@@ -169,8 +169,21 @@ $style_array = [
 		"border-radius"		=> "100px",
 		"border"		=> "2px solid #fff",
 		"position"		=> "relative",
+		"z-index"		=> "10",
 		],
-
+	
+	".form-checkbox-label:before" => [
+		"display"		=> "inline-block",
+		],
+	
+	".form-checkbox-label:after" => [
+		"position"		=> "absolute",
+		"top"			=> "0",
+		"right"			=> "0",
+		"z-index"		=> "100",
+		"display"		=> "block",
+		],
+	
 	"input + .form-checkbox-label" => [
 		"opacity"		=> "0.2",
 		"background"		=> "rgba(255,255,255,0)",
@@ -178,15 +191,10 @@ $style_array = [
 
 	"input + .form-checkbox-label:before" => [
 		"content"		=> "'Inactive.'",
-		"display"		=> "inline-block",
 		],
 	
 	"input + .form-checkbox-label:after" => [
 		"content"		=> "'Tap to make active.'",
-		"position"		=> "absolute",
-		"top"			=> "0",
-		"right"			=> "-20px",
-		"z-index"		=> "100",
 		],
 	
 	"input:checked + .form-checkbox-label" => [
@@ -196,15 +204,10 @@ $style_array = [
 
 	"input:checked + .form-checkbox-label:before" => [
 		"content"		=> "'Active.'",
-		"display"		=> "inline-block",
 		],
 	
 	"input:checked + .form-checkbox-label:after" => [
 		"content"		=> "'Tap to make inactive.'",
-		"position"		=> "absolute",
-		"top"			=> "0",
-		"right"			=> "-20px",
-		"z-index"		=> "100",
 		],
 
 	".form-file-input" => [
