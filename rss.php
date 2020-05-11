@@ -70,7 +70,7 @@ foreach ($json_page['episodes'] as $episode_info):
 			'type="audio/mpeg3"',
 //			'length="34216300"',
 			]);
-		echo "<enclosure ". $attributes_temp ." />\n";
+		echo "<enclosure ". $attributes_temp .">\n";
 
 //		echo '<itunes:duration>30:00</itunes:duration>\n';
 
