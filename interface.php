@@ -218,6 +218,11 @@ $style_array = [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(100, 100, 100,0.3), rgba(200, 200, 200,0.8)), rgba(60, 60, 60,1)",
 		],
+	
+	"#lightbox-my-account" => [
+		"color"			=> "#fff",
+		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(224, 199, 74, 0.3), rgba(224, 153, 0,0.8)), rgba(255, 208, 0, 1)",
+		],
 
 	".home-list-item" => [
 		"width"			=> "80%",
@@ -673,8 +678,19 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "</amp-lightbox>";
 
-// Lightbox for the user's own account
+// Lightbox for managing admins
 echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
+
+	// Look at list of admins
+
+	// Admin names, inactive/activate
+
+	echo "</amp-lightbox>";
+
+// Lightbox for the user's own account
+echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
