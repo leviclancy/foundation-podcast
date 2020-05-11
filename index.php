@@ -91,11 +91,7 @@ if ($request_access == "json-page"):
 	while ($row = pg_fetch_assoc($result)):
 
 		// Assign complete or incomplete status
-		$completion_temp = "complete";
-		if (empty($row['episode_title'])): $completion_temp = "incomplete"; endif;
-		if (empty($row['episode_description'])): $completion_temp = "incomplete"; endif;
-		if (empty($row['episode_pubdate'])): $completion_temp = "incomplete"; endif;
-		if (empty($row['episode_duration'])): $completion_temp = "incomplete"; endif;
+		$completion_temp = episode_completion_check($row);
 
 		// Standardize active status
 		$status_temp = "inactive";
@@ -138,19 +134,26 @@ if ($request_access == "json-page"):
 // Give us the episode
 if ($request_access == "podcast-file"):
 
-	$episode_id_request = $_REQUEST['episode_id'] = null;
+	$episode_id_request = $_REQUEST['episode_id'] ?? null;
 
 	if (empty($episode_id_request)): header("HTTP/1.0 404 Not Found"); exit; endif;
 
-	$postgres_statement = "SELECT episode_file FROM podcast_episodes WHERE episode_id=$1";
+	$result_temp = login_check(true);
+
+	$postgres_statement = "SELECT episode_file, episode_status FROM podcast_episodes WHERE episode_id=$1";
 	$result = pg_prepare($postgres_connection, "get_episode_file_statement", $postgres_statement);
 	if (!($result)): header("HTTP/1.0 404 Not Found"); exit; json_result($domain, "error", null, "Could not prepare podcast file statement."); endif;
 
 	$result = pg_execute($postgres_connection, "get_episode_file_statement", [ $episode_id_request ]);
 	if (!($result)): header("HTTP/1.0 404 Not Found"); exit; json_result($domain, "error", null, "No result for episode file."); endif;
 
-	$admin_id_temp = null;
 	while ($row_temp = pg_fetch_assoc($result)):
+
+		if ($result_temp['loginStatus'] !== "loggedin"):
+			if (episode_completion_check($row_temp) !== "complete"): json_result($domain, "error", null, "Incomplete file."); endif;
+			if ($row_temp['episode_status'] !== "active"): json_result($domain, "error", null, "Inactive file."); endif;
+			endif;
+
 		header('Content-Type: audio/mpeg');
 		echo base64_decode($row_temp['episode_file']);
 		exit; endwhile;
