@@ -682,7 +682,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 	echo "</amp-lightbox>";
 
 // Lightbox for adding episodes
-echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({addEpisodeBack: 'Back', addEpisodeFile: 'Click to add MP3 file'}),add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({addEpisodeBack: 'Back', addEpisodeLabel: ''}),add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='addEpisodeBack'>Back</div>";
 
@@ -696,8 +696,8 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<label class='form-label' id='add-episode-label' for='add-episode' [text]=\"addEpisodeFile.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\"></label>";
-	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'});change:AMP.setState({addEpisodeFile: event.value.split('\')})\" required hidden>";
+	echo "<label class='form-label' id='add-episode-label' for='add-episode' [text]=\"addEpisodeLabel.slice(-1) == '' ? 'Choose MP3 file to upload.' : addEpisodeLabel.slice(-1)\"></label>";
+	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'});change:AMP.setState({addEpisodeLabel: event.value.split('\')})\" required hidden>";
 
 
 	echo "<div class='form-warning'>";
