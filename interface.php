@@ -447,7 +447,7 @@ echo "<amp-list ". $attributes_temp .">";
 		echo "{{#episode_description}}<div class='episodes-list-item-description'>{{episode_description}}</div>{{/episode_description}}";
 		
 		// Podcast audio
-		echo "<amp-audio class='episodes-list-item-audio' width='auto' height='50' src='/?access=podcast-file&episode_id={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
+		echo "<amp-audio class='episodes-list-item-audio' width='auto' height='50' src='/?episode-file={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 
 		// Just show the episode id
 		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_id}}</span>";
