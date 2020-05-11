@@ -1,10 +1,11 @@
 // Make sure the URL is correct
 if ($request_access !== "rss"): json_result($domain, "error", "/", "Invalid URL."); endif;
 
-// Get JSON
+// We need to get the page info
+$json_page = file_get_contents("https://".$domain."/?access=json-page");
+$json_page = json_decode($json_page, true);
 
-// Give us the RSS
-
+// This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
 
 echo '<?xml version="1.0" encoding="UTF-8"?>';
@@ -18,17 +19,19 @@ echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/
 echo '<language>'. $language .'</language>';
 echo '<link>'. $domain .'</link>';
 
-foreach ($ as ):
+foreach (json_page['episodes'] as $episode_info):
 	
 	if ($episode_info['episode_completion'] !== "complete"): continue; endif;
+	if ($episode_info['episode_status'] !== "active"): continue; endif;
 	
-	echo '<item>
-		<title>Top 10 myths about caring for a zebra</title>
-		<description>Here are the top 10 misunderstandings about the care, feeding, and breeding of these lovable striped animals.</description>
-		<pubDate>Tue, 14 Mar 2017 12:00:00 GMT</pubDate>
-		<enclosure url="https://www.example.com/podcasts/dafnas-zebras/audio/toptenmyths.mp3" type="audio/mpeg" length="34216300"/>
-		<itunes:duration>30:00</itunes:duration>
-		<guid isPermaLink="false">dzpodtop10</guid>
+	echo '<item>';
+		echo '<title>'. episode_info['episde_title'] .'</title>';
+		echo '<description>'. episode_info['episde_description'] .'</description>';
+		echo '<pubDate>'. episode_info['episde_pubdate'] .' Tue, 14 Mar 2017 12:00:00 GMT</pubDate>';
+//		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300"/>';
+		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" />';
+//		echo '<itunes:duration>30:00</itunes:duration>';
+		echo '<guid isPermaLink="false">'. episode_info['episde_id'] .'</guid>';
 		</item>';
 	endforeach;
 
