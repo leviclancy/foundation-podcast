@@ -202,8 +202,31 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(171, 89, 179,0.3), rgba(235, 0, 192,0.9)), rgba(153, 41, 93,1)",
 		],
 
-	"h1" => [
-		"margin"		=> "100px 20px 50px",		
+	".home-list-item" => [
+		"width"			=> "80%",
+		"max-width"		=> "600px",
+		"margin"		=> "100px auto 50px",
+		"padding"		=> "20px 0",
+		"display"		=> "block",
+		],
+	
+	".home-list-item-title" => [
+		"font-size"		=> "150%",
+		"font-weight"		=> "700",
+		],
+	
+	".home-list-item-author" => [
+		"font-size"		=> "120%",		
+		],
+	
+	".home-list-item-description" => [
+		],
+	
+	".home-rss-link" => [
+		"display"		=> "block",
+		"text-align"		=> "center",
+		"background"		=> "#fff",
+		"box-shadow"		=> "8px 8px 30px -5px rgba(20,20,20,0.4)",
 		],
 	
 	".episodes-list-item" => [
@@ -332,14 +355,15 @@ echo "<amp-list ". $attributes_temp .">
 	<span class='amp-list-fallback' overflow>Show more.</span>
 
 	<template type='amp-mustache'>
-		<h1>{{title}}</h1>
-		<p>by {{author}}</p>
-		<p>{{description}}</p>
+		<div class='home-list-item'>
+		<h1 class='home-list-item-title'>{{title}}</h1>
+		<p  class='home-list-item-author'>by {{author}}</p>
+		<p class='home-list-item-description'>{{description}}</p></div>
 		</template>
 		
 	</amp-list>";
 		
-echo "<p>RSS feed: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
+echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 
 // Handle if more than 50 episodes
 
