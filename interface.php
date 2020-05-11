@@ -320,7 +320,13 @@ echo "</head><body>";
 echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
 // We need to initialize the login state, and default values
-$json_page = file_get_contents("https://".$domain."/?access=json-page");
+$cookie_code_temp = $_COOKIE['cookie_code'] ?? null;
+$http_array = [
+	"header"  => "Content-type: application/x-www-form-urlencoded\r\n",
+	"method"  => "POST",
+        "content" => http_build_query(["cookie_code"=>$cookie_code_temp]),
+	];
+$json_page = file_get_contents("https://".$domain."/?access=json-page", false, stream_context_create(["http" => $http_array]));
 $json_page = json_decode($json_page, true);
 
 $lightbox_close_array = implode(",", [
