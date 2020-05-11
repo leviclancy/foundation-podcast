@@ -9,10 +9,24 @@ header('Content-Type: application/rss+xml; charset=utf-8');
 
 // This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
+// https://github.com/simplepie/simplepie-ng/wiki/Spec:-iTunes-Podcast-RSS Sample iTunes RSS
 
 function simple_tag($tag_temp, $value_temp) {
-	echo "<".$tag_temp.">" . $value_temp . "</".$tag_temp.">\n";
-	}
+	
+	// Start the tag
+	echo "<".$tag_temp.">";
+	
+	// Loop again if nested
+	if (is_array($value_temp)):
+		foreach ($value_temp as $tag_temp_temp => $value_temp_temp):
+			simple_tag($tag_temp_temp, $value_temp_temp);
+			endforeach;
+	
+	// Or just echo it if it is a string
+	else: echo $value_temp; endif;
+	
+	// Close the tag
+	echo "</".$tag_temp.">\n"; }
 
 echo "<" . "?" . "xml version=\"1.0\" encoding=\"UTF-8\"" . "?" . ">\n";
 
@@ -33,11 +47,14 @@ $array_temp = [
 	"googleplay:author"	=> $json_page['information']['author'],
 	"itunes:author"		=> $json_page['information']['author'],
 	"googleplay:email"	=> $json_page['information']['email'],
-	"itunes:email"		=> $json_page['information']['email'],
+	"itunes:owner"		=> $json_page['information']['email'],
 	];
 foreach ($array_temp as $tag_temp => $value_temp):
 	simple_tag($tag_temp, $value_temp);
 	endforeach;
+ <itunes:owner>
+            <itunes:name>John Doe</itunes:name>
+            <itunes:email>john.doe@example.com</itunes:email></itunes:owner>
 
 //echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
 
