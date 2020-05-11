@@ -1,4 +1,4 @@
-// Make sure the URL is correct
+<? // Make sure the URL is correct
 if ($request_access !== "rss"): json_result($domain, "error", "/", "Invalid URL."); endif;
 
 // We need to get the page info
