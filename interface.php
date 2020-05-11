@@ -133,6 +133,14 @@ $style_array = [
 		"background"		=> "linear-gradient(160deg, rgba(0,65,140,0.2), rgba(255,255,255,0) 40%), linear-gradient(240deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 70%), linear-gradient(15deg, rgba(230,106,53,1), rgba(35,105,190,1))",
 		],
 			
+	".form-wrapper" => [
+		"width"			=> "100%",
+		"max-width"		=> "600px",
+		"display"		=> "block",
+		"text-align"		=> "left",
+		"box-sizing"		=> "border-box",
+		],
+	
 	".form-label, .form-input, .form-textarea, .form-file-input" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
@@ -179,7 +187,7 @@ $style_array = [
 	".form-checkbox-label:after" => [
 		"position"		=> "absolute",
 		"bottom"		=> "10px",
-		"right"			=> "-200px",
+		"right"			=> "-170px",
 		"z-index"		=> "100",
 		"display"		=> "block",
 		"font-size"		=> "80%",
@@ -687,7 +695,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
-	echo "<div class='form-label'>";
+	echo "<div class='form-wrapper'>";
 	echo "<label class='form-label' for='edit-episode-status'>Episode active status.</label>";
 	echo "<input type='checkbox' id='edit-episode-status' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \" hidden>";
 	echo "<label class='form-checkbox-label' for='edit-episode-status'></label>";
