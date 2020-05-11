@@ -162,10 +162,11 @@ $style_array = [
 		"font-size"		=> "80%",
 		"font-style"		=> "italic",
 		"cursor"		=> "pointer",
+		"text-align"		=> "left",
 		],
 
 	".form-file-input" => [
-//		"margin"		=> "10px auto 0",
+		"margin"		=> "10px auto 0",
 //		"border"		=> "2px solid rgba(255,255,255,1)",
 //		"border-radius"		=> "100px",
 //		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
