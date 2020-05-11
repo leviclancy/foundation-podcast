@@ -139,6 +139,7 @@ $style_array = [
 		"display"		=> "block",
 		"text-align"		=> "left",
 		"box-sizing"		=> "border-box",
+		"margin"		=> "0 auto",
 		],
 	
 	".form-label, .form-input, .form-textarea, .form-file-input" => [
@@ -187,7 +188,7 @@ $style_array = [
 	".form-checkbox-label:after" => [
 		"position"		=> "absolute",
 		"bottom"		=> "10px",
-		"right"			=> "-170px",
+		"right"			=> "-190px",
 		"z-index"		=> "100",
 		"display"		=> "block",
 		"font-size"		=> "80%",
