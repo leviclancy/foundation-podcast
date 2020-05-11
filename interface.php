@@ -67,7 +67,6 @@ $style_array = [
 		],
 	
 	".button-navigation" => [
-		"float"			=> "right",
 		"display"		=> "inline-block",
 		"padding"		=> "7px 15px",
 		"border-radius"		=> "100px",
