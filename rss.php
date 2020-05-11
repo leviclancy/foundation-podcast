@@ -34,7 +34,7 @@ foreach (json_page['episodes'] as $episode_info):
 		echo '<description>'. episode_info['episde_description'] .'</description>';
 		echo '<pubDate>'. episode_info['episde_pubdate'] .' Tue, 14 Mar 2017 12:00:00 GMT</pubDate>';
 //		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300"/>';
-		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" />';
+		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300" />';
 //		echo '<itunes:duration>30:00</itunes:duration>';
 		echo '<guid isPermaLink="false">'. episode_info['episde_id'] .'</guid>';
 		echo '</item>';
