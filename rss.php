@@ -62,7 +62,7 @@ foreach ($json_page['episodes'] as $episode_info):
 			endforeach;
 
 		// URL for audio file
-		$url_temp = "https://". $domain ."/?access=podcast-file&episode-id=". $episode_info['episode_id'];
+		$url_temp = "https://". $domain ."/?access=podcast-file&episode_id=". $episode_info['episode_id'];
 
 		// Attributes for enclose
 		$attributes_temp = implode(" " , [
@@ -70,7 +70,7 @@ foreach ($json_page['episodes'] as $episode_info):
 			'type="audio/mpeg3"',
 //			'length="34216300"',
 			]);
-		echo "<enclosure ". $attributes_temp .">\n";
+		echo "<enclosure ". $attributes_temp ." />\n";
 
 //		echo '<itunes:duration>30:00</itunes:duration>\n';
 
