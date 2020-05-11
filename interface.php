@@ -394,7 +394,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh'>";
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
 	
 	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
 	echo "<input class='form-input' type='text' id='admin_name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
@@ -526,7 +526,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "</amp-lightbox>";
 
 // Lightbox for deleting an episode
-echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_close_array.";lightboxClose:episodes-list.refresh\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_close_array.";lightboxClose:delete-episode-form.clear,episodes-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>No, go back</div>";
 
@@ -535,7 +535,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 		"target='_top'",
 		"id='delete-episode-form'",
 		"method='post'",
-		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:lightbox-delete-episode.close,episodes-list.refresh"',
+		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
