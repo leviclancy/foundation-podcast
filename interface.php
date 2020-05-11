@@ -156,6 +156,22 @@ $style_array = [
 		"color"			=> "#333",
 		],
 	
+	".form-file-label" => [
+		"font-family"		=> "Verdana",
+		"margin"		=> "30px auto 0",
+		"font-size"		=> "80%",
+		"font-style"		=> "italic",
+		"cursor"		=> "pointer",
+		],
+
+	".form-file-input" => [
+//		"margin"		=> "10px auto 0",
+//		"border"		=> "2px solid rgba(255,255,255,1)",
+//		"border-radius"		=> "100px",
+//		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
+		"color"			=> "#333",
+		],
+	
 	".form-textarea" => [
 		"height"		=> "250px",
 		"margin"		=> "10px auto 0",
@@ -689,8 +705,8 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<label class='form-label' for='add-episode'>Click to add MP3 file.</label>";
-	echo "<input type='file' class='form-input' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
+	echo "<label class='form-file-label' for='add-episode'>Click to add MP3 file.</label>";
+	echo "<input type='file' class='form-file-input' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
 
 
 	echo "<div class='form-warning'>";
