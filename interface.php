@@ -377,16 +377,15 @@ echo "<amp-list ". $attributes_temp .">";
 	echo "<span class='amp-list-fallback' fallback>Failed to load information.</span>";
 	echo "<span class='amp-list-fallback' placeholder>Loading information...</span>";
 //	echo "<span class='amp-list-fallback' overflow>Show more.</span>";
-	?>
 
-	<template type='amp-mustache'>
+	echo "<template type='amp-mustache'>
 		<div class='home-list-item'>
 		<h1 class='home-list-item-title'>{{title}}</h1>
 		<p  class='home-list-item-author'>by {{author}}</p>
 		<p class='home-list-item-description'>{{description}}</p></div>
-		</template>
+		</template>";
 		
-	</amp-list>";
+	echo "</amp-list>";
 		
 echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 
