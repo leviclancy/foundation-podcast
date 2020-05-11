@@ -10,7 +10,7 @@ header('Content-Type: application/rss+xml; charset=utf-8');
 // This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
 
-functionn simple_tag($tag_temp, $value_temp) {
+function simple_tag($tag_temp, $value_temp) {
 	echo "<".$tag_temp.">" . $value_temp . "</".$tag_temp.">\n";
 	}
 
