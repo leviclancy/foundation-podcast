@@ -319,17 +319,21 @@ $style_array = [
 	];
 
 $style_width_array = [ 
-	".lightbox-back" => [
+	".lightbox-back, .lightbox-back:hover" => [
 		"position"		=> "relative",
-		"left"			=> "none",
-		"top"			=> "none",
-		"margin"		=> "20px",
+		"left"			=> "20px",
+		"top"			=> "20px",
+		"margin"		=> "0",
+		"padding"		=> "10px 20px",
+		"border-radius"		=> "100px",		
 		],
-	".form-submit" => [
+	".form-submit, .form-submit:hover" => [
 		"position"		=> "relative",
 		"right"			=> "none",
 		"top"			=> "none",
-		"margin"		=> "20px",
+		"margin"		=> "50px auto",
+		"padding"		=> "10px 20px",
+		"border-radius"		=> "100px",		
 		],
 	];
 
