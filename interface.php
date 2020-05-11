@@ -368,7 +368,7 @@ echo "</form>";
 
 $attributes_temp = implode(" ", [
 	"id='home-list'",
-	"layout='flex-item'",
+	"layout='responsive'",
 	"width='600'",
 	"height='600'",
 	"items='information'",
@@ -394,8 +394,8 @@ echo "<amp-list ". $attributes_temp .">";
 $attributes_temp = implode(" ", [
 	"id='episodes-list'",
 	"layout='responsive'",
-	"width='400'",
-	"height='400'",
+	"width='600'",
+	"height='600'",
 	"items='episodes'",
 //	"binding='refresh'",
 //	"src='amp-state:pageState'",
