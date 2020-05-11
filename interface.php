@@ -379,12 +379,6 @@ if ($json_page['login']['loginStatus'] == "loggedin"): $login_hidden = "hide"; $
 
 echo "<div id='button-navigation-wrapper'>";
 
-	// Log in button
-	echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"pageState.login.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
-
-	// Log out button
-	echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
-
 	// Edit information
 	echo "<span role='button' tabindex='0' id='button-lightbox-edit-information' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-edit-information.open'>Edit information</span>";
 
@@ -396,6 +390,12 @@ echo "<div id='button-navigation-wrapper'>";
 
 	// My account
 	echo "<span role='button' tabindex='0' id='button-lightbox-my-account' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-my-account.open'>My account</span>";
+
+	// Log in button
+	echo "<span role='button' tabindex='0' id='button-lightbox-login' class='".$login_hidden."' [class]=\"pageState.login.loginStatus == 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:". $lightbox_close_array .",lightbox-login.open'>Log in</span>";
+
+	// Log out button
+	echo "<span role='button' tabindex='0' id='button-log-out' class='".$logout_hidden."' [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'button-navigation'\" on='tap:logout-form.submit'>Log out</span>";
 
 	echo "</div>";
 
