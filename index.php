@@ -154,7 +154,7 @@ if ($request_access == "podcast-file"):
 //			if ($row_temp['episode_status'] !== "active"): json_result($domain, "error", null, "Inactive file."); endif;
 //			endif;
 
-		header('Content-Type: audio/mpeg');
+		header('Content-Type: audio/mpeg3');
 		echo base64_decode($row_temp['episode_file']);
 		exit; endwhile;
 
