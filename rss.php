@@ -85,7 +85,7 @@ foreach ($json_page['episodes'] as $episode_info):
 		$attributes_temp = implode(" " , [
 			'url="'. $url_temp .'"',
 			'type="audio/mpeg3"',
-			'length="34216300"',
+			'length="'.$episode_info['episode_bytes_length'].'"',
 			]);
 		echo "<enclosure ". $attributes_temp ." />\n";
 
