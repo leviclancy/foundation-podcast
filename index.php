@@ -415,9 +415,10 @@ if ($request_access == "xhr-add-episode"):
 	if ($_FILES['add-episode']['size'] < (512*1024)): json_result($domain, "error", null, "File too small."); endif;
 
 	$values_temp = [
-		"episode_id" => random_code(12),
-		"episode_file" => base64_encode(file_get_contents($_FILES['add-episode']['tmp_name'])), // Original image content
-		"episode_pubdate" => date("Y-m-d"),
+		"episode_id" 		=> random_code(12),
+		"episode_file"		=> base64_encode(file_get_contents($_FILES['add-episode']['tmp_name'])), // Original image content
+		"episode_pubdate" 	=> date("Y-m-d"),
+		"episode_bytes_length"	=> $_FILES['add-episode']['size'],
 		];
 
 	// Prepare the statement to update the podcast episode SQL
