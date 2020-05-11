@@ -5,6 +5,8 @@ if ($request_access !== "rss"): json_result($domain, "error", "/", "Invalid URL.
 $json_page = file_get_contents("https://".$domain."/?access=json-page");
 $json_page = json_decode($json_page, true);
 
+header('Content-Type: application/rss+xml; charset=utf-8');
+
 // This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
 
