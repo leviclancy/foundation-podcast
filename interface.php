@@ -318,7 +318,25 @@ $style_array = [
 		],
 	];
 
-echo "<style amp-custom>" . css_output($style_array) . "</style>";
+$style_width_array [ 
+	".lightbox-back" => [
+		"position"		=> "relative",
+		"left"			=> "none",
+		"top"			=> "none",
+		"margin"		=> "20px",
+		],
+	".form-submit" => [
+		"position"		=> "relative",
+		"right"			=> "none",
+		"top"			=> "none",
+		"margin"		=> "20px",
+		],
+	];
+
+echo "<style amp-custom>";
+echo css_output($style_array);
+echo "@media only screen and (max-width: 900px) { ". css_output($style_width_array) ." }";
+echo "</style>";
 
 echo "</head><body>";
 
