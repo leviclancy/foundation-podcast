@@ -186,6 +186,7 @@ $style_array = [
 		"position"		=> "absolute",
 		"top"			=> "0",
 		"right"			=> "-20px",
+		"z-index"		=> "100",
 		],
 	
 	"input:checked + .form-checkbox-label" => [
@@ -203,6 +204,7 @@ $style_array = [
 		"position"		=> "absolute",
 		"top"			=> "0",
 		"right"			=> "-20px",
+		"z-index"		=> "100",
 		],
 
 	".form-file-input" => [
