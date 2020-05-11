@@ -682,7 +682,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 	echo "</amp-lightbox>";
 
 // Lightbox for adding episodes
-echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({addEpisodeBack: 'Back'}),AMP.setState({addEpisodeFile: 'Click to add MP3 file'}),add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({addEpisodeBack: 'Back', addEpisodeFile: 'Click to add MP3 file'}),add-episode-form.clear;lightboxClose:add-episode-form.clear,".$lightbox_close_array."\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='addEpisodeBack'>Back</div>";
 
