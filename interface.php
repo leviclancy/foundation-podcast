@@ -535,6 +535,9 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 		<label class='form-label' for='edit-information[description]'>Enter the description.</label>
 		<textarea class='form-textarea' name='edit-information[description]' minlength='3' maxlength='450' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
 
+		<label class='form-label' for='edit-information[email]'>Enter the email.</label>
+		<input class='form-input' type='email' name='edit-information[email]' minlength='3' maxlength='50' placeholder='Email'  [value]=\"pageState.information.email\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
+
 		<label class='form-label' for='edit-information[language]'>Enter the language.</label>
 		<input class='form-input' type='text' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
 
