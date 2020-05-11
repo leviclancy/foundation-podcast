@@ -53,9 +53,8 @@ $array_temp = [
 	"description" 		=> $json_page['information']['description'],
 	"language"		=> $json_page['information']['language'],
 	"link"			=> "https://".$domain,
-	"googleplay:author"	=> $json_page['information']['author'],
-	"itunes:author"		=> $json_page['information']['author'],
-	"googleplay:email"	=> $json_page['information']['email'],
+	"author"		=> $json_page['information']['author'],
+	"email"			=> $json_page['information']['email'],
 	"itunes:owner"		=> [ "itunes:name"=>$json_page['information']['author'], "itunes:email"=>$json_page['information']['email'] ],
 	];
 foreach ($array_temp as $tag_temp => $value_temp):
