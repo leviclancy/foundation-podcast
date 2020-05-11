@@ -173,13 +173,14 @@ $style_array = [
 
 	"input + .form-checkbox-label" => [
 		"opacity"		=> "0.2",
+		"background"		=> "rgba(255,255,255,0)";
 		],
 
-	"input + .form-checkbox-label:before" => [
+	"input + .form-checkbox-label::before" => [
 		"content"		=> "Inactive.",
 		],
 	
-	"input + .form-checkbox-label:after" => [
+	"input + .form-checkbox-label::after" => [
 		"content"		=> "Tap to make active.",
 		"position"		=> "absolute",
 		"top"			=> "0",
@@ -188,13 +189,14 @@ $style_array = [
 	
 	"input:checked + .form-checkbox-label" => [
 		"opacity"		=> "1",
+		"background"		=> "rgba(255,255,255,0.15)";
 		],
 
-	"input:checked + .form-checkbox-label:before" => [
+	"input:checked + .form-checkbox-label::before" => [
 		"content"		=> "Active.",
 		],
 	
-	"input:checked + .form-checkbox-label:after" => [
+	"input:checked + .form-checkbox-label::after" => [
 		"content"		=> "Tap to make inactive.",
 		"position"		=> "absolute",
 		"top"			=> "0",
