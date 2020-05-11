@@ -149,10 +149,10 @@ if ($request_access == "podcast-file"):
 
 	while ($row_temp = pg_fetch_assoc($result)):
 
-		if ($result_temp['loginStatus'] !== "loggedin"):
-			if (episode_completion_check($row_temp) !== "complete"): json_result($domain, "error", null, "Incomplete file."); endif;
-			if ($row_temp['episode_status'] !== "active"): json_result($domain, "error", null, "Inactive file."); endif;
-			endif;
+//		if ($result_temp['loginStatus'] !== "loggedin"):
+//			if (episode_completion_check($row_temp) !== "complete"): json_result($domain, "error", null, "Incomplete file."); endif;
+//			if ($row_temp['episode_status'] !== "active"): json_result($domain, "error", null, "Inactive file."); endif;
+//			endif;
 
 		header('Content-Type: audio/mpeg');
 		echo base64_decode($row_temp['episode_file']);
