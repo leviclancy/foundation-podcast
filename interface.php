@@ -173,7 +173,7 @@ $style_array = [
 
 	"input + .form-checkbox-label" => [
 		"opacity"		=> "0.2",
-		"background"		=> "rgba(255,255,255,0)";
+		"background"		=> "rgba(255,255,255,0)",
 		],
 
 	"input + .form-checkbox-label::before" => [
@@ -189,7 +189,7 @@ $style_array = [
 	
 	"input:checked + .form-checkbox-label" => [
 		"opacity"		=> "1",
-		"background"		=> "rgba(255,255,255,0.15)";
+		"background"		=> "rgba(255,255,255,0.15)",
 		],
 
 	"input:checked + .form-checkbox-label::before" => [
