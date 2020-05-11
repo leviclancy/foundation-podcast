@@ -31,20 +31,13 @@ function simple_tag($tag_temp, $value_temp) {
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo "\n";
 
-$attributes_temp = implode(" ", [
-	'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"',
-//	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
-	'version="2.0"',
-	]);
-echo "<rss ". $attributes_temp .">\n";
-
+// I think iTunes is more finnicky, so we will develop for iTunes and it will still work with Google Play
 $attributes_temp = implode(" ", [
 //	'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"',
 	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
 	'version="2.0"',
 	]);
 echo "<rss ". $attributes_temp .">\n";
-
 
 echo "<channel>\n";
 
