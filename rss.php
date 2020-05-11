@@ -14,11 +14,11 @@ echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-po
 
 echo '<channel>';
 
-	echo '<title>'. $title .'</title>';
-echo '<googleplay:author>'. $author .'</googleplay:author>';
-echo '<description>'. $description .'</description>';
-echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
-echo '<language>'. $language .'</language>';
+	echo '<title>'. $json_page['information']['title'] .'</title>';
+echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:author>';
+echo '<description>'. $json_page['information']['description'] .'</description>';
+//echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
+echo '<language>'. $json_page['information']['lanuguage'] .'</language>';
 echo '<link>'. $domain .'</link>';
 
 foreach (json_page['episodes'] as $episode_info):
