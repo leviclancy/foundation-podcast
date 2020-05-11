@@ -323,6 +323,8 @@ $lightbox_close_array = implode(",", [
 	"lightbox-add-episode.close",
 	"lightbox-manage-admins.close",
 	"lightbox-my-account.close",
+	"home-list.changeToLayoutContainer()",
+	"episodes-list.changeToLayoutContainer()",
 	]);
 
 // Check if we are logged in
@@ -369,8 +371,8 @@ echo "</form>";
 $attributes_temp = implode(" ", [
 	"id='home-list'",
 	"layout='responsive'",
-	"width='600'",
-	"height='600'",
+//	"width='600'",
+//	"height='600'",
 	"items='information'",
 //	"binding='refresh'",
 	"src='amp-state:pageState'",
