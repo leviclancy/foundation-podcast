@@ -215,7 +215,7 @@ $style_array = [
 	".home-list-item" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
-		"margin"		=> "100px auto 50px",
+		"margin"		=> "150px auto 50px",
 		"padding"		=> "20px 0",
 		"display"		=> "block",
 		"clear"			=> "both",
@@ -227,7 +227,7 @@ $style_array = [
 		],
 	
 	".home-list-item-author" => [
-		"font-size"		=> "120%",		
+		"font-size"		=> "100%",		
 		],
 	
 	".home-list-item-description" => [
@@ -235,13 +235,13 @@ $style_array = [
 	
 	".home-rss-link" => [
 		"display"		=> "block",
-		"text-align"		=> "center",
+		"text-align"		=> "left",
 		"background"		=> "#fff",
-		"box-shadow"		=> "-8px 8px 30px -7px rgba(20,20,20,0.35)",
-		"display"		=> "table",
-		"margin"		=> "0 auto 50px",
-		"padding"		=> "10px 25px",
-		"border-radius"		=> "100px",
+		"margin"		=> "0 auto 100px",
+		"padding"		=> "20px 0",
+		"width"			=> "80%",
+		"max-width"		=> "600px",
+		"font-size"		=> "60%",
 		],
 	
 	".home-rss-link, .home-rss-link a" => [
