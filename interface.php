@@ -190,8 +190,8 @@ $style_array = [
 		"background"		=> "rgba(255,255,255,0.25)",
 		"box-shadow"		=> "0 0 35px -8px rgba(20,20,20,0.3)",
 		"border"		=> "2px solid rgba(255,255,255,0)",
-		"-webkit-transition"	=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, border 0.15s linear", // Safari
-		"transition"		=> "background .25s linear, right .15s ease, box-shadow 0.3s linear, obrder 0.15s linear",
+		"-webkit-transition"	=> "background .25s linear, right .15s ease, box-shadow 0.3s linear,", // Safari
+		"transition"		=> "background .25s linear, right .15s ease, box-shadow 0.3s linear",
 		],
 	
 	"#lightbox-edit-information" => [
@@ -320,17 +320,18 @@ $style_array = [
 
 $style_width_array = [ 
 	".lightbox-back, .lightbox-back:hover" => [
-		"position"		=> "relative",
+		"position"		=> "absolute",
 		"left"			=> "20px",
 		"top"			=> "20px",
 		"margin"		=> "0",
 		"padding"		=> "10px 20px",
-		"border-radius"		=> "100px",		
+		"border-radius"		=> "100px",
+		"display"		=> "inline-block",
 		],
 	".form-submit, .form-submit:hover" => [
 		"position"		=> "relative",
-		"right"			=> "none",
-		"top"			=> "none",
+		"right"			=> "0",
+		"top"			=> "0",
 		"margin"		=> "50px auto",
 		"padding"		=> "10px 20px",
 		"border-radius"		=> "100px",		
