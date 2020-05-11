@@ -307,16 +307,16 @@ if ($request_access == "xhr-edit-information"):
 	if (!($result)): json_result($domain, "error", null, "Could not prepare information statement."); endif;
 
 	$count_temp = 0; $error_temp = 0;
-	foreach ($_POST['edit-information'] as $key_temp => $value_temp):
+	foreach ($allowed_information as $key_temp):
 
 		// Only use allowed information keys
-		if (!(in_array($key_temp, $allowed_information))): continue; endif;
+		if (!(array_key_exists($key_temp, $_POST['edit-information']))): continue; endif;
 
 		if (empty($value_temp)): continue; endif;
 
 		$values_temp = [
 			"information_key"		=> $key_temp,
-			"information_value"		=> $value_temp,
+			"information_value"		=> $_POST['edit-information'][$key_temp],
 			];
 
 		// Execute the statement, add in the cookie
