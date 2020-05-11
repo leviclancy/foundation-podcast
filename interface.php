@@ -39,9 +39,14 @@ $style_array = [
 		"background"		=> "#fff",
 		"font-size"		=> "17px",
 		],
+	
 	"input, textarea" => [
 		"font-size" 		=> "15px",
 		"font-family" 		=> "Verdana",
+		],
+	
+	"amp-list" => [
+		"display"		=> "container",
 		],
 	
 	".form-warning" => [
