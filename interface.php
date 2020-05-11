@@ -138,7 +138,7 @@ $style_array = [
 		"max-width"		=> "600px",
 		"padding"		=> "0 20px",
 		"display"		=> "block",
-		"text-align"		=> "center",
+		"text-align"		=> "left",
 		"box-sizing"		=> "border-box",
 		"margin"		=> "0 auto",
 		"position"		=> "relative",
@@ -173,7 +173,7 @@ $style_array = [
 	
 	".form-checkbox-label" => [
 		"cursor"		=> "pointer",
-		"padding"		=> "10px 30px",
+		"padding"		=> "8px 30px",
 		"font-family"		=> "Verdana",
 		"margin"		=> "20px 0",
 		"display"		=> "inline-block",
@@ -185,6 +185,7 @@ $style_array = [
 	
 	".form-checkbox-label:before" => [
 		"display"		=> "inline-block",
+		"font-size"		=> "95%",
 		],
 	
 	".form-checkbox-label:after" => [
