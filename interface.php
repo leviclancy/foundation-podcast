@@ -349,6 +349,8 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 
 echo "</form>";
 
+echo "<br><br>";
+
 $attributes_temp = implode(" ", [
 	"id='home-list'",
 	"layout='responsive'",
