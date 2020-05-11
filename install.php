@@ -142,8 +142,8 @@ if ($request_access == "install"):
 		];
 
 	$tables_array['podcast_information'] = [
-		"information_key"	=> "VARCHAR(100)", // title, author, description, language
-		"information_value"	=> "TEXT",
+		"information_key"	=> "VARCHAR(100)", // Title, author, description, language, email, image
+		"information_value"	=> "TEXT", // Must be TEXT for the podcast image
 		];
 
 	$tables_array['podcast_episodes'] = [
