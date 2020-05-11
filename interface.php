@@ -159,6 +159,23 @@ $style_array = [
 	".form-file-label" => [
 		"cursor"		=> "pointer",
 		],
+	
+	".form-checkbox-label" => [
+		"cursor"		=> "pointer",
+		"padding"		=> "10px 20px",
+		"font-family"		=> "Verdana",
+		"margin"		=> "20px auto",
+		"display"		=> "inline-block",
+		],
+
+	"input + .form-checkbox-label" => [
+		"opacity"		=> "0.2",
+		],
+
+	"input:checked .form-checkbox-label" => [
+		"opacity"		=> "1",
+		],
+
 
 	".form-file-input" => [
 		"margin"		=> "10px auto 0",
@@ -636,8 +653,9 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
-	echo "<label class='form-radio-label' for='edit-episode-status'>Active</label>";
-	echo "<input type='checkbox' id='edit-episode-status' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \">";
+	echo "<label class='form-label' for='edit-episode-status'>Episode active status.</label>";
+	echo "<input type='checkbox' id='edit-episode-status' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \" hidden>";
+	echo "<label class='form-checkbox-label' for='edit-episode-status'>Active</label>";
 
 //	echo "<amp-audio width='auto' src='https://ia801402.us.archive.org/16/items/EDIS-SRP-0197-06/EDIS-SRP-0197-06.mp3'>";
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
