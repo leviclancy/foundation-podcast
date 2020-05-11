@@ -42,6 +42,11 @@ foreach ($json_page['episodes'] as $episode_info):
 	if ($episode_info['episode_status'] !== "active"): continue; endif;
 	
 	echo "<item>\n";
+
+		// Permalink
+		echo "<guid isPermaLink=\"false\">". $episode_info['episode_id'] ."</guid>\n";
+
+		// Title, description, pubdate
 		$array_temp = [
 			"title"		=> $episode_info['episode_title'],
 			"description"	=> $episode_info['episode_description'],
@@ -51,18 +56,18 @@ foreach ($json_page['episodes'] as $episode_info):
 			simple_tag($tag_temp, $value_temp);
 			endforeach;
 
-		echo "<guid isPermaLink=\"false\">". $episode_info['episode_id'] ."</guid>\n";
-
-
-//		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300"/>';
+		// URL for audio file
 		$attributes_temp = implode(" " , [
-			'url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'"',
+			'url="https://'.$domain.'/?access=podcast-file&episode-id='. $episode_info['episde_id'] .'"',
 			'type="audio/mpeg"',
-			'length="34216300"',
+//			'length="34216300"',
 			]);
 		echo "<enclosure ". $attributes_temp ."/>\n";
+
 //		echo '<itunes:duration>30:00</itunes:duration>\n';
+
 		echo "</item>\n";
+
 	endforeach;
 
 echo "</channel>\n";
