@@ -136,7 +136,8 @@ $style_array = [
 	".form-wrapper" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
-		"padding"		=> "20px",
+		"padding"		=> "0 20px",
+		"margin"		=> "0 auto 0",
 		"display"		=> "block",
 		"text-align"		=> "left",
 		],
