@@ -233,11 +233,12 @@ $style_array = [
 		"border-radius"		=> "100px",
 		"box-sizing"		=> "border-box",
 		"margin"		=> "0 0 20px 20px",
+		"padding"		=> "8px 20px",
 		],
 	
 	".episodes-list-item-notes" => [
 		"background"		=> "rgba(40,40,40,0.3)",
-		"border"		=> "2px solid #333",
+//		"border"		=> "2px solid #333",
 		"color"			=> "#fff",
 		],
 
