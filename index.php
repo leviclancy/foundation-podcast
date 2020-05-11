@@ -404,7 +404,12 @@ if ($request_access == "xhr-add-episode"):
 	// If no valid post data is received
 	if (empty($_FILES['add-episode'])): json_result($domain, "error", null, "No file received."); endif;
 
-json_result($domain, "error", null, "No file received.".$_FILES['add-episode']['size']);
+
+	// Cutoff is about 64 megabytes
+	if ($_FILES['add-episode']['size'] > (64*1024*1024)): json_result($domain, "error", null, "File too large."); endif;
+
+	// Cutoff is about 512 kilobytes
+	if ($_FILES['add-episode']['size'] < (512*1024)): json_result($domain, "error", null, "File too small."); endif;
 
 	$values_temp = [
 		"episode_id" => random_code(12),
