@@ -348,10 +348,10 @@ $attributes_temp = implode(" ", [
 	"load-more-bookmark='next'",
 	"load-more='manual'",
 	]);
-echo "<amp-list ". $attributes_temp .">
-	<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
+echo "<amp-list ". $attributes_temp .">";
+	echo "<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
 	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
-	<span class='amp-list-fallback' overflow>Show more.</span>
+	<span class='amp-list-fallback' overflow>Show more.</span>";
 
 	echo "<template type='amp-mustache'>";
 	
