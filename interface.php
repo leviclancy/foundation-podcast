@@ -383,7 +383,7 @@ echo "</form>";
 
 echo "<div class='home-list-item'>";
 	echo "<h1 class='home-list-item-title' [text]='pageState.information.title'>". $json_page['information']['title'] ."</h1>";
-	echo "<p class='home-list-item-author' [text]=\"'by' + pageState.information.author\">by ". $json_page['information']['author'] ."</p>";
+	echo "<p class='home-list-item-author' [text]=\"'by ' + pageState.information.author\">by ". $json_page['information']['author'] ."</p>";
 	echo "<p class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</p>";
 	echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 	echo "</div>";
