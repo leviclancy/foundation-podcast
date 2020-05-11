@@ -297,14 +297,14 @@ $style_array = [
 		],
 	
 	".episodes-list-item-notes" => [
-		"background"		=> "#555",
-		"border"		=> "2px solid #555",
+		"background"		=> "#777",
+		"border"		=> "2px solid #777",
 		"color"			=> "#fff",
 		],
 
 	".episodes-list-item-button" => [
 		"background"		=> "#fff",
-		"border"		=> "2px solid #333",
+		"border"		=> "2px solid #555",
 		"color"			=> "#333",
 		"cursor"		=> "pointer",
 		],
