@@ -62,7 +62,7 @@ foreach ($json_page['episodes'] as $episode_info):
 			endforeach;
 
 		// URL for audio file
-		$url_temp = urlencode("https://'. $domain .'/?access=podcast-file&episode-id='. $episode_info['episode_id']);
+		$url_temp = urlencode("https://". $domain ."/?access=podcast-file&episode-id=". $episode_info['episode_id']);
 
 		// Attributes for enclose
 		$attributes_temp = implode(" " , [
