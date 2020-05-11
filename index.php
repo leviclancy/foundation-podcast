@@ -407,6 +407,8 @@ if ($request_access == "xhr-add-episode"):
 	// If no valid post data is received
 	if (empty($_FILES['add-episode'])): json_result($domain, "error", null, "No file received."); endif;
 
+	// If no file received
+	if (empty($_FILES['add-episode']['size'])): json_result($domain, "error", null, "No file received."); endif;
 
 	// Cutoff is about 64 megabytes
 	if ($_FILES['add-episode']['size'] > (64*1024*1024)): json_result($domain, "error", null, "File too large."); endif;
