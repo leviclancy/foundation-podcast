@@ -17,7 +17,7 @@ echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-po
 echo '<channel>\n';
 
 
-echo '<title>'. $json_page['information']['title'] .'</title>\n';
+echo '<title>'. $json_page['information']['title'] .'</title>\r';
 echo '<description>'. $json_page['information']['description'] .'</description>\n';
 echo '<language>'. $json_page['information']['language'] .'</language>\n';
 echo '<link>'. $domain .'</link>\n';
