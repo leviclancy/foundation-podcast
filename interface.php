@@ -45,7 +45,7 @@ $style_array = [
 		"font-family" 		=> "Verdana",
 		],
 	
-	"amp-list" => [
+	"amp-list, amp-list template" => [
 		"display"		=> "contents",
 		],
 	
