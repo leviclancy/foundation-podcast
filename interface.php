@@ -247,7 +247,7 @@ $style_array = [
 		"display"		=> "block",
 		"text-align"		=> "left",
 		"background"		=> "#fff",
-		"margin"		=> "100px auto 100px",
+		"margin"		=> "30px auto 30px",
 		"padding"		=> "20px 0",
 		"width"			=> "80%",
 		"max-width"		=> "600px",
@@ -382,10 +382,8 @@ echo "<div class='home-list-item'>";
 	echo "<h1 class='home-list-item-title' [text]='pageState.information.title'>". $json_page['information']['title'] ."</h1>";
 	echo "<p class='home-list-item-author' [text]=\"'by' + pageState.information.author\">by ". $json_page['information']['author'] ."</p>";
 	echo "<p class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</p>";
+	echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 	echo "</div>";
-
-echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
-
 		
 // Handle if more than 50 episodes
 $attributes_temp = implode(" ", [
