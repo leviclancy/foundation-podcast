@@ -34,7 +34,7 @@ foreach (json_page['episodes'] as $episode_info):
 		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" />';
 //		echo '<itunes:duration>30:00</itunes:duration>';
 		echo '<guid isPermaLink="false">'. episode_info['episde_id'] .'</guid>';
-		</item>';
+		echo '</item>';
 	endforeach;
 
 echo '</channel></rss>';
