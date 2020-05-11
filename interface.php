@@ -219,8 +219,11 @@ $style_array = [
 	"#add-episode-label" => [
 		"cursor"		=> "pointer",
 		"text-align"		=> "center",
-		"padding"		=> "10px 30px",
+		"padding"		=> "20px 30px",
 		"background"		=> "rgba(255,255,255,0.3)",
+		"font-style"		=> "normal",
+		"display"		=> "inline-block",
+		"width"			=> "auto",
 		],
 	
 	"#lightbox-manage-admins" => [
@@ -697,7 +700,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 	echo "<form ".$attributes_temp.">";
 
 	echo "<label class='form-label' id='add-episode-label' for='add-episode' [text]=\"addEpisodeLabel.slice(-1) == '' ? 'Choose MP3 file to upload.' : addEpisodeLabel.slice(-1)\"></label>";
-	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'});change:AMP.setState({addEpisodeLabel: event.value.split('\')})\" required hidden>";
+	echo "<input type='file' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding', addEpisodeLabel: event.value.split('\')})\" required hidden>";
 
 
 	echo "<div class='form-warning'>";
