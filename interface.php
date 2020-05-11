@@ -318,7 +318,7 @@ $style_array = [
 		],
 	];
 
-$style_width_array [ 
+$style_width_array = [ 
 	".lightbox-back" => [
 		"position"		=> "relative",
 		"left"			=> "none",
