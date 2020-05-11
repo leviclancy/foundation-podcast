@@ -531,7 +531,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.deleteEpisodeID' required>";
 
-	echo "<p>Are you sure you want to delete this episode?</p>";
+	echo "<label class='form-label'>Are you sure you want to delete this episode?</label>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
@@ -548,20 +548,20 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 // Lightbox for admin management
 echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close_array.",add-episode-form.clear;lightboxClose:add-episode-form.clear' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editEpisodeBack'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='addEpisodeBack'>Back</div>";
 
 	$attributes_temp = implode(" ", [
 		"action-xhr='/?access=xhr-add-episode'",
 		"target='_top'",
 		"id='add-episode-form'",
 		"method='post'",
-		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),add-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
 
-	echo "<label class='form-radio-label' for='add-episode' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
-	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\">";
+	echo "<label class='form-label' for='add-episode'>Choose MP3 file</label>";
+	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without adding'})\">";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
