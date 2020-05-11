@@ -224,13 +224,16 @@ $style_array = [
 	".home-list-item-title" => [
 		"font-size"		=> "150%",
 		"font-weight"		=> "700",
+		"display"		=> "block",
 		],
 	
 	".home-list-item-author" => [
 		"font-size"		=> "100%",		
+		"display"		=> "block",
 		],
 	
 	".home-list-item-description" => [
+		"display"		=> "block",
 		],
 	
 	".home-rss-link" => [
