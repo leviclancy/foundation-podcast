@@ -50,7 +50,7 @@ $array_temp = [
 //	"itunes:email"		=> $json_page['information']['email'],
 	"itunes:owner"		=> [ "itunes:name"=>$json_page['information']['author'], "itunes:email"=>$json_page['information']['email'] ],
 //	"itunes:category"	=> $json_page['information']['category'],
-	"itunes:category"	=> "Society & Culture",
+//	"itunes:category"	=> "Society & Culture",
 	];
 foreach ($array_temp as $tag_temp => $value_temp):
 	simple_tag($tag_temp, $value_temp);
