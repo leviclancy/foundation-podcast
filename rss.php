@@ -51,6 +51,9 @@ foreach ($json_page['episodes'] as $episode_info):
 			simple_tag($tag_temp, $value_temp);
 			endforeach;
 
+		echo "<guid isPermaLink=\"false\">". $episode_info['episode_id'] ."</guid>\n";
+
+
 //		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300"/>';
 		$attributes_temp = implode(" " , [
 			'url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'"',
@@ -59,7 +62,6 @@ foreach ($json_page['episodes'] as $episode_info):
 			]);
 		echo "<enclosure ". $attributes_temp ."/>\n";
 //		echo '<itunes:duration>30:00</itunes:duration>\n';
-		echo "<guid isPermaLink=\"false\">". $episode_info['episde_id'] ."</guid>\n";
 		echo "</item>\n";
 	endforeach;
 
