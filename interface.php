@@ -169,7 +169,8 @@ $style_array = [
 //		"border"		=> "2px solid rgba(255,255,255,1)",
 //		"border-radius"		=> "100px",
 //		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
-		"color"			=> "#333",
+		"color"			=> "#fff",
+		"display"		=> "table",
 		],
 	
 	".form-textarea" => [
