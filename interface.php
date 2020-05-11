@@ -297,8 +297,8 @@ $style_array = [
 		],
 	
 	".episodes-list-item-notes" => [
-		"background"		=> "rgba(40,40,40,0.3)",
-		"border"		=> "2px solid #fff",
+		"background"		=> "#555",
+		"border"		=> "2px solid #555",
 		"color"			=> "#fff",
 		],
 
