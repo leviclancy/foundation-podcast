@@ -330,17 +330,18 @@ $style_width_array = [
 		],
 	".form-submit, .form-submit:hover" => [
 		"position"		=> "relative",
-		"right"			=> "0",
-		"top"			=> "0",
+		"right"			=> "1px",
+		"top"			=> "1px",
 		"margin"		=> "50px auto",
 		"padding"		=> "10px 20px",
-		"border-radius"		=> "100px",		
+		"border-radius"		=> "100px",
+		"display"		=> "inline-block",
 		],
 	];
 
 echo "<style amp-custom>";
 echo css_output($style_array);
-echo "@media only screen and (max-width: 900px) { ". css_output($style_width_array) ." }";
+echo "@media only screen and (max-width: 1000px) { ". css_output($style_width_array) ." }";
 echo "</style>";
 
 echo "</head><body>";
