@@ -563,7 +563,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close
 		"target='_top'",
 		"id='add-episode-form'",
 		"method='post'",
-		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:add-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
