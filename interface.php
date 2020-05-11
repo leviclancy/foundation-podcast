@@ -221,6 +221,7 @@ $style_array = [
 	"#delete-episode-form-warning" => [
 		"text-align"		=> "center",
 		"font-size"		=> "140%",
+		"padding"		=> "90px 30px"
 		],
 	];
 
