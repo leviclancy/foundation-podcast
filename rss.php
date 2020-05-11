@@ -47,14 +47,11 @@ $array_temp = [
 	"googleplay:author"	=> $json_page['information']['author'],
 	"itunes:author"		=> $json_page['information']['author'],
 	"googleplay:email"	=> $json_page['information']['email'],
-	"itunes:owner"		=> $json_page['information']['email'],
+	"itunes:owner"		=> [ "itunes:name"=>$json_page['information']['author'], "itunes:email"=>$json_page['information']['email'] ],
 	];
 foreach ($array_temp as $tag_temp => $value_temp):
 	simple_tag($tag_temp, $value_temp);
 	endforeach;
- <itunes:owner>
-            <itunes:name>John Doe</itunes:name>
-            <itunes:email>john.doe@example.com</itunes:email></itunes:owner>
 
 //echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
 
