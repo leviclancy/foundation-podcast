@@ -125,6 +125,7 @@ $style_array = [
 		"padding"		=> "100px 20px",
 		"box-sizing"		=> "border-box",
 //		"position"		=> "relative",
+		"text-align"		=> "center",
 		],
 	
 	"#lightbox-login" => [
@@ -324,7 +325,7 @@ $style_width_array = [
 		"left"			=> "20px",
 		"top"			=> "20px",
 		"margin"		=> "0",
-		"padding"		=> "10px 20px",
+		"padding"		=> "9px 25px",
 		"border-radius"		=> "100px",
 		"display"		=> "inline-block",
 		],
@@ -333,7 +334,7 @@ $style_width_array = [
 		"right"			=> "1px",
 		"top"			=> "1px",
 		"margin"		=> "50px auto",
-		"padding"		=> "10px 20px",
+		"padding"		=> "15px 40px",
 		"border-radius"		=> "100px",
 		"display"		=> "inline-block",
 		],
