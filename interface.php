@@ -141,6 +141,7 @@ $style_array = [
 		"display"		=> "block",
 		"text-align"		=> "left",
 		"left"			=> "-10px",
+		"position"		=> "relative",
 		],
 	
 	".form-label, .form-input, .form-textarea, .form-file-input" => [
