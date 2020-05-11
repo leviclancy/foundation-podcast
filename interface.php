@@ -178,22 +178,21 @@ $style_array = [
 	
 	".form-checkbox-label:after" => [
 		"position"		=> "absolute",
-		"bottom"		=> "-60px",
-		"right"			=> "0",
+		"bottom"		=> "10px",
+		"right"			=> "-70px",
 		"z-index"		=> "100",
 		"display"		=> "block",
 		"font-size"		=> "80%",
-		"width"			=> "100%",
+		"width"			=> "200px",
 		"text-align"		=> "center",
 		],
 	
 	"input + .form-checkbox-label" => [
-		"opacity"		=> "0.2",
 		"background"		=> "rgba(255,255,255,0)",
 		],
 
 	"input + .form-checkbox-label:before" => [
-		"content"		=> "'Inactive.'",
+		"content"		=> "'Inactive'",
 		],
 	
 	"input + .form-checkbox-label:after" => [
@@ -201,12 +200,11 @@ $style_array = [
 		],
 	
 	"input:checked + .form-checkbox-label" => [
-		"opacity"		=> "1",
 		"background"		=> "rgba(255,255,255,0.15)",
 		],
 
 	"input:checked + .form-checkbox-label:before" => [
-		"content"		=> "'Active.'",
+		"content"		=> "'Active'",
 		],
 	
 	"input:checked + .form-checkbox-label:after" => [
