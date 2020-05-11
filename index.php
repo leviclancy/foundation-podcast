@@ -54,7 +54,7 @@ if ($request_access == "json-page"):
 	$page_temp = $_REQUEST['page'] ?? 0;
 
 	$json_array = [
-		"information" 	=> ["author"=>null, "title"=>null, "description"=>null, "email"=>null, "language"=>null, ],
+		"information" 	=> ["author"=>"", "title"=>"", "description"=>"", "email"=>"", "language"=>"", ],
 		"episodes" 	=> [],
 		"login"		=> [],
 		"next"		=> null,
