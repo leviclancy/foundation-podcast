@@ -168,16 +168,38 @@ $style_array = [
 		"display"		=> "inline-block",
 		"border-radius"		=> "100px",
 		"border"		=> "2px solid #fff",
+		"position"		=> "relative",
 		],
 
 	"input + .form-checkbox-label" => [
 		"opacity"		=> "0.2",
 		],
 
+	"input + .form-checkbox-label:before" => [
+		"content"		=> "Inactive.",
+		],
+	
+	"input + .form-checkbox-label:after" => [
+		"content"		=> "Tap to make active.",
+		"position"		=> "absolute",
+		"top"			=> "0",
+		"right"			=> "-20px",
+		],
+	
 	"input:checked + .form-checkbox-label" => [
 		"opacity"		=> "1",
 		],
 
+	"input:checked + .form-checkbox-label:before" => [
+		"content"		=> "Active.",
+		],
+	
+	"input:checked + .form-checkbox-label:after" => [
+		"content"		=> "Tap to make inactive.",
+		"position"		=> "absolute",
+		"top"			=> "0",
+		"right"			=> "-20px",
+		],
 
 	".form-file-input" => [
 		"margin"		=> "10px auto 0",
