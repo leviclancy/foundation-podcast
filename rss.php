@@ -8,7 +8,7 @@ $json_page = json_decode($json_page, true);
 // This is the template
 // https://support.google.com/podcast-publishers/answer/9476656?hl=uk#create_feed
 
-echo '\<?xml version="1.0" encoding="UTF-8"?\>';
+echo '<' . '?' . 'xml version="1.0" encoding="UTF-8" ' . '?' . '>';
 
 echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">';
 
