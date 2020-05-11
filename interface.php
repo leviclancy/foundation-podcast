@@ -178,10 +178,12 @@ $style_array = [
 	
 	".form-checkbox-label:after" => [
 		"position"		=> "absolute",
-		"top"			=> "0",
+		"bottom"		=> "-40px",
 		"right"			=> "0",
 		"z-index"		=> "100",
 		"display"		=> "block",
+		"font-size"		=> "80%",
+		"width"			=> "auto",
 		],
 	
 	"input + .form-checkbox-label" => [
