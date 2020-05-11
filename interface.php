@@ -322,8 +322,9 @@ echo "</head><body>";
 
 echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
 
-// We need to initialize the login state=
-$json_page = json_decode(file_get_contents("/?access=json-page"), true);
+// We need to initialize the login state, and default values
+$json_page = file_get_contents("https://".$domain."/?access=json-page");
+$json_page = json_decode($json_page, true);
 
 $lightbox_close_array = implode(",", [
 	"lightbox-login.close",
