@@ -60,7 +60,7 @@ $style_array = [
 		"display"		=> "none",
 		],
 	
-	".button-navigation-wrapper" => [
+	"#button-navigation-wrapper" => [
 		"position"		=> "absolute",
 		"right"			=> "1px",
 		"top"			=> "1px",
