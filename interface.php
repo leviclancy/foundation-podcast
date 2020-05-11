@@ -172,7 +172,7 @@ $style_array = [
 		"opacity"		=> "0.2",
 		],
 
-	"input:checked .form-checkbox-label" => [
+	"input:checked + .form-checkbox-label" => [
 		"opacity"		=> "1",
 		],
 
