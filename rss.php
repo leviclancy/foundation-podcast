@@ -16,7 +16,7 @@ function simple_tag($tag_temp, $value_temp) {
 
 echo "<" . "?" . "xml version=\"1.0\" encoding=\"UTF-8\"" . "?" . ">\n";
 
-$attributes_temp = impode(" ", [
+$attributes_temp = implode(" ", [
 	'version="2.0"',
 	'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"',
 	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
