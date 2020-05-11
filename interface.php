@@ -218,6 +218,10 @@ $style_array = [
 		"border-radius"		=> "100px",
 		],
 	
+	"#delete-episode-form-warning" => [
+		"text-align"		=> "center",
+		"font-size"		=> "140%",
+		],
 	];
 
 echo "<style amp-custom>" . css_output($style_array) . "</style>";
@@ -531,7 +535,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.deleteEpisodeID' required>";
 
-	echo "<p>Are you sure you want to delete this episode?</p>";
+	echo "<p id='delete-episode-form-warning'>Are you sure you want to delete this episode?</p>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
