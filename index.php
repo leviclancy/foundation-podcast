@@ -54,7 +54,7 @@ if ($request_access == "json-page"):
 	$page_temp = $_REQUEST['page'] ?? 0;
 
 	$json_array = [
-		"information" 	=> ["author"=>null, "title"=>null, "description"=>null, "language"=>null, ],
+		"information" 	=> ["author"=>null, "title"=>null, "description"=>null, "email"=>null, "language"=>null, ],
 		"episodes" 	=> [],
 		"login"		=> [],
 		"next"		=> null,
@@ -289,6 +289,7 @@ if ($request_access == "xhr-edit-information"):
 		"title",
 		"author",
 		"description",
+		"email",
 		"language",
 		];
 
