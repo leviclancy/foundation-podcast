@@ -31,6 +31,7 @@ $request_access_array = [
 	"xhr-edit-information",
 	"xhr-edit-episode",
 	"xhr-delete-episode",
+	"xhr-add-episode",
 	"xhr-account",
 	"xhr-add",
 	"xhr-update",
@@ -78,7 +79,7 @@ if ($request_access == "json-page"):
 		endwhile;
 
 	// Pull up episodes if empty
-	$sql_temp = "SELECT episode_id, episode_title, episode_description, episode_pubdate, episode_duration, episode_status FROM podcast_episodes";
+	$sql_temp = "SELECT episode_id, episode_title, episode_description, episode_pubdate, episode_duration, episode_status FROM podcast_episodes ORDER BY episode_pubdate DESC";
 	$result = pg_query($postgres_connection, $sql_temp);
 	if (empty($result)): json_result($domain, "error", null, "Error accessing 'podcast_episodes' table."); endif;
 
@@ -389,6 +390,33 @@ if ($request_access == "xhr-delete-episode"):
 	if (!($result)): json_result($domain, "error", null, "Could not delete episode."); endif;
 
 	json_result($domain, "success", null, "Deleted episode."); 
+
+	endif;
+
+// Give us the xhr to edit a single podcast episode
+if ($request_access == "xhr-add-episode"):
+
+	login_check(false); // Check login status
+
+	// If no valid post data is received
+	if (empty($_POST['add-episode'])): json_result($domain, "error", null, "No file received."); endif;
+
+	$values_temp = [
+		"episode_id" => random_code(12),
+		"episode_file" => base64_encode(file_get_contents($_FILES['add-episode'])), // Original image content
+		"episode_pubdate => date("Y-m-d"),
+		];
+
+	// Prepare the statement to update the podcast episode SQL
+	$postgres_statement = postgres_update_statement("podcast_episodes", $values_temp);
+	$result = pg_prepare($postgres_connection, "podcast_episodes_add", $postgres_statement);
+	if (!($result)): json_result($domain, "error", null, "Could not prepare episode statement."); endif;
+
+	// Execute the statement, update the episode
+	$result = pg_execute($postgres_connection, "podcast_episodes_add", $values_temp);
+	if (!($result)): json_result($domain, "error", null, "Could not add episode."); endif;
+
+	json_result($domain, "success", null, "Added episode."); 
 
 	endif;
 
