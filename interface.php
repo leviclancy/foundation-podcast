@@ -229,7 +229,7 @@ $style_array = [
 		"background"		=> "#fff",
 		"box-shadow"		=> "-8px 8px 30px -7px rgba(20,20,20,0.35)",
 		"display"		=> "table",
-		"margin"		=> "0 auto",
+		"margin"		=> "0 auto 50px",
 		"padding"		=> "10px 25px",
 		"border-radius"		=> "100px",
 		],
@@ -351,9 +351,9 @@ echo "</form>";
 
 $attributes_temp = implode(" ", [
 	"id='home-list'",
-	"layout='fixed'",
+	"layout='responsive'",
 	"width='600'",
-	"height='400'",
+	"height='300'",
 	"items='information'",
 //	"binding='refresh'",
 	"src='amp-state:pageState'",
