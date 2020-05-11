@@ -43,9 +43,9 @@ foreach ($json_page['episodes'] as $episode_info):
 	
 	echo "<item>\n";
 		$array_temp = [
-			"title"		=> $episode_info['episde_title'],
-			"description"	=> $episode_info['episde_description'],
-			"pubDate"	=> $episode_info['episde_pubdate'] ." Tue, 14 Mar 2017 12:00:00 GMT",
+			"title"		=> $episode_info['episode_title'],
+			"description"	=> $episode_info['episode_description'],
+			"pubDate"	=> $episode_info['episode_pubdate'] ." Tue, 14 Mar 2017 12:00:00 GMT",
 			];
 		foreach ($array_temp as $tag_temp => $value_temp):
 			simple_tag($tag_temp, $value_temp);
