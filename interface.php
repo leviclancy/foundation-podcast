@@ -325,6 +325,7 @@ $style_array = [
 	".home-list-item-description" => [
 		"display"		=> "block",
 		"white-space"		=> "pre-line",
+		"margin"		=> "50px 0 10px",
 		],
 	
 	".home-rss-link" => [
