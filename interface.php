@@ -546,13 +546,24 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 	echo "</amp-lightbox>";
 
 // Lightbox for admin management
-echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close_array.",add-episode-form.clear;lightboxClose:add-episode-form.clear' layout='nodisplay' scrollable>";
 
-	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
+	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editEpisodeBack'>Back</div>";
 
-	echo "<span class='form-description'>Add episode. Save to add more.<br>Minimum 2000 x 500 pixels. Maximum 5 megabytes.</span>";
-	echo "<input type='file' id='add-image-input' name='images_new' placeholder='Add image' accept='image/jpg,image/jpeg' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\" hidden>";
-	echo "<label for='add-image-input' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
+	$attributes_temp = implode(" ", [
+		"action-xhr='/?access=xhr-add-episode'",
+		"target='_top'",
+		"id='add-episode-form'",
+		"method='post'",
+		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
+		]);
+
+	echo "<form ".$attributes_temp.">";
+
+	echo "<label class='form-radio-label' for='add-episode' [text]=\"addimagevalue.slice(-1) == '' ? 'Choose file upload' : addimagevalue.slice(-1)\">Choose MP3 file</label>";
+	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"change:AMP.setState({addimagevalue: event.value.split('\')})\" hidden>";
+
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
 	echo "</amp-lightbox>";
 
