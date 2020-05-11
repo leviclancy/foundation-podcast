@@ -334,11 +334,11 @@ echo "<amp-list ". $attributes_temp .">
 
 		echo "<br>";
 
-		// Just shows 'active' or 'inactive' state
-		echo "{{#episode_status}}<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>{{/episode_status}}";
-
+		// Just show the episode id
 		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_id}}</span>";
 
+		// Just shows 'active' or 'inactive' state
+		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-button-edit-episode'\" class='".$logout_hidden."'>{{episode_status}}</span>";
 
 		// We have to remove " from around keys and values
 		$set_state_array_temp = str_replace('"', null, "AMP.setState(".json_encode([
