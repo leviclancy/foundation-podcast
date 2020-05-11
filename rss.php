@@ -32,11 +32,19 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 echo "\n";
 
 $attributes_temp = implode(" ", [
+	'xmlns:googleplay="xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"',
+//	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
 	'version="2.0"',
-	'xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0/play-podcasts.xsd"',
-	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
 	]);
 echo "<rss ". $attributes_temp .">\n";
+
+$attributes_temp = implode(" ", [
+//	'xmlns:googleplay="xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0"',
+	'xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"',
+	'version="2.0"',
+	]);
+echo "<rss ". $attributes_temp .">\n";
+
 
 echo "<channel>\n";
 
