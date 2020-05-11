@@ -489,9 +489,9 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 echo "</form>";
 
 echo "<div class='home-list-item'>";
-	echo "<h1 class='home-list-item-title' [text]=\"pageState.information.title == '' ? '' : pageState.information.title\">". $json_page['information']['title'] ."</h1>";
-	echo "<p class='home-list-item-author' [text]=\"pageState.information.author == '' ? '' : pageState.information.author\">". $json_page['information']['author'] ."</p>";
-	echo "<p class='home-list-item-description' [text]=\"pageState.information.description == '' ? '' : pageState.information.description\">". $json_page['information']['description'] ."</p>";
+	echo "<h1 class='home-list-item-title' [text]='pageState.information.title'>". $json_page['information']['title'] ."</h1>";
+	echo "<p class='home-list-item-author' [text]='pageState.information.author'>". $json_page['information']['author'] ."</p>";
+	echo "<p class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</p>";
 	echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
 	echo "</div>";
 		
