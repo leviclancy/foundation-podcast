@@ -572,7 +572,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on='lightboxOpen:".$lightbox_close
 	echo "<form ".$attributes_temp.">";
 
 	echo "<label class='form-label' for='add-episode'>Choose MP3 file</label>";
-	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without adding'})\">";
+	echo "<input type='file' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
