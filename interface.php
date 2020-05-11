@@ -136,7 +136,7 @@ $style_array = [
 	".form-wrapper" => [
 		"width"			=> "80%",
 		"max-width"		=> "600px",
-		"padding"		=> "0 10px",
+		"padding"		=> "0",
 		"margin"		=> "0 auto 0",
 		"display"		=> "block",
 		"text-align"		=> "left",
@@ -195,6 +195,7 @@ $style_array = [
 		"font-size"		=> "80%",
 		"width"			=> "200px",
 		"text-align"		=> "center",
+		"opacity"		=> "0.75",
 		],
 	
 	"input + .form-checkbox-label" => [
