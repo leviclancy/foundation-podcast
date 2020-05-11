@@ -134,7 +134,7 @@ $style_array = [
 		],
 			
 	".form-wrapper" => [
-		"width"			=> "100%",
+		"width"			=> "80%",
 		"max-width"		=> "600px",
 		"display"		=> "block",
 		"text-align"		=> "left",
@@ -173,7 +173,7 @@ $style_array = [
 		"cursor"		=> "pointer",
 		"padding"		=> "10px 30px",
 		"font-family"		=> "Verdana",
-		"margin"		=> "20px auto",
+		"margin"		=> "20px 0",
 		"display"		=> "inline-block",
 		"border-radius"		=> "100px",
 		"border"		=> "2px solid #fff",
@@ -696,8 +696,8 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
-	echo "<div class='form-wrapper'>";
 	echo "<label class='form-label' for='edit-episode-status'>Episode active status.</label>";
+	echo "<div class='form-wrapper'>";
 	echo "<input type='checkbox' id='edit-episode-status' name='edit-episode[episode_status]' value='active' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" [checked]=\"editEpisode.editEpisodeStatus != 'active' ? false : true \" hidden>";
 	echo "<label class='form-checkbox-label' for='edit-episode-status'></label>";
 	echo "</div>";
