@@ -138,6 +138,7 @@ $style_array = [
 		"max-width"		=> "600px",
 		"padding"		=> "20px",
 		"display"		=> "block",
+		"text-align"		=> "left",
 		],
 
 	".form-label" => [
