@@ -237,7 +237,7 @@ $style_array = [
 		"display"		=> "block",
 		"text-align"		=> "left",
 		"background"		=> "#fff",
-		"margin"		=> "0 auto 100px",
+		"margin"		=> "100px auto 100px",
 		"padding"		=> "20px 0",
 		"width"			=> "80%",
 		"max-width"		=> "600px",
@@ -367,7 +367,7 @@ $attributes_temp = implode(" ", [
 	"id='home-list'",
 	"layout='flex-item'",
 	"width='600'",
-	"height='500'",
+	"height='600'",
 	"items='information'",
 //	"binding='refresh'",
 	"src='amp-state:pageState'",
@@ -387,10 +387,7 @@ echo "<amp-list ". $attributes_temp .">";
 		
 	echo "</amp-list>";
 		
-echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
-
 // Handle if more than 50 episodes
-
 $attributes_temp = implode(" ", [
 	"id='episodes-list'",
 	"layout='responsive'",
@@ -475,6 +472,8 @@ echo "<amp-list ". $attributes_temp .">";
 		
 	echo "</amp-list>";
 	
+echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
+
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
