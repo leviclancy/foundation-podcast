@@ -14,19 +14,19 @@ echo '<' . '?' . 'xml version="1.0" encoding="UTF-8" ' . '?' . '>';
 
 echo '<rss version="2.0" xmlns:googleplay="http://www.google.com/schemas/play-podcasts/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">';
 
-echo '<channel>';
+echo '<channel>\n';
 
 
-echo '<title>'. $json_page['information']['title'] .'</title>';
-echo '<description>'. $json_page['information']['description'] .'</description>';
-echo '<language>'. $json_page['information']['language'] .'</language>';
-echo '<link>'. $domain .'</link>';
+echo '<title>'. $json_page['information']['title'] .'</title>\n';
+echo '<description>'. $json_page['information']['description'] .'</description>\n';
+echo '<language>'. $json_page['information']['language'] .'</language>\n';
+echo '<link>'. $domain .'</link>\n';
 
-echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:author>';
-echo '<itunes:author>'. $json_page['information']['author'] .'</itunes:author>';
+echo '<googleplay:author>'. $json_page['information']['author'] .'</googleplay:author>\n';
+echo '<itunes:author>'. $json_page['information']['author'] .'</itunes:author>\n';
 
-echo '<googleplay:email>'. $json_page['information']['email'] .'</googleplay:email>';
-echo '<itunes:email>'. $json_page['information']['email'] .'</itunes:email>';
+echo '<googleplay:email>'. $json_page['information']['email'] .'</googleplay:email>\n';
+echo '<itunes:email>'. $json_page['information']['email'] .'</itunes:email>\n';
 
 //echo '<googleplay:image href="http://www.example.com/podcasts/dafnas-zebras/img/dafna-zebra-pod-logo.jpg"/>';
 
@@ -35,17 +35,23 @@ foreach ($json_page['episodes'] as $episode_info):
 	if ($episode_info['episode_completion'] !== "complete"): continue; endif;
 	if ($episode_info['episode_status'] !== "active"): continue; endif;
 	
-	echo '<item>';
-		echo '<title>'. episode_info['episde_title'] .'</title>';
-		echo '<description>'. episode_info['episde_description'] .'</description>';
-		echo '<pubDate>'. episode_info['episde_pubdate'] .' Tue, 14 Mar 2017 12:00:00 GMT</pubDate>';
+	echo '<item>\n';
+		echo '<title>'. episode_info['episde_title'] .'</title>\n';
+		echo '<description>'. episode_info['episde_description'] .'</description>\n';
+		echo '<pubDate>'. episode_info['episde_pubdate'] .' Tue, 14 Mar 2017 12:00:00 GMT</pubDate>\n';
 //		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300"/>';
-		echo '<enclosure url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'" type="audio/mpeg" length="34216300" />';
-//		echo '<itunes:duration>30:00</itunes:duration>';
-		echo '<guid isPermaLink="false">'. episode_info['episde_id'] .'</guid>';
-		echo '</item>';
+		$attributes_temp = implode(" " , [
+			'url="https://'.$domain.'/?access=podcast-file&episode-id='. episode_info['episde_id'] .'"',
+			'type="audio/mpeg"',
+			'length="34216300"',
+			]);
+		echo '<enclosure '. $attributes_temp .'/>\n';
+//		echo '<itunes:duration>30:00</itunes:duration>\n';
+		echo '<guid isPermaLink="false">'. episode_info['episde_id'] .'</guid>\n';
+		echo '</item>\n';
 	endforeach;
 
-echo '</channel></rss>';
+echo '</channel>\n';
+echo '</rss>';
 
 exit; ?>
