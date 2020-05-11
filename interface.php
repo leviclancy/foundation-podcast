@@ -220,10 +220,13 @@ $style_array = [
 		"cursor"		=> "pointer",
 		"text-align"		=> "center",
 		"padding"		=> "20px 30px",
-		"background"		=> "rgba(255,255,255,0.3)",
+		"background"		=> "rgba(255,255,255,0.2)",
 		"font-style"		=> "normal",
 		"display"		=> "inline-block",
 		"width"			=> "auto",
+		"font-size"		=> "110%",
+		"font-weight"		=> "700",
+		"border-radius"		=> "100px",
 		],
 	
 	"#lightbox-manage-admins" => [
