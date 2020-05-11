@@ -143,7 +143,7 @@ if ($request_access == "install"):
 
 	$tables_array['podcast_information'] = [
 		"information_key"	=> "VARCHAR(100)", // title, author, description, language
-		"information_value"	=> "VARCHAR(500)",
+		"information_value"	=> "TEXT",
 		];
 
 	$tables_array['podcast_episodes'] = [
