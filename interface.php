@@ -490,10 +490,17 @@ echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' meth
 echo "</form>";
 
 echo "<div class='home-list-item'>";
+
 	echo "<h1 class='home-list-item-title' [text]='pageState.information.title'>". $json_page['information']['title'] ."</h1>";
-	echo "<p class='home-list-item-author' [text]='pageState.information.author'>". $json_page['information']['author'] ."</p>";
+
+	$author_temp = $json_page['information']['author'];
+	if (!(empty($author_temp))): $author_temp = "by " . $author_temp; endif;
+	echo "<div class='home-list-item-author' [text]=\"pageState.information.author == '' ? '' : 'by ' + pageState.information.author\">". $author_temp ."</div>";
+
 	echo "<div class='home-list-item-description' [text]='pageState.information.description'>". $json_page['information']['description'] ."</div>";
+
 	echo "<p class='home-rss-link'>RSS: <a href='https://". $domain ."/?access=rss'>". $domain ."/?access=rss</a></p>";
+
 	echo "</div>";
 		
 // Handle if more than 50 episodes
