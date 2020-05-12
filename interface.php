@@ -24,7 +24,6 @@ echo '<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0
 echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
 echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
 echo '<script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>';
-echo '<script async custom-element="amp-date-display" src="https://cdn.ampproject.org/v0/amp-date-display-0.1.js"></script>';
 
 echo '<link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">';
 
@@ -539,10 +538,7 @@ echo "<amp-list ". $attributes_temp .">";
 //		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_id}}</span>";
 
 		// Just show the date
-//		echo "<span class='episodes-list-item-notes'>{{episode_pubdate}}</span>";
-		echo "<amp-date-display datetime='{{episode_pubdate}}T01:00:00.000' layout='fill'>";
-		echo "<span class='episodes-list-item-notes'>{{dayName}}, {{day}} {{monthName}} {{year}}</span>";
-		echo "</amp-date-display>";
+		echo "<span class='episodes-list-item-notes'>{{episode_pubdate_fancy}}</span>";
 
 		// Just shows 'active' or 'inactive' status
 		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_status}}</span>";
