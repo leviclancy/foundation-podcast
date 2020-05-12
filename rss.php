@@ -42,13 +42,13 @@ echo "<rss ". $attributes_temp .">\n";
 echo "<channel>\n";
 
 $array_temp = [
-	"title" 		=> $json_page['information']['title'],
-	"description" 		=> $json_page['information']['description'],
-	"language"		=> $json_page['information']['language'],
+	"title" 		=> htmlspecialchars($json_page['information']['title']),
+	"description" 		=> htmlspecialchars($json_page['information']['description']),
+	"language"		=> htmlspecialchars($json_page['information']['language']),
 	"link"			=> "https://".$domain,
-	"itunes:author"		=> $json_page['information']['author'],
+	"itunes:author"		=> htmlspecialchars($json_page['information']['author']),
 //	"itunes:email"		=> $json_page['information']['email'],
-	"itunes:owner"		=> [ "itunes:name"=>$json_page['information']['author'], "itunes:email"=>$json_page['information']['email'] ],
+	"itunes:owner"		=> [ "itunes:name"=>htmlspecialchars($json_page['information']['author']), "itunes:email"=>$json_page['information']['email'] ],
 //	"itunes:category"	=> $json_page['information']['category'],
 //	"itunes:category"	=> "Society & Culture",
 	];
@@ -70,8 +70,8 @@ foreach ($json_page['episodes'] as $episode_info):
 
 		// Title, description, pubdate
 		$array_temp = [
-			"title"		=> $episode_info['episode_title'],
-			"description"	=> $episode_info['episode_description'],
+			"title"		=> htmlspecialchars($episode_info['episode_title']),
+			"description"	=> htmlspecialchars($episode_info['episode_description']),
 			"pubDate"	=> date("D, d M Y", strtotime($episode_info['episode_pubdate'])) ." 12:00:00 GMT", // Tue, 14 Mar 2017 12:00:00 GMT
 			];
 		foreach ($array_temp as $tag_temp => $value_temp):
