@@ -24,6 +24,7 @@ echo '<script async custom-element="amp-list" src="https://cdn.ampproject.org/v0
 echo '<script async custom-element="amp-fx-collection" src="https://cdn.ampproject.org/v0/amp-fx-collection-0.1.js"></script>';
 echo '<script async custom-template="amp-mustache" src="https://cdn.ampproject.org/v0/amp-mustache-0.2.js"></script>';
 echo '<script async custom-element="amp-audio" src="https://cdn.ampproject.org/v0/amp-audio-0.1.js"></script>';
+echo '<script async custom-element="amp-date-display" src="https://cdn.ampproject.org/v0/amp-date-display-0.1.js"></script>';
 
 echo '<link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">';
 
@@ -534,8 +535,14 @@ echo "<amp-list ". $attributes_temp .">";
 		// Podcast audio
 		echo "<amp-audio class='episodes-list-item-audio' width='auto' height='50' src='/?episode-file={{episode_id}}'><div fallback>Your browser doesn’t support HTML5 audio</div></amp-audio>";
 
-		// Just show the episode id
-		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_id}}</span>";
+//		// Just show the episode id
+//		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_id}}</span>";
+
+		// Just show the date
+//		echo "<span class='episodes-list-item-notes'>{{episode_pubdate}}</span>";
+		echo "<amp-date-display datetime='{{episode_pubdate}}T01:00:00.000' layout='fill'><template type='amp-mustache'>";
+		echo "<span class='episodes-list-item-notes'>{{dayName}}, {{day}} {{monthName}} {{year}}</span>";
+		echp "</template></amp-date-display>";
 
 		// Just shows 'active' or 'inactive' status
 		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_status}}</span>";
@@ -550,7 +557,7 @@ echo "<amp-list ". $attributes_temp .">";
 				"editEpisodeTitle" => "'{{episode_title}}'",
 				"editEpisodeDescription" => "'{{episode_description}}'",
 				"editEpisodePubDate" => "'{{episode_pubdate}}'",
-				"editEpisodeDuration" => "'{{episode_duration}}'",
+//				"editEpisodeDuration" => "'{{episode_duration}}'",
 				"editEpisodeStatus" => "'{{episode_status}}'",
 				], ]).")");
 
@@ -704,8 +711,8 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 	echo "<label class='form-label' for='edit-episode-pubdate'>Enter the publication date.</label>";
 	echo "<input class='form-input' type='date' id='edit-episode-pubdate' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<label class='form-label' for='edit-episode-duration'>Enter the duration.</label>";
-	echo "<input class='form-input' type='date' id='edit-episode-duration' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+//	echo "<label class='form-label' for='edit-episode-duration'>Enter the duration.</label>";
+//	echo "<input class='form-input' type='date' id='edit-episode-duration' name='edit-episode[episode_duration]' minlength='3' maxlength='10' placeholder='Duration'  [value]='editEpisode.editEpisodeDuration' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
 	echo "<input type='hidden' name='edit-episode[episode_status]' value='inactive'>";
 
