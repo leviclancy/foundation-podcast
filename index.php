@@ -101,6 +101,7 @@ if ($request_access == "json-page"):
 		if ($login_temp['loginStatus'] !== "loggedin"):
 			if ($status_temp !== "active"): continue; endif; // Skip inactive episodes
 			if ($completion_temp !== "complete"): continue; endif; // Skip incomplete episodes
+			if (strtotime($row['episode_pubdate']) > strtotime(date("Y-m-d")): continue; endif; // Skip unpublished episodes
 			endif;
 
 		// We will use this for pagination
@@ -115,7 +116,7 @@ if ($request_access == "json-page"):
 			"episode_title"		=> $row['episode_title'],
 			"episode_description"	=> $row['episode_description'],
 			"episode_pubdate"	=> $row['episode_pubdate'],
-			"episode_duration"	=> $row['episode_duration'],
+//			"episode_duration"	=> $row['episode_duration'],
 			"episode_bytes_length"	=> $row['episode_bytes_length'],
 			"episode_status"	=> $status_temp,
 			"episode_completion"	=> $completion_temp,
