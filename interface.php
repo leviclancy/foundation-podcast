@@ -540,9 +540,9 @@ echo "<amp-list ". $attributes_temp .">";
 
 		// Just show the date
 //		echo "<span class='episodes-list-item-notes'>{{episode_pubdate}}</span>";
-		echo "<span class='episodes-list-item-notes'><amp-date-display datetime='{{episode_pubdate}}T01:00:00.000' layout='fill'>";
-		echo "{{dayName}}, {{day}} {{monthName}} {{year}}";
-		echo "</amp-date-display></span>";
+		echo "<amp-date-display datetime='{{episode_pubdate}}T01:00:00.000' layout='fill'>";
+		echo "<span class='episodes-list-item-notes'>{{dayName}}, {{day}} {{monthName}} {{year}}</span>";
+		echo "</amp-date-display>";
 
 		// Just shows 'active' or 'inactive' status
 		echo "<span [class]=\"pageState.login.loginStatus != 'loggedin' ? 'hide' : 'episodes-list-item-notes'\" class='".$logout_hidden."'>{{episode_status}}</span>";
