@@ -363,7 +363,7 @@ $style_array = [
 	
 	".episodes-list-item-audio" => [
 		"display"		=> "block",
-		"margin"		=> "10px 0",
+		"margin"		=> "20px 0",
 		"width"			=> "90%",
 		],
 
