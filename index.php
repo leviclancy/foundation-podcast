@@ -351,7 +351,7 @@ if ($request_access == "xhr-edit-episode"):
 		"episode_title" 	=> null,
 		"episode_description" 	=> null,
 		"episode_pubdate" 	=> null,
-		"episode_duration" 	=> null,
+//		"episode_duration" 	=> null,
 		];
 
 	// Return an error if anything is null
