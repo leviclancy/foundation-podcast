@@ -14,8 +14,4 @@ $sql_database = "";
 $sql_user = "";
 
 // SQL password
-$sql_password = ""; 
-
-// Requires 'sendmail'
-// sudo apt-get install sendmail
-?>
+$sql_password = ""; ?>
