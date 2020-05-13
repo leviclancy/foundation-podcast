@@ -500,15 +500,13 @@ echo "<div id='button-navigation-wrapper'>";
 
 
 // Logout form
-echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-success:pageState.refresh'>";
+echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-error:form-warning-wrapper.show;submit-success:form-warning-wrapper.hide,logout-form.clear,pageState.refresh'>";
 
-//	echo "<div class='form-warning'>";
-//		echo "<div submitting>Submitting...</div>";
-//		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-//		echo "</div>";
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
-echo "</form>";
+	echo "</form>";
 
 echo "<div class='home-list-item'>";
 
