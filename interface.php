@@ -167,6 +167,22 @@ $style_array = [
 		"color"			=> "#333",
 		],
 	
+	".form-warning" => [
+		"width"			=> "40%",
+		"min-width"		=> "400px",
+		"max-width"		=> "500px",
+		"position"		=> "fixed",
+		"left"			=> "0",
+		"bottom"		=> "0",
+		"background"		=> "rgba(255,255,255,1)",
+		"border-radius"		=> "0 30px 0 0",
+		"height"		=> "15px",
+		"padding"		=> "5px 10px",
+		"text-overflow"		=> "ellipsis",
+		"overflow"		=> "hidden",
+		"white-space"		=> "nowrap",
+		],
+	
 	".form-file-label" => [
 		"cursor"		=> "pointer",
 		],
@@ -801,10 +817,71 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	// Look at list of admins
+	$attributes_temp = implode(" ", [
+		"action-xhr='/?access=xhr-delete-episode'",
+		"target='_top'",
+		"id='delete-episode-form'",
+		"method='post'",
+		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
+		]);
 
-	// Admin names, inactive/activate
+	echo "<form ".$attributes_temp.">";
 
+	// Handle if more than 50 episodes
+	$attributes_temp = implode(" ", [
+		"id='admins-list'",
+		"layout='responsive'",
+		"width='600'",
+		"height='300'",
+		"items='.'",
+//		"binding='refresh'",
+//		"src='amp-state:pageState'",
+		"src='/?access=json-admins'",
+//		"max-items='50'",
+		"load-more-bookmark='next'",
+		"load-more='manual'",
+		]);
+	echo "<amp-list ". $attributes_temp .">";
+		echo "<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
+		<span class='amp-list-fallback' placeholder>Loading episodes...</span>
+		<span class='amp-list-fallback' overflow>Show more.</span>";
+
+		echo "<template type='amp-mustache'>";
+	
+			echo "<div class='admins-list-item'>";
+
+			// Admin name
+
+			// Inactive/activate
+
+			// Generate magic link button
+
+			echo "</div>";
+
+			echo "<div class='admins-list-item-magic-link'>";
+
+			// Close button
+
+			echo "Please send magic link to user. Link expires in one hour.";
+
+			// View link
+
+			echo "</div>";
+
+			echo "</template>";
+		echo "</amp-list>";
+
+	
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
+	echo "</form>";
+
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+	
 	echo "</amp-lightbox>";
 
 // Lightbox for the user's own account
@@ -812,9 +889,53 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	// Password?
 
-	// Admin name
+	// Form to update admin name
+	$attributes_temp = implode(" ", [
+		"action-xhr='/?access=xhr-add-episode'",
+		"target='_top'",
+		"id='add-episode-form'",
+		"method='post'",
+		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
+		]);
+	echo "<form ".$attributes_temp.">";
+
+	echo "<label class='form-label' for='edit-episode-pubdate'>Enter the publication date.</label>";
+	echo "<input class='form-input' type='date' id='edit-episode-pubdate' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+
+	echo "</form>";
+
+	// Form to update admin password
+	$attributes_temp = implode(" ", [
+		"action-xhr='/?access=xhr-add-episode'",
+		"target='_top'",
+		"id='add-episode-form'",
+		"method='post'",
+		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
+		]);
+	echo "<form ".$attributes_temp.">";
+
+	echo "<label class='form-label' for='edit-episode-pubdate'>Enter the publication date.</label>";
+	echo "<input class='form-input' type='date' id='edit-episode-pubdate' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
+
+	echo "<div class='form-warning'>";
+		echo "<div submitting>Submitting...</div>";
+		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+		echo "</div>";
+
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+
+	echo "</form>";
+
 
 	echo "</amp-lightbox>";
 
