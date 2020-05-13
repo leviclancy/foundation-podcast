@@ -461,7 +461,6 @@ $lightbox_close_array = implode(",", [
 	"lightbox-manage-admins.close",
 	"lightbox-my-account.close",
 	"episodes-list.changeToLayoutContainer()",
-	"form-warning-wrapper.hide",
 	]);
 
 
@@ -493,7 +492,7 @@ echo "<div id='button-navigation-wrapper'>";
 
 
 // Logout form
-echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-error:form-warning-wrapper.show;submit-success:form-warning-wrapper.hide,logout-form.clear,pageState.refresh'>";
+echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-error:submit-success:logout-form.clear,pageState.refresh'>";
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
@@ -608,7 +607,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:form-warning-wrapper.show,login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
 	
 	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
 	echo "<input class='form-input' type='text' id='login-form-admin-name'' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
@@ -637,7 +636,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 		"target='_top'",
 		"id='edit-information-form'",
 		"method='post'",
-		'on="submit:form-warning-wrapper.show,edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:AMP.setState({editInformationBack: \'Back\'}),edit-information-form-submit.show,pageState.refresh"',
+		'on="submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:AMP.setState({editInformationBack: \'Back\'}),edit-information-form-submit.show,pageState.refresh"',
 		]);
 
 	echo "<form ". $attributes_temp .">";
@@ -698,7 +697,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 		"target='_top'",
 		"id='edit-episode-form'",
 		"method='post'",
-		'on="submit:form-warning-wrapper.show,edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -749,7 +748,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 		"target='_top'",
 		"id='delete-episode-form'",
 		"method='post'",
-		'on="submit:form-warning-wrapper.show,delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
+		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -778,7 +777,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 		"target='_top'",
 		"id='add-episode-form'",
 		"method='post'",
-		'on="submit:form-warning-wrapper.show,add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -806,7 +805,7 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 		"target='_top'",
 		"id='delete-episode-form'",
 		"method='post'",
-		'on="submit:form-warning-wrapper.show,delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
+		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -915,8 +914,5 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 
 	echo "</amp-lightbox>";
-
-// Form wrapper
-echo "<div id='form-warning-wrapper' hidden></div>";
 
 amp_footer(); ?>
