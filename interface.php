@@ -167,23 +167,24 @@ $style_array = [
 		"left"			=> "0px",
 		"bottom"		=> "0px",
 		"height"		=> "15px",
-		"padding"		=> "5px 10px",
+		"padding"		=> "10px 10px",
 		],
 	
 	"#form-warning-wrapper" => [
 		"background"		=> "rgba(255,255,255,0.8)",
 		"box-shadow"		=> "0 0 25px -10px rgba(30,30,30,0.15)",
 		"border-radius"		=> "0 30px 0 0",
-		"z-index"		=> "5000",
+		"z-index"		=> "3000",
 		],
 	
 	".form-warning" => [
 		"text-align"		=> "left",
-		"color"			=> "rgba(40,40,40,1)",
+		"color"			=> "rgba(20,20,20,1)",
 		"text-overflow"		=> "ellipsis",
 		"overflow"		=> "hidden",
 		"white-space"		=> "nowrap",
 		"font-size"		=> "80%",
+		"font-family"		=> "Verdana",
 		"z-index"		=> "9000",
 		],
 	
