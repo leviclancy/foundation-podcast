@@ -184,7 +184,7 @@ $style_array = [
 		"overflow"		=> "hidden",
 		"white-space"		=> "nowrap",
 		"font-size"		=> "80%",
-		"z-index"		=> "5001",
+		"z-index"		=> "6000",
 		],
 	
 	".form-file-label" => [
@@ -611,9 +611,6 @@ echo "<amp-list ". $attributes_temp .">";
 		
 	echo "</amp-list>";
 
-// Form wrapper
-echo "<div id='form-warning-wrapper' hidden></div>";
-
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
 
@@ -639,7 +636,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site information
-echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'}),edit-information-form-list.refresh;lightboxClose:edit-information-form-list.clear,pageState.refresh,home-list.refresh\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'}),edit-information-form-list.refresh;lightboxClose:edit-information-form.clear,pageState.refresh,home-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editInformationBack'>Back</div>";
 
@@ -926,5 +923,8 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 
 	echo "</amp-lightbox>";
+
+// Form wrapper
+echo "<div id='form-warning-wrapper' hidden></div>";
 
 amp_footer(); ?>
