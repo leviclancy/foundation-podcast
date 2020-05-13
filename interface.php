@@ -164,9 +164,10 @@ $style_array = [
 		"min-width"		=> "400px",
 		"max-width"		=> "500px",
 		"position"		=> "fixed",
-		"left"			=> "0",
-		"bottom"		=> "0",
-		"background"		=> "rgba(255,255,255,1)",
+		"left"			=> "-1px",
+		"bottom"		=> "-1px",
+		"background"		=> "rgba(255,255,255,0.9)",
+		"color"			=> "rgba(40,40,40,1)",
 		"border-radius"		=> "0 30px 0 0",
 		"height"		=> "15px",
 		"padding"		=> "5px 10px",
@@ -401,7 +402,7 @@ $style_array = [
 		"cursor"		=> "pointer",
 		],
 	
-	"#delete-episode-form-warning" => [
+	"#delete-episode-form-alert" => [
 		"text-align"		=> "center",
 		"font-size"		=> "140%",
 		"padding"		=> "60px 30px"
@@ -761,7 +762,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<input type='hidden' name='delete-episode[episode_id]' [value]='deleteEpisode.deleteEpisodeID' required>";
 
-	echo "<p id='delete-episode-form-warning'>Are you sure you want to delete this episode?</p>";
+	echo "<p id='delete-episode-form-alert'>Are you sure you want to delete this episode?</p>";
 
 	echo "<div class='form-warning'>";
 		echo "<div submitting>Submitting...</div>";
