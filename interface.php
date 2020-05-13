@@ -289,10 +289,18 @@ $style_array = [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
+	
+	"#lightbox-edit-information .form-snackbar" => [
+		"color"			=> "rgba(50,150,150,0.9)",
+		],
 
 	"#lightbox-edit-episode" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(0,156,10,1)",
+		],
+	
+	"#lightbox-edit-episode .form-snackbar" => [
+		"color"			=> "rgba(50,168,105,0.9)",
 		],
 	
 	"#lightbox-delete-episode" => [
@@ -300,9 +308,17 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.3), rgba(140, 0, 0,0.9)), rgba(255, 55, 33,1)",
 		],
 	
+	"#lightbox-delete-episode .form-snackbar" => [
+		"color"			=> "rgba(230,86,34,0.3)",
+		],
+	
 	"#lightbox-add-episode" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(171, 89, 179,0.3), rgba(235, 0, 192,0.9)), rgba(153, 41, 93,1)",
+		],
+
+	"#lightbox-add-episode .form-snackbar" => [
+		"color"			=> "rgba(171,89,179,0.9)",
 		],
 	
 	"#lightbox-manage-admins" => [
@@ -310,9 +326,17 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(100, 100, 100,0.3), rgba(200, 200, 200,0.8)), rgba(60, 60, 60,1)",
 		],
 	
+	"#lightbox-manage-admins .form-snackbar" => [
+		"color"			=> "rgba(100, 100, 100,0.9)",
+		],
+	
 	"#lightbox-my-account" => [
 		"color"			=> "#fff",
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(224, 199, 74, 0.3), rgba(224, 153, 0,0.8)), rgba(255, 208, 0, 1)",
+		],
+
+	"#lightbox-my-account .form-snackbar" => [
+		"color"			=> "rgba(224, 199, 74, 0.9)",
 		],
 
 	".home-list-item" => [
