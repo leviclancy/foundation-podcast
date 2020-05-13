@@ -184,7 +184,7 @@ $style_array = [
 		"overflow"		=> "hidden",
 		"white-space"		=> "nowrap",
 		"font-size"		=> "80%",
-		"z-index"		=> "6000",
+		"z-index"		=> "9000",
 		],
 	
 	".form-file-label" => [
