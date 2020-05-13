@@ -174,7 +174,7 @@ $style_array = [
 		"background"		=> "rgba(255,255,255,0.8)",
 		"box-shadow"		=> "0 0 25px -10px rgba(30,30,30,0.15)",
 		"border-radius"		=> "0 30px 0 0",
-		"z-index"		=> "900",
+		"z-index"		=> "5000",
 		],
 	
 	".form-warning" => [
@@ -184,7 +184,7 @@ $style_array = [
 		"overflow"		=> "hidden",
 		"white-space"		=> "nowrap",
 		"font-size"		=> "80%",
-		"z-index"		=> "901",
+		"z-index"		=> "5001",
 		],
 	
 	".form-file-label" => [
@@ -639,7 +639,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 
 // Lightbox for editing the site information
-echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'}),edit-information-form-list.refresh;lightboxClose:pageState.refresh,home-list.refresh\" layout='nodisplay' scrollable>";
+echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox_close_array.",AMP.setState({editInformationBack: 'Back'}),edit-information-form-list.refresh;lightboxClose:edit-information-form-list.clear,pageState.refresh,home-list.refresh\" layout='nodisplay' scrollable>";
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0' [text]='editInformationBack'>Back</div>";
 
