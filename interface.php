@@ -552,9 +552,9 @@ $attributes_temp = implode(" ", [
 	"load-more='manual'",
 	]);
 echo "<amp-list ". $attributes_temp .">";
-	echo "<span class='snackbar' fallback>Failed to load episodes.</span>
-	<span class='snackbar' placeholder>Loading episodes...</span>
-	<span class='snackbar' overflow>Show more.</span>";
+	echo "<span fallback>Failed to load episodes.</span>
+	<span placeholder>Loading episodes...</span>
+	<span overflow>Show more.</span>";
 
 	echo "<template type='amp-mustache'>";
 	
@@ -664,40 +664,40 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 
 	echo "<form ". $attributes_temp .">";
 	
-	$attributes_temp = implode(" ", [
-		"id='edit-information-form-list'",
-		"layout='responsive'",
-		"width='650'",
-		"height='1000'",
+//	$attributes_temp = implode(" ", [
+//		"id='edit-information-form-list'",
+//		"layout='responsive'",
+//		"width='650'",
+//		"height='1000'",
 //		"reset-on-refresh='always'",
-		"items='information'",
-		"binding='refresh'",
-		"src='amp-state:pageState'",
-		"single-item",
-		]);
-	echo "<amp-list ". $attributes_temp .">
-		<span class='snackbar' fallback>Failed to load information.</span>
-		<span class='snackbar' placeholder>Loading information...</span>
-		<span class='snackbar' overflow>Show more.</span>
+//		"items='information'",
+//		"binding='refresh'",
+//		"src='amp-state:pageState'",
+//		"single-item",
+//		]);
+//	echo "<amp-list ". $attributes_temp .">";
+//		echo "<span fallback>Failed to load information.</span>";
+//		echo "<span class='snackbar' placeholder>Loading information...</span>";
+//		echo "<span class='snackbar' overflow>Show more.</span>";
 
-		<template type='amp-mustache'>
+//		echo "<template type='amp-mustache'>";
 		
-		<label class='form-label' for='edit-information-title'>Enter the title.</label>
-		<input class='form-input' type='text' id='edit-information-title' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{title}}' required>
+		echo "<label class='form-label' for='edit-information-title'>Enter the title.</label>
+		<input class='form-input' type='text' id='edit-information-title' name='edit-information[title]' minlength='3' maxlength='100' placeholder='Title' [value]=\"pageState.information.title\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='' required>
 
 		<label class='form-label' for='edit-information-author'>Enter the author.</label>
-		<input class='form-input' type='text' id='edit-information-author' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{author}}' required>
+		<input class='form-input' type='text' id='edit-information-author' name='edit-information[author]' minlength='3' maxlength='100' placeholder='Author' [value]=\"pageState.information.author\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='' required>
 
 		<label class='form-label' for='edit-information-description'>Enter the description.</label>
-		<textarea class='form-textarea' id='edit-information-description' name='edit-information[description]' minlength='3' maxlength='1000' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required>{{description}}</textarea>
+		<textarea class='form-textarea' id='edit-information-description' name='edit-information[description]' minlength='3' maxlength='1000' placeholder='Description' [defaultText]=\"pageState.information.description\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" required></textarea>
 
 		<label class='form-label' for='edit-information-email'>Enter the email.</label>
-		<input class='form-input' type='email' id='edit-information-email' name='edit-information[email]' minlength='3' maxlength='50' placeholder='Email'  [value]=\"pageState.information.email\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
+		<input class='form-input' type='email' id='edit-information-email' name='edit-information[email]' minlength='3' maxlength='50' placeholder='Email' [value]=\"pageState.information.email\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='' required>
 
 		<label class='form-label' for='edit-informationlanguage'>Enter the language.</label>
-		<input class='form-input' type='text' id='edit-information-language' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language'  [value]=\"pageState.information.language\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='{{language}}' required>
+		<input class='form-input' type='text' id='edit-information-language' name='edit-information[language]' minlength='3' maxlength='10' placeholder='Language' [value]=\"pageState.information.language\" on=\"input-throttled:AMP.setState({editInformationBack: 'Back without saving'})\" value='' required>";
 
-		</template></amp-list>";
+//		echo "</template></amp-list>";
 
 	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save information</span>";
 
