@@ -44,15 +44,7 @@ $style_array = [
 		"font-size" 		=> "15px",
 		"font-family" 		=> "Verdana",
 		],
-	
-
-	".form-warning" => [
-		"display"		=> "block",
-		"margin"		=> "40px auto 30px",
-		"font-style"		=> "italic",
-		"text-align"		=> "center",
-		],
-	
+		
 	"*:focus" => [
 		"outline"		=> "none",
 		"outline-width"		=> "none",
@@ -181,6 +173,8 @@ $style_array = [
 		"text-overflow"		=> "ellipsis",
 		"overflow"		=> "hidden",
 		"white-space"		=> "nowrap",
+		"font-size"		=> "80%",
+		"z-index"		=> "900",
 		],
 	
 	".form-file-label" => [
