@@ -160,8 +160,7 @@ $style_array = [
 		],
 	
 	".form-warning" => [
-		"width"			=> "40%",
-		"min-width"		=> "400px",
+		"width"			=> "auto",
 		"max-width"		=> "500px",
 		"position"		=> "fixed",
 		"left"			=> "0px",
