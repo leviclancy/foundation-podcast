@@ -612,7 +612,7 @@ echo "<amp-list ". $attributes_temp .">";
 	echo "</amp-list>";
 
 // Form wrapper
-echo "<div id='form-warning-wrapper'></div>";
+echo "<div id='form-warning-wrapper' hidden></div>";
 
 // Lightbox for logging in
 echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array."' layout='nodisplay' scrollable>";
