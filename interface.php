@@ -442,7 +442,7 @@ $style_width_array = [
 
 echo "<style amp-custom>";
 echo css_output($style_array);
-echo "@media only screen and (max-width: 1000px) { ". css_output($style_width_array) ." }";
+echo "@media only screen and (max-width: 1100px) { ". css_output($style_width_array) ." }";
 echo "</style>";
 
 echo "</head><body>";
