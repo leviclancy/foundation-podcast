@@ -610,7 +610,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
 	
 	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
-	echo "<input class='form-input' type='text' id='login-form-admin-name'' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
+	echo "<input class='form-input' type='text' id='login-form-admin-name' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
 	echo "<label class='form-label' for='login-form-password'>Enter your password.</label>";
 	echo "<input class='form-input' type='password' id='login-form-password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
@@ -619,7 +619,7 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -680,7 +680,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -732,7 +732,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -761,7 +761,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -789,7 +789,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -858,7 +858,7 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -887,7 +887,7 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -908,7 +908,7 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 	echo "<div class='form-warning' submitting>Submitting...</div>";
 	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
