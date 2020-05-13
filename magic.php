@@ -1,0 +1,16 @@
+<?
+
+// Create a new account
+
+// Reset a password
+
+// the message
+$msg = "First line of text\nSecond line of text";
+
+// use wordwrap() if lines are longer than 70 characters
+$msg = wordwrap($msg,70);
+
+// send email
+mail("podcast@ours.foundation","My subject",$msg);
+
+?>
