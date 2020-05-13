@@ -159,7 +159,7 @@ $style_array = [
 		"color"			=> "#333",
 		],
 	
-	".form-snackbar" => [
+	".snackbar" => [
 		"width"			=> "auto",
 		"max-width"		=> "500px",
 		"position"		=> "fixed",
@@ -167,7 +167,7 @@ $style_array = [
 		"bottom"		=> "0px",
 		"height"		=> "15px",
 		"padding"		=> "10px 20px 10px 15px",
-		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5))",
+		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.8), rgba(255,255,255,0.6))",
 		"box-shadow"		=> "0 0 25px -10px rgba(30,30,30,0.15)",
 		"border-radius"		=> "0 15px 0 0",
 		"z-index"		=> "3000",
@@ -290,7 +290,7 @@ $style_array = [
 		"background"		=> "linear-gradient(45deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,150,150,0.7), rgba(80,110,110,0.4)), rgba(45,115,145,1)",
 		],
 	
-	"#lightbox-edit-information .form-snackbar" => [
+	"#lightbox-edit-information .snackbar" => [
 		"color"			=> "rgba(50,150,150,0.9)",
 		],
 
@@ -299,7 +299,7 @@ $style_array = [
 		"background"		=> "linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(50,168,105,0.7), rgba(0,110,50,0.4)), rgba(0,156,10,1)",
 		],
 	
-	"#lightbox-edit-episode .form-snackbar" => [
+	"#lightbox-edit-episode .snackbar" => [
 		"color"			=> "rgba(50,168,105,0.9)",
 		],
 	
@@ -308,7 +308,7 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(230, 86, 34,0.3), rgba(140, 0, 0,0.9)), rgba(255, 55, 33,1)",
 		],
 	
-	"#lightbox-delete-episode .form-snackbar" => [
+	"#lightbox-delete-episode .snackbar" => [
 		"color"			=> "rgba(230,86,34,0.3)",
 		],
 	
@@ -317,7 +317,7 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(171, 89, 179,0.3), rgba(235, 0, 192,0.9)), rgba(153, 41, 93,1)",
 		],
 
-	"#lightbox-add-episode .form-snackbar" => [
+	"#lightbox-add-episode .snackbar" => [
 		"color"			=> "rgba(171,89,179,0.9)",
 		],
 	
@@ -326,7 +326,7 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(100, 100, 100,0.3), rgba(200, 200, 200,0.8)), rgba(60, 60, 60,1)",
 		],
 	
-	"#lightbox-manage-admins .form-snackbar" => [
+	"#lightbox-manage-admins .snackbar" => [
 		"color"			=> "rgba(100, 100, 100,0.9)",
 		],
 	
@@ -335,7 +335,7 @@ $style_array = [
 		"background"		=> "linear-gradient(225deg, rgba(255,255,255,0.3), rgba(255,255,255,0) 50%), linear-gradient(0deg, rgba(224, 199, 74, 0.3), rgba(224, 153, 0,0.8)), rgba(255, 208, 0, 1)",
 		],
 
-	"#lightbox-my-account .form-snackbar" => [
+	"#lightbox-my-account .snackbar" => [
 		"color"			=> "rgba(224, 199, 74, 0.9)",
 		],
 
@@ -517,9 +517,9 @@ echo "<div id='button-navigation-wrapper'>";
 // Logout form
 echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-error:submit-success:logout-form.clear,pageState.refresh'>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-//	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+//	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -552,9 +552,9 @@ $attributes_temp = implode(" ", [
 	"load-more='manual'",
 	]);
 echo "<amp-list ". $attributes_temp .">";
-	echo "<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
-	<span class='amp-list-fallback' placeholder>Loading episodes...</span>
-	<span class='amp-list-fallback' overflow>Show more.</span>";
+	echo "<span class='snackbar' fallback>Failed to load episodes.</span>
+	<span class='snackbar' placeholder>Loading episodes...</span>
+	<span class='snackbar' overflow>Show more.</span>";
 
 	echo "<template type='amp-mustache'>";
 	
@@ -640,9 +640,9 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 		
 	echo "<span class='form-submit' id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -676,9 +676,9 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 		"single-item",
 		]);
 	echo "<amp-list ". $attributes_temp .">
-		<span class='amp-list-fallback' fallback>Failed to load information.</span>
-		<span class='amp-list-fallback' placeholder>Loading information...</span>
-		<span class='amp-list-fallback' overflow>Show more.</span>
+		<span class='snackbar' fallback>Failed to load information.</span>
+		<span class='snackbar' placeholder>Loading information...</span>
+		<span class='snackbar' overflow>Show more.</span>
 
 		<template type='amp-mustache'>
 		
@@ -701,9 +701,9 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 
 	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save information</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -753,9 +753,9 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 
 	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save episode</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -782,9 +782,9 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<span class='form-submit' id='delete-episode-form-submit' role='button' tabindex='0' on='tap:delete-episode-form.submit'>Yes, delete episode</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -810,9 +810,9 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -848,9 +848,9 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 		"load-more='manual'",
 		]);
 	echo "<amp-list ". $attributes_temp .">";
-		echo "<span class='amp-list-fallback' fallback>Failed to load episodes.</span>
-		<span class='amp-list-fallback' placeholder>Loading episodes...</span>
-		<span class='amp-list-fallback' overflow>Show more.</span>";
+		echo "<span class='snackbar' fallback>Failed to load episodes.</span>
+		<span class='snackbar' placeholder>Loading episodes...</span>
+		<span class='snackbar' overflow>Show more.</span>";
 
 		echo "<template type='amp-mustache'>";
 	
@@ -879,9 +879,9 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -908,9 +908,9 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -929,9 +929,9 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
-	echo "<div class='form-snackbar' submitting>Submitting...</div>";
-	echo "<div class='form-snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-	echo "<div class='form-snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
+	echo "<div class='snackbar' submitting>Submitting...</div>";
+	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='snackbar' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
