@@ -159,25 +159,32 @@ $style_array = [
 		"color"			=> "#333",
 		],
 	
-	".form-warning" => [
+	"#form-warning-wrapper, .form-warning" => [
 		"width"			=> "40%",
 		"min-width"		=> "400px",
 		"max-width"		=> "500px",
 		"position"		=> "fixed",
 		"left"			=> "0px",
 		"bottom"		=> "0px",
-		"background"		=> "rgba(255,255,255,0.8)",
-		"box-shadow"		=> "0 0 25px -10px rgba(30,30,30,0.15)",
-		"text-align"		=> "left",
-		"color"			=> "rgba(40,40,40,1)",
-		"border-radius"		=> "0 30px 0 0",
 		"height"		=> "15px",
 		"padding"		=> "5px 10px",
+		],
+	
+	"#form-warning-wrapper" => [
+		"background"		=> "rgba(255,255,255,0.8)",
+		"box-shadow"		=> "0 0 25px -10px rgba(30,30,30,0.15)",
+		"border-radius"		=> "0 30px 0 0",
+		"z-index"		=> "900",
+		],
+	
+	".form-warning" => [
+		"text-align"		=> "left",
+		"color"			=> "rgba(40,40,40,1)",
 		"text-overflow"		=> "ellipsis",
 		"overflow"		=> "hidden",
 		"white-space"		=> "nowrap",
 		"font-size"		=> "80%",
-		"z-index"		=> "900",
+		"z-index"		=> "901",
 		],
 	
 	".form-file-label" => [
@@ -459,9 +466,8 @@ $lightbox_close_array = implode(",", [
 	"lightbox-add-episode.close",
 	"lightbox-manage-admins.close",
 	"lightbox-my-account.close",
-	"home-list.changeToLayoutContainer()",
 	"episodes-list.changeToLayoutContainer()",
-	"edit-information-form-list.changeToLayoutContainer()",
+	"form-warning-wrapper.hide",
 	]);
 
 
@@ -610,21 +616,19 @@ echo "<amp-lightbox id='lightbox-login' on='lightboxOpen:".$lightbox_close_array
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
-	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
+	echo "<form action-xhr='/?access=xhr-login' target='_top' id='login-form' method='post' on='submit:form-warning-wrapper.show,login-form-submit.hide;submit-error:login-form-submit.show;submit-success:login-form-submit.show,login-form.clear,lightbox-login.close,pageState.refresh,episodes-list.refresh'>";
 	
 	echo "<label class='form-label' for='login-form-admin-name'>Enter your admin name.</label>";
 	echo "<input class='form-input' type='text' id='login-form-admin-name'' name='login-form-admin-name' minlength='6' maxlength='50' placeholder='Admin name' required>";
 
 	echo "<label class='form-label' for='login-form-password'>Enter your password.</label>";
 	echo "<input class='form-input' type='password' id='login-form-password' name='login-form-password' minlength='6' maxlength='50' placeholder='Password' required>";
-
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
 		
 	echo "<span class='form-submit' id='login-form-submit' role='button' tabindex='0' on='tap:login-form.submit'>Log in</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -641,7 +645,7 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 		"target='_top'",
 		"id='edit-information-form'",
 		"method='post'",
-		'on="submit:edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:AMP.setState({editInformationBack: \'Back\'}),edit-information-form-submit.show,pageState.refresh"',
+		'on="submit:form-warning-wrapper.show,edit-information-form-submit.hide;submit-error:edit-information-form-submit.show;submit-success:AMP.setState({editInformationBack: \'Back\'}),edit-information-form-submit.show,pageState.refresh"',
 		]);
 
 	echo "<form ". $attributes_temp .">";
@@ -681,15 +685,13 @@ echo "<amp-lightbox id='lightbox-edit-information' on=\"lightboxOpen:".$lightbox
 
 		</template></amp-list>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
+	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save information</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
-
-	echo "<span class='form-submit' id='edit-information-form-submit' role='button' tabindex='0' on='tap:edit-information-form.submit'>Save information</span>";
 
 	echo "</amp-lightbox>";
 
@@ -704,7 +706,7 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 		"target='_top'",
 		"id='edit-episode-form'",
 		"method='post'",
-		'on="submit:edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:form-warning-wrapper.show,edit-episode-form-submit.hide;submit-error:edit-episode-form-submit.show;submit-success:AMP.setState({editEpisodeBack: \'Back\'}),edit-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -735,15 +737,13 @@ echo "<amp-lightbox id='lightbox-edit-episode' on=\"lightboxOpen:".$lightbox_clo
 //	echo "<div fallback>Your browser doesn’t support HTML5 audio.</div>";
 //	echo "</amp-audio>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
+	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save episode</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
-
-	echo "<span class='form-submit' id='edit-episode-form-submit' role='button' tabindex='0' on='tap:edit-episode-form.submit'>Save episode</span>";
 
 	echo "</amp-lightbox>";
 
@@ -757,7 +757,7 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 		"target='_top'",
 		"id='delete-episode-form'",
 		"method='post'",
-		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
+		'on="submit:form-warning-wrapper.show,delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -766,15 +766,13 @@ echo "<amp-lightbox id='lightbox-delete-episode' on=\"lightboxOpen:".$lightbox_c
 
 	echo "<p id='delete-episode-form-alert'>Are you sure you want to delete this episode?</p>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
+	echo "<span class='form-submit' id='delete-episode-form-submit' role='button' tabindex='0' on='tap:delete-episode-form.submit'>Yes, delete episode</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
-
-	echo "<span class='form-submit' id='delete-episode-form-submit' role='button' tabindex='0' on='tap:delete-episode-form.submit'>Yes, delete episode</span>";
 
 	echo "</amp-lightbox>";
 
@@ -788,7 +786,7 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 		"target='_top'",
 		"id='add-episode-form'",
 		"method='post'",
-		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:form-warning-wrapper.show,add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -796,16 +794,13 @@ echo "<amp-lightbox id='lightbox-add-episode' on=\"lightboxOpen:".$lightbox_clos
 	echo "<label class='form-label form-file-label' for='add-episode'>Click to add MP3 file.</label>";
 	echo "<input type='file' class='form-file-input' id='add-episode' name='add-episode' placeholder='Add MP3 file' accept='.mp3,audio/mpeg3' on=\"input-throttled:AMP.setState({addEpisodeBack: 'Back without adding'})\">";
 
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
-
-	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
 
 	echo "</amp-lightbox>";
 
@@ -819,7 +814,7 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 		"target='_top'",
 		"id='delete-episode-form'",
 		"method='post'",
-		'on="submit:delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
+		'on="submit:form-warning-wrapper.show,delete-episode-form-submit.hide;submit-error:delete-episode-form-submit.show;submit-success:delete-episode-form-submit.show,lightbox-delete-episode.close,delete-episode-form.clear,episodes-list.refresh"',
 		]);
 
 	echo "<form ".$attributes_temp.">";
@@ -868,17 +863,14 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 			echo "</template>";
 		echo "</amp-list>";
 
-	
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
-	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
-	
 	echo "</amp-lightbox>";
 
 // Lightbox for the user's own account
@@ -893,20 +885,18 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 		"target='_top'",
 		"id='add-episode-form'",
 		"method='post'",
-		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:form-warning-wrapper.show,add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
 		]);
 	echo "<form ".$attributes_temp.">";
 
 	echo "<label class='form-label' for='edit-episode-pubdate'>Enter the publication date.</label>";
 	echo "<input class='form-input' type='date' id='edit-episode-pubdate' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
-
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
@@ -916,24 +906,24 @@ echo "<amp-lightbox id='lightbox-my-account' on='lightboxOpen:".$lightbox_close_
 		"target='_top'",
 		"id='add-episode-form'",
 		"method='post'",
-		'on="submit:add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
+		'on="submit:form-warning-wrapper.show,add-episode-form-submit.hide;submit-error:add-episode-form-submit.show;submit-success:AMP.setState({addEpisodeBack: \'Back\'}),lightbox-add-episode.close,add-episode-form-submit.show,episodes-list.refresh"',
 		]);
 	echo "<form ".$attributes_temp.">";
 
 	echo "<label class='form-label' for='edit-episode-pubdate'>Enter the publication date.</label>";
 	echo "<input class='form-input' type='date' id='edit-episode-pubdate' name='edit-episode[episode_pubdate]' minlength='3' maxlength='10' placeholder='today' [value]='editEpisode.editEpisodePubDate' on=\"input-throttled:AMP.setState({editEpisodeBack: 'Back without saving'})\" required>";
 
-	echo "<div class='form-warning'>";
-		echo "<div submitting>Submitting...</div>";
-		echo "<div submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
-		echo "<div submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
-		echo "</div>";
-
 	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+
+	echo "<div class='form-warning' submitting>Submitting...</div>";
+	echo "<div class='form-warning' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
+	echo "<div class='form-warning' submit-success><template type='amp-mustache'>{{{message}}}</template></div>";
 
 	echo "</form>";
 
 
 	echo "</amp-lightbox>";
+
+echo "<div id='form-warning-wrapper'></div>";
 
 amp_footer(); ?>
