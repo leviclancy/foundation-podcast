@@ -24,7 +24,7 @@ $request_access_array = [
 	"magic",
 	"json-page",
 	"json-login",
-	"json-users",
+	"json-admins",
 	"episode-file",
 	"xhr-login",
 	"xhr-logout",
@@ -164,7 +164,7 @@ if ($request_access == "episode-file"):
 	endif;
 
 // JSON just of users
-if ($request_access == "json-users"):
+if ($request_access == "json-admins"):
 
 	login_check(false); // Check login status
 
@@ -192,7 +192,7 @@ if ($request_access == "json-login"):
 
 	json_output($result_temp);
 
-	endif;  
+	endif;
 
 // Give us the login xhr
 if ($request_access == "xhr-login"):
