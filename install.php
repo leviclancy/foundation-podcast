@@ -187,6 +187,9 @@ if ($request_access == "install"):
 	// Check if there are admins, and if there are any then our work is done
 	while ($row = pg_fetch_row($result)): echo "</div>"; amp_footer(); endwhile;
 
+	// Create magic code to set username and password
+	// TAP TO CONTINUE SETUP
+
 	// Form for making new admin if none exist
 	echo "<form action-xhr='/?access=xhr-install' target='_top' id='install-form' method='post' on='submit:install-form-submit.hide;submit-error:install-form-submit.show'>";
 	
