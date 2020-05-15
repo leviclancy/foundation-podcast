@@ -803,6 +803,10 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 
 	echo "<div class='lightbox-back' on='tap:".$lightbox_close_array."' role='button' tabindex='0'>Back</div>";
 
+	// Want to add a new user?
+	// Send them this link, valid for 12 hours
+	// It'll let them create a new account
+
 	$attributes_temp = implode(" ", [
 		"action-xhr='/?access=xhr-delete-episode'",
 		"target='_top'",
@@ -824,19 +828,19 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 //		"src='amp-state:pageState'",
 		"src='/?access=json-admins'",
 //		"max-items='50'",
-		"load-more-bookmark='next'",
-		"load-more='manual'",
+//		"load-more-bookmark='next'",
+//		"load-more='manual'",
 		]);
 	echo "<amp-list ". $attributes_temp .">";
-		echo "<span class='snackbar' fallback>Failed to load episodes.</span>
-		<span class='snackbar' placeholder>Loading episodes...</span>
-		<span class='snackbar' overflow>Show more.</span>";
+		echo "<span fallback>Failed to load admins.</span>
+		<span placeholder>Loading admins...</span>
+		<span overflow>Show more.</span>";
 
 		echo "<template type='amp-mustache'>";
 	
 			echo "<div class='admins-list-item'>";
 
-			// Admin name
+			echo "{{admin_name}}";
 
 			// Inactive/activate
 
@@ -857,7 +861,7 @@ echo "<amp-lightbox id='lightbox-manage-admins' on='lightboxOpen:".$lightbox_clo
 			echo "</template>";
 		echo "</amp-list>";
 
-	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Add episode</span>";
+	echo "<span class='form-submit' id='add-episode-form-submit' role='button' tabindex='0' on='tap:add-episode-form.submit'>Save changes</span>";
 
 	echo "<div class='snackbar' submitting>Submitting...</div>";
 	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
