@@ -463,7 +463,7 @@ echo "</style>";
 
 echo "</head><body>";
 
-echo "<amp-state id='pageState' src='/?access=json-page'></script></amp-state>";
+echo "<amp-state id='pageState' src='/?access=json-page'></amp-state>";
 
 // We need to initialize the login state, and default values
 $cookie_code_temp = $_COOKIE['cookie_code'] ?? null;
@@ -515,7 +515,7 @@ echo "<div id='button-navigation-wrapper'>";
 
 
 // Logout form
-echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-error:submit-success:logout-form.clear,pageState.refresh'>";
+echo "<form action-xhr='/?access=xhr-logout' target='_top' id='logout-form' method='post' on='submit-success:logout-form.clear,pageState.refresh'>";
 
 	echo "<div class='snackbar' submitting>Submitting...</div>";
 	echo "<div class='snackbar' submit-error><template type='amp-mustache'>Error. {{{message}}}</template></div>";
